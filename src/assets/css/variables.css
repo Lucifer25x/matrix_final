@@ -1,0 +1,19 @@
+:root {
+    --font1: 'Open Sans', serif;
+    --font2: 'Merriweather', serif;
+    --bg: #F4EEFF;
+    --text: #333;
+    --primary: #424874;
+    --secondary: #A6B1E1;
+    --third: #DCD6F7;
+    --fourth: #F4EEFF;
+}
+
+body.dark {
+    --bg: #2d2f3b;
+    --text: #fff;
+    --primary: #424874;
+    --secondary: #A6B1E1;
+    --third: #DCD6F7;
+    --fourth: #F4EEFF;
+}
