@@ -1,7 +1,7 @@
 import '../assets/css/Home.css'
 import { Link } from 'react-router-dom'
-
-import { Navigation, A11y } from 'swiper/modules';
+import { RiArrowRightUpFill } from '@remixicon/react';
+import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -40,58 +40,76 @@ const Home = () => {
                     }}
                 >
                     <SwiperSlide>
-                        <div>
+                        <Link to={`/product/`}>
                             <div className="img">
                                 <img src="https://placehold.co/400" alt="Product" />
+                                <div className="effect">
+                                    <RiArrowRightUpFill size={100} />
+                                </div>
                             </div>
                             <h3>Product 1</h3>
                             <p>$100</p>
-                        </div>
+                        </Link>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div>
+                        <Link to={`/product/`}>
                             <div className="img">
                                 <img src="https://placehold.co/400" alt="Product" />
+                                <div className="effect">
+                                    <RiArrowRightUpFill size={100} />
+                                </div>
                             </div>
-                            <h3>Product 2</h3>
-                            <p>$200</p>
-                        </div>
+                            <h3>Product 1</h3>
+                            <p>$100</p>
+                        </Link>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div>
+                        <Link to={`/product/`}>
                             <div className="img">
                                 <img src="https://placehold.co/400" alt="Product" />
+                                <div className="effect">
+                                    <RiArrowRightUpFill size={100} />
+                                </div>
                             </div>
-                            <h3>Product 3</h3>
-                            <p>$300</p>
-                        </div>
+                            <h3>Product 1</h3>
+                            <p>$100</p>
+                        </Link>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div>
+                        <Link to={`/product/`}>
                             <div className="img">
                                 <img src="https://placehold.co/400" alt="Product" />
+                                <div className="effect">
+                                    <RiArrowRightUpFill size={100} />
+                                </div>
                             </div>
-                            <h3>Product 4</h3>
-                            <p>$400</p>
-                        </div>
+                            <h3>Product 1</h3>
+                            <p>$100</p>
+                        </Link>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div>
+                        <Link to={`/product/`}>
                             <div className="img">
                                 <img src="https://placehold.co/400" alt="Product" />
+                                <div className="effect">
+                                    <RiArrowRightUpFill size={100} />
+                                </div>
                             </div>
-                            <h3>Product 5</h3>
-                            <p>$500</p>
-                        </div>
+                            <h3>Product 1</h3>
+                            <p>$100</p>
+                        </Link>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div>
+                        <Link to={`/product/`}>
                             <div className="img">
                                 <img src="https://placehold.co/400" alt="Product" />
+                                <div className="effect">
+                                    <RiArrowRightUpFill size={100} />
+                                </div>
                             </div>
-                            <h3>Product 6</h3>
-                            <p>$600</p>
-                        </div>
+                            <h3>Product 1</h3>
+                            <p>$100</p>
+                        </Link>
                     </SwiperSlide>
                 </Swiper>
 
@@ -112,58 +130,76 @@ const Home = () => {
                     }}
                 >
                     <SwiperSlide>
-                        <div>
+                        <Link to={`/product/`}>
                             <div className="img">
                                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F71M709bxT9L.jpg&f=1&nofb=1&ipt=c396eab94d6f9551f37a832e1b37ae306fa854f8400d301bc1bd3fb8fd6f56f3&ipo=images" alt="Product" />
+                                <div className="effect">
+                                    <RiArrowRightUpFill size={100} />
+                                </div>
                             </div>
                             <h3>Product 1</h3>
                             <p>$100</p>
-                        </div>
+                        </Link>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div>
+                        <Link to={`/product/`}>
                             <div className="img">
                                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F51JoMLZrb1L.jpg&f=1&nofb=1&ipt=d9f8bc742cebc310e0275eeae74750bcdf4c2986384bd33af5d2e6379517f63b&ipo=images" alt="Product" />
+                                <div className="effect">
+                                    <RiArrowRightUpFill size={100} />
+                                </div>
                             </div>
                             <h3>Product 2</h3>
                             <p>$200</p>
-                        </div>
+                        </Link>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div>
+                        <Link to={`/product/`}>
                             <div className="img">
                                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstorage.googleapis.com%2Flcdn-products%2F3%2F3%2F5%2F0%2F5%2F7%2F335057-large_default.webp&f=1&nofb=1&ipt=e861f5f01ffa6d38b07d39275e37bac9d9a95494213560997e4e5a86533d6424&ipo=images" alt="Product" />
+                                <div className="effect">
+                                    <RiArrowRightUpFill size={100} />
+                                </div>
                             </div>
                             <h3>Product 3</h3>
                             <p>$300</p>
-                        </div>
+                        </Link>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div>
+                        <Link to={`/product/`}>
                             <div className="img">
                                 <img src="https://placehold.co/400" alt="Product" />
+                                <div className="effect">
+                                    <RiArrowRightUpFill size={100} />
+                                </div>
                             </div>
-                            <h3>Product 4</h3>
-                            <p>$400</p>
-                        </div>
+                            <h3>Product 1</h3>
+                            <p>$100</p>
+                        </Link>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div>
+                        <Link to={`/product/`}>
                             <div className="img">
                                 <img src="https://placehold.co/400" alt="Product" />
+                                <div className="effect">
+                                    <RiArrowRightUpFill size={100} />
+                                </div>
                             </div>
-                            <h3>Product 5</h3>
-                            <p>$500</p>
-                        </div>
+                            <h3>Product 1</h3>
+                            <p>$100</p>
+                        </Link>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div>
+                        <Link to={`/product/`}>
                             <div className="img">
                                 <img src="https://placehold.co/400" alt="Product" />
+                                <div className="effect">
+                                    <RiArrowRightUpFill size={100} />
+                                </div>
                             </div>
-                            <h3>Product 6</h3>
-                            <p>$600</p>
-                        </div>
+                            <h3>Product 1</h3>
+                            <p>$100</p>
+                        </Link>
                     </SwiperSlide>
                 </Swiper>
             </div>

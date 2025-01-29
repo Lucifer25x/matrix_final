@@ -2,8 +2,10 @@
     --font1: 'Open Sans', serif;
     --font2: 'Merriweather', serif;
     --bg: #F4EEFF;
+    --bg2: #2f3142;
     --text: #333;
     --primary: #424874;
+    --primary2: #5c628f;
     --secondary: #A6B1E1;
     --third: #DCD6F7;
     --fourth: #F4EEFF;
@@ -12,8 +14,19 @@
 body.dark {
     --bg: #2d2f3b;
     --text: #fff;
-    --primary: #424874;
-    --secondary: #A6B1E1;
-    --third: #DCD6F7;
-    --fourth: #F4EEFF;
+}
+
+body.red {
+    --bg: #f9e3e4;
+    --bg2: #f8a5a5;
+    --text: #333;
+    --primary: #f27474;
+    --primary2: #f8a5a5;
+    --secondary: #f8a5a5;
+    --third: #e6dcdc;
+    --fourth: #f9e3e4;
+}
+body.red.dark {
+    --bg: #462626;
+    --text: #fff;
 }
