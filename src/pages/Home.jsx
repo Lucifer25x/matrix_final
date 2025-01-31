@@ -203,6 +203,31 @@ const Home = () => {
                     </SwiperSlide>
                 </Swiper>
             </div>
+
+            <h2>Reviews</h2>
+            <div className="reviews">
+                <div className="review">
+                    <div className="top">
+                        <img src="https://placehold.co/400" alt="User"/>
+                        <h3>John Doe</h3>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc ac ultricies aliquet, ex nisl lacinia felis, nec tincidunt metus nunc vel enim.</p>
+                </div>
+                <div className="review">
+                    <div className="top">
+                        <img src="https://placehold.co/400" alt="User"/>
+                        <h3>John Doe</h3>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc ac ultricies aliquet, ex nisl lacinia felis, nec tincidunt metus nunc vel enim.</p>
+                </div>
+                <div className="review">
+                    <div className="top">
+                        <img src="https://placehold.co/400" alt="User"/>
+                        <h3>John Doe</h3>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc ac ultricies aliquet, ex nisl lacinia felis, nec tincidunt metus nunc vel enim.</p>
+                </div>
+            </div>
         </div>
     )
 }
