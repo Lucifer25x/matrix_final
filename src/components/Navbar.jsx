@@ -1,6 +1,10 @@
 // Import necessary libraries
 import { Link } from "react-router-dom";
 import { RiSearchLine, RiHeartLine, RiShoppingBagLine, RiUserLine, RiMenuLine } from "@remixicon/react";
+import { useState } from "react";
+
+// Import components
+import Sidebar from "./Sidebar";
 
 // Import styles
 import "../assets/styles/components/Navbar.css";
@@ -9,6 +13,21 @@ import "../assets/styles/components/Navbar.css";
 import logo from "../assets/images/logo.avif";
 
 const Navbar = () => {
+    const [sidebar, setSidebar] = useState(false);
+
+    // const openSidebar = () => {
+    //     setSidebar(true);
+    // }
+
+    // const closeSidebar = () => {
+    //     setSidebar(false);
+    // }
+
+    const handleSidebar = () => {
+        setSidebar(!sidebar);
+        document.body.style.overflow = sidebar ? "auto" : "hidden";
+    }
+
     return (
         <>
             <nav>
@@ -36,12 +55,14 @@ const Navbar = () => {
                                 <RiUserLine size={25} />
                             </Link>
                         </div>
-                        <div className="menu">
-                            <RiMenuLine size={25} />
+                        <div className="menu" onClick={handleSidebar}>
+                            <RiMenuLine size={25}/>
                         </div>
                     </div>
                 </div>
             </nav>
+
+            <Sidebar sidebar={sidebar} handleSidebar={handleSidebar}/>
         </>
     )
 }
