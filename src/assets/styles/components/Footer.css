@@ -1,0 +1,117 @@
+footer {
+    margin-top: 20px;
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    & p {
+        font-weight: bold;
+    }
+
+    .top {
+        background-color: #000;
+        color: #fff;
+        padding: 20px 0;
+
+        & a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #fff;
+            text-decoration: none;
+            transition: .3s ease all;
+            font-size: .8em;
+
+            &:hover {
+                color: var(--primary);
+            }
+        }
+
+        .container {
+            .brand {
+                flex: 1;
+                .social {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+            }
+
+            .section {
+                flex: 1;
+                .links {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+
+            .subscribe {
+                flex: 1;
+                .email {
+                    margin-top: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    & input {
+                        padding: 10px;
+                        border: none;
+                        outline: none;
+                    }
+                    & button {
+                        background-color: var(--primary);
+                        font-weight: 900;
+                        font-size: 1.2;
+                        padding: 10px;
+                        color: #fff;
+                        border: none;
+                        cursor: pointer;
+                        transition: .3s ease all;
+                        &:hover {
+                            background-color: #000;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .bottom {
+        padding: 20px 0;
+        background-color: #fff;
+        color: #000;
+        .container {
+            align-items: center;
+            .copyright {
+                font-size: .8em;
+            }
+            .payment-methods {
+                display: flex;
+                gap: 5px;
+            }
+        }
+    }
+}
+
+/* Responsive style */
+@media(max-width: 1200px){
+    footer {
+        .top {
+            .container {
+                flex-direction: column;
+                .section, .subscribe {
+                    margin-top: 20px;
+                } 
+            }
+        }
+    }
+}
+@media(max-width: 800px){
+    footer {
+        .bottom {
+            .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    }
+}

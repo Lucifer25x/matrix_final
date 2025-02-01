@@ -1,0 +1,13 @@
+:root {
+    --font-family: 'Open Sans', sans-serif;
+    --text-color: #000;
+    --text-color-light: #eee;
+    --background-color: #fff;
+    --dark-background-color: #363636;
+    --dark-background-color-hover: #000;
+    --border-color: #d3d3d3;
+    --border-color-focus: #000;
+    --filter: invert(0);
+    --primary: #00b41b;
+    --secondary: #deffca;
+}

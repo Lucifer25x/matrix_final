@@ -1,0 +1,113 @@
+nav {
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--background-color);
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .logo {
+            filter: var(--filter);
+        }
+
+        .search {
+            width: 70%;
+            display: flex;
+            align-items: center;
+            & input {
+                width: 95%;
+                height: 40px;
+                padding: 10px;
+                border: 1px solid var(--border-color);
+                background-color: var(--background-color);
+                color: var(--text-color);
+                outline: none;
+                transition: .3s ease all;
+                border-right: none;
+                &:hover {
+                    border-color: var(--border-color-focus);
+                }
+                &:focus {
+                    border-color: var(--border-color-focus);
+                }
+            }
+            & button {
+                width: 5%;
+                min-width: 40px;
+                height: 40px;
+                background-color: var(--dark-background-color);
+                color: var(--background-color);
+                border: none;
+                cursor: pointer;
+                transition: .3s ease all;
+                &:hover {
+                    background-color: var(--dark-background-color-hover);
+                }
+            }
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            .links {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                & a {
+                    color: var(--text-color);
+                    text-decoration: none;
+                    transition: .3s ease all;
+                    position: relative;
+                    &:hover {
+                        color: var(--primary);
+                    }
+                    & span {
+                        position: absolute;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        top: -5px;
+                        right: -5px;
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 50%;
+                        font-size: .8em;
+                        background-color: var(--primary);
+                        color: var(--background-color);
+                    }
+                }
+            }
+            .menu {
+                cursor: pointer;
+                transition: .3s ease all;
+                &:hover {
+                    color: var(--primary);
+                }
+            }
+        }
+    }
+}
+
+/* Responsive style */
+@media(max-width: 1250px){
+    nav {
+        .container {
+            .search {
+                width: 60%;
+            }
+        }
+    }
+}
+
+@media(max-width: 800px){
+    nav {
+        .container {
+            .search {
+                display: none;
+            }
+        }
+    }
+}
