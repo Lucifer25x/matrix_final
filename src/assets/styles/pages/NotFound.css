@@ -1,0 +1,11 @@
+.not-found {
+    width: 60%;
+    margin: 20px auto;
+    & h1 {
+        font-weight: 900;
+        font-size: 3em;
+    }
+    & p {
+        margin-top: 20px;
+    }
+}

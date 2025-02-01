@@ -1,4 +1,4 @@
-// Import necessary libraries
+// Import libraries
 import { Link } from "react-router-dom";
 import { RiSearchLine, RiHeartLine, RiShoppingBagLine, RiUserLine, RiMenuLine } from "@remixicon/react";
 import { useState } from "react";
@@ -14,14 +14,6 @@ import logo from "../assets/images/logo.avif";
 
 const Navbar = () => {
     const [sidebar, setSidebar] = useState(false);
-
-    // const openSidebar = () => {
-    //     setSidebar(true);
-    // }
-
-    // const closeSidebar = () => {
-    //     setSidebar(false);
-    // }
 
     const handleSidebar = () => {
         setSidebar(!sidebar);
@@ -56,13 +48,13 @@ const Navbar = () => {
                             </Link>
                         </div>
                         <div className="menu" onClick={handleSidebar}>
-                            <RiMenuLine size={25}/>
+                            <RiMenuLine size={25} />
                         </div>
                     </div>
                 </div>
             </nav>
 
-            <Sidebar sidebar={sidebar} handleSidebar={handleSidebar}/>
+            <Sidebar sidebar={sidebar} handleSidebar={handleSidebar} />
         </>
     )
 }

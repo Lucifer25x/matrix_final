@@ -37,13 +37,13 @@ nav {
                 width: 5%;
                 min-width: 40px;
                 height: 40px;
-                background-color: var(--dark-background-color);
+                background-color: var(--background-color-2);
                 color: var(--background-color);
                 border: none;
                 cursor: pointer;
                 transition: .3s ease all;
                 &:hover {
-                    background-color: var(--dark-background-color-hover);
+                    background-color: var(--background-color-2-hover);
                 }
             }
         }

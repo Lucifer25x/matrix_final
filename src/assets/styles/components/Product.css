@@ -1,0 +1,54 @@
+.product {
+    .img {
+        border: 1px solid var(--border-color-2);
+        padding: 10px;
+        position: relative;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: auto;
+        }
+        & svg {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            fill: var(--text-color);
+            transition: fill 0.3s;
+            &:hover {
+                fill: var(--primary);
+            }
+        }
+        .add {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: var(--primary);
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .3s ease all;
+            transform: translateY(100%);
+            &:hover {
+                background-color: #000;
+            }
+        }
+    }
+    .info {
+        margin-top: 10px;
+        & h3 {
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+    }
+    &:hover {
+        .img {
+            .add {
+                transform: translateY(0);
+            }
+        }
+    }
+}
