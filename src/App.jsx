@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // Import the components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Import the pages
 import Home from "./pages/Home";
@@ -23,6 +24,8 @@ const App = () => {
                 <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
+
+            <ScrollToTop />
         </BrowserRouter>
     )
 }
