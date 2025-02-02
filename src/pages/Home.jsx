@@ -18,27 +18,14 @@ import Product from '../components/Product';
 // Import styles
 import "../assets/styles/pages/Home.css";
 
-// Import images
-import banner1 from "../assets/images/banner/banner1.jpg";
-import banner2 from "../assets/images/banner/banner2.png";
-import banner3 from "../assets/images/banner/banner3.jpg";
-import banner4 from "../assets/images/banner/banner4.png";
-
 const Home = () => {
     const [banners, setBanners] = useState([]);
 
     useEffect(() => {
         const getBanners = async () => {
-            const { data, error } = await supabase.from('banners').select('*');
-
-            if (error) {
-                console.error('Error fetching banners:', error.message);
-                return;
-            }
-
-            const sortedBanners = data.sort((a, b) => a.order - b.order);
-
-            setBanners(sortedBanners);
+            const {data } = await supabase.from('banners').select('*');
+            data.sort((a, b) => a.order - b.order);
+            setBanners(data);
         }
 
         getBanners();
@@ -59,10 +46,6 @@ const Home = () => {
                         disableOnInteraction: false,
                     }}
                 >
-                    {/* <SwiperSlide><img src={banner1} alt="Banner 1" /></SwiperSlide>
-                    <SwiperSlide><img src={banner2} alt="Banner 2" /></SwiperSlide>
-                    <SwiperSlide><img src={banner3} alt="Banner 3" /></SwiperSlide>
-                    <SwiperSlide><img src={banner4} alt="Banner 4" /></SwiperSlide> */}
                     {banners.map(banner => (
                         <SwiperSlide key={banner.id}>
                             <Link to={banner.url}>
