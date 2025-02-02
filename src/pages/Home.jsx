@@ -1,3 +1,8 @@
+// Import libraries
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import supabase from '../utils/supabase';
+
 // Import Swiper React components
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -20,6 +25,25 @@ import banner3 from "../assets/images/banner/banner3.jpg";
 import banner4 from "../assets/images/banner/banner4.png";
 
 const Home = () => {
+    const [banners, setBanners] = useState([]);
+
+    useEffect(() => {
+        const getBanners = async () => {
+            const { data, error } = await supabase.from('banners').select('*');
+
+            if (error) {
+                console.error('Error fetching banners:', error.message);
+                return;
+            }
+
+            const sortedBanners = data.sort((a, b) => a.order - b.order);
+
+            setBanners(sortedBanners);
+        }
+
+        getBanners();
+    }, []);
+
     return (
         <div className="home container">
             <div className="banner">
@@ -35,10 +59,17 @@ const Home = () => {
                         disableOnInteraction: false,
                     }}
                 >
-                    <SwiperSlide><img src={banner1} alt="Banner 1" /></SwiperSlide>
+                    {/* <SwiperSlide><img src={banner1} alt="Banner 1" /></SwiperSlide>
                     <SwiperSlide><img src={banner2} alt="Banner 2" /></SwiperSlide>
                     <SwiperSlide><img src={banner3} alt="Banner 3" /></SwiperSlide>
-                    <SwiperSlide><img src={banner4} alt="Banner 4" /></SwiperSlide>
+                    <SwiperSlide><img src={banner4} alt="Banner 4" /></SwiperSlide> */}
+                    {banners.map(banner => (
+                        <SwiperSlide key={banner.id}>
+                            <Link to={banner.url}>
+                                <img src={banner.image} alt={banner.title} />
+                            </Link>
+                        </SwiperSlide>
+                    ))}
                 </Swiper>
             </div>
 
