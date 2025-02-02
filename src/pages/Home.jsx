@@ -32,7 +32,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="home container">
+        <div className="home-page container">
             <div className="banner">
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay]}

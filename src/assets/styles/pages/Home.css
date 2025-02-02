@@ -1,4 +1,4 @@
-.home {
+.home-page {
     .banner {
         & img {
             width: 100%;
@@ -166,7 +166,7 @@
 }
 
 @media(max-width: 800px) {
-    .home {
+    .home-page {
         .section {
             & h1 {
                 font-size: 2em;

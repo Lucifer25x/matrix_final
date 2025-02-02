@@ -3,7 +3,7 @@ import "../assets/styles/pages/FAQ.css";
 
 const FAQ = () => {
     return (
-        <div className="faq">
+        <div className="faq-page">
             <h1>Frequently asked questions</h1>
 
             <div className="section">
@@ -38,22 +38,24 @@ const FAQ = () => {
                 </p>
 
                 <table>
-                    <tr>
-                        <td>Republic Of Ireland</td>
-                        <td>December 18th</td>
-                    </tr>
-                    <tr>
-                        <td>Northern Ireland & Great Britian</td>
-                        <td>December 16th</td>
-                    </tr>
-                    <tr>
-                        <td>Rest Of Europe</td>
-                        <td>December 14th</td>
-                    </tr>
-                    <tr>
-                        <td>USA & Rest Of World</td>
-                        <td>December 05th</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>Republic Of Ireland</td>
+                            <td>December 18th</td>
+                        </tr>
+                        <tr>
+                            <td>Northern Ireland & Great Britian</td>
+                            <td>December 16th</td>
+                        </tr>
+                        <tr>
+                            <td>Rest Of Europe</td>
+                            <td>December 14th</td>
+                        </tr>
+                        <tr>
+                            <td>USA & Rest Of World</td>
+                            <td>December 05th</td>
+                        </tr>
+                    </tbody>
                 </table>
 
                 <p>
@@ -85,26 +87,30 @@ const FAQ = () => {
                 </p>
 
                 <table>
-                    <tr>
-                        <th>Location</th>
-                        <th>Estimated Shipping Time</th>
-                    </tr>
-                    <tr>
-                        <td>Ireland</td>
-                        <td>2-4 business days</td>
-                    </tr>
-                    <tr>
-                        <td>United Kingdom</td>
-                        <td>4-6 business days</td>
-                    </tr>
-                    <tr>
-                        <td>Europe</td>
-                        <td>8-10 business days</td>
-                    </tr>
-                    <tr>
-                        <td>Rest Of The World</td>
-                        <td>10-14 business days </td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Location</th>
+                            <th>Estimated Shipping Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ireland</td>
+                            <td>2-4 business days</td>
+                        </tr>
+                        <tr>
+                            <td>United Kingdom</td>
+                            <td>4-6 business days</td>
+                        </tr>
+                        <tr>
+                            <td>Europe</td>
+                            <td>8-10 business days</td>
+                        </tr>
+                        <tr>
+                            <td>Rest Of The World</td>
+                            <td>10-14 business days </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
 

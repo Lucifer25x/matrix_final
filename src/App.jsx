@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 // Import the pages
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 
 const App = () => {
@@ -15,8 +17,8 @@ const App = () => {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/about" element={<h1>About</h1>} />
-                <Route path="/contact" element={<h1>Contact</h1>} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
