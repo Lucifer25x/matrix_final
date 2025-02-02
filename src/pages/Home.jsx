@@ -1,19 +1,19 @@
 // Import libraries
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import supabase from '../utils/supabase';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import supabase from "../utils/supabase";
 
 // Import Swiper React components
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 // Import components
-import Product from '../components/Product';
+import Product from "../components/Product";
 
 // Import styles
 import "../assets/styles/pages/Home.css";
@@ -23,7 +23,7 @@ const Home = () => {
 
     useEffect(() => {
         const getBanners = async () => {
-            const {data } = await supabase.from('banners').select('*');
+            const { data } = await supabase.from("banners").select("*");
             data.sort((a, b) => a.order - b.order);
             setBanners(data);
         }
@@ -202,6 +202,28 @@ const Home = () => {
                     </Swiper>
                 </div>
                 <button>SEE ALL</button>
+            </div>
+
+            <div className="keep-in-touch">
+                <h1>KEEP IN TOUCH</h1>
+                <div className="inputs">
+                    <input type="text" placeholder="Name" />
+                    <input type="email" placeholder="Email" />
+                    <button>SIGN UP</button>
+                </div>
+            </div>
+
+            <div className="bottom-links">
+                <div className="redeem">
+                    <Link to="/redeem">
+                        <img src="https://www.therecordhub.com/cdn/shop/files/Redeem_1600x.png" alt="Redeem" />
+                    </Link>
+                </div>
+                <div className="about">
+                    <Link to="/about">
+                        <img src="https://www.therecordhub.com/cdn/shop/files/About_us_1600x.png" alt="About" />
+                    </Link>
+                </div>
             </div>
         </div>
     )
