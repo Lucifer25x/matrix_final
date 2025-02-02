@@ -34,26 +34,28 @@ const Home = () => {
     return (
         <div className="home-page container">
             <div className="banner">
-                <Swiper
-                    modules={[Navigation, Pagination, Autoplay]}
-                    slidesPerView={1}
-                    navigation={true}
-                    loop={true}
-                    pagination={{ clickable: true }}
-                    speed={1000}
-                    autoplay={{
-                        delay: 3500,
-                        disableOnInteraction: false,
-                    }}
-                >
-                    {banners.map(banner => (
-                        <SwiperSlide key={banner.id}>
-                            <Link to={banner.url}>
-                                <img src={banner.image} alt={banner.title} />
-                            </Link>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                {banners.length > 0 ? (
+                    <Swiper
+                        modules={[Navigation, Pagination, Autoplay]}
+                        slidesPerView={1}
+                        navigation={true}
+                        loop={true}
+                        pagination={{ clickable: true }}
+                        speed={1000}
+                        autoplay={{
+                            delay: 3500,
+                            disableOnInteraction: false,
+                        }}
+                    >
+                        {banners.map(banner => (
+                            <SwiperSlide key={banner.id}>
+                                <Link to={banner.url}>
+                                    <img src={banner.image} alt={banner.title} />
+                                </Link>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                ) : ""}
             </div>
 
             <div className="section">
