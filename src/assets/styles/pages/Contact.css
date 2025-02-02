@@ -1,0 +1,113 @@
+.contact-page {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    & h1 {
+        text-align: center;
+        font-size: 3em;
+        margin: 20px 0;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .sections {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        gap: 40px;
+
+        .section {
+            flex: 1;
+        }
+
+        .section:nth-child(1) {
+            & p:nth-child(1) {
+                margin-top: 0;
+            }
+
+            & p {
+                margin: 20px 0;
+            }
+
+            .social {
+                display: flex;
+                gap: 5px;
+                margin-top: 20px;
+
+                a {
+                    color: var(--text-color);
+                    font-size: 1.5em;
+                    transition: color 0.3s;
+
+                    &:hover {
+                        color: var(--primary);
+                    }
+                }
+            }
+        }
+
+        .section:nth-child(2) {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--background-color-6);
+            padding: 40px;
+            justify-content: space-between;
+            gap: 20px;
+
+            & input {
+                padding: 10px;
+                border: 1px solid var(--border-color);
+                outline: none;
+
+                &:focus {
+                    border-color: var(--border-color-focus);
+                }
+            }
+
+            & textarea {
+                padding: 10px;
+                min-height: 100px;
+                border: 1px solid var(--border-color);
+                outline: none;
+                resize: none;
+                font-family: var(--font-family);
+
+                &:focus {
+                    border-color: var(--border-color-focus);
+                }
+            }
+
+            & button {
+                padding: 10px;
+                background-color: var(--primary);
+                color: #fff;
+                border: nones;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                font-weight: 900;
+
+                &:hover {
+                    background-color: var(--background-color-2);
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 800px) {
+    .contact-page {
+        & h1 {
+            font-size: 2em;
+        }
+
+        .sections {
+            flex-direction: column;
+            gap: 20px;
+
+            .section {
+                flex: none;
+            }
+        }
+    }
+}
