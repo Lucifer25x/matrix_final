@@ -81,7 +81,7 @@ const Home = () => {
                     >
                         <SwiperSlide>
                             <Product
-                                img="https://imageplaceholder.net/300"
+                                img="https://placehold.co/300"
                                 title="Product 1"
                                 desc="Description 1"
                                 price="10.00"
@@ -89,7 +89,7 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <Product
-                                img="https://imageplaceholder.net/300"
+                                img="https://placehold.co/300"
                                 title="Product 2"
                                 desc="Description 2"
                                 price="20.00"
@@ -97,7 +97,7 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <Product
-                                img="https://imageplaceholder.net/300"
+                                img="https://placehold.co/300"
                                 title="Product 3"
                                 desc="Description 3"
                                 price="30.00"
@@ -105,7 +105,7 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <Product
-                                img="https://imageplaceholder.net/300"
+                                img="https://placehold.co/300"
                                 title="Product 4"
                                 desc="Description 4"
                                 price="40.00"
@@ -113,7 +113,7 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <Product
-                                img="https://imageplaceholder.net/300"
+                                img="https://placehold.co/300"
                                 title="Product 5"
                                 desc="Description 5"
                                 price="50.00"
@@ -121,7 +121,7 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <Product
-                                img="https://imageplaceholder.net/300"
+                                img="https://placehold.co/300"
                                 title="Product 6"
                                 desc="Description 6"
                                 price="60.00"
@@ -155,7 +155,7 @@ const Home = () => {
                     >
                         <SwiperSlide>
                             <Product
-                                img="https://imageplaceholder.net/300"
+                                img="https://placehold.co/300"
                                 title="Product 1"
                                 desc="Description 1"
                                 price="10.00"
@@ -163,7 +163,7 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <Product
-                                img="https://imageplaceholder.net/300"
+                                img="https://placehold.co/300"
                                 title="Product 2"
                                 desc="Description 2"
                                 price="20.00"
@@ -171,7 +171,7 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <Product
-                                img="https://imageplaceholder.net/300"
+                                img="https://placehold.co/300"
                                 title="Product 3"
                                 desc="Description 3"
                                 price="30.00"
@@ -179,7 +179,7 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <Product
-                                img="https://imageplaceholder.net/300"
+                                img="https://placehold.co/300"
                                 title="Product 4"
                                 desc="Description 4"
                                 price="40.00"
@@ -187,7 +187,7 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <Product
-                                img="https://imageplaceholder.net/300"
+                                img="https://placehold.co/300"
                                 title="Product 5"
                                 desc="Description 5"
                                 price="50.00"
@@ -195,7 +195,7 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <Product
-                                img="https://imageplaceholder.net/300"
+                                img="https://placehold.co/300"
                                 title="Product 6"
                                 desc="Description 6"
                                 price="60.00"
