@@ -46,6 +46,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             &:hover {
                 color: var(--primary);
             }
@@ -54,6 +55,7 @@
         & p {
             cursor: pointer;
         }
+
         & svg {
             transition: .3s ease all;
         }
