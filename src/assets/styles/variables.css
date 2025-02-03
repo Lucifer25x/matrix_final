@@ -16,3 +16,22 @@
     --primary: #00b41b;
     --secondary: #deffca;
 }
+
+/* TODO: Fix the dark theme for all the components and pages */
+body.dark {
+    --text-color: #fff;
+    --text-color-light: #000;
+    --background-color: #000;
+    --background-color-2: #000;
+    --background-color-2-hover: #363636;
+    --background-color-3: #000;
+    --background-color-4: #fff;
+    --background-color-5: #000;
+    --background-color-6: #000;
+    --border-color: #000;
+    --border-color-focus: #fff;
+    --border-color-2: #000;
+    --filter: invert(1);
+    --primary: #00b41b;
+    --secondary: #deffca;
+}

@@ -80,7 +80,7 @@ nav {
                     }
                 }
             }
-            .menu {
+            .button {
                 cursor: pointer;
                 transition: .3s ease all;
                 &:hover {

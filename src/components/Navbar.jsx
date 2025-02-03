@@ -1,7 +1,8 @@
 // Import libraries
 import { Link } from "react-router-dom";
-import { RiSearchLine, RiHeartLine, RiShoppingBagLine, RiUserLine, RiMenuLine } from "@remixicon/react";
-import { useState } from "react";
+import { RiSearchLine, RiHeartLine, RiShoppingBagLine, RiUserLine, RiMenuLine, RiSunLine, RiMoonLine } from "@remixicon/react";
+import { useContext, useState } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 
 // Import components
 import Sidebar from "./Sidebar";
@@ -13,6 +14,7 @@ import "../assets/styles/components/Navbar.css";
 import logo from "../assets/images/logo.avif";
 
 const Navbar = () => {
+    const { theme, toggleTheme } = useContext(ThemeContext);
     const [sidebar, setSidebar] = useState(false);
 
     const handleSidebar = () => {
@@ -47,7 +49,14 @@ const Navbar = () => {
                                 <RiUserLine size={25} />
                             </Link>
                         </div>
-                        <div className="menu" onClick={handleSidebar}>
+                        <div className="button">
+                            {theme === "light" ? (
+                                <RiMoonLine size={25} onClick={toggleTheme} />
+                            ) : (
+                                <RiSunLine size={25} onClick={toggleTheme} />
+                            )}
+                        </div>
+                        <div className="button" onClick={handleSidebar}>
                             <RiMenuLine size={25} />
                         </div>
                     </div>

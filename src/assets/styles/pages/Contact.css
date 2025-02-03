@@ -79,14 +79,13 @@
             }
 
             & button {
-                padding: 10px;
+                padding: 15px;
                 background-color: var(--primary);
                 color: #fff;
-                border: nones;
+                border: none;
                 cursor: pointer;
                 transition: background-color 0.3s;
                 font-weight: 900;
-
                 &:hover {
                     background-color: var(--background-color-2);
                 }
