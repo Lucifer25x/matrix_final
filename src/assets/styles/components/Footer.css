@@ -1,5 +1,6 @@
 footer {
     margin-top: 50px;
+
     .container {
         display: flex;
         justify-content: space-between;
@@ -30,6 +31,7 @@ footer {
         .container {
             .brand {
                 flex: 1;
+
                 .social {
                     display: flex;
                     align-items: center;
@@ -39,6 +41,7 @@ footer {
 
             .section {
                 flex: 1;
+
                 .links {
                     display: flex;
                     flex-direction: column;
@@ -47,16 +50,19 @@ footer {
 
             .subscribe {
                 flex: 1;
+
                 .email {
                     margin-top: 20px;
                     display: flex;
                     flex-direction: column;
                     gap: 10px;
+
                     & input {
                         padding: 10px;
                         border: none;
                         outline: none;
                     }
+
                     & button {
                         background-color: var(--primary);
                         font-weight: 900;
@@ -66,6 +72,7 @@ footer {
                         border: none;
                         cursor: pointer;
                         transition: .3s ease all;
+
                         &:hover {
                             background-color: #000;
                         }
@@ -79,11 +86,14 @@ footer {
         padding: 20px 0;
         background-color: #fff;
         color: #000;
+
         .container {
             align-items: center;
+
             .copyright {
                 font-size: .8em;
             }
+
             .payment-methods {
                 display: flex;
                 gap: 5px;
@@ -93,19 +103,22 @@ footer {
 }
 
 /* Responsive style */
-@media(max-width: 1200px){
+@media(max-width: 1200px) {
     footer {
         .top {
             .container {
                 flex-direction: column;
-                .section, .subscribe {
+
+                .section,
+                .subscribe {
                     margin-top: 20px;
-                } 
+                }
             }
         }
     }
 }
-@media(max-width: 800px){
+
+@media(max-width: 800px) {
     footer {
         .bottom {
             .container {
