@@ -99,7 +99,7 @@
         margin: 40px 0;
         width: 100%;
         background-color: var(--background-color-4);
-        color: #fff;
+        color: var(--text-color-light);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -123,6 +123,7 @@
                 border: none;
                 font-size: 1.1em;
                 outline: none;
+                border: 1px solid var(--border-color);
             }
 
             & button {
