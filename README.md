@@ -36,9 +36,9 @@
 - [x] FAQ
 - [ ] Products
 - [ ] Product Details
-- [ ] Login
+- [x] Register
+- [x] Login
 - [ ] Account
-- [ ] Register
 - [ ] Checkout
 - [ ] Basket
 - [ ] Wishlist
