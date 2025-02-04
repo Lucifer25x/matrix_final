@@ -11,7 +11,7 @@
 - [x] React Router
 - [ ] Axios
 - [ ] Redux JS
-- [ ] API (or local data)
+- [x] API (or local data)
 - [x] SASS or CSS
 
 ### Conditions:
