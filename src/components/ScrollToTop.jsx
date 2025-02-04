@@ -10,10 +10,16 @@ const ScrollToTop = () => {
 
     // Show button when page is scrolled
     const toggleVisibility = () => {
-        if (window.scrollY > 200) {
+        if (window.scrollY > 150) {
             setIsVisible(true);
+
+            // Add box shadow to the navbar
+            document.querySelector("nav").classList.add("shadow");
         } else {
             setIsVisible(false);
+
+            // Remove box shadow from the navbar
+            document.querySelector("nav").classList.remove("shadow");
         }
     }
 
