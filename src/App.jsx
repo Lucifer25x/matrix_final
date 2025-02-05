@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
+import TermsOfService from "./pages/TermsOfService";
 
 const App = () => {
     return (
@@ -28,6 +29,7 @@ const App = () => {
                 <Route path="/product/:id" element={<Product />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/faq" element={<FAQ />} />
+                <Route path="/terms-of-service" element={<TermsOfService />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />

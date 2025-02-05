@@ -11,14 +11,14 @@ footer {
     }
 
     .top {
-        background-color: #000;
-        color: #fff;
+        background-color: var(--text-color);
+        color: var(--background-color);
         padding: 20px 0;
 
         & a {
             display: inline-block;
             margin-top: 10px;
-            color: #fff;
+            color: var(--background-color);
             text-decoration: none;
             transition: .3s ease all;
             font-size: .8em;
@@ -26,6 +26,10 @@ footer {
             &:hover {
                 color: var(--primary);
             }
+        }
+
+        & img {
+            filter: var(--filter);
         }
 
         .container {
@@ -84,8 +88,8 @@ footer {
 
     .bottom {
         padding: 20px 0;
-        background-color: #fff;
-        color: #000;
+        background-color: var(--background-color);
+        color: var(--text-color);
 
         .container {
             align-items: center;

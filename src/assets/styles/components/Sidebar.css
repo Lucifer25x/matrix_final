@@ -6,7 +6,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 10;
+    z-index: 100;
     border: 1px solid var(--border-color);
     transition: .3s ease all;
     padding: 20px;
@@ -76,6 +76,28 @@
 
         .help.active {
             max-height: 200px;
+        }
+    }
+
+    .language {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+
+        & button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px;
+            width: 100px;
+            border: none;
+            background-color: var(--text-color);
+            color: var(--background-color);
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: var(--primary);
+            }
         }
     }
 }
