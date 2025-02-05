@@ -1,4 +1,13 @@
 .product {
+    & a {
+        text-decoration: none;
+        color: var(--text-color);
+        transition: color 0.3s;
+        &:hover {
+            color: var(--primary);
+        }
+    }
+
     .img {
         border: 1px solid var(--border-color-2);
         padding: 10px;

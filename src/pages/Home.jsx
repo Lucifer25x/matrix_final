@@ -13,13 +13,14 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 // Import components
-import Product from "../components/Product";
+import Product from "../components/SingleProduct";
 
 // Import styles
 import "../assets/styles/pages/Home.css";
 
 const Home = () => {
     const [banners, setBanners] = useState([]);
+    const [vinyls, setVinyls] = useState([]);
 
     useEffect(() => {
         const getBanners = async () => {
@@ -28,7 +29,13 @@ const Home = () => {
             setBanners(data);
         }
 
+        const getVinyls = async () => {
+            const { data } = await supabase.from("vinyls").select("*");
+            setVinyls(data);
+        }
+
         getBanners();
+        getVinyls();
     }, []);
 
     return (
@@ -61,7 +68,8 @@ const Home = () => {
             <div className="section">
                 <h1>NEW RELEASES</h1>
                 <div className="products">
-                    <Swiper
+                    {vinyls.length > 0 ? (
+                        <Swiper
                         modules={[Navigation]}
                         slidesPerView={1}
                         navigation={true}
@@ -79,55 +87,19 @@ const Home = () => {
                             }
                         }}
                     >
-                        <SwiperSlide>
-                            <Product
-                                img="https://placehold.co/300"
-                                title="Product 1"
-                                desc="Description 1"
-                                price="10.00"
-                            />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Product
-                                img="https://placehold.co/300"
-                                title="Product 2"
-                                desc="Description 2"
-                                price="20.00"
-                            />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Product
-                                img="https://placehold.co/300"
-                                title="Product 3"
-                                desc="Description 3"
-                                price="30.00"
-                            />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Product
-                                img="https://placehold.co/300"
-                                title="Product 4"
-                                desc="Description 4"
-                                price="40.00"
-                            />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Product
-                                img="https://placehold.co/300"
-                                title="Product 5"
-                                desc="Description 5"
-                                price="50.00"
-                            />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Product
-                                img="https://placehold.co/300"
-                                title="Product 6"
-                                desc="Description 6"
-                                price="60.00"
-                            />
-                        </SwiperSlide>
+                        {vinyls.map(vinyl => (
+                            <SwiperSlide key={vinyl.id}>
+                                <Product
+                                    id={vinyl.id}
+                                    img={vinyl.img}
+                                    title={vinyl.title}
+                                    desc={vinyl.artist}
+                                    price={vinyl.price}
+                                />
+                            </SwiperSlide>    
+                        ))}
                     </Swiper>
+                    ) : ""}
                 </div>
                 <button>SEE ALL</button>
             </div>

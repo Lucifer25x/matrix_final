@@ -3,8 +3,9 @@ import { RiHeartLine } from "@remixicon/react";
 
 // Import styles
 import "../assets/styles/components/Product.css";
+import { Link } from "react-router-dom";
 
-const Product = ({ img, title, desc, price }) => {
+const Product = ({ id, img, title, desc, price }) => {
     return (
         <div className="product">
             <div className="img">
@@ -15,7 +16,9 @@ const Product = ({ img, title, desc, price }) => {
                 </div>
             </div>
             <div className="info">
-                <h3>{title}</h3>
+                <Link to={`/product/${id}`}>
+                    <h3>{title}</h3>
+                </Link>
                 <p>{desc}</p>
                 <p>${price}</p>
             </div>
