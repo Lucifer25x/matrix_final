@@ -1,6 +1,7 @@
 // Import libraries
 import { Link } from 'react-router-dom';
 import { RiTwitterFill, RiFacebookFill, RiYoutubeFill, RiInstagramFill } from '@remixicon/react';
+import StaticLang from "../utils/StaticLang";
 
 // Import styles
 import '../assets/styles/components/Footer.css';
@@ -41,17 +42,17 @@ const Footer = () => {
                     <div className="section">
                         <p>SUPPORT</p>
                         <div className="links">
-                            <Link to={"/order-lookup"}>Where's my order?</Link>
+                            <Link to={"/order-lookup"}><StaticLang en="Where's my order?" az="Sifarişim haradadır?" /></Link>
                             <Link to={"/faq"}>FAQ</Link>
-                            <Link to={"/contact"}>Contact</Link>
+                            <Link to={"/contact"}><StaticLang en="Contact" az="Əlaqə" /></Link>
                         </div>
                     </div>
 
                     <div className="section">
                         <p>YOUR RECORD HUB</p>
                         <div className="links">
-                            <Link to={"/register"}>Register</Link>
-                            <Link to={"/login"}>Login</Link>
+                            <Link to={"/register"}><StaticLang en="Register" az="Qeydiyyatdan keçin" /></Link>
+                            <Link to={"/login"}><StaticLang en="Login" az="Daxil olun" /></Link>
                             <Link to={"/wishlist"}>My Wishlist</Link>
                             <Link to={"/blog"}>Blog</Link>
                         </div>
@@ -60,7 +61,7 @@ const Footer = () => {
                     <div className="section">
                         <p>THE SMALL PRINT</p>
                         <div className="links">
-                            <Link to={"/privacy-center"}>Privacy Center</Link>
+                            <Link to={"https://www.therecordhub.com/pages/privacy-center"}>Privacy Center</Link>
                             <Link to={"/terms-of-service"}>Terms Of Service</Link>
                         </div>
                     </div>
