@@ -20,7 +20,8 @@ import "../assets/styles/pages/Home.css";
 
 const Home = () => {
     const [banners, setBanners] = useState([]);
-    const [vinyls, setVinyls] = useState([]);
+    const [latestVinyls, setLatestVinyls] = useState([]);
+    const [newAddedVinyls, setNewAddedVinyls] = useState([]);
 
     useEffect(() => {
         const getBanners = async () => {
@@ -29,13 +30,27 @@ const Home = () => {
             setBanners(data);
         }
 
-        const getVinyls = async () => {
-            const { data } = await supabase.from("vinyls").select("*");
-            setVinyls(data);
+        const getLatestVinyls = async () => {
+            const { data, error } = await supabase.rpc('latest_vinyls', { limit_count: 6 });
+            if (error) {
+                console.log(error)
+            } else {
+                setLatestVinyls(data);
+            }
+        }
+
+        const getNewAddedVinyls = async () => {
+            const { data, error } = await supabase.rpc('new_added_vinyls', { limit_count: 6 });
+            if (error) {
+                console.log(error)
+            } else {
+                setNewAddedVinyls(data);
+            }
         }
 
         getBanners();
-        getVinyls();
+        getLatestVinyls();
+        getNewAddedVinyls();
     }, []);
 
     return (
@@ -68,112 +83,79 @@ const Home = () => {
             <div className="section">
                 <h1>NEW RELEASES</h1>
                 <div className="products">
-                    {vinyls.length > 0 ? (
+                    {latestVinyls.length > 0 ? (
                         <Swiper
-                        modules={[Navigation]}
-                        slidesPerView={1}
-                        navigation={true}
-                        loop={true}
-                        spaceBetween={20}
-                        breakpoints={{
-                            640: {
-                                slidesPerView: 2,
-                            },
-                            768: {
-                                slidesPerView: 3,
-                            },
-                            1024: {
-                                slidesPerView: 5,
-                            }
-                        }}
-                    >
-                        {vinyls.map(vinyl => (
-                            <SwiperSlide key={vinyl.id}>
-                                <Product
-                                    id={vinyl.id}
-                                    img={vinyl.img}
-                                    title={vinyl.title}
-                                    desc={vinyl.artist}
-                                    price={vinyl.price}
-                                />
-                            </SwiperSlide>    
-                        ))}
-                    </Swiper>
+                            modules={[Navigation]}
+                            slidesPerView={1}
+                            navigation={true}
+                            loop={true}
+                            spaceBetween={20}
+                            breakpoints={{
+                                640: {
+                                    slidesPerView: 2,
+                                },
+                                768: {
+                                    slidesPerView: 3,
+                                },
+                                1024: {
+                                    slidesPerView: 5,
+                                }
+                            }}
+                        >
+                            {latestVinyls.map(vinyl => (
+                                <SwiperSlide key={vinyl.id}>
+                                    <Product
+                                        id={vinyl.id}
+                                        img={vinyl.img}
+                                        title={vinyl.title}
+                                        desc={vinyl.artist}
+                                        price={vinyl.price}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     ) : ""}
                 </div>
                 <button>SEE ALL</button>
             </div>
 
             <div className="section">
-                <h1>PRE-ORDERS</h1>
+                <h1>NEW ADDED</h1>
                 <div className="products">
-                    <Swiper
-                        modules={[Navigation]}
-                        slidesPerView={1}
-                        navigation={true}
-                        loop={true}
-                        spaceBetween={20}
-                        breakpoints={{
-                            640: {
-                                slidesPerView: 2,
-                            },
-                            768: {
-                                slidesPerView: 3,
-                            },
-                            1024: {
-                                slidesPerView: 5,
-                            }
-                        }}
-                    >
-                        <SwiperSlide>
-                            <Product
-                                img="https://placehold.co/300"
-                                title="Product 1"
-                                desc="Description 1"
-                                price="10.00"
-                            />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Product
-                                img="https://placehold.co/300"
-                                title="Product 2"
-                                desc="Description 2"
-                                price="20.00"
-                            />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Product
-                                img="https://placehold.co/300"
-                                title="Product 3"
-                                desc="Description 3"
-                                price="30.00"
-                            />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Product
-                                img="https://placehold.co/300"
-                                title="Product 4"
-                                desc="Description 4"
-                                price="40.00"
-                            />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Product
-                                img="https://placehold.co/300"
-                                title="Product 5"
-                                desc="Description 5"
-                                price="50.00"
-                            />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Product
-                                img="https://placehold.co/300"
-                                title="Product 6"
-                                desc="Description 6"
-                                price="60.00"
-                            />
-                        </SwiperSlide>
-                    </Swiper>
+                    <div className="products">
+                        {newAddedVinyls.length > 0 ? (
+                            <Swiper
+                                modules={[Navigation]}
+                                slidesPerView={1}
+                                navigation={true}
+                                loop={true}
+                                spaceBetween={20}
+                                breakpoints={{
+                                    640: {
+                                        slidesPerView: 2,
+                                    },
+                                    768: {
+                                        slidesPerView: 3,
+                                    },
+                                    1024: {
+                                        slidesPerView: 5,
+                                    }
+                                }}
+                            >
+                                {newAddedVinyls.map(vinyl => (
+                                    <SwiperSlide key={vinyl.id}>
+                                        <Product
+                                            id={vinyl.id}
+                                            img={vinyl.img}
+                                            title={vinyl.title}
+                                            desc={vinyl.artist}
+                                            price={vinyl.price}
+                                        />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        ) : ""}
+                    </div>
                 </div>
                 <button>SEE ALL</button>
             </div>
