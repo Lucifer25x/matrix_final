@@ -22,6 +22,7 @@ const Home = () => {
     const [banners, setBanners] = useState([]);
     const [latestVinyls, setLatestVinyls] = useState([]);
     const [newAddedVinyls, setNewAddedVinyls] = useState([]);
+    const [highlightedVinyls, setHighlightedVinyls] = useState([]);
 
     useEffect(() => {
         const getBanners = async () => {
@@ -48,9 +49,19 @@ const Home = () => {
             }
         }
 
+        const getHighlightedVinyls = async () => {
+            const { data, error } = await supabase.rpc('highlighted_vinyls');
+            if (error) {
+                console.log(error)
+            } else {
+                setHighlightedVinyls(data);
+            }
+        }
+
         getBanners();
         getLatestVinyls();
         getNewAddedVinyls();
+        getHighlightedVinyls();
     }, []);
 
     return (
@@ -78,6 +89,47 @@ const Home = () => {
                         ))}
                     </Swiper>
                 ) : ""}
+            </div>
+
+            <div className="section">
+                <h1>HIGHLIGHTED VINYLS</h1>
+                <div className="products">
+                    <div className="products">
+                        {highlightedVinyls.length > 0 ? (
+                            <Swiper
+                                modules={[Navigation]}
+                                slidesPerView={1}
+                                navigation={true}
+                                loop={true}
+                                spaceBetween={20}
+                                breakpoints={{
+                                    640: {
+                                        slidesPerView: 2,
+                                    },
+                                    768: {
+                                        slidesPerView: 3,
+                                    },
+                                    1024: {
+                                        slidesPerView: 5,
+                                    }
+                                }}
+                            >
+                                {highlightedVinyls.map(vinyl => (
+                                    <SwiperSlide key={vinyl.id}>
+                                        <Product
+                                            id={vinyl.id}
+                                            img={vinyl.img}
+                                            title={vinyl.title}
+                                            desc={vinyl.artist}
+                                            price={vinyl.price}
+                                        />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        ) : ""}
+                    </div>
+                </div>
+                <Link to={"/products"}>SEE ALL</Link>
             </div>
 
             <div className="section">
@@ -116,7 +168,7 @@ const Home = () => {
                         </Swiper>
                     ) : ""}
                 </div>
-                <button>SEE ALL</button>
+                <Link to={"/products"}>SEE ALL</Link>
             </div>
 
             <div className="section">
@@ -157,7 +209,7 @@ const Home = () => {
                         ) : ""}
                     </div>
                 </div>
-                <button>SEE ALL</button>
+                <Link to={"/products"}>SEE ALL</Link>
             </div>
 
             <div className="keep-in-touch">
