@@ -131,11 +131,7 @@ const Home = () => {
                                 {highlightedVinyls.map(vinyl => (
                                     <SwiperSlide key={vinyl.id}>
                                         <Product
-                                            id={vinyl.id}
-                                            img={vinyl.img}
-                                            title={vinyl.title}
-                                            desc={vinyl.artist}
-                                            price={vinyl.price}
+                                            product={vinyl}
                                         />
                                     </SwiperSlide>
                                 ))}
@@ -171,11 +167,7 @@ const Home = () => {
                             {latestVinyls.map(vinyl => (
                                 <SwiperSlide key={vinyl.id}>
                                     <Product
-                                        id={vinyl.id}
-                                        img={vinyl.img}
-                                        title={vinyl.title}
-                                        desc={vinyl.artist}
-                                        price={vinyl.price}
+                                        product={vinyl}
                                     />
                                 </SwiperSlide>
                             ))}
@@ -211,11 +203,7 @@ const Home = () => {
                                 {newAddedVinyls.map(vinyl => (
                                     <SwiperSlide key={vinyl.id}>
                                         <Product
-                                            id={vinyl.id}
-                                            img={vinyl.img}
-                                            title={vinyl.title}
-                                            desc={vinyl.artist}
-                                            price={vinyl.price}
+                                            product={vinyl}
                                         />
                                     </SwiperSlide>
                                 ))}

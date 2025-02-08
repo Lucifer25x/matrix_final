@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { RiHeartLine } from "@remixicon/react";
 import { MoonLoader } from "react-spinners";
+import { useCart } from "react-use-cart";
+import { toast, Bounce } from "react-toastify";
 import supabase from "../utils/supabase";
 
 // Import styles
@@ -10,6 +12,7 @@ import "../assets/styles/pages/Product.css"
 
 const Product = () => {
     const { id } = useParams()
+    const { addItem } = useCart();
     const [loading, setLoading] = useState(true)
     const [productDetails, setProductDetails] = useState(null)
 
@@ -29,6 +32,18 @@ const Product = () => {
             setLoading(false)
         }, 1500)
     }, []);
+
+    const handleAddToCart = () => {
+        addItem(productDetails);
+
+        toast.success("Product was added to your cart!", {
+            position: "bottom-center",
+            autoClose: 3000,
+            closeOnClick: false,
+            theme: "colored",
+            transition: Bounce,
+        });
+    }
 
     if (loading) {
         return (
@@ -52,7 +67,7 @@ const Product = () => {
                     <p className="price">${productDetails.price}</p>
 
                     <div className="buttons">
-                        <button disabled={!productDetails.stock}>ADD TO CART</button>
+                        <button onClick={handleAddToCart} disabled={!productDetails.stock}>ADD TO CART</button>
                         <div className="add-wishlist" title="Add to wishlist">
                             <RiHeartLine size={30} />
                         </div>
@@ -76,7 +91,7 @@ const Product = () => {
                     <h2>Tracklist</h2>
                     <ul>
                         {productDetails.tracks.map((track, index) => (
-                            <li key={index}>{index+1}. {track}</li>
+                            <li key={index}>{index + 1}. {track}</li>
                         ))}
                     </ul>
                 </div>

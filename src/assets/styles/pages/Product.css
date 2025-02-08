@@ -58,6 +58,11 @@
                     &:hover {
                         background-color: var(--text-color);
                     }
+
+                    &:disabled {
+                        background-color: var(--text-color-2);
+                        cursor: not-allowed;
+                    }
                 }
 
                 .add-wishlist {
