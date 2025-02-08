@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { RiSearchLine, RiHeartLine, RiShoppingBagLine, RiUserLine, RiMenuLine, RiSunLine, RiMoonLine } from "@remixicon/react";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
+import { useCart } from "react-use-cart";
 
 // Import components
 import Sidebar from "./Sidebar";
@@ -14,6 +15,7 @@ import "../assets/styles/components/Navbar.css";
 import logo from "../assets/images/logo.avif";
 
 const Navbar = () => {
+    const { totalItems } = useCart();
     const { theme, toggleTheme } = useContext(ThemeContext);
     const [sidebar, setSidebar] = useState(false);
 
@@ -43,7 +45,7 @@ const Navbar = () => {
                             </Link>
                             <Link to={"/cart"}>
                                 <RiShoppingBagLine size={25} />
-                                <span>0</span>
+                                <span>{totalItems}</span>
                             </Link>
                             <Link to={"/login"}>
                                 <RiUserLine size={25} />

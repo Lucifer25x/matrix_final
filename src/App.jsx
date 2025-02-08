@@ -1,5 +1,6 @@
 // Import libraries
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 // Import the components
 import Navbar from "./components/Navbar";
@@ -20,6 +21,8 @@ import TermsOfService from "./pages/TermsOfService";
 const App = () => {
     return (
         <BrowserRouter>
+            <ToastContainer />
+
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
