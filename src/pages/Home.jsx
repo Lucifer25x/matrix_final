@@ -1,6 +1,7 @@
 // Import libraries
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { MoonLoader } from "react-spinners";
 import supabase from "../utils/supabase";
 
 // Import Swiper React components
@@ -19,6 +20,7 @@ import Product from "../components/SingleProduct";
 import "../assets/styles/pages/Home.css";
 
 const Home = () => {
+    const [loading, setLoading] = useState(true);
     const [banners, setBanners] = useState([]);
     const [latestVinyls, setLatestVinyls] = useState([]);
     const [newAddedVinyls, setNewAddedVinyls] = useState([]);
@@ -62,7 +64,19 @@ const Home = () => {
         getLatestVinyls();
         getNewAddedVinyls();
         getHighlightedVinyls();
+
+        setTimeout(() => {
+            setLoading(false);
+        }, 1500);
     }, []);
+
+    if (loading) {
+        return (
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70vh" }}>
+                <MoonLoader color={"var(--text-color)"} size={75} />
+            </div>
+        )
+    }
 
     return (
         <div className="home-page container">
