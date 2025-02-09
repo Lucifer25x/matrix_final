@@ -1,11 +1,22 @@
 // Import libraries
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { RiHeartLine } from "@remixicon/react";
 import { MoonLoader } from "react-spinners";
 import { useCart } from "react-use-cart";
 import { toast, Bounce } from "react-toastify";
 import supabase from "../utils/supabase";
+import SingleProduct from "../components/SingleProduct";
+
+// Import Swiper React components
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 
 // Import styles
 import "../assets/styles/pages/Product.css"
@@ -15,6 +26,7 @@ const Product = () => {
     const { addItem } = useCart();
     const [loading, setLoading] = useState(true)
     const [productDetails, setProductDetails] = useState(null)
+    const [randomVinyls, setRandomVinyls] = useState([])
 
     useEffect(() => {
         const getProduct = async () => {
@@ -26,11 +38,21 @@ const Product = () => {
             }
         }
 
+        const getRandomVinyls = async () => {
+            const { data, error } = await supabase.rpc('random_vinyls', { limit_count: 6 });
+            if (error) {
+                console.log(error)
+            } else {
+                setRandomVinyls(data);
+            }
+        }
+
         getProduct();
+        getRandomVinyls();
 
         setTimeout(() => {
             setLoading(false)
-        }, 1500)
+        }, 2000)
     }, []);
 
     const handleAddToCart = () => {
@@ -96,6 +118,41 @@ const Product = () => {
                     </ul>
                 </div>
             )}
+
+            <div className="section">
+                <h1>OTHER VINYLS</h1>
+                <div className="products">
+                    {randomVinyls.length > 0 ? (
+                        <Swiper
+                            modules={[Navigation]}
+                            slidesPerView={1}
+                            navigation={true}
+                            loop={true}
+                            spaceBetween={20}
+                            breakpoints={{
+                                640: {
+                                    slidesPerView: 2,
+                                },
+                                768: {
+                                    slidesPerView: 3,
+                                },
+                                1024: {
+                                    slidesPerView: 5,
+                                }
+                            }}
+                        >
+                            {randomVinyls.map(vinyl => (
+                                <SwiperSlide key={vinyl.id}>
+                                    <SingleProduct
+                                        product={vinyl}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    ) : ""}
+                </div>
+                <Link to={"/products"}>SEE ALL</Link>
+            </div>
         </div>
     )
 }

@@ -108,36 +108,34 @@ const Home = () => {
             <div className="section">
                 <h1>HIGHLIGHTED VINYLS</h1>
                 <div className="products">
-                    <div className="products">
-                        {highlightedVinyls.length > 0 ? (
-                            <Swiper
-                                modules={[Navigation]}
-                                slidesPerView={1}
-                                navigation={true}
-                                loop={true}
-                                spaceBetween={20}
-                                breakpoints={{
-                                    640: {
-                                        slidesPerView: 2,
-                                    },
-                                    768: {
-                                        slidesPerView: 3,
-                                    },
-                                    1024: {
-                                        slidesPerView: 5,
-                                    }
-                                }}
-                            >
-                                {highlightedVinyls.map(vinyl => (
-                                    <SwiperSlide key={vinyl.id}>
-                                        <Product
-                                            product={vinyl}
-                                        />
-                                    </SwiperSlide>
-                                ))}
-                            </Swiper>
-                        ) : ""}
-                    </div>
+                    {highlightedVinyls.length > 0 ? (
+                        <Swiper
+                            modules={[Navigation]}
+                            slidesPerView={1}
+                            navigation={true}
+                            loop={true}
+                            spaceBetween={20}
+                            breakpoints={{
+                                640: {
+                                    slidesPerView: 2,
+                                },
+                                768: {
+                                    slidesPerView: 3,
+                                },
+                                1024: {
+                                    slidesPerView: 5,
+                                }
+                            }}
+                        >
+                            {highlightedVinyls.map(vinyl => (
+                                <SwiperSlide key={vinyl.id}>
+                                    <Product
+                                        product={vinyl}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    ) : ""}
                 </div>
                 <Link to={"/products"}>SEE ALL</Link>
             </div>
@@ -180,36 +178,34 @@ const Home = () => {
             <div className="section">
                 <h1>NEW ADDED</h1>
                 <div className="products">
-                    <div className="products">
-                        {newAddedVinyls.length > 0 ? (
-                            <Swiper
-                                modules={[Navigation]}
-                                slidesPerView={1}
-                                navigation={true}
-                                loop={true}
-                                spaceBetween={20}
-                                breakpoints={{
-                                    640: {
-                                        slidesPerView: 2,
-                                    },
-                                    768: {
-                                        slidesPerView: 3,
-                                    },
-                                    1024: {
-                                        slidesPerView: 5,
-                                    }
-                                }}
-                            >
-                                {newAddedVinyls.map(vinyl => (
-                                    <SwiperSlide key={vinyl.id}>
-                                        <Product
-                                            product={vinyl}
-                                        />
-                                    </SwiperSlide>
-                                ))}
-                            </Swiper>
-                        ) : ""}
-                    </div>
+                    {newAddedVinyls.length > 0 ? (
+                        <Swiper
+                            modules={[Navigation]}
+                            slidesPerView={1}
+                            navigation={true}
+                            loop={true}
+                            spaceBetween={20}
+                            breakpoints={{
+                                640: {
+                                    slidesPerView: 2,
+                                },
+                                768: {
+                                    slidesPerView: 3,
+                                },
+                                1024: {
+                                    slidesPerView: 5,
+                                }
+                            }}
+                        >
+                            {newAddedVinyls.map(vinyl => (
+                                <SwiperSlide key={vinyl.id}>
+                                    <Product
+                                        product={vinyl}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    ) : ""}
                 </div>
                 <Link to={"/products"}>SEE ALL</Link>
             </div>

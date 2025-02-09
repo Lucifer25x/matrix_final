@@ -95,6 +95,67 @@
             margin-top: 10px;
         }
     }
+
+    .section {
+        margin: 20px 0;
+
+        & h1 {
+            font-size: 3em;
+            text-align: center;
+            font-weight: 900;
+            transition: .3s color;
+            cursor: pointer;
+
+            &:hover {
+                color: var(--primary);
+            }
+        }
+
+        .products {
+            margin: 30px 0;
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                top: 40%;
+                background-color: var(--secondary);
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                color: #000;
+                display: flex;
+                transition: .3s ease all;
+
+                &::after {
+                    font-size: 1.5em;
+                }
+
+                &:hover {
+                    background-color: #000;
+                    color: #fff;
+                }
+            }
+        }
+
+        &>a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            margin: 0 auto;
+            width: 300px;
+            padding: 15px;
+            border: none;
+            background-color: var(--text-color);
+            color: var(--background-color);
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 900;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: var(--primary);
+            }
+        }
+    }
 }
 
 /* Responsive style */
@@ -109,6 +170,42 @@
 
             .about {
                 margin-top: 20px;
+            }
+        }
+
+        .section {
+            & h1 {
+                font-size: 2em;
+            }
+
+            .products {
+
+                .swiper-button-prev,
+                .swiper-button-next {
+                    top: 40%;
+                    background-color: var(--secondary);
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    color: #000;
+                    display: flex;
+                    transition: .3s ease all;
+
+                    &::after {
+                        font-size: 1.5em;
+                    }
+
+                    &:hover {
+                        background-color: #000;
+                        color: #fff;
+                    }
+                }
+            }
+
+            & button {
+                width: 200px;
+                padding: 10px;
+                font-size: 1em;
             }
         }
     }

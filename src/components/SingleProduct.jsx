@@ -24,7 +24,6 @@ const Product = ({ product }) => {
 
     return (
         <div className="product">
-
             <div className="img">
                 <img src={product.img} alt={product.title} />
                 <RiHeartLine size={30} />
