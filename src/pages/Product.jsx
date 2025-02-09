@@ -120,7 +120,7 @@ const Product = () => {
             )}
 
             <div className="section">
-                <h1>OTHER VINYLS</h1>
+                <h1>YOU MAY ALSO LIKE</h1>
                 <div className="products">
                     {randomVinyls.length > 0 ? (
                         <Swiper

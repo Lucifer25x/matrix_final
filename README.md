@@ -16,16 +16,16 @@
 
 ### Conditions:
 - [ ] Beautiful Design
-- [ ] Responsive design
+- [x] Responsive design
 - [ ] Multi Language
 - [ ] Dark/Light Mode
 - [ ] Product Filter
 - [ ] Search System
 - [ ] Register/Login
-- [ ] Product Details
+- [x] Product Details
 - [x] Slider and carousel
 - [ ] Animation
-- [ ] Add to cart
+- [x] Add to cart
 - [ ] Add to wishlist
 - [ ] Auth System
 
@@ -35,12 +35,12 @@
 - [x] Contact
 - [x] FAQ
 - [ ] Products
-- [ ] Product Details
+- [x] Product Details
 - [x] Register
 - [x] Login
 - [ ] Account
 - [ ] Checkout
-- [ ] Basket
+- [x] Basket
 - [ ] Wishlist
 - [ ] Blog (or campaign)
 - [ ] Blog Details (or campaign details)
