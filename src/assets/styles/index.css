@@ -25,3 +25,21 @@ body {
     width: 95%;
     margin: 0 auto;
 }
+
+/* General styles */
+.range-slider {
+    height: 10px !important;
+    background: #b9b9b9;
+
+    .range-slider__range {
+        background: var(--text-color) !important;
+    }
+
+    .range-slider__thumb {
+        width: 10px !important;
+        height: 20px !important;
+        border-radius: 4px !important;
+        background: var(--background-color) !important;
+        border: 1px solid var(--text-color-2) !important;
+    }
+}
