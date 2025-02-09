@@ -1,0 +1,225 @@
+.cart-page {
+    padding: 20px 0;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    & h1 {
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 3em;
+        margin: 20px 0;
+        font-weight: 900;
+    }
+
+    & table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+
+        & svg {
+            color: var(--text-color);
+        }
+
+        & tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        & th,
+        & td {
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        & th {
+            font-weight: 900;
+            font-size: 1.2em;
+            min-width: 100px;
+        }
+
+        & th:nth-child(1) {
+            text-align: left;
+        }
+
+        & tbody {
+            .product {
+                display: flex;
+                gap: 20px;
+                text-align: left;
+
+                & img {
+                    width: 150px;
+                }
+
+                .details {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    .artist {
+                        font-weight: 900;
+                    }
+
+                    .title {
+                        font-weight: 300;
+                    }
+                }
+            }
+
+            .quantity {
+                display: flex;
+                height: 40px;
+                align-items: center;
+
+                .count {
+                    width: 40px;
+                    height: 40px;
+                    border-top: 1px solid var(--border-color);
+                    border-bottom: 1px solid var(--border-color);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                & button {
+                    width: 40px;
+                    height: 40px;
+                    background-color: var(--text-color-2);
+                    border: none;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 1.5em;
+                    color: #fff;
+                    transition: background-color 0.3s;
+
+                    &:hover {
+                        background-color: var(--background-color-2-hover);
+                    }
+                }
+
+                & button:nth-child(3) {
+                    background-color: var(--primary);
+                }
+            }
+
+            .remove {
+                text-align: center;
+
+                & button {
+                    background-color: transparent;
+                    border: none;
+                    cursor: pointer;
+                    transition: color 0.3s;
+
+                    &:hover {
+                        color: var(--primary);
+                    }
+                }
+            }
+        }
+    }
+
+    .subtotal {
+        background-color: var(--background-color-7);
+        padding: 20px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        font-weight: 700;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        color: #000;
+
+        & span {
+            margin-left: 50px;
+        }
+    }
+
+    .checkout {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        & a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 50px;
+            background-color: var(--primary);
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: var(--background-color-2-hover);
+            }
+        }
+    }
+}
+
+@media(max-width: 800px) {
+    .cart-page {
+        & h1 {
+            font-size: 2em;
+        }
+
+        & table {
+            & th {
+                font-size: 1em;
+                min-width: 50px;
+            }
+
+            & td {
+                padding: 10px 0;
+            }
+
+            .product {
+                flex-direction: column;
+                gap: 10px;
+
+                & img {
+                    width: 100px;
+                }
+
+                .details {
+                    .artist {
+                        font-size: 0.8em;
+                    }
+
+                    .title {
+                        font-size: 0.8em;
+                    }
+                }
+            }
+
+            .quantity {
+                height: 30px;
+
+                .count {
+                    width: 30px !important;
+                    height: 30px !important;
+                }
+
+                & button {
+                    width: 30px !important;
+                    height: 30px !important;
+                    font-size: 1em;
+                }
+            }
+
+            .remove {
+                & button {
+                    font-size: 0.8em;
+                }
+            }
+        }
+
+        .subtotal {
+            justify-content: space-between
+        }
+    }
+}
