@@ -1,14 +1,16 @@
 // Import libraries
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { RiHeartLine } from "@remixicon/react";
 import { useCart } from "react-use-cart";
 import { toast, Bounce } from "react-toastify";
 
 // Import styles
 import "../assets/styles/components/Product.css";
-import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
     const { addItem } = useCart();
+    const [stock, setStock] = useState(false);
 
     const handleAddToCart = () => {
         addItem(product);
@@ -22,14 +24,24 @@ const Product = ({ product }) => {
         });
     }
 
+    useEffect(() => {
+        setStock(product.stock);
+    }, [product.stock]);
+
     return (
         <div className="product">
             <div className="img">
                 <img src={product.img} alt={product.title} />
                 <RiHeartLine size={30} />
-                <div className="add" onClick={handleAddToCart}>
-                    <p>ADD TO CART</p>
-                </div>
+                {stock ? (
+                    <div className="add" onClick={handleAddToCart}>
+                        <p>ADD TO CART</p>
+                    </div>
+                ) : (
+                    <div className="out-of-stock">
+                        <p>OUT OF STOCK</p>
+                    </div>
+                )}
             </div>
             <div className="info">
                 <Link to={`/product/${product.id}`}>
