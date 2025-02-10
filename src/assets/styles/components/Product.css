@@ -50,6 +50,18 @@
                 background-color: #000;
             }
         }
+
+        .out-of-stock {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: #f00;
+            color: #fff;
+            font-weight: bold;
+        }
     }
 
     .info {
