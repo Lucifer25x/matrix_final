@@ -1,3 +1,4 @@
+// Import libraries
 import { createContext, useEffect, useState } from "react";
 
 export const LangContext = createContext();
