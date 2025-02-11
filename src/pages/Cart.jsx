@@ -5,14 +5,9 @@ import { Link } from "react-router-dom";
 
 // Import styles
 import "../assets/styles/pages/Cart.css";
-import { useEffect } from "react";
 
 const Cart = () => {
-    const { items, updateItemQuantity, removeItem } = useCart();
-
-    useEffect(() => {
-        console.log(items)
-    }, []);
+    const { items, updateItemQuantity, removeItem, cartTotal } = useCart();
 
     return (
         <div className="cart-page">
@@ -59,7 +54,7 @@ const Cart = () => {
 
             <div className="subtotal">
                 <p>Subtotal:</p>
-                <span>$60</span>
+                <span>${cartTotal}</span>
             </div>
 
             <div className="checkout">
