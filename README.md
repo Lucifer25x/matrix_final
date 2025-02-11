@@ -18,11 +18,11 @@
 ### Conditions:
 - [ ] Beautiful Design
 - [x] Responsive design
-- [ ] Multi Language
-- [ ] Dark/Light Mode
-- [ ] Product Filter
+- [x] Multi Language
+- [x] Dark/Light Mode
+- [x] Product Filter
 - [ ] Search System
-- [ ] Register/Login
+- [x] Register/Login
 - [x] Product Details
 - [x] Slider and carousel
 - [ ] Animation
