@@ -2,12 +2,33 @@
 import { RiCloseLine, RiLockLine } from "@remixicon/react";
 import { useCart } from "react-use-cart";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 // Import styles
 import "../assets/styles/pages/Cart.css";
 
 const Cart = () => {
-    const { items, updateItemQuantity, removeItem, cartTotal } = useCart();
+    const { items, cartTotal, updateItemQuantity, removeItem, emptyCart } = useCart();
+
+    const handleClearCart = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, clear it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                emptyCart();
+                Swal.fire({
+                    text: "Cart has been cleared!",
+                    icon: "success"
+                });
+            }
+        });
+    }
 
     return (
         <div className="cart-page">
@@ -57,8 +78,13 @@ const Cart = () => {
                 <span>${cartTotal}</span>
             </div>
 
+
             <div className="checkout">
                 <Link to={"/checkout"}><RiLockLine size={25} /> <span>CHECKOUT</span></Link>
+            </div>
+
+            <div className="clear-cart">
+                <button onClick={handleClearCart} disabled={(items.length === 0)}>CLEAR SHOPPING BAG</button>
             </div>
         </div>
     )
