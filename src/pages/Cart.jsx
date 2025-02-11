@@ -3,10 +3,12 @@ import { RiCloseLine, RiLockLine } from "@remixicon/react";
 import { useCart } from "react-use-cart";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import StaticLang from "../utils/StaticLang";
 
 // Import styles
 import "../assets/styles/pages/Cart.css";
 
+// Cart page
 const Cart = () => {
     const { items, cartTotal, updateItemQuantity, removeItem, emptyCart } = useCart();
 
@@ -32,16 +34,16 @@ const Cart = () => {
 
     return (
         <div className="cart-page">
-            <h1>Shopping Bag</h1>
+            <h1><StaticLang en="Cart" az="Səbət" /></h1>
 
             <table>
                 <thead>
                     <tr>
-                        <th>PRODUCTS</th>
-                        <th>PRICE</th>
-                        <th>QUANTITY</th>
-                        <th>TOTAL</th>
-                        <th>REMOVE</th>
+                        <th><StaticLang en="PRODUCTS" az="MƏHSULLAR" /></th>
+                        <th><StaticLang en="PRICE" az="QİYMƏT" /></th>
+                        <th><StaticLang en="QUANTITY" az="MİQDAR" /></th>
+                        <th><StaticLang en="TOTAL" az="ÜMUMİ" /></th>
+                        <th><StaticLang en="REMOVE" az="LƏĞV ET" /></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,17 +76,17 @@ const Cart = () => {
             </table>
 
             <div className="subtotal">
-                <p>Subtotal:</p>
+                <p><StaticLang en="Subtotal" az="ÜMUMİ" />:</p>
                 <span>${cartTotal}</span>
             </div>
 
 
             <div className="checkout">
-                <Link to={"/checkout"}><RiLockLine size={25} /> <span>CHECKOUT</span></Link>
+                <Link to={"/checkout"}> <RiLockLine size={25} /> <span><StaticLang en="CHECKOUT" az="SATIN AL" /></span></Link>
             </div>
 
             <div className="clear-cart">
-                <button onClick={handleClearCart} disabled={(items.length === 0)}>CLEAR SHOPPING BAG</button>
+                <button onClick={handleClearCart} disabled={(items.length === 0)}><StaticLang en="CLEAR SHOPPING BAG" az="ALIŞVERİŞ ÇANTASINI TƏMİZLƏYİN" /></button>
             </div>
         </div>
     )

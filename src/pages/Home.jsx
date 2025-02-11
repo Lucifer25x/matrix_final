@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MoonLoader } from "react-spinners";
 import supabase from "../utils/supabase";
+import StaticLang from "../utils/StaticLang";
 
 // Import Swiper React components
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -19,6 +20,7 @@ import Product from "../components/SingleProduct";
 // Import styles
 import "../assets/styles/pages/Home.css";
 
+// Home page
 const Home = () => {
     const [loading, setLoading] = useState(true);
     const [banners, setBanners] = useState([]);
@@ -107,7 +109,7 @@ const Home = () => {
             </div>
 
             <div className="section">
-                <h1>HIGHLIGHTED VINYLS</h1>
+                <h1><StaticLang en="HIGHLIGHTED VINYLS" az="SEÇİLMİŞ VİNİLLƏR" /></h1>
                 <div className="products">
                     {highlightedVinyls.length > 0 ? (
                         <Swiper
@@ -138,11 +140,11 @@ const Home = () => {
                         </Swiper>
                     ) : ""}
                 </div>
-                <Link to={"/products"}>SEE ALL</Link>
+                <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
             </div>
 
             <div className="section">
-                <h1>NEW RELEASES</h1>
+                <h1><StaticLang en="NEW RELEASES" az="YENİ ÇIXANLAR" /></h1>
                 <div className="products">
                     {latestVinyls.length > 0 ? (
                         <Swiper
@@ -173,11 +175,11 @@ const Home = () => {
                         </Swiper>
                     ) : ""}
                 </div>
-                <Link to={"/products"}>SEE ALL</Link>
+                <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
             </div>
 
             <div className="section">
-                <h1>NEW ADDED</h1>
+                <h1><StaticLang en="NEW ADDED" az="YENİ ƏLAVƏ OLANLAR" /></h1>
                 <div className="products">
                     {newAddedVinyls.length > 0 ? (
                         <Swiper
@@ -208,15 +210,15 @@ const Home = () => {
                         </Swiper>
                     ) : ""}
                 </div>
-                <Link to={"/products"}>SEE ALL</Link>
+                <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
             </div>
 
             <div className="keep-in-touch">
-                <h1>KEEP IN TOUCH</h1>
+                <h1><StaticLang en="KEEP IN TOUCH" az="ƏLAQƏDƏ QALIN" /></h1>
                 <div className="inputs">
                     <input type="text" placeholder="Name" />
                     <input type="email" placeholder="Email" />
-                    <button>SIGN UP</button>
+                    <button><StaticLang en="SIGN UP" az="QEYDİYYATDAN KEÇİN" /></button>
                 </div>
             </div>
 

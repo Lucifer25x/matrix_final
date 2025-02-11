@@ -1,6 +1,10 @@
+// TODO: Add translation
+
 // Import styles
 import "../assets/styles/pages/FAQ.css";
 
+
+// FAQ page
 const FAQ = () => {
     return (
         <div className="faq-page">

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { RiHeartLine } from "@remixicon/react";
 import { useCart } from "react-use-cart";
 import { toast, Bounce } from "react-toastify";
+import StaticLang from "../utils/StaticLang";
 
 // Import styles
 import "../assets/styles/components/Product.css";
@@ -35,11 +36,11 @@ const Product = ({ product }) => {
                 <RiHeartLine size={30} />
                 {stock ? (
                     <div className="add" onClick={handleAddToCart}>
-                        <p>ADD TO CART</p>
+                        <p><StaticLang en="ADD TO CART" az="SƏBƏTƏ ƏLAVƏ EDİN"/></p>
                     </div>
                 ) : (
                     <div className="out-of-stock">
-                        <p>OUT OF STOCK</p>
+                        <p><StaticLang en="OUT OF STOCK" az="MÖVCUD DEYİL"/></p>
                     </div>
                 )}
             </div>

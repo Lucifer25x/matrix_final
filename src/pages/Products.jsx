@@ -1,3 +1,5 @@
+// TODO: Add translation
+
 // Import libraries
 import { useState, useEffect } from "react";
 import { RiTableView, RiGalleryView2 } from "@remixicon/react";
