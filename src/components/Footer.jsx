@@ -51,9 +51,10 @@ const Footer = () => {
                     <div className="section">
                         <p>YOUR RECORD HUB</p>
                         <div className="links">
-                            <Link to={"/register"}><StaticLang en="Register" az="Qeydiyyatdan keçin" /></Link>
+                            <Link to={"/account"}><StaticLang en="My Account" az="Hesabım" /></Link>
+                            <Link to={"/login"}><StaticLang en="Register" az="Qeydiyyatdan keçin" /></Link>
                             <Link to={"/login"}><StaticLang en="Login" az="Daxil olun" /></Link>
-                            <Link to={"/wishlist"}>My Wishlist</Link>
+                            <Link to={"/wishlist"}><StaticLang en="My Wishlist" az="İstək siyahısı" /></Link>
                             <Link to={"/blog"}>Blog</Link>
                         </div>
                     </div>
@@ -61,18 +62,18 @@ const Footer = () => {
                     <div className="section">
                         <p>THE SMALL PRINT</p>
                         <div className="links">
-                            <Link to={"https://www.therecordhub.com/pages/privacy-center"}>Privacy Center</Link>
-                            <Link to={"/terms-of-service"}>Terms Of Service</Link>
+                            <Link to={"https://www.therecordhub.com/pages/privacy-center"}><StaticLang en="Privacy Center" az="Gizlilik mərkəzi" /></Link>
+                            <Link to={"/terms-of-service"}><StaticLang en="Terms Of Service" az="Servisin Şərtləri"/></Link>
                         </div>
                     </div>
 
                     <div className="subscribe">
-                        <p>NEWSLETTER SUBSCRIBE</p>
+                        <p><StaticLang en="NEWSLETTER SUBSCRIBE" az="ABUNƏ OL"/></p>
 
                         <div className="email">
                             <label htmlFor="email-input">Email*</label>
                             <input type="email" id="email-input" />
-                            <button>SIGN UP</button>
+                            <button><StaticLang en="SIGN UP" az="QEYDİYYATDAN KEÇ"/></button>
                         </div>
                     </div>
                 </div>

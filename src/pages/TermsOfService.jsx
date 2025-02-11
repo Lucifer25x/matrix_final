@@ -1,6 +1,9 @@
+// TODO: Add translation
+
 // Import styles
 import "../assets/styles/pages/TermsOfService.css";
 
+// Terms of Service page
 const TermsOfService = () => {
     return (
         <div className="terms-of-service-page">

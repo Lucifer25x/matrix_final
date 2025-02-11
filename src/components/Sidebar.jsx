@@ -3,10 +3,12 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { RiCloseLine, RiArrowDropUpLine } from "@remixicon/react";
 import { LangContext } from "../context/LangContext";
+import StaticLang from "../utils/StaticLang";
 
 // Import styles
 import "../assets/styles/components/Sidebar.css";
 
+// TODO: Implement a better translation and links
 const Sidebar = ({ sidebar, handleSidebar }) => {
     const { lang, toggleLang } = useContext(LangContext);
     const [help, setHelp] = useState(false);
@@ -20,12 +22,12 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
                 <Link to={"/"}>NEW RELEASES</Link>
                 <Link to={"/"}>PRE-ORDERS</Link>
                 <Link to={"/"}>GIFTS</Link>
-                <Link to={"/"}>SALE</Link>
-                <p onClick={() => setHelp(!help)} className={help ? '' : 'open'}>HELP <RiArrowDropUpLine size={30} /></p>
+                <Link to={"/"}><StaticLang en="SALE" az="ENDİRİMLƏR" /></Link>
+                <p onClick={() => setHelp(!help)} className={help ? '' : 'open'}><StaticLang en="HELP" az="YARDIM" /> <RiArrowDropUpLine size={30} /></p>
                 <div className={`help ${help ? "active" : ""}`}>
-                    <Link to={"/about"}>ABOUT US</Link>
+                    <Link to={"/about"}><StaticLang en="ABOUT US" az="HAQQIMIZDA" /></Link>
                     <Link to={"/faq"}>FAQ</Link>
-                    <Link to={"/contact"}>CONTACT</Link>
+                    <Link to={"/contact"}><StaticLang en="CONTACT" az="ƏLAQƏ" /></Link>
                 </div>
             </div>
 

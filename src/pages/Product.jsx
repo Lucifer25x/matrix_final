@@ -7,6 +7,7 @@ import { useCart } from "react-use-cart";
 import { toast, Bounce } from "react-toastify";
 import supabase from "../utils/supabase";
 import SingleProduct from "../components/SingleProduct";
+import StaticLang from "../utils/StaticLang";
 
 // Import Swiper React components
 import { Navigation } from "swiper/modules";
@@ -19,6 +20,7 @@ import "swiper/css/navigation";
 // Import styles
 import "../assets/styles/pages/Product.css";
 
+// Product page
 const Product = () => {
     const { id } = useParams()
     const { addItem } = useCart();
@@ -87,7 +89,7 @@ const Product = () => {
                     <p className="price">${productDetails.price}</p>
 
                     <div className="buttons">
-                        <button onClick={handleAddToCart} disabled={!productDetails.stock}>ADD TO CART</button>
+                        <button onClick={handleAddToCart} disabled={!productDetails.stock}><StaticLang en="ADD TO CART" az="SƏBƏTƏ ƏLAVƏ EDİN" /></button>
                         <div className="add-wishlist" title="Add to wishlist">
                             <RiHeartLine size={30} />
                         </div>
@@ -95,9 +97,9 @@ const Product = () => {
 
                     <div className="details">
                         <p><b>Format:</b> {productDetails.format}</p>
-                        <p><b>Color:</b> {productDetails.color}</p>
-                        <p><b>Genre:</b> {productDetails.genre}</p>
-                        <p><b>Release Year:</b> {productDetails.release_year}</p>
+                        <p><b><StaticLang en="Color" az="Rəng" />:</b> {productDetails.color}</p>
+                        <p><b><StaticLang en="Genre" az="Janr" />:</b> {productDetails.genre}</p>
+                        <p><b><StaticLang en="Release Year" az="Buraxılış İli" />:</b> {productDetails.release_year}</p>
                     </div>
                 </div>
             </div>
@@ -108,7 +110,7 @@ const Product = () => {
 
             {productDetails.tracks.length > 0 && (
                 <div className="tracklist">
-                    <h2>Tracklist</h2>
+                    <h2><StaticLang en="Tracklist" az="Trek siyahısı" /></h2>
                     <ul>
                         {productDetails.tracks.map((track, index) => (
                             <li key={index}>{index + 1}. {track}</li>
@@ -118,7 +120,7 @@ const Product = () => {
             )}
 
             <div className="section">
-                <h1>YOU MAY ALSO LIKE</h1>
+                <h1><StaticLang en="YOU MAY ALSO LIKE" az="SİZ HƏMÇİNİN BƏYƏNƏ BİLƏRSİNİZ" /></h1>
                 <div className="products">
                     {randomVinyls.length > 0 ? (
                         <Swiper
@@ -149,7 +151,7 @@ const Product = () => {
                         </Swiper>
                     ) : ""}
                 </div>
-                <Link to={"/products"}>SEE ALL</Link>
+                <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
             </div>
         </div>
     )
