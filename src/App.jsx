@@ -9,8 +9,8 @@ import ScrollToTop from "./components/ScrollToTop";
 
 // Import the pages
 import Home from "./pages/Home";
-import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Account from "./pages/Account";
 import Product from "./pages/Product";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
@@ -30,10 +30,10 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/register" element={<Register />} />
                 <Route path="/product/:id" element={<Product />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/products" element={<Products />} />
+                <Route path="/account" element={<Account />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/terms-of-service" element={<TermsOfService />} />

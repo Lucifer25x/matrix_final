@@ -1,21 +1,20 @@
 // Import libraries
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import { RiHeartLine } from "@remixicon/react";
-import { MoonLoader } from "react-spinners";
-import { useCart } from "react-use-cart";
-import { toast, Bounce } from "react-toastify";
-import supabase from "../utils/supabase";
-import SingleProduct from "../components/SingleProduct";
+import { RiHeartLine } from "@remixicon/react"
+import { MoonLoader } from "react-spinners"
+import { useCart } from "react-use-cart"
+import { toast, Bounce } from "react-toastify"
+import supabase from "../utils/supabase"
+import SingleProduct from "../components/SingleProduct"
 
 // Import Swiper React components
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules"
+import { Swiper, SwiperSlide } from "swiper/react"
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 
 
 // Import styles

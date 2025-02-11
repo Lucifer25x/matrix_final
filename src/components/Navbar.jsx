@@ -47,7 +47,7 @@ const Navbar = () => {
                                 <RiShoppingBagLine size={25} />
                                 <span>{totalItems}</span>
                             </Link>
-                            <Link to={"/login"}>
+                            <Link to={"/account"}>
                                 <RiUserLine size={25} />
                             </Link>
                         </div>
