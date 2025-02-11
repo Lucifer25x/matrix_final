@@ -2,8 +2,9 @@
 
 ### Other Libraries:
 - [x] Remix icons
-- [ ] Toastify
-- [ ] Use Cart
+- [x] Toastify
+- [x] Use Cart
+- [x] SweetAlert2
 
 ### Technologies:
 - [x] React
@@ -27,18 +28,18 @@
 - [ ] Animation
 - [x] Add to cart
 - [ ] Add to wishlist
-- [ ] Auth System
+- [x] Auth System
 
 ### Minimum required pages:
 - [x] Home
 - [x] About
 - [x] Contact
 - [x] FAQ
-- [ ] Products
+- [x] Products
 - [x] Product Details
 - [x] Register
 - [x] Login
-- [ ] Account
+- [x] Account
 - [ ] Checkout
 - [x] Basket
 - [ ] Wishlist

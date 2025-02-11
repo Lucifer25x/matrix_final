@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { RiTableView, RiGalleryView2 } from "@remixicon/react";
 import supabase from "../utils/supabase";
-// import RangeSlider from 'react-range-slider-input';
 import SingleProduct from "../components/SingleProduct";
 
 // Import styles
@@ -111,7 +110,7 @@ const Products = () => {
         }
     }
 
-    // TODO: Implement reset all button
+    // TODO: Implement reset all the filters button
 
     // Render the products
     return (
@@ -225,6 +224,7 @@ const Products = () => {
                     <h1>Products</h1>
                 </div>
                 <div className="top">
+                    {/* TODO: Implement different types of views (table/gallery) */}
                     <div className="views">
                         <p>View as</p>
                         <RiGalleryView2 size={25} className="active" />

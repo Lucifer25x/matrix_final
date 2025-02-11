@@ -1,7 +1,8 @@
 // Import libraries
-import supabase from "../utils/supabase"
-import { useEffect, useState } from "react"
+import supabase from "../utils/supabase";
+import { useEffect, useState } from "react";
 
+// TODO: Implement a fully functional account page
 // Account page
 const Account = () => {
     const [userDetails, setUserDetails] = useState(null)
