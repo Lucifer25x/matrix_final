@@ -40,7 +40,7 @@ const Footer = () => {
                     </div>
 
                     <div className="section">
-                        <p>SUPPORT</p>
+                        <p><StaticLang en="SUPPORT" az="DƏSTƏK" /></p>
                         <div className="links">
                             <Link to={"/order-lookup"}><StaticLang en="Where's my order?" az="Sifarişim haradadır?" /></Link>
                             <Link to={"/faq"}>FAQ</Link>
@@ -49,7 +49,7 @@ const Footer = () => {
                     </div>
 
                     <div className="section">
-                        <p>YOUR RECORD HUB</p>
+                        <p><StaticLang en="YOUR RECORD HUB" az="SİZİN RECORD HUB" /></p>
                         <div className="links">
                             <Link to={"/account"}><StaticLang en="My Account" az="Hesabım" /></Link>
                             <Link to={"/login"}><StaticLang en="Register" az="Qeydiyyatdan keçin" /></Link>
@@ -60,10 +60,10 @@ const Footer = () => {
                     </div>
 
                     <div className="section">
-                        <p>THE SMALL PRINT</p>
+                        <p><StaticLang en="THE SMALL PRINT" az="KİÇİK ÇAP" /></p>
                         <div className="links">
                             <Link to={"https://www.therecordhub.com/pages/privacy-center"}><StaticLang en="Privacy Center" az="Gizlilik mərkəzi" /></Link>
-                            <Link to={"/terms-of-service"}><StaticLang en="Terms Of Service" az="Servisin Şərtləri"/></Link>
+                            <Link to={"/terms-of-service"}><StaticLang en="Terms Of Service" az="Xidmət Şərtləri"/></Link>
                         </div>
                     </div>
 

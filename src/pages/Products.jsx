@@ -1,10 +1,9 @@
-// TODO: Add translation
-
 // Import libraries
 import { useState, useEffect } from "react";
 import { RiTableView, RiGalleryView2 } from "@remixicon/react";
 import supabase from "../utils/supabase";
 import SingleProduct from "../components/SingleProduct";
+import StaticLang from "../utils/StaticLang";
 
 // Import styles
 import "../assets/styles/pages/Products.css";
@@ -119,7 +118,7 @@ const Products = () => {
         <div className="products-page">
             <div className="filters">
                 <div className="filter">
-                    <h3>PRICE</h3>
+                    <h3><StaticLang en="PRICE" az="QİYMƏT" /></h3>
                     <div className="inputs">
                         <input type="text" value={minPrice} onInput={e => e.target.value = e.target.value.replace(/[^0-9.]/g, '')} onChange={(e) => { setMinPrice(e.target.value) }} />
                         <p>-</p>
@@ -143,7 +142,7 @@ const Products = () => {
                 </div>
 
                 <div className="filter">
-                    <h3>COLOR</h3>
+                    <h3><StaticLang en="COLOR" az="RƏNG" /></h3>
 
                     <div className="selection">
                         {colors && colors.map((color, index) => (
@@ -158,7 +157,7 @@ const Products = () => {
                 </div>
 
                 <div className="filter">
-                    <h3>GENRE</h3>
+                    <h3><StaticLang en="GENRE" az="JANR" /></h3>
 
                     <div className="selection">
                         {genres && genres.map((genre, index) => (
@@ -173,7 +172,7 @@ const Products = () => {
                 </div>
 
                 <div className="filter">
-                    <h3>RELEASE YEAR</h3>
+                    <h3><StaticLang en="RELEASE YEAR" az="ÇIXIŞ İLİ" /></h3>
 
                     <div className="selection">
                         {release_years && release_years.map((release_year, index) => (
@@ -188,7 +187,7 @@ const Products = () => {
                 </div>
 
                 <div className="filter">
-                    <h3>LABEL</h3>
+                    <h3><StaticLang en="LABEL" az="ETİKET" /></h3>
 
                     <div className="selection">
                         {labels && labels.map((label, index) => (
@@ -203,19 +202,19 @@ const Products = () => {
                 </div>
 
                 <div className="filter">
-                    <h3>STOCK</h3>
+                    <h3><StaticLang en="STOCK" az="STOK" /></h3>
 
                     <div className="selection">
                         <div className="option">
                             <label>
                                 <input type="checkbox" checked={selectedStock} onChange={e => { setSelectedStock(e.target.checked) }} />
-                                <p>In stock</p>
+                                <p><StaticLang en="In stock" az="Stokda var" /></p>
                             </label>
                         </div>
                         <div className="option">
                             <label>
                                 <input type="checkbox" checked={!selectedStock} onChange={e => { setSelectedStock(!e.target.checked) }} />
-                                <p>Out of stock</p>
+                                <p><StaticLang en="Out of stock" az="Stokda yoxdur" /></p>
                             </label>
                         </div>
                     </div>
@@ -223,29 +222,29 @@ const Products = () => {
             </div>
             <div className="products">
                 <div className="name">
-                    <h1>Products</h1>
+                    <h1><StaticLang en="Products" az="Məhsullar" /></h1>
                 </div>
                 <div className="top">
                     {/* TODO: Implement different types of views (table/gallery) */}
                     <div className="views">
-                        <p>View as</p>
+                        <p><StaticLang en="View as" az="Belə görüntüləyin" /></p>
                         <RiGalleryView2 size={25} className="active" />
                         <RiTableView size={25} />
                     </div>
 
                     <div className="count">
-                        <p>{productCount} Products</p>
+                        <p>{productCount} <StaticLang en="Products" az="Məhsul" /></p>
                     </div>
 
                     <div className="sort">
                         <select>
                             <option value="manual">Manual</option>
-                            <option value="price_ascending">Price ascending</option>
-                            <option value="price_descending">Price descending</option>
-                            <option value="title_ascending">Title ascending</option>
-                            <option value="title_descending">Title descending</option>
-                            <option value="created_ascending">Created ascending</option>
-                            <option value="created_descending">Created descending</option>
+                            <option value="price_ascending"><StaticLang en="Price ascending" az="Qiymət artaraq" /></option>
+                            <option value="price_descending"><StaticLang en="Price descending" az="Qiymət azalaraq" /></option>
+                            <option value="title_ascending"><StaticLang en="Title ascending" az="Əlifba sırasına görə" /></option>
+                            <option value="title_descending"><StaticLang en="Title descending" az="Əlifba sırasının əksinə" /></option>
+                            <option value="created_ascending"><StaticLang en="Created ascending" az="Yaradılma tarixinə görə" /></option>
+                            <option value="created_descending"><StaticLang en="Created descending" az="Yaradılma tarixinin əksinə" /></option>
                         </select>
                     </div>
                 </div>
