@@ -2,6 +2,7 @@
 import supabase from "../utils/supabase";
 import { useEffect } from "react";
 
+ // TODO: Implement a fully functional wishlist page
 // Wishlist page
 const Wishlist = () => {
     useEffect(() => {
