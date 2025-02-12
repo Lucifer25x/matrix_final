@@ -14,6 +14,7 @@ import Account from "./pages/Account";
 import Product from "./pages/Product";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
+import Wishlist from "./pages/Wishlist";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -32,6 +33,7 @@ const App = () => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/product/:id" element={<Product />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/account" element={<Account />} />
                 <Route path="/login" element={<Login />} />

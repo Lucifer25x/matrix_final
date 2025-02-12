@@ -2,6 +2,9 @@
 import supabase from "../utils/supabase";
 import { useEffect, useState } from "react";
 
+// Import styles
+import "../assets/styles/pages/Account.css";
+
 // TODO: Implement a fully functional account page
 // Account page
 const Account = () => {
@@ -30,11 +33,12 @@ const Account = () => {
         <div className="account-page">
             {userDetails && (
                 <>
-                    <p>ID: {userDetails.id}</p>
+                    <h1>Welcome {userDetails.email.split('@')[0]}</h1>
                     <p>Email: {userDetails.email}</p>
-                    <p>Email verified: {userDetails.user_metadata.email_verified ? "yes" : "no"}</p>
-                    <p>Account created: {userDetails.created_at}</p>
-                    <p>Last signed in: {userDetails.last_sign_in_at}</p>
+
+                    {!userDetails.user_metadata.email_verified && (
+                        <p className="not_verified">Please verify your email address</p>
+                    )}
                 </>
             )}
             <button onClick={handleSignOut}>SIGN OUT</button>

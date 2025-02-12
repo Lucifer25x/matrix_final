@@ -33,7 +33,7 @@ const Login = () => {
                 icon: "success",
             }).then(res => {
                 if (res.isConfirmed) {
-                    window.location.href = "/account"
+                    window.location.href = "/"
                 }
             })
         }
