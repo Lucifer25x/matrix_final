@@ -1,0 +1,64 @@
+.checkout-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 600px;
+    gap: 20px;
+
+    & h1 {
+        font-size: 2em;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        & input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            outline: none;
+            &:focus {
+                border-color: var(--border-color-focus);
+            }
+        }
+
+        .flex {
+            display: flex;
+            gap: 10px;
+        }
+    }
+
+    & label {
+        align-self: flex-start;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        transition: color 0.3s;
+        &:hover {
+            color: var(--primary);
+        }
+    }
+
+    & button {
+        width: 100%;
+        padding: 15px;
+        background-color: var(--primary);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-weight: 900;
+
+        &:hover {
+            background-color: var(--background-color-2);
+        }
+    }
+}

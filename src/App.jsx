@@ -20,6 +20,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import TermsOfService from "./pages/TermsOfService";
+import Checkout from "./pages/Checkout";
 
 const App = () => {
     return (
@@ -34,6 +35,7 @@ const App = () => {
                 <Route path="/product/:id" element={<Product />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/checkout" element={<Checkout />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/account" element={<Account />} />
                 <Route path="/login" element={<Login />} />
