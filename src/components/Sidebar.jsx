@@ -19,10 +19,9 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
                 <button onClick={handleSidebar}><RiCloseLine size={30} /></button>
             </div>
             <div className="links">
-                <Link to={"/"}>NEW RELEASES</Link>
-                <Link to={"/"}>PRE-ORDERS</Link>
-                <Link to={"/"}>GIFTS</Link>
-                <Link to={"/"}><StaticLang en="SALE" az="ENDİRİMLƏR" /></Link>
+                <Link to={"/products"}><StaticLang en="PRODUCTS" az="MƏHSULLAR" /></Link>
+                <Link to={"/blog"}>BLOG</Link>
+                <Link to={"/sales"}><StaticLang en="SALE" az="ENDİRİMLƏR" /></Link>
                 <p onClick={() => setHelp(!help)} className={help ? '' : 'open'}><StaticLang en="HELP" az="YARDIM" /> <RiArrowDropUpLine size={30} /></p>
                 <div className={`help ${help ? "active" : ""}`}>
                     <Link to={"/about"}><StaticLang en="ABOUT US" az="HAQQIMIZDA" /></Link>
