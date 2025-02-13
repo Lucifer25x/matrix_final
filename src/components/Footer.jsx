@@ -9,6 +9,7 @@ import '../assets/styles/components/Footer.css';
 // Import logo
 import logo from '../assets/images/logo-light.avif';
 
+// Footer component
 const Footer = () => {
     return (
         <footer>

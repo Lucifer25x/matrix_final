@@ -5,6 +5,7 @@ import { RiArrowUpSLine } from "@remixicon/react";
 // Import styles
 import "../assets/styles/components/ScrollToTop.css";
 
+// ScrollToTop component
 const ScrollToTop = () => {
     const [isVisible, setIsVisible] = useState(false);
 

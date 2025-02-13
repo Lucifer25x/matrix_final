@@ -1,5 +1,4 @@
 // Import libraries
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { RiHeartLine } from "@remixicon/react";
 import { useCart } from "react-use-cart";
@@ -9,9 +8,9 @@ import StaticLang from "../utils/StaticLang";
 // Import styles
 import "../assets/styles/components/Product.css";
 
+// Product component
 const Product = ({ product }) => {
     const { addItem } = useCart();
-    const [stock, setStock] = useState(false);
 
     const handleAddToCart = () => {
         addItem(product);
@@ -25,16 +24,12 @@ const Product = ({ product }) => {
         });
     }
 
-    useEffect(() => {
-        setStock(product.stock);
-    }, [product.stock]);
-
     return (
-        <div className="product">
+        <div className="single-product">
             <div className="img">
                 <img src={product.img} alt={product.title} />
                 <RiHeartLine size={30} />
-                {stock ? (
+                {product.stock ? (
                     <div className="add" onClick={handleAddToCart}>
                         <p><StaticLang en="ADD TO CART" az="SƏBƏTƏ ƏLAVƏ EDİN"/></p>
                     </div>
@@ -48,7 +43,7 @@ const Product = ({ product }) => {
                 <Link to={`/product/${product.id}`}>
                     <h3>{product.title}</h3>
                 </Link>
-                <p>{product.desc}</p>
+                <p>{product.artist}</p>
                 <p>${product.price}</p>
             </div>
         </div>

@@ -42,10 +42,6 @@
         align-items: center;
         gap: 5px;
         cursor: pointer;
-        transition: color 0.3s;
-        &:hover {
-            color: var(--primary);
-        }
     }
 
     & button {
