@@ -2,6 +2,7 @@
 import supabase from "../utils/supabase";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Loading from "../components/Loading";
 
 // Import styles
 import "../assets/styles/pages/Account.css";
@@ -30,6 +31,10 @@ const Account = () => {
     const handleSignOut = async () => {
         await supabase.auth.signOut()
         navigate("/")
+    }
+
+    if(!userDetails){
+        return <Loading />
     }
 
     return (

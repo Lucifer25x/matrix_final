@@ -5,6 +5,7 @@ import SingleBlog from "../components/SingleBlog";
 import supabase from "../utils/supabase";
 import ReactMarkdown from "react-markdown";
 import StaticLang from "../utils/StaticLang";
+import Loading from "../components/Loading";
 
 // Import styles
 import "../assets/styles/pages/Blog.css";
@@ -40,7 +41,7 @@ const Blog = () => {
     }, [id]);
 
     if (!blogDetails) {
-        return
+        return <Loading />;
     }
 
     return (

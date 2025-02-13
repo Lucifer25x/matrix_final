@@ -1,14 +1,15 @@
 // Import libraries
 import { useState, useEffect } from "react";
 import { RiTableView, RiGalleryView2 } from "@remixicon/react";
+import SingleProductListView from "../components/SingleProductListView";
 import supabase from "../utils/supabase";
 import SingleProduct from "../components/SingleProduct";
 import StaticLang from "../utils/StaticLang";
+import Loading from "../components/Loading";
 
 // Import styles
 import "../assets/styles/pages/Products.css";
 import 'react-range-slider-input/dist/style.css';
-import SingleProductListView from "../components/SingleProductListView";
 
 // Extract unique values from an array
 const getUniqueValues = (array, key) => {
@@ -114,6 +115,10 @@ const Products = () => {
     }
 
     // TODO: Implement reset all the filters button
+
+    if(!products.length) {
+        return <Loading />
+    }
 
     // Render the products
     return (

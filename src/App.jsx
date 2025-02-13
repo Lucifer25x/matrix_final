@@ -2,6 +2,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
+// Import AOS
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 // Import the components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -23,8 +27,16 @@ import Product from "./pages/Product";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
+import { useEffect } from "react";
 
 const App = () => {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+    }, [])
+
     return (
         <BrowserRouter>
             <ToastContainer />

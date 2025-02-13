@@ -2,12 +2,12 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { RiHeartLine } from "@remixicon/react";
-import { MoonLoader } from "react-spinners";
 import { useCart } from "react-use-cart";
 import { toast, Bounce } from "react-toastify";
 import supabase from "../utils/supabase";
 import SingleProduct from "../components/SingleProduct";
 import StaticLang from "../utils/StaticLang";
+import Loading from "../components/Loading";
 
 // Import Swiper React components
 import { Navigation } from "swiper/modules";
@@ -24,7 +24,6 @@ import "../assets/styles/pages/Product.css";
 const Product = () => {
     const { id } = useParams()
     const { addItem } = useCart();
-    const [loading, setLoading] = useState(true)
     const [productDetails, setProductDetails] = useState(null)
     const [randomVinyls, setRandomVinyls] = useState([])
 
@@ -49,10 +48,6 @@ const Product = () => {
 
         getProduct();
         getRandomVinyls();
-
-        setTimeout(() => {
-            setLoading(false)
-        }, 2000)
     }, []);
 
     const handleAddToCart = () => {
@@ -67,12 +62,8 @@ const Product = () => {
         });
     }
 
-    if (loading) {
-        return (
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70vh" }}>
-                <MoonLoader color={"var(--text-color)"} size={75} />
-            </div>
-        )
+    if (!productDetails || !randomVinyls.length) {
+        return <Loading />;
     }
 
     return (
