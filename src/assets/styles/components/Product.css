@@ -1,4 +1,4 @@
-.product {
+.single-product {
     & a {
         text-decoration: none;
         color: var(--text-color);
@@ -14,7 +14,7 @@
         position: relative;
         overflow: hidden;
 
-        img {
+        & img {
             width: 100%;
             height: auto;
         }

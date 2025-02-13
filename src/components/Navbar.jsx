@@ -14,6 +14,8 @@ import "../assets/styles/components/Navbar.css";
 // Import logo
 import logo from "../assets/images/logo.avif";
 
+// TODO: Implement search functionality
+// Navbar component
 const Navbar = () => {
     const { totalItems } = useCart();
     const { theme, toggleTheme } = useContext(ThemeContext);
@@ -58,7 +60,7 @@ const Navbar = () => {
                                 <RiSunLine size={25} onClick={toggleTheme} />
                             )}
                         </div>
-                        <div className="button" onClick={handleSidebar}>
+                        <div className="menu-btn button" onClick={handleSidebar}>
                             <RiMenuLine size={25} />
                         </div>
                     </div>

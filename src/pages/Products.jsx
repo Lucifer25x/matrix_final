@@ -8,6 +8,7 @@ import StaticLang from "../utils/StaticLang";
 // Import styles
 import "../assets/styles/pages/Products.css";
 import 'react-range-slider-input/dist/style.css';
+import SingleProductListView from "../components/SingleProductListView";
 
 // Extract unique values from an array
 const getUniqueValues = (array, key) => {
@@ -30,6 +31,7 @@ const Products = () => {
     const [genres, setGenres] = useState([]);
     const [release_years, setReleaseYears] = useState([]);
     const [labels, setLabels] = useState([]);
+    const [viewType, setViewType] = useState("gallery");
 
     // State variables for filtering
     const [defaultMinPrice, setDefaultMinPrice] = useState(0);
@@ -225,11 +227,10 @@ const Products = () => {
                     <h1><StaticLang en="Products" az="Məhsullar" /></h1>
                 </div>
                 <div className="top">
-                    {/* TODO: Implement different types of views (table/gallery) */}
                     <div className="views">
                         <p><StaticLang en="View as" az="Belə görüntüləyin" /></p>
-                        <RiGalleryView2 size={25} className="active" />
-                        <RiTableView size={25} />
+                        <RiGalleryView2 size={25} className={viewType == "gallery" ? "active" : ""} onClick={() => { setViewType("gallery") }} />
+                        <RiTableView size={25} className={viewType == "gallery" ? "" : "active"} onClick={() => { setViewType("list") }} />
                     </div>
 
                     <div className="count">
@@ -249,7 +250,7 @@ const Products = () => {
                     </div>
                 </div>
 
-                <div className="product-list">
+                <div className={`product-list ${viewType}`}>
                     {products && products.filter(product =>
                         (selectedFormats.length > 0 ? selectedFormats.includes(product.format) : true) &&
                         (selectedColors.length > 0 ? selectedColors.includes(product.color) : true) &&
@@ -259,7 +260,10 @@ const Products = () => {
                         (selectedStock == product.stock) &&
                         product.price >= minPrice && product.price <= maxPrice
                     ).map((product, index) => {
-                        return (<SingleProduct key={index} product={product} />)
+                        if (viewType === "gallery") {
+                            return (<SingleProduct key={index} product={product} />)
+                        }
+                        return (<SingleProductListView key={index} product={product} />)
                     })
                     }
                 </div>

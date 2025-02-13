@@ -4,6 +4,15 @@
     max-width: 1200px;
     margin: 0 auto;
 
+    & a {
+        text-decoration: none;
+        color: var(--text-color);
+        transition: color 0.3s;
+        &:hover {
+            color: var(--primary);
+        }
+    }
+
     & h1 {
         text-transform: uppercase;
         text-align: center;

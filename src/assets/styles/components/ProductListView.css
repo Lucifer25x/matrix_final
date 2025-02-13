@@ -1,0 +1,100 @@
+.single-product-list-view {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+
+    & a {
+        text-decoration: none;
+        color: var(--text-color);
+        transition: color 0.3s;
+        font-weight: 900;
+        font-size: 1.2em;
+
+        &:hover {
+            color: var(--primary);
+        }
+    }
+
+    .product-img {
+        width: 20%;
+        border: 1px solid var(--border-color-2);
+        padding: 10px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & img {
+            width: 100%;
+            height: auto;
+        }
+
+        & svg {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            fill: var(--text-color);
+            transition: fill 0.3s;
+
+            &:hover {
+                fill: var(--primary);
+            }
+        }
+    }
+
+    .product-info {
+        width: 80%;
+        .info-top {
+            margin-bottom: 10px;
+            .info-flex {
+                display: flex;
+                justify-content: space-between;
+                & p:nth-child(2){
+                    font-weight: 700;
+                }
+            }
+        }
+
+        .add {
+            margin-top: 10px;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+            background-color: var(--primary);
+            color: #fff;
+            text-align: center;
+            font-weight: 900;
+            transition: .3s ease all;
+            &:hover {
+                background-color: #000;
+            }
+        }
+
+        .out-of-stock {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+            background-color: #f00;
+            color: #fff;
+            text-align: center;
+            font-weight: 900;
+        }
+    }
+}
+
+@media(max-width: 800px){
+    .single-product-list-view {
+        gap: 10px;
+        flex-direction: column;
+        .product-img {
+            width: 100%;
+        }
+        .product-info {
+            width: 100%;
+        }
+    }
+}
