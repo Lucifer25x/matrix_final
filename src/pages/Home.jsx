@@ -1,7 +1,7 @@
 // Import libraries
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { MoonLoader } from "react-spinners";
+import Loading from "../components/Loading";
 import supabase from "../utils/supabase";
 import StaticLang from "../utils/StaticLang";
 
@@ -22,7 +22,6 @@ import "../assets/styles/pages/Home.css";
 
 // Home page
 const Home = () => {
-    const [loading, setLoading] = useState(true);
     const [banners, setBanners] = useState([]);
     const [latestVinyls, setLatestVinyls] = useState([]);
     const [newAddedVinyls, setNewAddedVinyls] = useState([]);
@@ -66,23 +65,15 @@ const Home = () => {
         getLatestVinyls();
         getNewAddedVinyls();
         getHighlightedVinyls();
-
-        setTimeout(() => {
-            setLoading(false);
-        }, 1500);
     }, []);
 
-    if (loading) {
-        return (
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "70vh" }}>
-                <MoonLoader color={"var(--text-color)"} size={75} />
-            </div>
-        )
+    if (!banners.length || !latestVinyls.length || !newAddedVinyls.length || !highlightedVinyls.length) {
+        return <Loading />;
     }
 
     return (
         <div className="home-page container">
-            <div className="banner">
+            <div className="banner" data-aos="zoom-in" data-aos-duration="500">
                 {banners.length > 0 ? (
                     <Swiper
                         modules={[Navigation, Pagination, Autoplay]}
@@ -107,7 +98,7 @@ const Home = () => {
                 ) : ""}
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h1><StaticLang en="HIGHLIGHTED VINYLS" az="SEÇİLMİŞ VİNİLLƏR" /></h1>
                 <div className="products">
                     {highlightedVinyls.length > 0 ? (
@@ -142,7 +133,7 @@ const Home = () => {
                 <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h1><StaticLang en="NEW RELEASES" az="YENİ ÇIXANLAR" /></h1>
                 <div className="products">
                     {latestVinyls.length > 0 ? (
@@ -177,7 +168,7 @@ const Home = () => {
                 <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h1><StaticLang en="NEW ADDED" az="YENİ ƏLAVƏ OLANLAR" /></h1>
                 <div className="products">
                     {newAddedVinyls.length > 0 ? (
@@ -212,7 +203,7 @@ const Home = () => {
                 <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
             </div>
 
-            <div className="keep-in-touch">
+            <div className="keep-in-touch" data-aos="fade-up">
                 <h1><StaticLang en="KEEP IN TOUCH" az="ƏLAQƏDƏ QALIN" /></h1>
                 <div className="inputs">
                     <input type="text" placeholder="Name" />
@@ -221,7 +212,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="bottom-links">
+            <div className="bottom-links" data-aos="fade-up">
                 <div className="redeem">
                     <Link to="/redeem">
                         <img src="https://www.therecordhub.com/cdn/shop/files/Redeem_1600x.png" alt="Redeem" />

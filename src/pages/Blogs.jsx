@@ -1,8 +1,10 @@
 // Import libraries
 import { useEffect, useState } from "react";
+import { MoonLoader } from "react-spinners";
 import supabase from "../utils/supabase";
 import SingleBlog from "../components/SingleBlog";
 import StaticLang from "../utils/StaticLang";
+import Loading from "../components/Loading";
 
 // Import styles
 import "../assets/styles/pages/Blogs.css";
@@ -28,6 +30,10 @@ const Blogs = () => {
 
         getBlogs();
     }, []);
+
+    if (!blogs.length) {
+        return <Loading />;
+    }
 
     return (
         <div className="blogs-page">
