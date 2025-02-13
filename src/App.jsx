@@ -9,18 +9,20 @@ import ScrollToTop from "./components/ScrollToTop";
 
 // Import the pages
 import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Account from "./pages/Account";
-import Product from "./pages/Product";
-import Products from "./pages/Products";
-import Cart from "./pages/Cart";
-import Wishlist from "./pages/Wishlist";
+import Blogs from "./pages/Blogs";
+import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import TermsOfService from "./pages/TermsOfService";
 import Checkout from "./pages/Checkout";
+import Login from "./pages/Login";
+import Account from "./pages/Account";
+import Product from "./pages/Product";
+import Products from "./pages/Products";
+import Cart from "./pages/Cart";
+import Wishlist from "./pages/Wishlist";
 
 const App = () => {
     return (
@@ -32,11 +34,13 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/blogs" element={<Blogs />} />
+                <Route path="/blog/:id" element={<Blog />} />
+                <Route path="/products" element={<Products />} />
                 <Route path="/product/:id" element={<Product />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/checkout" element={<Checkout />} />
-                <Route path="/products" element={<Products />} />
                 <Route path="/account" element={<Account />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/faq" element={<FAQ />} />

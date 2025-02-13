@@ -19,7 +19,7 @@
 - [ ] Beautiful Design
 - [x] Responsive design
 - [x] Multi Language
-- [x] Dark/Light Mode
+- [ ] Dark/Light Mode
 - [x] Product Filter
 - [ ] Search System
 - [x] Register/Login
@@ -40,10 +40,10 @@
 - [x] Register
 - [x] Login
 - [x] Account
-- [ ] Checkout
+- [x] Checkout
 - [x] Basket
 - [ ] Wishlist
-- [ ] Blog (or campaign)
-- [ ] Blog Details (or campaign details)
+- [x] Blog (or campaign)
+- [x] Blog Details (or campaign details)
 - [ ] Dashboard
 - [x] 404 not found

@@ -50,7 +50,6 @@ const Home = () => {
                 console.log(error)
             } else {
                 setNewAddedVinyls(data);
-                console.log(data[0])
             }
         }
 

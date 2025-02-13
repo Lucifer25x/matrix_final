@@ -3,6 +3,7 @@ import { useRef } from "react";
 import supabase from "../utils/supabase";
 import Swal from "sweetalert2";
 import StaticLang from "../utils/StaticLang";
+import { useNavigate } from "react-router-dom";
 
 // Import styles
 import "../assets/styles/pages/Login.css";
@@ -11,6 +12,7 @@ import "../assets/styles/pages/Login.css";
 const Login = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -33,7 +35,7 @@ const Login = () => {
                 icon: "success",
             }).then(res => {
                 if (res.isConfirmed) {
-                    window.location.href = "/"
+                    navigate("/account")
                 }
             })
         }
