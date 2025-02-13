@@ -22,7 +22,6 @@ const Blog = () => {
             if (error) {
                 console.log(error)
             } else {
-                console.log(data[0])
                 setBlogDetails(data[0])
             }
         }

@@ -9,6 +9,7 @@ import StaticLang from "../utils/StaticLang";
 import "../assets/styles/components/Sidebar.css";
 
 // TODO: Implement a better translation and links
+// TODO: Implement Sales page for real
 // Sidebar component
 const Sidebar = ({ sidebar, handleSidebar }) => {
     const { lang, toggleLang } = useContext(LangContext);

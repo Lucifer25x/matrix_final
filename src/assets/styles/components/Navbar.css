@@ -18,41 +18,45 @@ nav {
 
         .search {
             width: 70%;
-            display: flex;
-            align-items: center;
 
-            & input {
-                width: 95%;
-                height: 40px;
-                padding: 10px;
-                border: 1px solid var(--border-color);
-                background-color: var(--background-color);
-                color: var(--text-color);
-                outline: none;
-                transition: .3s ease all;
-                border-right: none;
+            & form {
+                width: 100%;
+                display: flex;
+                align-items: center;
 
-                &:hover {
-                    border-color: var(--border-color-focus);
+                & input {
+                    width: 95%;
+                    height: 40px;
+                    padding: 10px;
+                    border: 1px solid var(--border-color);
+                    background-color: var(--background-color);
+                    color: var(--text-color);
+                    outline: none;
+                    transition: .3s ease all;
+                    border-right: none;
+
+                    &:hover {
+                        border-color: var(--border-color-focus);
+                    }
+
+                    &:focus {
+                        border-color: var(--border-color-focus);
+                    }
                 }
 
-                &:focus {
-                    border-color: var(--border-color-focus);
-                }
-            }
+                & button {
+                    width: 5%;
+                    min-width: 40px;
+                    height: 40px;
+                    background-color: var(--text-color);
+                    color: var(--background-color);
+                    border: none;
+                    cursor: pointer;
+                    transition: .3s ease all;
 
-            & button {
-                width: 5%;
-                min-width: 40px;
-                height: 40px;
-                background-color: var(--text-color);
-                color: var(--background-color);
-                border: none;
-                cursor: pointer;
-                transition: .3s ease all;
-
-                &:hover {
-                    background-color: var(--primary);
+                    &:hover {
+                        background-color: var(--primary);
+                    }
                 }
             }
         }
@@ -105,6 +109,7 @@ nav {
         }
     }
 }
+
 nav.shadow {
     box-shadow: 0 2px 5px var(--shadow-color);
 }

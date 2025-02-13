@@ -1,7 +1,7 @@
 // Import libraries
 import { Link } from "react-router-dom";
 import { RiSearchLine, RiHeartLine, RiShoppingBagLine, RiUserLine, RiMenuLine, RiSunLine, RiMoonLine } from "@remixicon/react";
-import { useContext, useState } from "react";
+import { useContext, useState, useRef } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { useCart } from "react-use-cart";
 
@@ -14,16 +14,22 @@ import "../assets/styles/components/Navbar.css";
 // Import logo
 import logo from "../assets/images/logo.avif";
 
-// TODO: Implement search functionality
+// TODO: Implement search functionality using context if needed
 // Navbar component
 const Navbar = () => {
     const { totalItems } = useCart();
     const { theme, toggleTheme } = useContext(ThemeContext);
     const [sidebar, setSidebar] = useState(false);
+    const searchRef = useRef(null);
 
     const handleSidebar = () => {
         setSidebar(!sidebar);
         document.body.style.overflow = sidebar ? "auto" : "hidden";
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        window.location.href = `/products/?s=${searchRef.current.value}`;
     }
 
     return (
@@ -36,8 +42,10 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <div className="search">
-                        <input type="text" placeholder="Search" />
-                        <button><RiSearchLine size={25} /></button>
+                        <form onSubmit={handleSearch}>
+                            <input type="text" placeholder="Search" ref={searchRef} required/>
+                            <button><RiSearchLine size={25} /></button>
+                        </form>
                     </div>
                     <div className="buttons">
                         <div className="links">
