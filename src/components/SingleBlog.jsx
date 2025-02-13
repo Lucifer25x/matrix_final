@@ -13,7 +13,7 @@ const SingleBlog = ({ blog }) => {
                     <img src={blog.img} alt={blog.title} />
                 </div>
                 <div className="details">
-                    <h3>{blog.title}</h3>
+                    <Link to={`/blog/${blog.id}`}>{blog.title}</Link>
                     <div className="tags">
                         {blog.tags.map((tag, index) => (
                             <span key={index}>{tag}</span>

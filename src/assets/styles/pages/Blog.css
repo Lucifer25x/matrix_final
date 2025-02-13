@@ -74,19 +74,37 @@
 
             & a {
                 color: var(--primary);
-                font-style: italic;
             }
         }
 
         .other-blogs {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            margin: 20px 0;
             
             .blogs {
+                margin-top: 20px;
                 display: flex;
                 justify-content: space-between;
                 gap: 20px;
+
+                .single-blog {
+                    width: 30%;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 800px){
+    .blog-bottom {
+        .other-blogs {
+            .blogs {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .single-blog {
+                    width: 100% !important;
+                }
             }
         }
     }
