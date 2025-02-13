@@ -1,0 +1,20 @@
+.blogs-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+
+    & h1 {
+        text-align: center;
+        font-size: 3em;
+        margin: 20px 0;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .blogs {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+}

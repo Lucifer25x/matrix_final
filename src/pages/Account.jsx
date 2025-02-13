@@ -1,6 +1,7 @@
 // Import libraries
 import supabase from "../utils/supabase";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Import styles
 import "../assets/styles/pages/Account.css";
@@ -9,13 +10,15 @@ import "../assets/styles/pages/Account.css";
 // Account page
 const Account = () => {
     const [userDetails, setUserDetails] = useState(null)
+    const navigate = useNavigate()
 
     useEffect(() => {
         // Check if the user is logged in
         const checkUser = async () => {
             const { data: { user } } = await supabase.auth.getUser()
             if (!user) {
-                window.location.href = "/login"
+                navigate("/login")
+                return
             }
 
             setUserDetails(user)
@@ -26,7 +29,7 @@ const Account = () => {
 
     const handleSignOut = async () => {
         await supabase.auth.signOut()
-        window.location.href = "/"
+        navigate("/")
     }
 
     return (

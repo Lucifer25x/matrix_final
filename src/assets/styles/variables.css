@@ -28,7 +28,6 @@ body.dark {
     --background-color-2-hover: #fff;
     --border-color: #747070;
     --border-color-focus: #fff;
-    --border-color-2: #000;
     --filter: invert(1);
     --shadow-color: rgba(255, 255, 255, .1);
 }

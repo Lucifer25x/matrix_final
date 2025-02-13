@@ -21,7 +21,7 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
             </div>
             <div className="links">
                 <Link to={"/products"}><StaticLang en="PRODUCTS" az="MƏHSULLAR" /></Link>
-                <Link to={"/blog"}>BLOG</Link>
+                <Link to={"/blogs"}><StaticLang en="BLOGS" az="BLOGLAR" /></Link>
                 <Link to={"/sales"}><StaticLang en="SALE" az="ENDİRİMLƏR" /></Link>
                 <p onClick={() => setHelp(!help)} className={help ? '' : 'open'}><StaticLang en="HELP" az="YARDIM" /> <RiArrowDropUpLine size={30} /></p>
                 <div className={`help ${help ? "active" : ""}`}>

@@ -56,7 +56,7 @@ const Footer = () => {
                             <Link to={"/login"}><StaticLang en="Register" az="Qeydiyyatdan keçin" /></Link>
                             <Link to={"/login"}><StaticLang en="Login" az="Daxil olun" /></Link>
                             <Link to={"/wishlist"}><StaticLang en="My Wishlist" az="İstək siyahısı" /></Link>
-                            <Link to={"/blog"}>Blog</Link>
+                            <Link to={"/blogs"}><StaticLang en="Blogs" az="Bloglar" /></Link>
                         </div>
                     </div>
 
