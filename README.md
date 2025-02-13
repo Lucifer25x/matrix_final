@@ -21,7 +21,7 @@
 - [x] Multi Language
 - [ ] Dark/Light Mode
 - [x] Product Filter
-- [ ] Search System
+- [x] Search System
 - [x] Register/Login
 - [x] Product Details
 - [x] Slider and carousel
