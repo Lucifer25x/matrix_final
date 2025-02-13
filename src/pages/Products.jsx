@@ -22,6 +22,7 @@ const getUniqueValues = (array, key) => {
     return uniqueValues;
 }
 
+// TODO: Implement reset all the filters button
 // Products component
 const Products = () => {
     // State variables
@@ -33,6 +34,7 @@ const Products = () => {
     const [release_years, setReleaseYears] = useState([]);
     const [labels, setLabels] = useState([]);
     const [viewType, setViewType] = useState("gallery");
+    const [loading, setLoading] = useState(true);
 
     // State variables for filtering
     const [defaultMinPrice, setDefaultMinPrice] = useState(0);
@@ -49,7 +51,12 @@ const Products = () => {
     useEffect(() => {
         // Get products from the database
         const getproducts = async () => {
-            const { data } = await supabase.from("vinyls").select("*");
+            // get ?s query from the URL
+            const search = new URLSearchParams(window.location.search);
+            const searchQuery = search.get("s") || "";
+
+            // Get products from the database
+            const { data } = await supabase.from("vinyls").select("*").like("title", `%${searchQuery}%`);
             setProducts(data);
             setProductCount(data.length);
 
@@ -71,6 +78,11 @@ const Products = () => {
         }
 
         getproducts();
+
+        // Set loading to false
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
     }, []);
 
     // Filter functions
@@ -114,10 +126,18 @@ const Products = () => {
         }
     }
 
-    // TODO: Implement reset all the filters button
-
-    if(!products.length) {
+    if(loading) {
         return <Loading />
+    }
+
+    if(products.length === 0) {
+        return (
+            <div className="products-page">
+                <h1>
+                    <StaticLang en="No products found" az="Heç bir məhsul tapılmadı" />
+                </h1>
+            </div>
+        )
     }
 
     // Render the products
