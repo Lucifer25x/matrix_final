@@ -1,9 +1,10 @@
 // Import libraries
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-
-// Import AOS
 import AOS from "aos";
+
+// Import styles
 import "aos/dist/aos.css";
 
 // Import the components
@@ -27,7 +28,6 @@ import Product from "./pages/Product";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
-import { useEffect } from "react";
 
 const App = () => {
     useEffect(() => {

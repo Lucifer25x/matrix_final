@@ -124,7 +124,7 @@
     }
 }
 
-/* Responsive style */
+/* Responsive styles */
 @media(max-width: 800px){
     .products-page {
         flex-direction: column;

@@ -97,6 +97,7 @@
     }
 }
 
+/* Responsive styles */
 @media(max-width: 800px) {
     .blog-page {
         & h1 {

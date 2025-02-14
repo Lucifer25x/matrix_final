@@ -45,6 +45,7 @@
     }
 }
 
+/* Responsive styles */
 @media(max-width: 800px) {
     .faq-page {
         & h1 {

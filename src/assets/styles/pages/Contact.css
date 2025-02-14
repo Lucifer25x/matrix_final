@@ -95,6 +95,7 @@
     }
 }
 
+/* Responsive styles */
 @media(max-width: 800px) {
     .contact-page {
         & h1 {

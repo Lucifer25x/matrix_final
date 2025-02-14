@@ -5,6 +5,7 @@ import StaticLang from "../utils/StaticLang";
 // Import styles
 import "../assets/styles/pages/About.css";
 
+// About page
 const About = () => {
     useEffect(() => {
         document.title = "About us | The Record Hub";
