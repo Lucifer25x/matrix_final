@@ -1,5 +1,17 @@
 # Final Project
 
+### Essential todo List:
+- [ ] Highlighted blog posts
+- [ ] Account details
+- [ ] Account history (last orders, last viewed products)
+- [ ] Edit account data
+- [ ] Wishlist
+- [ ] Dashboard
+    - [ ] Manage products and highlighted products
+    - [ ] Manage blogs and highlighted blog posts
+    - [ ] Manage banner images on home page
+    - [ ] Ordered products
+
 ### Other Libraries:
 - [x] Remix icons
 - [x] Toastify
