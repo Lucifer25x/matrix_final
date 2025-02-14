@@ -1,8 +1,15 @@
+// Import libraries
+import { useEffect } from "react";
+
 // Import styles
 import "../assets/styles/pages/Checkout.css";
 
 // Checkout page
 const Checkout = () => {
+    useEffect(() => {
+        document.title = "Checkout | The Record Hub";
+    }, []);
+
     return (
         <div className="checkout-page">
             <h1>Checkout</h1>

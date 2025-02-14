@@ -1,10 +1,15 @@
 // Import libraries
+import { useEffect } from "react";
 import StaticLang from "../utils/StaticLang";
 
 // Import styles
 import "../assets/styles/pages/About.css";
 
 const About = () => {
+    useEffect(() => {
+        document.title = "About us | The Record Hub";
+    }, []);
+
     return (
         <div className="about-page">
             <h1><StaticLang en="About us" az="Haqqımızda" /></h1>

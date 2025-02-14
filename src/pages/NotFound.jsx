@@ -1,4 +1,5 @@
 // Import libraries
+import { useEffect } from "react";
 import StaticLang from "../utils/StaticLang";
 
 // Import styles
@@ -7,6 +8,10 @@ import "../assets/styles/pages/NotFound.css";
 // TODO: Implement a proper 404 page
 // Not Found page
 const NotFound = () => {
+    useEffect(() => {
+        document.title = "404 | The Record Hub";
+    }, []);
+    
     return (
         <div className="not-found-page">
             <h1><StaticLang en="PAGE NOT FOUND" az="SƏHİFƏ TAPILMADI" /></h1>

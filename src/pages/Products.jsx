@@ -23,6 +23,8 @@ const getUniqueValues = (array, key) => {
 }
 
 // TODO: Implement reset all the filters button
+// TODO: Implement sorting
+// TODO: Implement filtering on mobile
 // Products component
 const Products = () => {
     // State variables
@@ -75,6 +77,9 @@ const Products = () => {
             setMaxPrice(max);
             setDefaultMinPrice(min);
             setDefaultMaxPrice(max);
+
+            // Set title
+            document.title = "Products | The Record Hub";
         }
 
         getproducts();

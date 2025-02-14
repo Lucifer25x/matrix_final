@@ -137,6 +137,10 @@
             .top {
                 font-size: .8em;
                 gap: 10px;
+
+                .views {
+                    display: none;
+                }
             }
 
             .product-list.gallery {

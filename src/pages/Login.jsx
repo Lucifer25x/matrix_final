@@ -1,5 +1,5 @@
 // Import libraries
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import supabase from "../utils/supabase";
 import Swal from "sweetalert2";
 import StaticLang from "../utils/StaticLang";
@@ -13,6 +13,10 @@ const Login = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        document.title = "Login | The Record Hub";
+    }, []);
 
     const handleLogin = async (e) => {
         e.preventDefault();

@@ -48,6 +48,8 @@ const Product = () => {
 
         getProduct();
         getRandomVinyls();
+
+        document.title = "Product | The Record Hub";
     }, []);
 
     const handleAddToCart = () => {

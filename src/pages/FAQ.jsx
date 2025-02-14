@@ -1,4 +1,5 @@
 // Import libraries
+import { useEffect } from "react";
 import StaticLang from "../utils/StaticLang";
 
 // Import styles
@@ -6,6 +7,10 @@ import "../assets/styles/pages/FAQ.css";
 
 // FAQ page
 const FAQ = () => {
+    useEffect(() => {
+        document.title = "FAQ | The Record Hub";
+    }, []);
+    
     return (
         <div className="faq-page">
             <h1><StaticLang en="Frequently asked questions" az="Tez-tez verilən suallar" /></h1>

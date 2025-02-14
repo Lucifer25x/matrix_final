@@ -37,6 +37,8 @@ const Blog = () => {
 
         getBlog();
         getLatestThreeBlogs();
+
+        document.title = "Blog | The Record Hub";
     }, [id]);
 
     if (!blogDetails) {

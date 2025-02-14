@@ -29,6 +29,8 @@ const Blogs = () => {
         };
 
         getBlogs();
+
+        document.title = "Blogs | The Record Hub";
     }, []);
 
     if (!blogs.length) {
