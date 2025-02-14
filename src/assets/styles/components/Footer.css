@@ -11,14 +11,14 @@ footer {
     }
 
     .top {
-        background-color: var(--text-color);
-        color: var(--background-color);
+        background-color: var(--footer-background);
+        color: var(--footer-color);
         padding: 20px 0;
 
         & a {
             display: inline-block;
             margin-top: 10px;
-            color: var(--background-color);
+            color: var(--footer-color);
             text-decoration: none;
             transition: .3s ease all;
             font-size: .8em;
