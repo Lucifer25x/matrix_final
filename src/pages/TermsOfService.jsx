@@ -1,4 +1,5 @@
 // Import libraries
+import { useEffect } from "react";
 import StaticLang from "../utils/StaticLang";
 
 // Import styles
@@ -6,6 +7,10 @@ import "../assets/styles/pages/TermsOfService.css";
 
 // Terms of Service page
 const TermsOfService = () => {
+    useEffect(() => {
+        document.title = "Terms of Service | The Record Hub";
+    }, []);
+    
     return (
         <div className="terms-of-service-page">
             <h1><StaticLang en="Terms of Service" az="Xidmət Şərtləri" /></h1>

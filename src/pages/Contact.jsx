@@ -1,4 +1,5 @@
 // Import libraries
+import { useEffect } from "react";
 import { RiTwitterFill, RiFacebookFill, RiYoutubeFill, RiInstagramFill } from "@remixicon/react";
 import StaticLang from "../utils/StaticLang";
 
@@ -7,6 +8,10 @@ import "../assets/styles/pages/Contact.css";
 
 // Contact page
 const Contact = () => {
+    useEffect(() => {
+        document.title = "Contact Us | The Record Hub";
+    }, []);
+
     return (
         <div className="contact-page">
             <h1><StaticLang en="Contact Us" az="Bizimlə Əlaqə Saxla" /></h1>

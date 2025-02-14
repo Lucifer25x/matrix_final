@@ -26,6 +26,8 @@ const Account = () => {
         }
 
         checkUser()
+
+        document.title = "Account | The Record Hub"
     }, [])
 
     const handleSignOut = async () => {

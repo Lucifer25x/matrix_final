@@ -1,5 +1,6 @@
 // Import libraries
 import { RiCloseLine, RiLockLine } from "@remixicon/react";
+import { useEffect } from "react";
 import { useCart } from "react-use-cart";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -11,6 +12,10 @@ import "../assets/styles/pages/Cart.css";
 // Cart page
 const Cart = () => {
     const { items, cartTotal, updateItemQuantity, removeItem, emptyCart } = useCart();
+
+    useEffect(() => {
+        document.title = "Cart | The Record Hub";
+    }, []);
 
     const handleClearCart = () => {
         Swal.fire({

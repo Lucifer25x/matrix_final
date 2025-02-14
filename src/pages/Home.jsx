@@ -65,6 +65,8 @@ const Home = () => {
         getLatestVinyls();
         getNewAddedVinyls();
         getHighlightedVinyls();
+
+        document.title = "Home | The Record Hub";
     }, []);
 
     if (!banners.length || !latestVinyls.length || !newAddedVinyls.length || !highlightedVinyls.length) {

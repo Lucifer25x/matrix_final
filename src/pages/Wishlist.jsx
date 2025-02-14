@@ -17,6 +17,8 @@ const Wishlist = () => {
         }
 
         checkUser()
+
+        document.title = "Wishlist | The Record Hub"
     }, [])
 
     return (
