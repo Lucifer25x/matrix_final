@@ -102,6 +102,7 @@
     }
 }
 
+/* Responsive styles */
 @media(max-width: 800px) {
     .sidebar {
         width: 100%;

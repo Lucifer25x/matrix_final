@@ -86,6 +86,7 @@
     }
 }
 
+/* Responsive styles */
 @media(max-width: 800px){
     .single-product-list-view {
         gap: 10px;

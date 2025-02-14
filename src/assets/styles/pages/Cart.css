@@ -196,6 +196,7 @@
     }
 }
 
+/* Responsive styles */
 @media(max-width: 800px) {
     .cart-page {
         & h1 {

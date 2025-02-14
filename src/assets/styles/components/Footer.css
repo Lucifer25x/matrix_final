@@ -106,8 +106,8 @@ footer {
     }
 }
 
-/* Responsive style */
-@media(max-width: 1200px) {
+/* Responsive styles */
+@media(max-width: 1250px) {
     footer {
         .top {
             .container {

@@ -28,6 +28,7 @@
     }
 }
 
+/* Responsive styles */
 @media(max-width: 800px) {
     .terms-of-service-page {
         & h1 {

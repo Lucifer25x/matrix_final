@@ -114,7 +114,7 @@ nav.shadow {
     box-shadow: 0 2px 5px var(--shadow-color);
 }
 
-/* Responsive style */
+/* Responsive styles */
 @media(max-width: 1250px) {
     nav {
         .container {

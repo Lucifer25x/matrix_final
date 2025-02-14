@@ -1,6 +1,9 @@
+// Import libraries
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import App from "./App.jsx"
+
+// Import styles
 import "./assets/styles/index.css"
 
 // Import context providers

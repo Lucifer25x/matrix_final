@@ -16,7 +16,7 @@
 - [x] SASS or CSS
 
 ### Conditions:
-- [ ] Beautiful Design
+- [x] Beautiful Design
 - [x] Responsive design
 - [x] Multi Language
 - [x] Dark/Light Mode

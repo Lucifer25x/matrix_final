@@ -101,7 +101,7 @@
     }
 }
 
-/* Responsive style */
+/* Responsive styles */
 @media(max-width: 800px) {
     .login-page {
         & h1 {
