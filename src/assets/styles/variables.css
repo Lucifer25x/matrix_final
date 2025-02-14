@@ -11,6 +11,8 @@
     --background-color-5: #fafafa;
     --background-color-6: #e5e5e5;
     --background-color-7: #f2f2f2;
+    --footer-background: #000;
+    --footer-color: #fff;
     --border-color: #d3d3d3;
     --border-color-focus: #000;
     --border-color-2: #eee;
@@ -23,11 +25,12 @@
 /* TODO: Fix the dark theme for all the components and pages */
 body.dark {
     --text-color: #fff;
-    --background-color: #000;
+    --background-color: #151516;
     --background-color-2: #363636;
     --background-color-2-hover: #fff;
-    --border-color: #747070;
+    --border-color: #222222;
     --border-color-focus: #fff;
+    --footer-background: #2e2b2b;
     --filter: invert(1);
     --shadow-color: rgba(255, 255, 255, .1);
 }

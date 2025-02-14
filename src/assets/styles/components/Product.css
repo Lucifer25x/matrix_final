@@ -9,7 +9,7 @@
     }
 
     .img {
-        border: 1px solid var(--border-color-2);
+        border: 1px solid var(--border-color);
         padding: 10px;
         position: relative;
         overflow: hidden;

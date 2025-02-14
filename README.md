@@ -19,7 +19,7 @@
 - [ ] Beautiful Design
 - [x] Responsive design
 - [x] Multi Language
-- [ ] Dark/Light Mode
+- [x] Dark/Light Mode
 - [x] Product Filter
 - [x] Search System
 - [x] Register/Login
