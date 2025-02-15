@@ -58,7 +58,7 @@ const Login = () => {
         } else {
             Swal.fire({
                 title: "Success!",
-                text: "Account created successfully! Now verfiy your email address.",
+                text: "Account created successfully! Now verify your email address.",
                 icon: "success"
             })
         }

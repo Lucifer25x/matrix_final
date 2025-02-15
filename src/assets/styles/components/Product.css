@@ -31,7 +31,10 @@
                 fill: var(--primary);
             }
         }
-
+        & svg.active {
+            fill: red;
+        }
+        
         .add {
             position: absolute;
             left: 0;

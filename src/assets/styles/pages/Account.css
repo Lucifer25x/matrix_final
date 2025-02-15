@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    min-height: 60vh;
 
     .not_verified {
         color: red;

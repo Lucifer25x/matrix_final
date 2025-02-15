@@ -58,7 +58,7 @@ const Cart = () => {
                                 <img src={item.img} alt={item.title} />
                                 <div className="details">
                                     <p className="artist">{item.artist}</p>
-                                    <Link to={"/"} className="title">{item.title}</Link>
+                                    <Link to={`/product/${item.id}`} className="title">{item.title}</Link>
                                 </div>
                             </td>
                             <td>${item.price}</td>

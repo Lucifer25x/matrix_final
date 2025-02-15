@@ -4,6 +4,7 @@ import { RiSearchLine, RiHeartLine, RiShoppingBagLine, RiUserLine, RiMenuLine, R
 import { useContext, useState, useRef } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { useCart } from "react-use-cart";
+import useWishlist from "../hooks/useWishlist";
 
 // Import components
 import Sidebar from "./Sidebar";
@@ -20,6 +21,7 @@ const Navbar = () => {
     const { totalItems } = useCart();
     const { theme, toggleTheme } = useContext(ThemeContext);
     const [sidebar, setSidebar] = useState(false);
+    const { wishlistCount } = useWishlist();
     const searchRef = useRef(null);
 
     const handleSidebar = () => {
@@ -51,7 +53,7 @@ const Navbar = () => {
                         <div className="links">
                             <Link to={"/wishlist"}>
                                 <RiHeartLine size={25} />
-                                <span>0</span>
+                                <span>{wishlistCount}</span>
                             </Link>
                             <Link to={"/cart"}>
                                 <RiShoppingBagLine size={25} />

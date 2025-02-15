@@ -5,7 +5,7 @@
 - [ ] Account details
 - [ ] Account history (last orders, last viewed products)
 - [ ] Edit account data
-- [ ] Wishlist
+- [x] Wishlist
 - [ ] Dashboard
     - [ ] Manage products and highlighted products
     - [ ] Manage blogs and highlighted blog posts
@@ -30,7 +30,7 @@
 - [x] React Hooks
 - [x] React Router
 - [ ] Axios
-- [ ] Redux JS
+- [x] Redux JS
 - [x] API (or local data)
 - [x] SASS or CSS
 
@@ -44,9 +44,9 @@
 - [x] Register/Login
 - [x] Product Details
 - [x] Slider and carousel
-- [ ] Animation
+- [x] Animation
 - [x] Add to cart
-- [ ] Add to wishlist
+- [x] Add to wishlist
 - [x] Auth System
 
 ### Minimum required pages:
@@ -61,7 +61,7 @@
 - [x] Account
 - [x] Checkout
 - [x] Basket
-- [ ] Wishlist
+- [x] Wishlist
 - [x] Blog (or campaign)
 - [x] Blog Details (or campaign details)
 - [ ] Dashboard
