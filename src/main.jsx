@@ -10,13 +10,16 @@ import "./assets/styles/index.css"
 import { CartProvider } from "react-use-cart";
 import { ThemeProvider } from "./context/ThemeContext"
 import { LangProvider } from "./context/LangContext.jsx"
+import { UserProvider } from "./context/UserContext.jsx";
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>
         <CartProvider>
             <LangProvider>
                 <ThemeProvider>
-                    <App />
+                    <UserProvider>
+                        <App />
+                    </UserProvider>
                 </ThemeProvider>
             </LangProvider>
         </CartProvider>

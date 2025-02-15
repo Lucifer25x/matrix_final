@@ -1,7 +1,8 @@
 // Import libraries
 import supabase from "../utils/supabase";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 import Loading from "../components/Loading";
 
 // Import styles
@@ -10,43 +11,34 @@ import "../assets/styles/pages/Account.css";
 // TODO: Implement a fully functional account page
 // Account page
 const Account = () => {
-    const [userDetails, setUserDetails] = useState(null)
+    const { user, loading } = useContext(UserContext)
     const navigate = useNavigate()
 
     useEffect(() => {
-        // Check if the user is logged in
-        const checkUser = async () => {
-            const { data: { user } } = await supabase.auth.getUser()
-            if (!user) {
-                navigate("/login")
-                return
-            }
-
-            setUserDetails(user)
+        if (!user && !loading) {
+            navigate("/login")
         }
 
-        checkUser()
-
         document.title = "Account | The Record Hub"
-    }, [])
+    }, [user, loading]);
 
     const handleSignOut = async () => {
         await supabase.auth.signOut()
-        navigate("/")
+        window.location.href = "/login"
     }
 
-    if(!userDetails){
+    if (loading) {
         return <Loading />
     }
 
     return (
         <div className="account-page">
-            {userDetails && (
+            {user && (
                 <>
-                    <h1>Welcome {userDetails.email.split('@')[0]}</h1>
-                    <p>Email: {userDetails.email}</p>
+                    <h1>Welcome {user.email.split('@')[0]}</h1>
+                    <p>Email: {user.email}</p>
 
-                    {!userDetails.user_metadata.email_verified && (
+                    {!user.user_metadata.email_verified && (
                         <p className="not_verified">Please verify your email address</p>
                     )}
                 </>

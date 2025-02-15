@@ -3,7 +3,6 @@ import { useRef, useEffect } from "react";
 import supabase from "../utils/supabase";
 import Swal from "sweetalert2";
 import StaticLang from "../utils/StaticLang";
-import { useNavigate } from "react-router-dom";
 
 // Import styles
 import "../assets/styles/pages/Login.css";
@@ -12,7 +11,6 @@ import "../assets/styles/pages/Login.css";
 const Login = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
-    const navigate = useNavigate();
 
     useEffect(() => {
         document.title = "Login | The Record Hub";
@@ -39,7 +37,7 @@ const Login = () => {
                 icon: "success",
             }).then(res => {
                 if (res.isConfirmed) {
-                    navigate("/account")
+                    window.location.href = "/";
                 }
             })
         }
@@ -60,7 +58,7 @@ const Login = () => {
         } else {
             Swal.fire({
                 title: "Success!",
-                text: "Account created successfully!",
+                text: "Account created successfully! Now verfiy your email address.",
                 icon: "success"
             })
         }
