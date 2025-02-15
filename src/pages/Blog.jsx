@@ -17,6 +17,8 @@ const Blog = () => {
     const [latestBlogs, setLatestBlogs] = useState(null)
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+
         const getBlog = async () => {
             const { data, error } = await supabase.from("blogs").select("*").eq("id", id);
             if (error) {
@@ -27,7 +29,7 @@ const Blog = () => {
         }
 
         const getLatestThreeBlogs = async () => {
-            const { data, error } = await supabase.from("blogs").select("*").order("created_at", { ascending: false }).range(0, 2);
+            const { data, error } = await supabase.from("blogs").select("id, title, img, tags, created_at").order("created_at", { ascending: false }).range(0, 2);
             if (error) {
                 console.log(error)
             } else {
