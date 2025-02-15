@@ -14,6 +14,7 @@ const Cart = () => {
     const { items, cartTotal, updateItemQuantity, removeItem, emptyCart } = useCart();
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         document.title = "Cart | The Record Hub";
     }, []);
 
@@ -37,8 +38,53 @@ const Cart = () => {
         });
     }
 
+    const handleRemoveItem = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, remove it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                removeItem(id);
+                Swal.fire({
+                    text: "Item has been removed!",
+                    icon: "success"
+                });
+            }
+        });
+    }
+
+    const handleDecrement = (id) => {
+        const item = items.find(item => item.id === id);
+        if (item.quantity === 1) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, remove it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    removeItem(id);
+                    Swal.fire({
+                        text: "Item has been removed!",
+                        icon: "success"
+                    });
+                }
+            });
+        } else {
+            updateItemQuantity(id, (item.quantity ?? 0) - 1);
+        }
+    }
+
     return (
-        <div className="cart-page">
+        <div className="cart-page" data-aos="zoom-in">
             <h1><StaticLang en="Cart" az="Səbət" /></h1>
 
             <table>
@@ -64,14 +110,14 @@ const Cart = () => {
                             <td>${item.price}</td>
                             <td>
                                 <div className="quantity">
-                                    <button onClick={() => updateItemQuantity(item.id, (item.quantity ?? 0) - 1)}>-</button>
+                                    <button onClick={() => handleDecrement(item.id)}>-</button>
                                     <div className="count">{item.quantity}</div>
                                     <button onClick={() => { updateItemQuantity(item.id, (item.quantity ?? 0) + 1) }}>+</button>
                                 </div>
                             </td>
                             <td>${item.price * item.quantity}</td>
                             <td className="remove">
-                                <button onClick={() => removeItem(item.id)}>
+                                <button onClick={() => handleRemoveItem(item.id)}>
                                     <RiCloseLine size={30} />
                                 </button>
                             </td>

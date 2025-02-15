@@ -9,6 +9,7 @@ import "../assets/styles/pages/NotFound.css";
 // Not Found page
 const NotFound = () => {
     useEffect(() => {
+        window.scrollTo(0, 0);
         document.title = "404 | The Record Hub";
     }, []);
     

@@ -32,7 +32,7 @@ const Account = () => {
     }
 
     return (
-        <div className="account-page">
+        <div className="account-page" data-aos="zoom-in">
             {user && (
                 <>
                     <h1>Welcome {user.email.split('@')[0]}</h1>

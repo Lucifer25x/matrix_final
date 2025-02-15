@@ -8,14 +8,15 @@ import "../assets/styles/pages/FAQ.css";
 // FAQ page
 const FAQ = () => {
     useEffect(() => {
+        window.scrollTo(0, 0);
         document.title = "FAQ | The Record Hub";
     }, []);
     
     return (
         <div className="faq-page">
-            <h1><StaticLang en="Frequently asked questions" az="Tez-tez verilən suallar" /></h1>
+            <h1 data-aos="fade-up"><StaticLang en="Frequently asked questions" az="Tez-tez verilən suallar" /></h1>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="Where's my order?" az="Sifarişim haradadır?" /></h2>
 
                 <p>
@@ -44,7 +45,7 @@ const FAQ = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="Christmas Postage Dates 2024" az="Milad Poçt Tarixləri 2024" /></h2>
 
                 <p>
@@ -78,7 +79,7 @@ const FAQ = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="What's your refund policy?" az="Geri ödəmə siyasətiniz nədir?" /></h2>
 
                 <p>
@@ -87,7 +88,7 @@ const FAQ = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="Which countries do you ship to?" az="Hansı ölkələrə göndərirsiniz?" /></h2>
 
                 <p>
@@ -95,7 +96,7 @@ const FAQ = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="How long does delivery take?" az="Çatdırılma nə qədər vaxt aparır?" /></h2>
 
                 <p>
@@ -131,7 +132,7 @@ const FAQ = () => {
                 </table>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="Can I track my order?" az="Sifarişimi izləyə bilərəmmi?" /></h2>
 
                 <p>
@@ -140,7 +141,7 @@ const FAQ = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="What currency am I charged in?" az="Məndən hansı valyutada ödəniş alınır?" /></h2>
 
                 <p>
@@ -150,7 +151,7 @@ const FAQ = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="Do you have a rewards/loyalty scheme?" az="Mükafat/sadiqlik sxeminiz var?" /></h2>
 
                 <p>
@@ -174,7 +175,7 @@ const FAQ = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="Do you accept One4All cards?" az="One4All kartlarını qəbul edirsiniz?" /></h2>
 
                 <p>
@@ -189,7 +190,7 @@ const FAQ = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="Are product images accurate?" az="Məhsul şəkilləri dəqiqdirmi?" /></h2>
 
                 <p>
@@ -198,7 +199,7 @@ const FAQ = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="Brexit Proof Vinyl Shopping In Ireland" az="İrlandiyada Brexit Proof Vinil Alış-veriş" /></h2>
 
                 <p>

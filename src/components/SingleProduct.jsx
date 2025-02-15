@@ -18,7 +18,7 @@ const Product = ({ product }) => {
         addItem(product);
 
         toast.success("Product was added to your cart!", {
-            position: "bottom-center",
+            position: "bottom-right",
             autoClose: 3000,
             closeOnClick: false,
             theme: "colored",
@@ -31,6 +31,14 @@ const Product = ({ product }) => {
             await removeWishlist(product.id);
         } else {
             await addWishlist(product.id);
+
+            toast.success("Product was added to your wishlist!", {
+                position: "bottom-right",
+                autoClose: 3000,
+                closeOnClick: false,
+                theme: "colored",
+                transition: Bounce,
+            });
         }
     }
 

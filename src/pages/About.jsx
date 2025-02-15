@@ -8,6 +8,7 @@ import "../assets/styles/pages/About.css";
 // About page
 const About = () => {
     useEffect(() => {
+        window.scrollTo(0, 0);
         document.title = "About us | The Record Hub";
     }, []);
 

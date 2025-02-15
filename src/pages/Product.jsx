@@ -28,6 +28,8 @@ const Product = () => {
     const [randomVinyls, setRandomVinyls] = useState([])
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+        
         const getProduct = async () => {
             const { data, error } = await supabase.from("vinyls").select("*").eq("id", id);
             if (error) {
@@ -56,7 +58,7 @@ const Product = () => {
         addItem(productDetails);
 
         toast.success("Product was added to your cart!", {
-            position: "bottom-center",
+            position: "bottom-right",
             autoClose: 3000,
             closeOnClick: false,
             theme: "colored",

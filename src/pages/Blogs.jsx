@@ -14,6 +14,8 @@ const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+        
         const getBlogs = async () => {
             const { data, error } = await supabase
                 .from("blogs")
@@ -41,7 +43,7 @@ const Blogs = () => {
         <div className="blogs-page">
             <h1><StaticLang en="Blogs" az="Bloglar" /></h1>
 
-            <div className="blogs">
+            <div className="blogs" data-aos="fade-up">
                 {blogs.map((blog, index) => (
                     <SingleBlog key={index} blog={blog} />
                 ))}

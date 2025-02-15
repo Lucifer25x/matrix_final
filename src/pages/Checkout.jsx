@@ -7,6 +7,7 @@ import "../assets/styles/pages/Checkout.css";
 // Checkout page
 const Checkout = () => {
     useEffect(() => {
+        window.scrollTo(0, 0);
         document.title = "Checkout | The Record Hub";
     }, []);
 
