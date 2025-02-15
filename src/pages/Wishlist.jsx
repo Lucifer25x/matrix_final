@@ -54,7 +54,7 @@ const Wishlist = () => {
     return (
         <div className="wishlist-page">
             <h1>Wishlist</h1>
-            <div className="wishlist">
+            <div className="wishlist" data-aos="fade-up">
                 {products.length > 0 ? (
                     products.map(product => (
                         <Product key={product.id} product={product} />

@@ -13,6 +13,7 @@ const Login = () => {
     const passwordRef = useRef();
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         document.title = "Login | The Record Hub";
     }, []);
 

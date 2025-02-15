@@ -47,11 +47,11 @@ const Blog = () => {
 
     return (
         <div className="blog-page">
-            <div className="blog-banner">
+            <div className="blog-banner" data-aos="zoom-in">
                 <img src={blogDetails.img} alt={blogDetails.title} />
                 <h1>{blogDetails.title}</h1>
             </div>
-            <div className="blog-bottom">
+            <div className="blog-bottom" data-aos="zoom-in">
                 <div className="route">
                     <p><Link to={"/"}>Home</Link> / <Link to={"/blogs"}>Blogs</Link></p>
                 </div>
@@ -67,7 +67,7 @@ const Blog = () => {
                     <ReactMarkdown>{blogDetails.content}</ReactMarkdown>
                 </div>
 
-                <div className="other-blogs">
+                <div className="other-blogs" data-aos="fade-up">
                     <h2><StaticLang en="Other Blogs" az="Digər bloglar" /></h2>
                     <div className="blogs">
                         {latestBlogs && latestBlogs.map((blog, index) => (

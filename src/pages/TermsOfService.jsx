@@ -8,14 +8,15 @@ import "../assets/styles/pages/TermsOfService.css";
 // Terms of Service page
 const TermsOfService = () => {
     useEffect(() => {
+        window.scrollTo(0, 0);
         document.title = "Terms of Service | The Record Hub";
     }, []);
     
     return (
-        <div className="terms-of-service-page">
+        <div className="terms-of-service-page" data-aos="fade-up">
             <h1><StaticLang en="Terms of Service" az="Xidmət Şərtləri" /></h1>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="OVERVIEW" az="XÜLASƏ" /></h2>
 
                 <p>
@@ -44,7 +45,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 1 - ONLINE STORE TERMS" az="BÖLMƏ 1 - ONLINE MAĞAZA ŞƏRTLƏRİ" /></h2>
 
                 <p>
@@ -68,7 +69,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 2 - GENERAL CONDITIONS" az="BÖLMƏ 2 - ÜMUMİ ŞƏRTLƏR" /></h2>
 
                 <p>
@@ -92,7 +93,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 3 - ACCURACY, COMPLETENESS AND TIMELINESS OF INFORMATION" az="BÖLMƏ 3 - MƏLUMATIN DƏĞRİYYƏTİ, TAMLIĞI VƏ VAXTLILIĞI" /></h2>
 
                 <p>
@@ -106,7 +107,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 4 - MODIFICATIONS TO THE SERVICE AND PRICES" az="BÖLMƏ 4 - XİDMƏT VƏ QİYMƏTLƏRƏ DƏYİŞİKLİKLƏR" /></h2>
 
                 <p>
@@ -125,7 +126,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 5 - PRODUCTS OR SERVICES (if applicable)" az="BÖLMƏ 5 - MƏHSULLAR VƏ XİDMƏTLƏR (əgər varsa)" /></h2>
 
                 <p>
@@ -149,7 +150,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 6 - ACCURACY OF BILLING AND ACCOUNT INFORMATION" az="BÖLMƏ 6 - FAKTÖRLÜK VƏ HESAB MƏLUMATLARININ DƏĞRİYYƏTİ" /></h2>
 
                 <p>
@@ -168,7 +169,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 7 - OPTIONAL TOOLS" az="BÖLMƏ 7 - İSTƏYƏ BAĞLI ALƏTLƏR" /></h2>
 
                 <p>
@@ -192,7 +193,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 8 - THIRD-PARTY LINKS" az="BÖLMƏ 8 - ÜÇÜNCÜ ŞƏXS BAĞLANTILARI" /></h2>
 
                 <p>
@@ -211,7 +212,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 9 - USER COMMENTS, FEEDBACK AND OTHER SUBMISSIONS" az="BÖLMƏ 9 - İSTİFADƏÇİ ŞƏRHLƏRİ, ƏLAQƏ VƏ DİGƏR TƏQDİMATLAR" /></h2>
 
                 <p>
@@ -230,7 +231,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 10 - PERSONAL INFORMATION" az="BÖLMƏ 10 - ŞƏXSİ MƏLUMAT" /></h2>
 
                 <p>
@@ -239,7 +240,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 11 - ERRORS, INACCURACIES AND OMISSIONS" az="BÖLMƏ 11 - SƏHVLƏR, QEYRİYYƏT VƏ ETMƏKLƏR" /></h2>
 
                 <p>
@@ -253,7 +254,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 12 - PROHIBITED USES" az="BÖLMƏ 12 - QADAĞAN İSTİFADƏLƏR" /></h2>
 
                 <p>
@@ -262,7 +263,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 13 - DISCLAIMER OF WARRANTIES; LIMITATION OF LIABILITY" az="BÖLMƏ 13 - ZƏMANƏTLƏRDƏN İDDAR EDİLMƏSİ; MƏSULİYYƏTİN MƏHDUDDƏNDİRİLMƏSİ" /></h2>
 
                 <p>
@@ -291,7 +292,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 14 - INDEMNIFICATION" az="BÖLMƏ 14 - ZƏRƏT VERMƏ" /></h2>
 
                 <p>
@@ -300,7 +301,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 15 - SEVERABILITY" az="BÖLMƏ 15 - BÖLÜNƏ BİLƏNLİK" /></h2>
 
                 <p>
@@ -309,7 +310,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 16 - TERMINATION" az="BÖLMƏ 16 - XİTAM" /></h2>
 
                 <p>
@@ -328,7 +329,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 17 - ENTIRE AGREEMENT" az="BÖLMƏ 17 - BÜTÜN MÜQAVİLƏ" /></h2>
 
                 <p>
@@ -347,7 +348,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 18 - GOVERNING LAW" az="BÖLMƏ 18 - MÜDÜRLƏNİCİ QANUN" /></h2>
 
                 <p>
@@ -356,7 +357,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 19 - CHANGES TO TERMS OF SERVICE" az="BÖLMƏ 19 - XİDMƏT ŞƏRTLƏRİNƏ DƏYİŞİKLİK" /></h2>
 
                 <p>
@@ -370,7 +371,7 @@ const TermsOfService = () => {
                 </p>
             </div>
 
-            <div className="section">
+            <div className="section" data-aos="fade-right">
                 <h2><StaticLang en="SECTION 20 - CONTACT INFORMATION" az="BÖLMƏ 20 - ƏLAQƏ MƏLUMATI" /></h2>
 
                 <p>

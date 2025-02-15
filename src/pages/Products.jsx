@@ -51,6 +51,8 @@ const Products = () => {
     const [selectedStock, setSelectedStock] = useState(true);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+        
         // Get products from the database
         const getproducts = async () => {
             // get ?s query from the URL
@@ -148,7 +150,7 @@ const Products = () => {
     // Render the products
     return (
         <div className="products-page">
-            <div className="filters">
+            <div className="filters" data-aos="fade-right">
                 <div className="filter">
                     <h3><StaticLang en="PRICE" az="QİYMƏT" /></h3>
                     <div className="inputs">
@@ -252,7 +254,7 @@ const Products = () => {
                     </div>
                 </div>
             </div>
-            <div className="products">
+            <div className="products" data-aos="fade-left">
                 <div className="name">
                     <h1><StaticLang en="Products" az="Məhsullar" /></h1>
                 </div>

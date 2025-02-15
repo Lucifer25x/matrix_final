@@ -21,7 +21,7 @@ const SingleProductListView = ({ product }) => {
         addItem(product);
 
         toast.success("Product was added to your cart!", {
-            position: "bottom-center",
+            position: "bottom-right",
             autoClose: 3000,
             closeOnClick: false,
             theme: "colored",
@@ -34,6 +34,14 @@ const SingleProductListView = ({ product }) => {
             await removeWishlist(product.id);
         } else {
             await addWishlist(product.id);
+
+            toast.success("Product was added to your wishlist!", {
+                position: "bottom-right",
+                autoClose: 3000,
+                closeOnClick: false,
+                theme: "colored",
+                transition: Bounce,
+            });
         }
     }
 
@@ -55,11 +63,11 @@ const SingleProductListView = ({ product }) => {
                 {
                     product.stock ? (
                         <div className="add" onClick={handleAddToCart}>
-                            <p><StaticLang en="ADD TO CART" az="SƏBƏTƏ ƏLAVƏ EDİN"/></p>
+                            <p><StaticLang en="ADD TO CART" az="SƏBƏTƏ ƏLAVƏ EDİN" /></p>
                         </div>
                     ) : (
                         <div className="out-of-stock">
-                            <p><StaticLang en="OUT OF STOCK" az="MÖVCUD DEYİL"/></p>
+                            <p><StaticLang en="OUT OF STOCK" az="MÖVCUD DEYİL" /></p>
                         </div>
                     )
                 }

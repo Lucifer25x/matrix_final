@@ -9,11 +9,12 @@ import "../assets/styles/pages/Contact.css";
 // Contact page
 const Contact = () => {
     useEffect(() => {
+        window.scrollTo(0, 0);
         document.title = "Contact Us | The Record Hub";
     }, []);
 
     return (
-        <div className="contact-page">
+        <div className="contact-page" data-aos="zoom-in">
             <h1><StaticLang en="Contact Us" az="Bizimlə Əlaqə Saxla" /></h1>
 
             <div className="sections">
