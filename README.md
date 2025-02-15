@@ -2,15 +2,12 @@
 
 ### Essential todo List:
 - [ ] Highlighted blog posts
-- [ ] Account details
-- [ ] Account history (last orders, last viewed products)
-- [ ] Edit account data
+- [ ] Last viewed products
 - [x] Wishlist
 - [ ] Dashboard
     - [ ] Manage products and highlighted products
     - [ ] Manage blogs and highlighted blog posts
     - [ ] Manage banner images on home page
-    - [ ] Ordered products
 
 ### Can be added after the project's main parts are finished:
 - [ ] Bundles (combination of a few vinyls)
@@ -29,7 +26,6 @@
 - [x] React
 - [x] React Hooks
 - [x] React Router
-- [ ] Axios
 - [x] Redux JS
 - [x] API (or local data)
 - [x] SASS or CSS
