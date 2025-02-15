@@ -60,7 +60,12 @@ const Products = () => {
             const searchQuery = search.get("s") || "";
 
             // Get products from the database
-            const { data } = await supabase.from("vinyls").select("*").like("title", `%${searchQuery}%`);
+            const { data } = await supabase
+                .from("vinyls")
+                .select("*")
+                .like("title", `%${searchQuery}%`)
+                .order("created_at", { ascending: false });
+
             setProducts(data);
             setProductCount(data.length);
 
