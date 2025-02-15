@@ -12,6 +12,13 @@
     - [ ] Manage banner images on home page
     - [ ] Ordered products
 
+### Can be added after the project's main parts are finished:
+- [ ] Bundles (combination of a few vinyls)
+- [ ] [Gifts](https://www.therecordhub.com/collections/gifts)
+- [ ] [T-shirts](https://www.therecordhub.com/collections/t-shirts)
+
+*If you add gifts, t-shirts: Change the vinyls page to /products/vinyls and name other things (gifts, t-shirts) according to that*
+
 ### Other Libraries:
 - [x] Remix icons
 - [x] Toastify
