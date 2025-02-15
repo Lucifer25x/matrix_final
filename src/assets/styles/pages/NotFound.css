@@ -1,6 +1,7 @@
 .not-found-page {
     width: 60%;
     margin: 20px auto;
+    min-height: 60vh;
 
     & h1 {
         font-weight: 900;

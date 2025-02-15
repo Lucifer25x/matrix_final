@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { RiHeartLine } from "@remixicon/react";
 import { useCart } from "react-use-cart";
 import { toast, Bounce } from "react-toastify";
+import useWishlist from "../hooks/useWishlist";
 import StaticLang from "../utils/StaticLang";
 
 // Import styles
@@ -14,6 +15,7 @@ const max_description_length = 200;
 // Single product list view component
 const SingleProductListView = ({ product }) => {
     const { addItem } = useCart();
+    const { addWishlist, removeWishlist, isInWishlist } = useWishlist();
 
     const handleAddToCart = () => {
         addItem(product);
@@ -27,11 +29,19 @@ const SingleProductListView = ({ product }) => {
         });
     }
 
+    const handleWishlist = async () => {
+        if (isInWishlist(product.id)) {
+            await removeWishlist(product.id);
+        } else {
+            await addWishlist(product.id);
+        }
+    }
+
     return (
         <div className="single-product-list-view">
             <div className="product-img">
                 <img src={product.img} alt={product.title} />
-                <RiHeartLine size={25} />
+                <RiHeartLine size={25} onClick={handleWishlist} className={isInWishlist(product.id) ? "active" : ""} />
             </div>
             <div className="product-info">
                 <div className="info-top">

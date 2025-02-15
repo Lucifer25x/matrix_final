@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { RiHeartLine } from "@remixicon/react";
 import { useCart } from "react-use-cart";
 import { toast, Bounce } from "react-toastify";
+import useWishlist from "../hooks/useWishlist";
 import StaticLang from "../utils/StaticLang";
 
 // Import styles
@@ -11,6 +12,7 @@ import "../assets/styles/components/Product.css";
 // Product component
 const Product = ({ product }) => {
     const { addItem } = useCart();
+    const { addWishlist, removeWishlist, isInWishlist } = useWishlist();
 
     const handleAddToCart = () => {
         addItem(product);
@@ -24,18 +26,26 @@ const Product = ({ product }) => {
         });
     }
 
+    const handleWishlist = async () => {
+        if (isInWishlist(product.id)) {
+            await removeWishlist(product.id);
+        } else {
+            await addWishlist(product.id);
+        }
+    }
+
     return (
         <div className="single-product">
             <div className="img">
                 <img src={product.img} alt={product.title} />
-                <RiHeartLine size={30} />
+                <RiHeartLine size={30} onClick={handleWishlist} className={isInWishlist(product.id) ? "active" : ""} />
                 {product.stock ? (
                     <div className="add" onClick={handleAddToCart}>
-                        <p><StaticLang en="ADD TO CART" az="SƏBƏTƏ ƏLAVƏ EDİN"/></p>
+                        <p><StaticLang en="ADD TO CART" az="SƏBƏTƏ ƏLAVƏ EDİN" /></p>
                     </div>
                 ) : (
                     <div className="out-of-stock">
-                        <p><StaticLang en="OUT OF STOCK" az="MÖVCUD DEYİL"/></p>
+                        <p><StaticLang en="OUT OF STOCK" az="MÖVCUD DEYİL" /></p>
                     </div>
                 )}
             </div>
