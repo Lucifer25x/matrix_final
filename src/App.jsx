@@ -24,6 +24,7 @@ import TermsOfService from "./pages/TermsOfService";
 import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
 import Account from "./pages/Account";
+import Dashboard from "./pages/Dashboard";
 import Product from "./pages/Product";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
@@ -55,6 +56,7 @@ const App = () => {
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/account" element={<Account />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/terms-of-service" element={<TermsOfService />} />
                 <Route path="*" element={<NotFound />} />

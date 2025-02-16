@@ -1,9 +1,9 @@
 // Import libraries
-import supabase from "../utils/supabase";
 import { useEffect, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import Loading from "../components/Loading";
+import supabase from "../utils/supabase";
 
 // Import styles
 import "../assets/styles/pages/Account.css";
@@ -12,6 +12,7 @@ import "../assets/styles/pages/Account.css";
 // Account page
 const Account = () => {
     const { user, loading } = useContext(UserContext)
+    const [isAdmin, setIsAdmin] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -19,6 +20,27 @@ const Account = () => {
             navigate("/login")
         }
 
+        const checkAdmin = async () => {
+            if (user) {
+                const { data, error } = await supabase
+                    .from("roles")
+                    .select("role")
+                    .eq("id", user.id)
+
+                if (error) {
+                    console.error("Error fetching roles", error)
+                    return
+                }
+
+                if (data && data.length > 0) {
+                    if (data[0].role === "admin") {
+                        setIsAdmin(true)
+                    }
+                }
+            }
+        }
+
+        checkAdmin()
         document.title = "Account | The Record Hub"
     }, [user, loading]);
 
@@ -37,6 +59,10 @@ const Account = () => {
                 <>
                     <h1>Welcome {user.email.split('@')[0]}</h1>
                     <p>Email: {user.email}</p>
+
+                    {isAdmin && (
+                        <Link className="admin" to="/dashboard">Admin Dashboard</Link>
+                    )}
 
                     {!user.user_metadata.email_verified && (
                         <p className="not_verified">Please verify your email address</p>

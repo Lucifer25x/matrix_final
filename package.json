@@ -15,6 +15,7 @@
     "@supabase/supabase-js": "^2.48.1",
     "add": "^2.0.6",
     "react": "^18.3.1",
+    "react-countup": "^6.5.3",
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.3",
     "react-range-slider-input": "^3.2.1",

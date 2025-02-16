@@ -4,12 +4,13 @@
 - [ ] Highlighted blog posts
 - [ ] Last viewed products
 - [x] Wishlist
-- [ ] Dashboard
+- [x] Dashboard
     - [ ] Manage products and highlighted products
     - [ ] Manage blogs and highlighted blog posts
     - [ ] Manage banner images on home page
 
 ### Can be added after the project's main parts are finished:
+- [ ] Sales Page
 - [ ] Bundles (combination of a few vinyls)
 - [ ] [Gifts](https://www.therecordhub.com/collections/gifts)
 - [ ] [T-shirts](https://www.therecordhub.com/collections/t-shirts)
@@ -60,5 +61,5 @@
 - [x] Wishlist
 - [x] Blog (or campaign)
 - [x] Blog Details (or campaign details)
-- [ ] Dashboard
+- [x] Dashboard
 - [x] 404 not found
