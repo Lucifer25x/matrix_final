@@ -6,6 +6,9 @@ import supabase from "../utils/supabase";
 import Loading from "../components/Loading";
 import CountUp from 'react-countup';
 
+// Import components
+import BannerEditor from "../components/BannerEditor";
+
 // Import styles
 import "../assets/styles/pages/Dashboard.css";
 
@@ -20,6 +23,9 @@ const Dashboard = () => {
     // Other states
     const [productCount, setProductCount] = useState(0);
     const [blogCount, setBlogCount] = useState(0);
+    const [showBannerEditor, setShowBannerEditor] = useState(false);
+    const [showProductEditor, setShowProductEditor] = useState(false);
+    const [showBlogEditor, setShowBlogEditor] = useState(false);
 
     useEffect(() => {
         if (!user && !loading) {
@@ -84,6 +90,15 @@ const Dashboard = () => {
         document.title = "Admin Dashboard | The Record Hub"
     }, [user, loading]);
 
+    const handleBanner = () => {
+        if (showBannerEditor) {
+            document.body.style.overflow = "auto";
+        } else {
+            document.body.style.overflow = "hidden";
+        }
+        setShowBannerEditor(!showBannerEditor);
+    }
+
     if (loading || !isAdmin) {
         return <Loading />
     }
@@ -91,14 +106,25 @@ const Dashboard = () => {
     return (
         <div className="dashboard-page">
             <h1 data-aos="zooom-in">Admin Dashboard</h1>
-            <p>WIP...</p>
-            <p>Product count: <CountUp duration={2.75} end={productCount} /></p>
-            <p>Blog count: <CountUp duration={2.75} end={blogCount} /></p>
+
+            <div className="counters">
+                <div className="counter">
+                    <p>Product</p>
+                    <h2><CountUp duration={2.75} end={productCount} /></h2>
+                </div>
+                <div className="counter">
+                    <p>Blog</p>
+                    <h2><CountUp duration={2.75} end={blogCount} /></h2>
+                </div>
+            </div>
+
             <div className="buttons">
-                <button>EDIT BANNERS</button>
+                <button onClick={handleBanner}>EDIT BANNERS</button>
                 <button>EDIT PRODUCTS</button>
                 <button>EDIT BLOGS</button>
             </div>
+
+            <BannerEditor show={showBannerEditor} handleBanner={handleBanner} />
         </div>
     )
 }

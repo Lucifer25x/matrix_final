@@ -32,7 +32,7 @@ const Home = () => {
         
         const getBanners = async () => {
             const { data } = await supabase.from("banners").select("*");
-            data.sort((a, b) => a.order - b.order);
+            data.sort((a, b) => a.order_num - b.order_num);
             setBanners(data);
         }
 
