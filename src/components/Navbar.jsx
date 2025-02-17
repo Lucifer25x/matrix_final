@@ -1,7 +1,7 @@
 // Import libraries
 import { Link } from "react-router-dom";
 import { RiSearchLine, RiHeartLine, RiShoppingBagLine, RiUserLine, RiMenuLine, RiSunLine, RiMoonLine } from "@remixicon/react";
-import { useContext, useState, useRef } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { useCart } from "react-use-cart";
 import useWishlist from "../hooks/useWishlist";
@@ -23,6 +23,15 @@ const Navbar = () => {
     const [sidebar, setSidebar] = useState(false);
     const { wishlistCount } = useWishlist();
     const searchRef = useRef(null);
+
+    useEffect(() => {
+        // Check if there's a search parameter in the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const search = urlParams.get('s');
+        if (search) {
+            searchRef.current.value = search;
+        }
+    }, []);
 
     const handleSidebar = () => {
         setSidebar(!sidebar);

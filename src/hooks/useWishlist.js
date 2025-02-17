@@ -32,19 +32,22 @@ const useWishlist = () => {
 
     // Add to wishlist
     const addWishlist = async (productId) => {
-        if (!user) return;
+        if (!user) return false;
 
         const { data, error } = await supabase
             .from("wishlists")
             .insert([{ user_id: user.id, product_id: productId }]);
 
         if (error) console.error(error);
-        else dispatch(addToWishlist({ product_id: productId }));
+        else {
+            dispatch(addToWishlist({ product_id: productId }));
+            return true;
+        }
     };
 
     // Remove from wishlist
     const removeWishlist = async (productId) => {
-        if (!user) return;
+        if (!user) return false;
 
         const { error } = await supabase
             .from("wishlists")
@@ -52,7 +55,10 @@ const useWishlist = () => {
             .match({ user_id: user.id, product_id: productId });
 
         if (error) console.error(error);
-        else dispatch(removeFromWishlist(productId));
+        else {
+            dispatch(removeFromWishlist(productId));
+            return true;
+        }
     };
 
     // Wishlist count

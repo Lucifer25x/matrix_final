@@ -67,7 +67,7 @@ const Products = () => {
                 .order("created_at", { ascending: false });
 
             setProducts(data);
-            setProductCount(data.length);
+            setProductCount(data.filter(product => product.stock).length);
 
             // Get unique keys from the products
             setFormats(getUniqueValues(data, "format"));

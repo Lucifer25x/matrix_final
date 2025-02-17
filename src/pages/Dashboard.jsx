@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import supabase from "../utils/supabase";
+import StaticLang from "../utils/StaticLang";
 import Loading from "../components/Loading";
 import CountUp from 'react-countup';
 
@@ -105,11 +106,13 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard-page">
-            <h1 data-aos="zooom-in">Admin Dashboard</h1>
+            <h1 data-aos="zooom-in">
+                <StaticLang en="Dashboard" az="İdarə Paneli" />
+            </h1>
 
             <div className="counters">
                 <div className="counter">
-                    <p>Product</p>
+                    <p><StaticLang en="Product" az="Məhsul" /></p>
                     <h2><CountUp duration={2.75} end={productCount} /></h2>
                 </div>
                 <div className="counter">
@@ -119,7 +122,7 @@ const Dashboard = () => {
             </div>
 
             <div className="buttons">
-                <button onClick={handleBanner}>EDIT BANNERS</button>
+                <button onClick={handleBanner}><StaticLang en="EDIT BANNERS" az="BANNERLƏRİ REDAKTƏ EDİN"/></button>
                 <button>EDIT PRODUCTS</button>
                 <button>EDIT BLOGS</button>
             </div>
