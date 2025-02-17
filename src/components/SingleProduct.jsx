@@ -32,7 +32,7 @@ const Product = ({ product }) => {
         } else {
             const res = await addWishlist(product.id);
 
-            if(res){
+            if (res) {
                 toast.success("Product was added to your wishlist!", {
                     position: "bottom-right",
                     autoClose: 3000,
@@ -56,7 +56,9 @@ const Product = ({ product }) => {
         <div className="single-product">
             <div className="img">
                 <img src={product.img} alt={product.title} />
-                <RiHeartLine size={30} onClick={handleWishlist} className={isInWishlist(product.id) ? "active" : ""} />
+                <div onClick={handleWishlist} className={`heart ${isInWishlist(product.id) ? "active" : ""}`} >
+                    <RiHeartLine size={30} />
+                </div>
                 {product.stock ? (
                     <div className="add" onClick={handleAddToCart}>
                         <p><StaticLang en="ADD TO CART" az="SƏBƏTƏ ƏLAVƏ EDİN" /></p>

@@ -1,9 +1,10 @@
 # Final Project
 
 ### Essential todo List:
+- [ ] Create redeems page
 - [ ] Highlighted blog posts
 - [ ] Last viewed products
-- [ ] Add background color to wishlist icon (it's not readable)
+- [ ] Add skeleton placeholder to banners in banner editor before fetching them
 - [x] Wishlist
 - [x] Dashboard
     - [ ] Manage products and highlighted products
