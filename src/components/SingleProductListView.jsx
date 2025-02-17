@@ -59,7 +59,9 @@ const SingleProductListView = ({ product }) => {
         <div className="single-product-list-view">
             <div className="product-img">
                 <img src={product.img} alt={product.title} />
-                <RiHeartLine size={25} onClick={handleWishlist} className={isInWishlist(product.id) ? "active" : ""} />
+                <div onClick={handleWishlist} className={`heart ${isInWishlist(product.id) ? "active" : ""}`} >
+                    <RiHeartLine size={25} />
+                </div>
             </div>
             <div className="product-info">
                 <div className="info-top">
