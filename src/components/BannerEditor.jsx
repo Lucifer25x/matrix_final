@@ -91,14 +91,15 @@ const BannerEditor = ({ show, handleBanner }) => {
                 text: "Banner updated successfully"
             });
 
-            // FIXME: Update the banner in the state
-            // setBanners(prevBanners => 
-            //     prevBanners.map(banner =>
-            //         banner.id === id
-            //             ? { ...banner, image: image_url, title, url, order_num: order }
-            //             : banner
-            //     )
-            // );
+            setBanners(prevBanners => 
+                prevBanners
+                    .map(banner =>
+                        banner.id == id
+                            ? { ...banner, image: image_url, title, url, order_num: order }
+                            : banner
+                    )
+                    .sort((a, b) => a.order_num - b.order_num)
+            );
         }
 
         // Close the accordion
@@ -123,8 +124,8 @@ const BannerEditor = ({ show, handleBanner }) => {
                     {banners.map((banner, i) => (
                         <div className="banner" key={i}>
                             <div className="header" onClick={handleAccordion}>
-                                <h2>Banner {i + 1}</h2>
-                                {/* <h2>{banner.title}</h2> */}
+                                {/* <h2>Banner {i + 1}</h2> */}
+                                <h2>{banner.title}</h2>
                                 <RiArrowDownLine size={25} />
                             </div>
                             <div className="editor">

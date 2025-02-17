@@ -3,6 +3,7 @@
 ### Essential todo List:
 - [ ] Highlighted blog posts
 - [ ] Last viewed products
+- [ ] Add background color to wishlist icon (it's not readable)
 - [x] Wishlist
 - [x] Dashboard
     - [ ] Manage products and highlighted products
