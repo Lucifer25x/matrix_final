@@ -72,6 +72,10 @@
 /* Responsive styles */
 @media(max-width: 800px){
     .dashboard-page {
+        & > h1 {
+            font-size: 2em;
+        }
+        
         .counters {
             flex-direction: column;
             justify-content: center;

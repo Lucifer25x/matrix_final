@@ -7,7 +7,7 @@
 - [x] Dashboard
     - [ ] Manage products and highlighted products
     - [ ] Manage blogs and highlighted blog posts
-    - [ ] Manage banner images on home page
+    - [x] Manage banner images on home page
 
 ### Can be added after the project's main parts are finished:
 - [ ] Sales Page
@@ -19,9 +19,12 @@
 
 ### Other Libraries:
 - [x] Remix icons
-- [x] Toastify
+- [x] Swiper
 - [x] Use Cart
+- [x] React Countup
+- [x] React Spinners
 - [x] SweetAlert2
+- [x] Toastify
 
 ### Technologies:
 - [x] React

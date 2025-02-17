@@ -134,3 +134,22 @@ nav.shadow {
         }
     }
 }
+
+@media(max-width: 600px) {
+    nav {
+        .container {
+            .logo {
+                scale: .8;
+            }
+            .buttons {
+                gap: 5px;
+                .links {
+                    gap: 5px;
+                }
+            }
+            & svg {
+                scale: .8;
+            }
+        }
+    }
+}

@@ -30,15 +30,25 @@ const Product = ({ product }) => {
         if (isInWishlist(product.id)) {
             await removeWishlist(product.id);
         } else {
-            await addWishlist(product.id);
+            const res = await addWishlist(product.id);
 
-            toast.success("Product was added to your wishlist!", {
-                position: "bottom-right",
-                autoClose: 3000,
-                closeOnClick: false,
-                theme: "colored",
-                transition: Bounce,
-            });
+            if(res){
+                toast.success("Product was added to your wishlist!", {
+                    position: "bottom-right",
+                    autoClose: 3000,
+                    closeOnClick: false,
+                    theme: "colored",
+                    transition: Bounce,
+                });
+            } else {
+                toast.error("You need to login to add products to your wishlist!", {
+                    position: "bottom-right",
+                    autoClose: 3000,
+                    closeOnClick: false,
+                    theme: "colored",
+                    transition: Bounce,
+                });
+            }
         }
     }
 

@@ -188,10 +188,11 @@
             color: #fff;
             font-weight: 700;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
 
             &:hover {
                 background-color: var(--background-color-2-hover);
+                color: var(--text-color-inverse);
             }
         }
     }

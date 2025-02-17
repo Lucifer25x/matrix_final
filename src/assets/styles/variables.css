@@ -1,6 +1,7 @@
 :root {
     --font-family: 'Open Sans', sans-serif;
     --text-color: #000;
+    --text-color-inverse: #fff;
     --text-color-2: #b2b2b2;
     --text-color-light: #eee;
     --background-color: #fff;
@@ -25,6 +26,7 @@
 /* TODO: Fix the dark theme for all the components and pages */
 body.dark {
     --text-color: #fff;
+    --text-color-inverse: #000;
     --background-color: #151516;
     --background-color-2: #363636;
     --background-color-2-hover: #fff;
