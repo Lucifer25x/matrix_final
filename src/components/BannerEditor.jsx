@@ -54,6 +54,15 @@ const BannerEditor = ({ show, handleBanner }) => {
         });
     }
 
+    // Close all accordions
+    const closeAccordions = () => {
+        const banners = document.querySelectorAll(".banner");
+        banners.forEach(banner => {
+            banner.classList.remove("open");
+            banner.childNodes[1].style.maxHeight = "0px";
+        });
+    }
+
     // Handle submit
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -98,11 +107,16 @@ const BannerEditor = ({ show, handleBanner }) => {
         parent.childNodes[1].style.maxHeight = "0px";
     }
 
+    const closeBanner = () => {
+        closeAccordions();
+        handleBanner();
+    }
+
     return (
         <div className={`banner-editor ${!show ? 'hidden' : ''}`}>
             <div className="layer"></div>
             <div className="content">
-                <div className="close" onClick={handleBanner}><RiCloseLine size={30} /></div>
+                <div className="close" onClick={closeBanner}><RiCloseLine size={30} /></div>
                 <h1><StaticLang en="Editor" az="Redaktor"/></h1>
 
                 <div className="banners">
