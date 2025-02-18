@@ -9,7 +9,7 @@ import StaticLang from "../utils/StaticLang";
 import "../assets/styles/components/BannerEditor.css";
 
 // TODO: Implement fully functional banner editor
-// TODO: Instead of allowing the user to edit order number, implement drag and drop functionality
+// TODO: Instead of allowing the user to edit order number, implement drag and drop functionality (dnd-kit)
 // Banner Editor component
 const BannerEditor = ({ show, handleBanner }) => {
     const [banners, setBanners] = useState([]);
