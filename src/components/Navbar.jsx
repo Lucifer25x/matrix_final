@@ -15,7 +15,6 @@ import "../assets/styles/components/Navbar.css";
 // Import logo
 import logo from "../assets/images/logo.avif";
 
-// TODO: Implement search functionality using context if needed
 // Navbar component
 const Navbar = () => {
     const { totalItems } = useCart();

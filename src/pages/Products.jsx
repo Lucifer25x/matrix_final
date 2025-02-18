@@ -1,6 +1,6 @@
 // Import libraries
 import { useState, useEffect } from "react";
-import { RiTableView, RiGalleryView2 } from "@remixicon/react";
+import { RiTableView, RiGalleryView2, RiArrowDownLine, RiFilterLine } from "@remixicon/react";
 import SingleProductListView from "../components/SingleProductListView";
 import supabase from "../utils/supabase";
 import SingleProduct from "../components/SingleProduct";
@@ -23,8 +23,6 @@ const getUniqueValues = (array, key) => {
 }
 
 // TODO: Implement reset all the filters button
-// TODO: Implement sorting
-// TODO: Implement filtering on mobile
 // Products component
 const Products = () => {
     // State variables
@@ -37,10 +35,11 @@ const Products = () => {
     const [labels, setLabels] = useState([]);
     const [viewType, setViewType] = useState("gallery");
     const [loading, setLoading] = useState(true);
+    const [mobileFilter, setMobileFilter] = useState(false);
 
     // State variables for filtering
-    const [defaultMinPrice, setDefaultMinPrice] = useState(0);
-    const [defaultMaxPrice, setDefaultMaxPrice] = useState(0);
+    // const [defaultMinPrice, setDefaultMinPrice] = useState(0);
+    // const [defaultMaxPrice, setDefaultMaxPrice] = useState(0);
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(0);
     const [selectedFormats, setSelectedFormats] = useState([]);
@@ -50,11 +49,15 @@ const Products = () => {
     const [selectedLabels, setSelectedLabels] = useState([]);
     const [selectedStock, setSelectedStock] = useState(true);
 
+    // State variables for sorting
+    const [sort, setSort] = useState("manual");
+
+    // Run at the beginning
     useEffect(() => {
         window.scrollTo(0, 0);
-        
+
         // Get products from the database
-        const getproducts = async () => {
+        const getProducts = async () => {
             // get ?s query from the URL
             const search = new URLSearchParams(window.location.search);
             const searchQuery = search.get("s") || "";
@@ -66,7 +69,7 @@ const Products = () => {
                 .like("title", `%${searchQuery}%`)
                 .order("created_at", { ascending: false });
 
-            setProducts(data);
+            setProducts(data.sort((a, b) => a.id - b.id));
             setProductCount(data.filter(product => product.stock).length);
 
             // Get unique keys from the products
@@ -82,14 +85,14 @@ const Products = () => {
             const max = Math.max(...prices);
             setMinPrice(min);
             setMaxPrice(max);
-            setDefaultMinPrice(min);
-            setDefaultMaxPrice(max);
+            // setDefaultMinPrice(min);
+            // setDefaultMaxPrice(max);
 
             // Set title
             document.title = "Products | The Record Hub";
         }
 
-        getproducts();
+        getProducts();
 
         // Set loading to false
         setTimeout(() => {
@@ -137,12 +140,75 @@ const Products = () => {
             setSelectedLabels(selectedLabels.filter(item => item !== label));
         }
     }
+    
+    // Handle Accordion
+    const handleAccordion = (e) => {
+        const parent = e.target.classList.contains("header") ? e.target.parentElement : e.target.parentElement.parentElement;
+        parent.classList.toggle("open");
 
-    if(loading) {
+        // Set max-height for the selection
+        const selection = parent.querySelector(".selection");
+        if (selection.style.maxHeight) {
+            selection.style.maxHeight = null;
+        } else {
+            selection.style.maxHeight = selection.scrollHeight + "px";
+        }
+
+        // Remove open class from other filters
+        const filters = document.querySelectorAll(".filter");
+        filters.forEach(filter => {
+            if (filter !== parent && filter.classList.contains("open")) {
+                filter.classList.remove("open");
+                filter.querySelector(".selection").style.maxHeight = null;
+            }
+        });
+    }
+
+    // Handle Mobile Filter
+    const handleMobileFilter = () => {
+        if (mobileFilter) {
+            document.body.style.overflow = "auto";
+        } else {
+            document.body.style.overflow = "hidden";
+        }
+        setMobileFilter(!mobileFilter);
+    }
+
+    // Handle Sort
+    const handleSort = (e) => {
+        setSort(e.target.value);
+        const sortedProducts = [...products];
+        switch (e.target.value) {
+            case "price_ascending":
+                sortedProducts.sort((a, b) => a.price - b.price);
+                break;
+            case "price_descending":
+                sortedProducts.sort((a, b) => b.price - a.price);
+                break;
+            case "title_ascending":
+                sortedProducts.sort((a, b) => a.title.localeCompare(b.title));
+                break;
+            case "title_descending":
+                sortedProducts.sort((a, b) => b.title.localeCompare(a.title));
+                break;
+            case "created_ascending":
+                sortedProducts.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+                break;
+            case "created_descending":
+                sortedProducts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+                break;
+            default:
+                sortedProducts.sort((a, b) => a.id - b.id);
+                break;
+        }
+        setProducts(sortedProducts);
+    }
+
+    if (loading) {
         return <Loading />
     }
 
-    if(products.length === 0) {
+    if (products.length === 0) {
         return (
             <div className="products-page">
                 <h1>
@@ -152,10 +218,15 @@ const Products = () => {
         )
     }
 
+
     // Render the products
     return (
         <div className="products-page">
-            <div className="filters" data-aos="fade-right">
+            <div className="mobile-filter-button" onClick={handleMobileFilter}>
+                <RiFilterLine size={25} />
+            </div>
+
+            <div className={mobileFilter ? "filters open" : "filters"}>
                 <div className="filter">
                     <h3><StaticLang en="PRICE" az="QİYMƏT" /></h3>
                     <div className="inputs">
@@ -166,7 +237,10 @@ const Products = () => {
                 </div>
 
                 <div className="filter">
-                    <h3>FORMAT</h3>
+                    <div className="header" onClick={handleAccordion}>
+                        <h3>FORMAT</h3>
+                        <RiArrowDownLine size={25} />
+                    </div>
 
                     <div className="selection">
                         {formats && formats.map((format, index) => (
@@ -181,7 +255,10 @@ const Products = () => {
                 </div>
 
                 <div className="filter">
-                    <h3><StaticLang en="COLOR" az="RƏNG" /></h3>
+                    <div className="header" onClick={handleAccordion}>
+                        <h3><StaticLang en="COLOR" az="RƏNG" /></h3>
+                        <RiArrowDownLine size={25} />
+                    </div>
 
                     <div className="selection">
                         {colors && colors.map((color, index) => (
@@ -196,7 +273,10 @@ const Products = () => {
                 </div>
 
                 <div className="filter">
-                    <h3><StaticLang en="GENRE" az="JANR" /></h3>
+                    <div className="header" onClick={handleAccordion}>
+                        <h3><StaticLang en="GENRE" az="JANR" /></h3>
+                        <RiArrowDownLine size={25} />
+                    </div>
 
                     <div className="selection">
                         {genres && genres.map((genre, index) => (
@@ -211,7 +291,10 @@ const Products = () => {
                 </div>
 
                 <div className="filter">
-                    <h3><StaticLang en="RELEASE YEAR" az="ÇIXIŞ İLİ" /></h3>
+                    <div className="header" onClick={handleAccordion}>
+                        <h3><StaticLang en="RELEASE YEAR" az="ÇIXIŞ İLİ" /></h3>
+                        <RiArrowDownLine size={25} />
+                    </div>
 
                     <div className="selection">
                         {release_years && release_years.map((release_year, index) => (
@@ -226,7 +309,10 @@ const Products = () => {
                 </div>
 
                 <div className="filter">
-                    <h3><StaticLang en="LABEL" az="ETİKET" /></h3>
+                    <div className="header" onClick={handleAccordion}>
+                        <h3><StaticLang en="LABEL" az="ETİKET" /></h3>
+                        <RiArrowDownLine size={25} />
+                    </div>
 
                     <div className="selection">
                         {labels && labels.map((label, index) => (
@@ -241,7 +327,10 @@ const Products = () => {
                 </div>
 
                 <div className="filter">
-                    <h3><StaticLang en="STOCK" az="STOK" /></h3>
+                    <div className="header" onClick={handleAccordion}>
+                        <h3><StaticLang en="STOCK" az="STOK" /></h3>
+                        <RiArrowDownLine size={25} />
+                    </div>
 
                     <div className="selection">
                         <div className="option">
@@ -275,7 +364,7 @@ const Products = () => {
                     </div>
 
                     <div className="sort">
-                        <select>
+                        <select onChange={handleSort} value={sort}>
                             <option value="manual">Manual</option>
                             <option value="price_ascending"><StaticLang en="Price ascending" az="Qiymət artaraq" /></option>
                             <option value="price_descending"><StaticLang en="Price descending" az="Qiymət azalaraq" /></option>
