@@ -47,7 +47,7 @@ const Products = () => {
     const [selectedGenres, setSelectedGenres] = useState([]);
     const [selectedReleaseYears, setSelectedReleaseYears] = useState([]);
     const [selectedLabels, setSelectedLabels] = useState([]);
-    const [selectedStock, setSelectedStock] = useState(true);
+    const [selectedStock, setSelectedStock] = useState(0);
 
     // State variables for sorting
     const [sort, setSort] = useState("manual");
@@ -69,8 +69,14 @@ const Products = () => {
                 .like("title", `%${searchQuery}%`)
                 .order("created_at", { ascending: false });
 
-            setProducts(data.sort((a, b) => a.id - b.id));
-            setProductCount(data.filter(product => product.stock).length);
+            // Sort products by stock (in stock first)
+            data.sort((a, b) => b.stock - a.stock);
+
+            // Set products
+            setProducts(data);
+
+            // Set product count
+            setProductCount(data.length);
 
             // Get unique keys from the products
             setFormats(getUniqueValues(data, "format"));
@@ -140,7 +146,17 @@ const Products = () => {
             setSelectedLabels(selectedLabels.filter(item => item !== label));
         }
     }
-    
+
+    // Handle Stock
+    const handleStock = (stock) => {
+        setSelectedStock(stock);
+        if(stock == 0){
+            setProductCount(products.length);
+        } else{
+            setProductCount(products.filter(product => product.stock == (stock == 1)).length);
+        }
+    }
+
     // Handle Accordion
     const handleAccordion = (e) => {
         const parent = e.target.classList.contains("header") ? e.target.parentElement : e.target.parentElement.parentElement;
@@ -198,7 +214,7 @@ const Products = () => {
                 sortedProducts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
                 break;
             default:
-                sortedProducts.sort((a, b) => a.id - b.id);
+                sortedProducts.sort((a, b) => b.stock - a.stock);
                 break;
         }
         setProducts(sortedProducts);
@@ -335,13 +351,19 @@ const Products = () => {
                     <div className="selection">
                         <div className="option">
                             <label>
-                                <input type="checkbox" checked={selectedStock} onChange={e => { setSelectedStock(e.target.checked) }} />
+                                <input type="checkbox" checked={selectedStock == 0} onChange={e => handleStock(0)} />
+                                <p><StaticLang en="All" az="Hamısı" /></p>
+                            </label>
+                        </div>
+                        <div className="option">
+                            <label>
+                                <input type="checkbox" checked={selectedStock == 1} onChange={e => handleStock(1)} />
                                 <p><StaticLang en="In stock" az="Stokda var" /></p>
                             </label>
                         </div>
                         <div className="option">
                             <label>
-                                <input type="checkbox" checked={!selectedStock} onChange={e => { setSelectedStock(!e.target.checked) }} />
+                                <input type="checkbox" checked={selectedStock == 2} onChange={e => handleStock(2)} />
                                 <p><StaticLang en="Out of stock" az="Stokda yoxdur" /></p>
                             </label>
                         </div>
@@ -383,7 +405,8 @@ const Products = () => {
                         (selectedGenres.length > 0 ? selectedGenres.includes(product.genre) : true) &&
                         (selectedReleaseYears.length > 0 ? selectedReleaseYears.includes(product.release_year) : true) &&
                         (selectedLabels.length > 0 ? selectedLabels.includes(product.label) : true) &&
-                        (selectedStock == product.stock) &&
+                        (selectedStock == 1 ? product.stock : true) &&
+                        (selectedStock == 2 ? !product.stock : true) &&
                         product.price >= minPrice && product.price <= maxPrice
                     ).map((product, index) => {
                         if (viewType === "gallery") {
