@@ -6,8 +6,9 @@
     transition: all 0.3s;
 
     .content {
+        width: 95%;
+        max-width: 500px;
         padding: 30px;
-        min-width: 300px;
         background-color: #fff;
         border: 1px solid var(--border-color);
         z-index: 1000;
