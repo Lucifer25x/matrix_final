@@ -9,7 +9,7 @@ import StaticLang from "../utils/StaticLang";
 import "../assets/styles/components/BannerEditor.css";
 
 // TODO: Implement fully functional banner editor
-// TODO: Instead of allowing the user to edit order number, implement drag and drop functionality (dnd-kit)
+// TODO: Instead of allowing the user to edit order number, implement drag and drop functionality (dnd-kit) or add up and down buttons to change the order number
 // Banner Editor component
 const BannerEditor = ({ show, handleBanner }) => {
     const [banners, setBanners] = useState([]);
@@ -72,6 +72,16 @@ const BannerEditor = ({ show, handleBanner }) => {
         const order = e.target[3].value;
         const id = e.target.id;
 
+        // Ensure that the order number is a number
+        if (isNaN(order)) {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Order number must be a number"
+            });
+            return;
+        }
+
         // Update the banner
         const { data, error } = await supabase
             .from("banners")
@@ -91,7 +101,7 @@ const BannerEditor = ({ show, handleBanner }) => {
                 text: "Banner updated successfully"
             });
 
-            setBanners(prevBanners => 
+            setBanners(prevBanners =>
                 prevBanners
                     .map(banner =>
                         banner.id == id
@@ -118,13 +128,12 @@ const BannerEditor = ({ show, handleBanner }) => {
             <div className="layer"></div>
             <div className="content">
                 <div className="close" onClick={closeBanner}><RiCloseLine size={30} /></div>
-                <h1><StaticLang en="Editor" az="Redaktor"/></h1>
+                <h1><StaticLang en="Editor" az="Redaktor" /></h1>
 
                 <div className="banners">
                     {banners.map((banner, i) => (
                         <div className="banner" key={i}>
                             <div className="header" onClick={handleAccordion}>
-                                {/* <h2>Banner {i + 1}</h2> */}
                                 <h2>{banner.title}</h2>
                                 <RiArrowDownLine size={25} />
                             </div>
