@@ -66,7 +66,7 @@ const Products = () => {
             const { data } = await supabase
                 .from("vinyls")
                 .select("*")
-                .like("title", `%${searchQuery}%`)
+                .ilike("title", `%${searchQuery}%`)
                 .order("created_at", { ascending: false });
 
             // Sort products by stock (in stock first)

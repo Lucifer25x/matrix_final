@@ -57,15 +57,33 @@
                     transition: background-color 0.3s;
                     border-radius: 5px;
 
-                    & svg {
+                    .left {
+                        width: 80%;
+                    }
+
+                    .right {
+                        width: 20%;
                         display: flex;
-                        justify-content: center;
+                        justify-content: space-between;
                         align-items: center;
-                        transition: transform 0.5s;
+                        border-left: 1px solid #d3d3d3;
+                        padding-left: 10px;
+                        transition: .3s ease all;
+
+                        & svg {
+                            transition: .3s ease all;
+                            &:hover {
+                                color: var(--primary);
+                            }
+                        }
                     }
 
                     &:hover {
                         background-color: #d3d3d3;
+
+                        .right {
+                            border-left: 1px solid #000;
+                        }
                     }
                 }
 
@@ -118,8 +136,8 @@
                 .header {
                     background-color: #d3d3d3;
 
-                    & svg {
-                        transform: rotate(180deg);
+                    .right {
+                        border-left: 1px solid #000;
                     }
                 }
             }

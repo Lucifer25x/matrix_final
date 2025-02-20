@@ -39,6 +39,10 @@ const Navbar = () => {
 
     const handleSearch = (e) => {
         e.preventDefault();
+        if (!searchRef.current.value.trim().length) {
+            window.location.href = "/products";
+            return;
+        }
         window.location.href = `/products/?s=${searchRef.current.value}`;
     }
 
@@ -53,7 +57,7 @@ const Navbar = () => {
                     </div>
                     <div className="search">
                         <form onSubmit={handleSearch}>
-                            <input type="text" placeholder="Search" ref={searchRef} required/>
+                            <input type="text" placeholder="Search" ref={searchRef} />
                             <button><RiSearchLine size={25} /></button>
                         </form>
                     </div>
