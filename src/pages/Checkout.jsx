@@ -12,7 +12,7 @@ const Checkout = () => {
     }, []);
 
     return (
-        <div className="checkout-page">
+        <div className="checkout-page" data-aos="zoom-in">
             <h1>Checkout</h1>
 
             <div className="section">

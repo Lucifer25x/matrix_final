@@ -27,6 +27,10 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
 
     const handleSearch = (e) => {
         e.preventDefault();
+        if (!searchRef.current.value.trim().length) {
+            window.location.href = "/products";
+            return;
+        }
         window.location.href = `/products/?s=${searchRef.current.value}`;
     }
 
@@ -36,7 +40,7 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
                 <button onClick={handleSidebar}><RiCloseLine size={30} /></button>
             </div>
             <form className="search" onSubmit={handleSearch}>
-                <input type="text" placeholder="Search..." ref={searchRef} required/>
+                <input type="text" placeholder="Search..." ref={searchRef} />
             </form>
             <div className="links">
                 <Link to={"/about"}><StaticLang en="ABOUT US" az="HAQQIMIZDA" /></Link>
