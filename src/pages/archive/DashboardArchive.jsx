@@ -24,7 +24,7 @@ const Dashboard = () => {
     // Other states
     const [productCount, setProductCount] = useState(0);
     const [blogCount, setBlogCount] = useState(0);
-    const [showBannerEditor, setShowBannerEditor] = useState(true);
+    const [showBannerEditor, setShowBannerEditor] = useState(false);
     const [showProductEditor, setShowProductEditor] = useState(false);
     const [showBlogEditor, setShowBlogEditor] = useState(false);
 
@@ -91,21 +91,13 @@ const Dashboard = () => {
         document.title = "Admin Dashboard | The Record Hub"
     }, [user, loading]);
 
-    const handleTabClick = (e) => {
-        const tab = e.target.innerText;
-        if (tab === "BANNERS") {
-            setShowBannerEditor(true);
-            setShowProductEditor(false);
-            setShowBlogEditor(false);
-        } else if (tab === "PRODUCTS") {
-            setShowBannerEditor(false);
-            setShowProductEditor(true);
-            setShowBlogEditor(false);
-        } else if (tab === "BLOGS") {
-            setShowBannerEditor(false);
-            setShowProductEditor(false);
-            setShowBlogEditor(true);
+    const handleBanner = () => {
+        if (showBannerEditor) {
+            document.body.style.overflow = "auto";
+        } else {
+            document.body.style.overflow = "hidden";
         }
+        setShowBannerEditor(!showBannerEditor);
     }
 
     if (loading || !isAdmin) {
@@ -129,29 +121,13 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            <div className="tabs">
-                <div className={`tab ${showBannerEditor ? "active" : ""}`} onClick={handleTabClick}>
-                    <h2>BANNERS</h2>
-                </div>
-                <div className={`tab ${showProductEditor ? "active" : ""}`} onClick={handleTabClick}>
-                    <h2>PRODUCTS</h2>
-                </div>
-                <div className={`tab ${showBlogEditor ? "active" : ""}`} onClick={handleTabClick}>
-                    <h2>BLOGS</h2>
-                </div>
+            <div className="buttons">
+                <button onClick={handleBanner}><StaticLang en="EDIT BANNERS" az="BANNERLƏRİ REDAKTƏ EDİN"/></button>
+                <button>EDIT PRODUCTS</button>
+                <button>EDIT BLOGS</button>
             </div>
 
-            <div className="tab-content">
-                <div className={`tab ${showBannerEditor ? "active" : ""}`}>
-                    <BannerEditor />
-                </div>
-                <div className={`tab ${showProductEditor ? "active" : ""}`} >
-                    <h2>PRODUCTS CONTENT</h2>
-                </div>
-                <div className={`tab ${showBlogEditor ? "active" : ""}`}>
-                    <h2>BLOGS CONTENT</h2>
-                </div>
-            </div>
+            <BannerEditor show={showBannerEditor} handleBanner={handleBanner} />
         </div>
     )
 }
