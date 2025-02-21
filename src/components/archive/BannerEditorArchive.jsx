@@ -1,16 +1,18 @@
 // Import libraries
-import { useState, useEffect } from "react";
-import { RiArrowDownLine, RiArrowUpLine } from "@remixicon/react";
+import { useState, useEffect, useRef } from "react";
+import { RiCloseLine, RiArrowDownLine, RiArrowUpLine } from "@remixicon/react";
 import Swal from "sweetalert2";
 import supabase from "../utils/supabase";
-// import StaticLang from "../utils/StaticLang";
+import StaticLang from "../utils/StaticLang";
 
 // Import styles
 import "../assets/styles/components/BannerEditor.css";
 
+// TODO: Implement fully functional banner editor
 // Banner Editor component
-const BannerEditor = () => {
+const BannerEditor = ({ show, handleBanner }) => {
     const [banners, setBanners] = useState([]);
+    const hasFetched = useRef(false);
 
     // Fetch banners
     const fetchBanners = async () => {
@@ -27,8 +29,12 @@ const BannerEditor = () => {
     }
 
     useEffect(() => {
-        fetchBanners();
-    }, []);
+        if (show && !hasFetched.current) {
+            fetchBanners();
+            hasFetched.current = true;
+        }
+
+    }, [show]);
 
     // Add accordion functionality to the banners
     const handleAccordion = (e) => {
@@ -68,7 +74,7 @@ const BannerEditor = () => {
         // Update the banner
         const { data, error } = await supabase
             .from("banners")
-            .update({ image: image_url, title: title, url: url })
+            .update({ image: image_url, title: title, url: url})
             .eq("id", id);
 
         if (error) {
@@ -99,6 +105,11 @@ const BannerEditor = () => {
         const parent = e.target.parentElement.parentElement;
         parent.classList.remove("open");
         parent.childNodes[1].style.maxHeight = "0px";
+    }
+
+    const closeBanner = () => {
+        closeAccordions();
+        handleBanner();
     }
 
     // Move banner up
@@ -139,18 +150,6 @@ const BannerEditor = () => {
                 )
                 .sort((a, b) => a.order_num - b.order_num)
         );
-
-        // Set inputs to values of the previous banner
-        const form = document.getElementById(id);
-        form[0].value = prevBanner.image;
-        form[1].value = prevBanner.title;
-        form[2].value = prevBanner.url;
-
-        // Set inputs of the previous banner to values of the current banner
-        const prevForm = document.getElementById(prevBanner.id);
-        prevForm[0].value = banner.image;
-        prevForm[1].value = banner.title;
-        prevForm[2].value = banner.url;
     }
 
     // Move banner down
@@ -191,52 +190,48 @@ const BannerEditor = () => {
                 )
                 .sort((a, b) => a.order_num - b.order_num)
         );
-
-        // Set inputs to values of the next banner
-        const form = document.getElementById(id);
-        form[0].value = nextBanner.image;
-        form[1].value = nextBanner.title;
-        form[2].value = nextBanner.url;
-
-        // Set inputs of the next banner to values of the current banner
-        const nextForm = document.getElementById(nextBanner.id);
-        nextForm[0].value = banner.image;
-        nextForm[1].value = banner.title;
-        nextForm[2].value = banner.url;
     }
 
     return (
-        <div className="banner-editor">
-            {banners.map((banner, i) => (
-                <div className="banner" key={i}>
-                    <div className="header">
-                        <div className="left" onClick={handleAccordion}>
-                            <h2>{banner.title}</h2>
+        <div className={`banner-editor ${!show ? 'hidden' : ''}`}>
+            <div className="layer"></div>
+            <div className="content">
+                <div className="close" onClick={closeBanner}><RiCloseLine size={30} /></div>
+                <h1><StaticLang en="Editor" az="Redaktor" /></h1>
+
+                <div className="banners">
+                    {banners.map((banner, i) => (
+                        <div className="banner" key={i}>
+                            <div className="header">
+                                <div className="left" onClick={handleAccordion}>
+                                    <h2>{banner.title}</h2>
+                                </div>
+                                <div className="right">
+                                    <RiArrowDownLine size={30} onClick={() => handleMoveDown(banner.id)} />
+                                    <RiArrowUpLine size={30} onClick={() => handleMoveUp(banner.id)} />
+                                </div>
+                            </div>
+                            <div className="editor">
+                                <form onSubmit={handleSubmit} id={banner.id}>
+                                    <label>
+                                        <p>Image URL:</p>
+                                        <input type="text" defaultValue={banner.image} placeholder="Image url" required />
+                                    </label>
+                                    <label>
+                                        <p>Title:</p>
+                                        <input type="text" defaultValue={banner.title} placeholder="Title" required />
+                                    </label>
+                                    <label>
+                                        <p>URL:</p>
+                                        <input type="text" defaultValue={banner.url} placeholder="URL" required />
+                                    </label>
+                                    <button>Submit</button>
+                                </form>
+                            </div>
                         </div>
-                        <div className="right">
-                            <RiArrowDownLine size={30} onClick={() => handleMoveDown(banner.id)} />
-                            <RiArrowUpLine size={30} onClick={() => handleMoveUp(banner.id)} />
-                        </div>
-                    </div>
-                    <div className="editor">
-                        <form onSubmit={handleSubmit} id={banner.id}>
-                            <label>
-                                <p>Image URL:</p>
-                                <input type="text" defaultValue={banner.image} placeholder="Image url" required />
-                            </label>
-                            <label>
-                                <p>Title:</p>
-                                <input type="text" defaultValue={banner.title} placeholder="Title" required />
-                            </label>
-                            <label>
-                                <p>URL:</p>
-                                <input type="text" defaultValue={banner.url} placeholder="URL" required />
-                            </label>
-                            <button>Submit</button>
-                        </form>
-                    </div>
+                    ))}
                 </div>
-            ))}
+            </div>
         </div>
     );
 }
