@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { RiArrowDownLine, RiArrowUpLine } from "@remixicon/react";
 import Swal from "sweetalert2";
 import supabase from "../utils/supabase";
-// import StaticLang from "../utils/StaticLang";
+import StaticLang from "../utils/StaticLang";
 
 // Import styles
 import "../assets/styles/components/BannerEditor.css";
@@ -221,18 +221,18 @@ const BannerEditor = () => {
                     <div className="editor">
                         <form onSubmit={handleSubmit} id={banner.id}>
                             <label>
-                                <p>Image URL:</p>
+                                <p><StaticLang en="Image URL" az="Şəkil URL'i" />:</p>
                                 <input type="text" defaultValue={banner.image} placeholder="Image url" required />
                             </label>
                             <label>
-                                <p>Title:</p>
+                                <p><StaticLang en="Title" az="Başlıq" />:</p>
                                 <input type="text" defaultValue={banner.title} placeholder="Title" required />
                             </label>
                             <label>
                                 <p>URL:</p>
                                 <input type="text" defaultValue={banner.url} placeholder="URL" required />
                             </label>
-                            <button>Submit</button>
+                            <button><StaticLang en="Submit" az="Təsdiqlə" /></button>
                         </form>
                     </div>
                 </div>

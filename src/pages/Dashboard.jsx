@@ -24,9 +24,12 @@ const Dashboard = () => {
     // Other states
     const [productCount, setProductCount] = useState(0);
     const [blogCount, setBlogCount] = useState(0);
-    const [showBannerEditor, setShowBannerEditor] = useState(true);
-    const [showProductEditor, setShowProductEditor] = useState(false);
-    const [showBlogEditor, setShowBlogEditor] = useState(false);
+    const [activeTab, setActiveTab] = useState("banner");
+    const [loadedTabs, setLoadedTabs] = useState({
+        banner: true,
+        product: false,
+        blog: false
+    });
 
     useEffect(() => {
         if (!user && !loading) {
@@ -91,21 +94,9 @@ const Dashboard = () => {
         document.title = "Admin Dashboard | The Record Hub"
     }, [user, loading]);
 
-    const handleTabClick = (e) => {
-        const tab = e.target.innerText;
-        if (tab === "BANNERS") {
-            setShowBannerEditor(true);
-            setShowProductEditor(false);
-            setShowBlogEditor(false);
-        } else if (tab === "PRODUCTS") {
-            setShowBannerEditor(false);
-            setShowProductEditor(true);
-            setShowBlogEditor(false);
-        } else if (tab === "BLOGS") {
-            setShowBannerEditor(false);
-            setShowProductEditor(false);
-            setShowBlogEditor(true);
-        }
+    const handleTabClick = (tab) => {
+        setActiveTab(tab);
+        setLoadedTabs((prev) => ({ ...prev, [tab]: true }));
     }
 
     if (loading || !isAdmin) {
@@ -130,27 +121,33 @@ const Dashboard = () => {
             </div>
 
             <div className="tabs">
-                <div className={`tab ${showBannerEditor ? "active" : ""}`} onClick={handleTabClick}>
+                <div className={`tab ${activeTab === "banner" ? "active" : ""}`} onClick={() => handleTabClick("banner")}>
                     <h2>BANNERS</h2>
                 </div>
-                <div className={`tab ${showProductEditor ? "active" : ""}`} onClick={handleTabClick}>
+                <div className={`tab ${activeTab === "product" ? "active" : ""}`} onClick={() => handleTabClick("product")}>
                     <h2>PRODUCTS</h2>
                 </div>
-                <div className={`tab ${showBlogEditor ? "active" : ""}`} onClick={handleTabClick}>
+                <div className={`tab ${activeTab === "blog" ? "active" : ""}`} onClick={() => handleTabClick("blog")}>
                     <h2>BLOGS</h2>
                 </div>
             </div>
 
             <div className="tab-content">
-                <div className={`tab ${showBannerEditor ? "active" : ""}`}>
-                    <BannerEditor />
-                </div>
-                <div className={`tab ${showProductEditor ? "active" : ""}`} >
-                    <h2>PRODUCTS CONTENT</h2>
-                </div>
-                <div className={`tab ${showBlogEditor ? "active" : ""}`}>
-                    <h2>BLOGS CONTENT</h2>
-                </div>
+                {loadedTabs.banner && (
+                    <div className={`tab ${activeTab === "banner" ? "active" : ""}`}>
+                        <BannerEditor />
+                    </div>
+                )}
+                {loadedTabs.product && (
+                    <div className={`tab ${activeTab === "product" ? "active" : ""}`}>
+                        <h1>Product Editor</h1>
+                    </div>
+                )}
+                {loadedTabs.blog && (
+                    <div className={`tab ${activeTab === "blog" ? "active" : ""}`}>
+                        <h1>Blog Editor</h1>
+                    </div>
+                )}
             </div>
         </div>
     )
