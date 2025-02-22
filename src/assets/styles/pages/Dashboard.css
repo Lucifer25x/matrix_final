@@ -101,5 +101,12 @@
             align-items: center;
             width: 100%;
         }
+
+        .tabs {
+            .tab {
+                font-size: .8em;
+                padding: 10px 0;
+            }
+        }
     }
 }
