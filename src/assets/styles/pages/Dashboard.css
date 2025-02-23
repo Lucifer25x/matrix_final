@@ -76,6 +76,7 @@
         width: 100%;
         min-height: 200px;
         border: 1px solid #333;
+        position: relative;
 
         .tab {
             width: 100%;
