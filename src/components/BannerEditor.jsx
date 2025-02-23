@@ -1,6 +1,7 @@
 // Import libraries
 import { useState, useEffect } from "react";
 import { RiArrowDownLine, RiArrowUpLine } from "@remixicon/react";
+import { MoonLoader } from "react-spinners";
 import Swal from "sweetalert2";
 import supabase from "../utils/supabase";
 import StaticLang from "../utils/StaticLang";
@@ -45,15 +46,6 @@ const BannerEditor = () => {
                 banner.classList.remove("open");
                 banner.childNodes[1].style.maxHeight = "0px";
             }
-        });
-    }
-
-    // Close all accordions
-    const closeAccordions = () => {
-        const banners = document.querySelectorAll(".banner");
-        banners.forEach(banner => {
-            banner.classList.remove("open");
-            banner.childNodes[1].style.maxHeight = "0px";
         });
     }
 
@@ -206,8 +198,14 @@ const BannerEditor = () => {
     }
 
     return (
-        <div className="banner-editor">
-            {banners.map((banner, i) => (
+        <div className="banner-editor" >
+            {banners.length == 0 && (
+                <div className="loader">
+                    <MoonLoader color={"var(--text-color)"} size={75} />
+                </div>
+            )}
+
+            {banners.length > 0 && banners.map((banner, i) => (
                 <div className="banner" key={i}>
                     <div className="header">
                         <div className="left" onClick={handleAccordion}>
