@@ -4,7 +4,7 @@
 - [ ] Create redeems page
 - [ ] Highlighted blog posts
 - [ ] Last viewed products
-- [ ] Add skeleton placeholder to banners in banner editor before fetching them
+- [ ] Implement banner editor using redux
 - [x] Wishlist
 - [x] Dashboard
     - [ ] Manage products and highlighted products
