@@ -12,7 +12,7 @@ const NotFound = () => {
         window.scrollTo(0, 0);
         document.title = "404 | The Record Hub";
     }, []);
-    
+
     return (
         <div className="not-found-page">
             <h1><StaticLang en="PAGE NOT FOUND" az="SƏHİFƏ TAPILMADI" /></h1>

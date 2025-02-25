@@ -141,12 +141,15 @@ nav.shadow {
             .logo {
                 scale: .8;
             }
+
             .buttons {
                 gap: 5px;
+
                 .links {
                     gap: 5px;
                 }
             }
+
             & svg {
                 scale: .8;
             }

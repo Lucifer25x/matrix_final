@@ -20,7 +20,7 @@ const Wishlist = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(!user && !loading){
+        if (!user && !loading) {
             navigate("/login")
         }
 
@@ -42,7 +42,7 @@ const Wishlist = () => {
             }
             setProductsLoading(false);
         }
-        
+
         document.title = "Wishlist | The Record Hub"
         fetchProducts();
     }, [user, loading, wishlist])

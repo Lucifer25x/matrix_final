@@ -64,17 +64,17 @@ const Footer = () => {
                         <p><StaticLang en="THE SMALL PRINT" az="KİÇİK ÇAP" /></p>
                         <div className="links">
                             <Link to={"https://www.therecordhub.com/pages/privacy-center"}><StaticLang en="Privacy Center" az="Gizlilik mərkəzi" /></Link>
-                            <Link to={"/terms-of-service"}><StaticLang en="Terms Of Service" az="Xidmət Şərtləri"/></Link>
+                            <Link to={"/terms-of-service"}><StaticLang en="Terms Of Service" az="Xidmət Şərtləri" /></Link>
                         </div>
                     </div>
 
                     <div className="subscribe">
-                        <p><StaticLang en="NEWSLETTER SUBSCRIBE" az="ABUNƏ OL"/></p>
+                        <p><StaticLang en="NEWSLETTER SUBSCRIBE" az="ABUNƏ OL" /></p>
 
                         <div className="email">
                             <label htmlFor="email-input">Email*</label>
                             <input type="email" id="email-input" />
-                            <button><StaticLang en="SIGN UP" az="QEYDİYYATDAN KEÇ"/></button>
+                            <button><StaticLang en="SIGN UP" az="QEYDİYYATDAN KEÇ" /></button>
                         </div>
                     </div>
                 </div>

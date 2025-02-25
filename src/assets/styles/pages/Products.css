@@ -189,6 +189,7 @@
             z-index: 9;
             transition: .3s ease all;
         }
+
         .filters.open {
             opacity: 1;
             pointer-events: all;

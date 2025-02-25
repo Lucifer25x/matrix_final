@@ -51,12 +51,14 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s;
+
             & form {
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
                 padding: 10px;
                 border-top: 1px solid #ccc;
+
                 & label {
                     width: 100%;
 

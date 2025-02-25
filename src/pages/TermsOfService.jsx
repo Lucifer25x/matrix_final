@@ -11,7 +11,7 @@ const TermsOfService = () => {
         window.scrollTo(0, 0);
         document.title = "Terms of Service | The Record Hub";
     }, []);
-    
+
     return (
         <div className="terms-of-service-page" data-aos="fade-up">
             <h1><StaticLang en="Terms of Service" az="Xidmət Şərtləri" /></h1>
