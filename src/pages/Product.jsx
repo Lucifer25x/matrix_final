@@ -29,7 +29,7 @@ const Product = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        
+
         const getProduct = async () => {
             const { data, error } = await supabase.from("vinyls").select("*").eq("id", id);
             if (error) {

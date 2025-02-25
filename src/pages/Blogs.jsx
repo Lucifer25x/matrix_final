@@ -15,7 +15,7 @@ const Blogs = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        
+
         const getBlogs = async () => {
             const { data, error } = await supabase
                 .from("blogs")

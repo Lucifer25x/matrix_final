@@ -11,7 +11,7 @@ const FAQ = () => {
         window.scrollTo(0, 0);
         document.title = "FAQ | The Record Hub";
     }, []);
-    
+
     return (
         <div className="faq-page">
             <h1 data-aos="fade-up"><StaticLang en="Frequently asked questions" az="Tez-tez verilən suallar" /></h1>

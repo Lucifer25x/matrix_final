@@ -25,6 +25,7 @@
             padding: 10px;
             border: 1px solid var(--border-color);
             outline: none;
+
             &:focus {
                 border-color: var(--border-color-focus);
             }

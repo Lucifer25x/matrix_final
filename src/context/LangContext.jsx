@@ -14,5 +14,5 @@ export const LangProvider = ({ children }) => {
         setLang(state => state === "EN" ? "AZ" : "EN");
     }
 
-    return <LangContext.Provider value={{lang, toggleLang}}>{children}</LangContext.Provider>
+    return <LangContext.Provider value={{ lang, toggleLang }}>{children}</LangContext.Provider>
 }

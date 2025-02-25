@@ -29,7 +29,7 @@ const Home = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        
+
         const getBanners = async () => {
             const { data } = await supabase.from("banners").select("*");
             data.sort((a, b) => a.order_num - b.order_num);

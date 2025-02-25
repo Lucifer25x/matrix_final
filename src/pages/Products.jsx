@@ -150,9 +150,9 @@ const Products = () => {
     // Handle Stock
     const handleStock = (stock) => {
         setSelectedStock(stock);
-        if(stock == 0){
+        if (stock == 0) {
             setProductCount(products.length);
-        } else{
+        } else {
             setProductCount(products.filter(product => product.stock == (stock == 1)).length);
         }
     }
