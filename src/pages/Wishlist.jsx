@@ -10,7 +10,6 @@ import supabase from "../utils/supabase";
 // Import styles
 import "../assets/styles/pages/Wishlist.css";
 
-// FIXME: Fix the product reappearing on the wishlist page after being removed
 // Wishlist page
 const Wishlist = () => {
     const { user, loading } = useContext(UserContext);

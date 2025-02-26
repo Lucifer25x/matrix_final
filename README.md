@@ -4,7 +4,7 @@
 - [ ] Create redeems page
 - [ ] Highlighted blog posts
 - [ ] Last viewed products
-- [ ] Implement banner editor using redux
+- [x] Implement banner editor using redux
 - [x] Wishlist
 - [x] Dashboard
     - [ ] Manage products and highlighted products
