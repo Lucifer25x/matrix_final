@@ -16,7 +16,7 @@ const useProduct = () => {
         if (!loading && user) {
             const fetchProducts = async () => {
                 const { data, error } = await supabase
-                    .from("products")
+                    .from("vinyls")
                     .select("*");
 
                 if (error) console.error(error);
@@ -30,14 +30,14 @@ const useProduct = () => {
     // Add a product
     const addProductData = async (data) => {
         const { error } = await supabase
-            .from("products")
+            .from("vinyls")
             .insert(data);
 
         if (error) {
             console.error(error);
         } else {
             const { data: updatedData, error: fetchError } = await supabase
-                .from("products")
+                .from("vinyls")
                 .select("*");
 
             if (fetchError) {
@@ -51,7 +51,7 @@ const useProduct = () => {
     // Update the product
     const updateProductData = async (id, data) => {
         const { error } = await supabase
-            .from("products")
+            .from("vinyls")
             .update(data)
             .eq("id", id);
 
@@ -59,7 +59,7 @@ const useProduct = () => {
             console.error(error);
         } else {
             const { data: updatedData, error: fetchError } = await supabase
-                .from("products")
+                .from("vinyls")
                 .select("*");
 
             if (fetchError) {
@@ -73,7 +73,7 @@ const useProduct = () => {
     // Remove a product
     const removeProductData = async (id) => {
         const { error } = await supabase
-            .from("products")
+            .from("vinyls")
             .delete()
             .eq("id", id);
 
@@ -81,7 +81,7 @@ const useProduct = () => {
             console.error(error);
         } else {
             const { data: updatedData, error: fetchError } = await supabase
-                .from("products")
+                .from("vinyls")
                 .select("*");
 
             if (fetchError) {
