@@ -4,11 +4,12 @@ import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import supabase from "../utils/supabase";
 import StaticLang from "../utils/StaticLang";
-import Loading from "../components/Loading";
 import CountUp from 'react-countup';
 
 // Import components
 import BannerEditor from "../components/BannerEditor";
+import ProductEditor from "../components/ProductEditor";
+import Loading from "../components/Loading";
 
 // Import styles
 import "../assets/styles/pages/Dashboard.css";
@@ -140,7 +141,7 @@ const Dashboard = () => {
                 )}
                 {loadedTabs.product && (
                     <div className={`tab ${activeTab === "product" ? "active" : ""}`}>
-                        <h1>Product Editor</h1>
+                        <ProductEditor />
                     </div>
                 )}
                 {loadedTabs.blog && (
