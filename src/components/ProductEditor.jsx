@@ -1,4 +1,5 @@
 // TODO: Implement product editor component
+// TODO: Utilize useProduct hook
 const ProductEditor = () => {
     return (
         <div className="product-editor">
