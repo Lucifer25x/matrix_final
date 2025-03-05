@@ -4,6 +4,7 @@
 - [ ] Create redeems page
 - [ ] Highlighted blog posts
 - [ ] Last viewed products
+- [ ] Add new products to database
 - [x] Wishlist
 - [x] Dashboard
     - [ ] Manage products and highlighted products

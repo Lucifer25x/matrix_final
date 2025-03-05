@@ -85,7 +85,7 @@ const BannerEditor = () => {
                 </div>
             )}
 
-            {banners.length > 0 && banners.map((banner, i) => (
+            {banners.map((banner, i) => (
                 <div className="banner" key={i}>
                     <div className="header">
                         <div className="left" onClick={handleAccordion}>
