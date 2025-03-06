@@ -27,6 +27,7 @@ const ProductEditor = () => {
 
     return (
         <div className="product-editor">
+            {/* TODO: Make the popup take all the window space, so it fits */}
             <div className={`popup ${showPopup ? "show" : ""}`}>
                 <div className="modal" id="product-editor-popup">
                     <h3>Edit Product</h3>
@@ -47,9 +48,38 @@ const ProductEditor = () => {
                             <span>Price</span>
                             <input type="text" />
                         </label>
+                        <label>
+                            <span>Release year</span>
+                            <input type="text" />
+                        </label>
+                        <label>
+                            <span>Genre</span>
+                            <input type="text" />
+                        </label>
+                        <label>
+                            <span>Format</span>
+                            <input type="text" />
+                        </label>
+                        <label>
+                            <span>Color</span>
+                            <input type="text" />
+                        </label>
+                        <label className="row">
+                            <input type="checkbox" />
+                            <span>In stock</span>
+                        </label>
                         <label className="row">
                             <input type="checkbox" />
                             <span>Highlight</span>
+                        </label>
+                        <label>
+                            <span>Description</span>
+                            <textarea></textarea>
+                        </label>
+                        {/* TODO: Create a todo like interface for adding tracks */}
+                        <label>
+                            <span>Track List</span>
+                            <textarea></textarea>
                         </label>
                         <div className="buttons">
                             <button className="cancel" type="button" onClick={handleClosePopup}>Cancel</button>
