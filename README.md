@@ -3,7 +3,6 @@
 ### Essential todo List:
 - [ ] Create redeems page
 - [ ] Highlighted blog posts
-- [ ] Last viewed products
 - [ ] Add new products to database
 - [x] Wishlist
 - [x] Dashboard
@@ -12,8 +11,9 @@
     - [x] Manage banner images on home page
 
 ### Can be added after the project's main parts are finished:
-- [ ] Sales Page
+- [ ] Last viewed products
 - [ ] Bundles (combination of a few vinyls)
+- [ ] Sales Page
 - [ ] [Gifts](https://www.therecordhub.com/collections/gifts)
 - [ ] [T-shirts](https://www.therecordhub.com/collections/t-shirts)
 
