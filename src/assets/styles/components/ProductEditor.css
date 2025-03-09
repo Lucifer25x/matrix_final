@@ -71,20 +71,19 @@
         position: fixed;
         top: 0;
         left: 0;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: var(--background-color);
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 10px;
         z-index: 10000;
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s;
 
-        .modal {
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            padding: 30px;
-            border-radius: 5px;
+        .content {
+            width: 100%;
+            max-width: 600px;
 
             & h3 {
                 font-size: 1.5rem;
@@ -96,6 +95,23 @@
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
+
+                .row {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    & label {
+                        width: 49%;
+                    }
+                }
+
+                .row-imp {
+                    display: flex;
+                    flex-direction: row;
+                    cursor: pointer;
+                    gap: 10px;
+                }
 
                 & label {
                     display: flex;
@@ -119,12 +135,6 @@
                         border-radius: 5px;
                         resize: none;
                     }
-                }
-
-                & label.row {
-                    display: flex;
-                    flex-direction: row;
-                    gap: 10px;
                 }
 
 

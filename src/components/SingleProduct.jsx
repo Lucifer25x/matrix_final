@@ -1,5 +1,4 @@
 // Import libraries
-import { Link } from "react-router-dom";
 import { RiHeartLine } from "@remixicon/react";
 import { useCart } from "react-use-cart";
 import { toast, Bounce } from "react-toastify";
@@ -70,9 +69,9 @@ const Product = ({ product }) => {
                 )}
             </div>
             <div className="info">
-                <Link to={`/product/${product.id}`}>
+                <a href={`/product/${product.id}`}>
                     <h3>{product.title}</h3>
-                </Link>
+                </a>
                 <p>{product.artist}</p>
                 <p>${product.price}</p>
             </div>
