@@ -6,7 +6,6 @@ import { UserContext } from "../context/UserContext";
 import supabase from "../utils/supabase";
 
 // Custom useBanner hook
-// TODO: Think about how to update the order_num of the banners (the database updates, but the state doesn't)
 const useBanner = () => {
     const { user, loading } = useContext(UserContext);
     const dispatch = useDispatch();

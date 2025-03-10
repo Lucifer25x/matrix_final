@@ -8,7 +8,6 @@ import supabase from "../utils/supabase";
 // Import styles
 import "../assets/styles/pages/Account.css";
 
-// TODO: Implement a fully functional account page
 // Account page
 const Account = () => {
     const { user, loading } = useContext(UserContext)

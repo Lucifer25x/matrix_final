@@ -34,7 +34,7 @@ const useProduct = () => {
             .insert(data);
 
         if (error) {
-            console.error(error);
+            return { success: false, message: error };
         } else {
             const { data: updatedData, error: fetchError } = await supabase
                 .from("vinyls")
@@ -45,6 +45,8 @@ const useProduct = () => {
             } else {
                 dispatch(setProducts(updatedData));
             }
+
+            return { success: true };
         }
     }
 
@@ -56,7 +58,7 @@ const useProduct = () => {
             .eq("id", id);
 
         if (error) {
-            console.error(error);
+            return { success: false, message: error };
         } else {
             const { data: updatedData, error: fetchError } = await supabase
                 .from("vinyls")
@@ -67,6 +69,8 @@ const useProduct = () => {
             } else {
                 dispatch(setProducts(updatedData));
             }
+
+            return { success: true };
         }
     }
 
@@ -78,7 +82,7 @@ const useProduct = () => {
             .eq("id", id);
 
         if (error) {
-            console.error(error);
+            return { success: false, message: error };
         } else {
             const { data: updatedData, error: fetchError } = await supabase
                 .from("vinyls")
@@ -89,6 +93,8 @@ const useProduct = () => {
             } else {
                 dispatch(setProducts(updatedData));
             }
+
+            return { success: true };
         }
     }
 
