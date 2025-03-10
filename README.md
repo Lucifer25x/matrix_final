@@ -6,7 +6,7 @@
 - [ ] Add new products to database
 - [x] Wishlist
 - [x] Dashboard
-    - [ ] Manage products and highlighted products
+    - [x] Manage products and highlighted products
     - [ ] Manage blogs and highlighted blog posts
     - [x] Manage banner images on home page
 
