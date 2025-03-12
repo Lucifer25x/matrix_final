@@ -22,7 +22,6 @@ const getUniqueValues = (array, key) => {
     return uniqueValues;
 }
 
-// TODO: Implement reset all the filters button
 // Products component
 const Products = () => {
     // State variables
@@ -38,8 +37,6 @@ const Products = () => {
     const [mobileFilter, setMobileFilter] = useState(false);
 
     // State variables for filtering
-    // const [defaultMinPrice, setDefaultMinPrice] = useState(0);
-    // const [defaultMaxPrice, setDefaultMaxPrice] = useState(0);
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(0);
     const [selectedFormats, setSelectedFormats] = useState([]);
