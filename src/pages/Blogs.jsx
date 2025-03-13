@@ -19,7 +19,7 @@ const Blogs = () => {
         const getBlogs = async () => {
             const { data, error } = await supabase
                 .from("blogs")
-                .select("id, title, img, tags, created_at")
+                .select("id, title, img, tags, created_at, highlight")
                 .order("created_at", { ascending: false })
 
             if (error) {
@@ -44,7 +44,7 @@ const Blogs = () => {
             <h1><StaticLang en="Blogs" az="Bloglar" /></h1>
 
             <div className="blogs" data-aos="fade-up">
-                {blogs.map((blog, index) => (
+                {blogs.sort((a, b) => b.highlight - a.highlight).map((blog, index) => (
                     <SingleBlog key={index} blog={blog} />
                 ))}
             </div>

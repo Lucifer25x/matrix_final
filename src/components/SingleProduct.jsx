@@ -1,5 +1,6 @@
 // Import libraries
 import { RiHeartLine } from "@remixicon/react";
+import { Link } from "react-router-dom";
 import { useCart } from "react-use-cart";
 import { toast, Bounce } from "react-toastify";
 import useWishlist from "../hooks/useWishlist";
@@ -69,9 +70,9 @@ const Product = ({ product }) => {
                 )}
             </div>
             <div className="info">
-                <a href={`/product/${product.id}`}>
+                <Link to={`/product/${product.id}`}>
                     <h3>{product.title}</h3>
-                </a>
+                </Link>
                 <p>{product.artist}</p>
                 <p>${product.price}</p>
             </div>

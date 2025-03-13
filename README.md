@@ -1,12 +1,12 @@
 # Final Project
 
 ### Essential todo List:
-- [ ] Highlighted blog posts
+- [x] Highlighted blog posts
 - [x] Wishlist
 - [x] Dashboard
-    - [x] Manage products and highlighted products
-    - [ ] Manage blogs and highlighted blog posts
-    - [x] Manage banner images on home page
+    - [x] Manage products
+    - [ ] Manage blogs
+    - [x] Manage banners
 
 ### Can be added after the project's main parts are finished:
 - [ ] Last viewed products
