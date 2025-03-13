@@ -52,7 +52,7 @@ const Product = () => {
         getRandomVinyls();
 
         document.title = "Product | The Record Hub";
-    }, []);
+    }, [id]);
 
     const handleAddToCart = () => {
         addItem(productDetails);

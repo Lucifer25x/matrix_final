@@ -6,8 +6,9 @@ import "../assets/styles/components/SingleBlog.css";
 
 // Single blog component
 const SingleBlog = ({ blog }) => {
+    console.log(blog)
     return (
-        <div className="single-blog" data-aos="fade-up">
+        <div className={`single-blog ${blog.highlight ? "highlight" : ""}`}>
             <div className="section">
                 <div className="img">
                     <img src={blog.img} alt={blog.title} />
