@@ -37,7 +37,7 @@ const Home = () => {
         }
 
         const getLatestVinyls = async () => {
-            const { data, error } = await supabase.rpc('latest_vinyls', { limit_count: 6 });
+            const { data, error } = await supabase.rpc('latest_vinyls', { limit_count: 10 });
             if (error) {
                 console.log(error)
             } else {
@@ -46,7 +46,7 @@ const Home = () => {
         }
 
         const getNewAddedVinyls = async () => {
-            const { data, error } = await supabase.rpc('new_added_vinyls', { limit_count: 6 });
+            const { data, error } = await supabase.rpc('new_added_vinyls', { limit_count: 10 });
             if (error) {
                 console.log(error)
             } else {
@@ -218,7 +218,7 @@ const Home = () => {
 
             <div className="bottom-links" data-aos="fade-up">
                 <div className="redeem">
-                    <Link to="/redeem">
+                    <Link to="/cart">
                         <img src="https://www.therecordhub.com/cdn/shop/files/Redeem_1600x.png" alt="Redeem" />
                     </Link>
                 </div>

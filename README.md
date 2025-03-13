@@ -1,9 +1,7 @@
 # Final Project
 
 ### Essential todo List:
-- [ ] Create redeems page
 - [ ] Highlighted blog posts
-- [ ] Add new products to database
 - [x] Wishlist
 - [x] Dashboard
     - [x] Manage products and highlighted products
@@ -12,7 +10,6 @@
 
 ### Can be added after the project's main parts are finished:
 - [ ] Last viewed products
-- [ ] Bundles (combination of a few vinyls)
 - [ ] Sales Page
 - [ ] [Gifts](https://www.therecordhub.com/collections/gifts)
 - [ ] [T-shirts](https://www.therecordhub.com/collections/t-shirts)
