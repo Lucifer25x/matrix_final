@@ -17,6 +17,8 @@
         }
 
         .about {
+            width: 30%;
+
             .artist {
                 font-size: 1.2em;
                 text-transform: uppercase;
@@ -169,6 +171,7 @@
             }
 
             .about {
+                width: 100%;
                 margin-top: 20px;
             }
         }

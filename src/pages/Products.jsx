@@ -164,7 +164,9 @@ const Products = () => {
         if (selection.style.maxHeight) {
             selection.style.maxHeight = null;
         } else {
-            selection.style.maxHeight = selection.scrollHeight + "px";
+            // selection.style.maxHeight = selection.scrollHeight + "px";
+            selection.style.maxHeight = selection.scrollHeight > 200 ? "200px" : selection.scrollHeight + "px";
+            selection.style.overflowY = "auto";
         }
 
         // Remove open class from other filters

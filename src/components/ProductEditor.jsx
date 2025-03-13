@@ -73,15 +73,15 @@ const ProductEditor = () => {
         e.preventDefault();
 
         // Get form data
-        const img = imgRef.current.value;
-        const title = titleRef.current.value;
-        const artist = artistRef.current.value;
-        const price = priceRef.current.value;
-        const releaseYear = releaseYearRef.current.value;
-        const genre = genreRef.current.value;
-        const format = formatRef.current.value;
-        const color = colorRef.current.value;
-        const label = labelRef.current.value;
+        const img = imgRef.current.value.trim();
+        const title = titleRef.current.value.trim();
+        const artist = artistRef.current.value.trim();
+        const price = priceRef.current.value.trim();
+        const releaseYear = releaseYearRef.current.value.trim();
+        const genre = genreRef.current.value.trim();
+        const format = formatRef.current.value.trim();
+        const color = colorRef.current.value.trim();
+        const label = labelRef.current.value.trim();
         const description = descriptionRef.current.value;
         const trackList = trackListRef.current.value.split("\n");
         const inStock = inStockRef.current.checked;
@@ -274,18 +274,20 @@ const ProductEditor = () => {
                 </div>
             </div>
 
-            <div className="toolbar">
-                <h3>{products.length} products</h3>
-                <button onClick={handleAddProduct}>Add Product</button>
-            </div>
-
             {products.length == 0 && (
                 <div className="loader">
                     <MoonLoader color={"var(--text-color)"} size={75} />
                 </div>
             )}
 
-            {products.map(product => (
+            {products.length > 0 && (
+                <div className="toolbar">
+                    <h3>{products.length} products</h3>
+                    <button onClick={handleAddProduct}>Add Product</button>
+                </div>
+            )}
+
+            {[...products].sort((a, b) => b.id - a.id).sort((a, b) => b.highlight - a.highlight).map(product => (
                 <div className={`product ${product.highlight ? "highlight" : ""}`} key={product.id}>
                     <img width={150} src={product.img} alt={product.title} />
                     <div className="details">

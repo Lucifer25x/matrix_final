@@ -127,6 +127,10 @@
 
         .product-info {
             width: 100%;
+
+            .add {
+                max-width: 100%;
+            }
         }
     }
 }
