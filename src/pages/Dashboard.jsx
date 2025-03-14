@@ -9,12 +9,12 @@ import CountUp from 'react-countup';
 // Import components
 import BannerEditor from "../components/BannerEditor";
 import ProductEditor from "../components/ProductEditor";
+import BlogEditor from "../components/BlogEditor";
 import Loading from "../components/Loading";
 
 // Import styles
 import "../assets/styles/pages/Dashboard.css";
 
-// TODO: Implement fully functional admin dashboard
 // Dashboard page
 const Dashboard = () => {
     // User related states
@@ -146,7 +146,7 @@ const Dashboard = () => {
                 )}
                 {loadedTabs.blog && (
                     <div className={`tab ${activeTab === "blog" ? "active" : ""}`}>
-                        <h1>Blog Editor</h1>
+                        <BlogEditor />
                     </div>
                 )}
             </div>

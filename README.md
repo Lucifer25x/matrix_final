@@ -5,7 +5,7 @@
 - [x] Wishlist
 - [x] Dashboard
     - [x] Manage products
-    - [ ] Manage blogs
+    - [x] Manage blogs
     - [x] Manage banners
 
 ### Can be added after the project's main parts are finished:
