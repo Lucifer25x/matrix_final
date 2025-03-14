@@ -39,6 +39,12 @@ const ProductEditor = () => {
         form.reset();
     }
 
+    // Handle adding new product
+    const handleAddProduct = () => {
+        setMode("Add");
+        setShowPopup(true);
+    }
+
     // Handle editing product
     const handleProductEdit = (product) => {
         // Fill form with product data
@@ -62,10 +68,39 @@ const ProductEditor = () => {
         setShowPopup(true);
     }
 
-    // Handle adding new product
-    const handleAddProduct = () => {
-        setMode("Add");
-        setShowPopup(true);
+    // Handle removing product
+    const handleRemoveProduct = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#00b41b",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                removeProductData(id)
+                    .then(res => {
+                        if (res.success) {
+                            // Show success message
+                            Swal.fire({
+                                icon: "success",
+                                title: "Product removed successfully",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        } else {
+                            // Show error message
+                            Swal.fire({
+                                icon: "error",
+                                title: "An error occurred",
+                                text: res.message
+                            });
+                        }
+                    })
+            }
+        });
     }
 
     // Handle form submit
@@ -86,10 +121,6 @@ const ProductEditor = () => {
         const trackList = trackListRef.current.value.split("\n");
         const inStock = inStockRef.current.checked;
         const highlight = highlightRef.current.checked;
-
-        // Reset form
-        const form = document.querySelector("#product-editor-popup form");
-        form.reset();
 
         // Change the action based on the mode
         if (mode === "Add") {
@@ -114,7 +145,7 @@ const ProductEditor = () => {
             if (res.success) {
                 Swal.fire({
                     icon: "success",
-                    title: "Product added successfully",
+                    title: "Product was added successfully",
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -147,7 +178,7 @@ const ProductEditor = () => {
             if (res.success) {
                 Swal.fire({
                     icon: "success",
-                    title: "Product updated successfully",
+                    title: "Product was updated successfully",
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -161,48 +192,14 @@ const ProductEditor = () => {
         }
 
         // Close popup
-        setShowPopup(false);
-    }
-
-    // Handle removing product
-    const handleRemoveProduct = (id) => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                removeProductData(id)
-                    .then(res => {
-                        // Show success message
-                        if (res.success) {
-                            Swal.fire({
-                                icon: "success",
-                                title: "Product removed successfully",
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                        } else {
-                            Swal.fire({
-                                icon: "error",
-                                title: "An error occurred",
-                                text: res.message
-                            });
-                        }
-                    })
-            }
-        });
+        handleClosePopup();
     }
 
     return (
         <div className="product-editor">
             <div className={`popup ${showPopup ? "show" : ""}`}>
                 <div className="content" id="product-editor-popup">
-                    <h3>Edit Product</h3>
+                    <h3>{mode == "Save" ? "Edit" : "Add"} Product</h3>
                     <form onSubmit={handleSubmit}>
                         <div className="row">
                             <label>
