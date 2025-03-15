@@ -6,7 +6,6 @@ import "../assets/styles/components/SingleBlog.css";
 
 // Single blog component
 const SingleBlog = ({ blog }) => {
-    console.log(blog)
     return (
         <div className={`single-blog ${blog.highlight ? "highlight" : ""}`}>
             <div className="section">
