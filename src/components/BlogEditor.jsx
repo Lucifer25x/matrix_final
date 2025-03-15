@@ -68,24 +68,24 @@ const BlogEditor = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 removeBlogData(id)
-                .then(res => {
-                    if (res) {
-                        // Show success message
-                        Swal.fire({
-                            icon: "success",
-                            title: "Blog was removed successfully",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    } else {
-                        // Show error message
-                        Swal.fire({
-                            icon: "error",
-                            title: "An error occurred",
-                            text: res.message
-                        });
-                    }
-                })
+                    .then(res => {
+                        if (res) {
+                            // Show success message
+                            Swal.fire({
+                                icon: "success",
+                                title: "Blog was removed successfully",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        } else {
+                            // Show error message
+                            Swal.fire({
+                                icon: "error",
+                                title: "An error occurred",
+                                text: res.message
+                            });
+                        }
+                    })
             }
         });
     }

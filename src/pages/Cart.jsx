@@ -24,7 +24,7 @@ const Cart = () => {
             text: "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
+            confirmButtonColor: "#00b41b",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, clear it!"
         }).then((result) => {
@@ -44,7 +44,7 @@ const Cart = () => {
             text: "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
+            confirmButtonColor: "#00b41b",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, remove it!"
         }).then((result) => {
@@ -66,7 +66,7 @@ const Cart = () => {
                 text: "You won't be able to revert this!",
                 icon: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#3085d6",
+                confirmButtonColor: "#00b41b",
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Yes, remove it!"
             }).then((result) => {

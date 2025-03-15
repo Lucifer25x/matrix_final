@@ -8,6 +8,7 @@ import supabase from "../utils/supabase";
 import SingleProduct from "../components/SingleProduct";
 import StaticLang from "../utils/StaticLang";
 import Loading from "../components/Loading";
+import useWishlist from "../hooks/useWishlist";
 
 // Import Swiper React components
 import { Navigation } from "swiper/modules";
@@ -24,6 +25,7 @@ import "../assets/styles/pages/Product.css";
 const Product = () => {
     const { id } = useParams()
     const { addItem } = useCart();
+    const { addWishlist, removeWishlist, isInWishlist } = useWishlist();
     const [productDetails, setProductDetails] = useState(null)
     const [randomVinyls, setRandomVinyls] = useState([])
     const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([]);
@@ -92,6 +94,32 @@ const Product = () => {
         });
     }
 
+    const handleWishlist = async () => {
+        if (isInWishlist(productDetails.id)) {
+            await removeWishlist(productDetails.id);
+        } else {
+            const res = await addWishlist(productDetails.id);
+
+            if (res) {
+                toast.success("Product was added to your wishlist!", {
+                    position: "bottom-right",
+                    autoClose: 3000,
+                    closeOnClick: false,
+                    theme: "colored",
+                    transition: Bounce,
+                });
+            } else {
+                toast.error("You need to login to add products to your wishlist!", {
+                    position: "bottom-right",
+                    autoClose: 3000,
+                    closeOnClick: false,
+                    theme: "colored",
+                    transition: Bounce,
+                });
+            }
+        }
+    }
+
     if (!productDetails || !randomVinyls.length) {
         return <Loading />;
     }
@@ -111,7 +139,7 @@ const Product = () => {
 
                     <div className="buttons">
                         <button onClick={handleAddToCart} disabled={!productDetails.stock}><StaticLang en="ADD TO CART" az="SƏBƏTƏ ƏLAVƏ EDİN" /></button>
-                        <div className="add-wishlist" title="Add to wishlist">
+                        <div onClick={handleWishlist} className={`add-wishlist ${isInWishlist(productDetails.id) ? "active" : ""}`} title="Add to wishlist">
                             <RiHeartLine size={30} />
                         </div>
                     </div>
