@@ -2,6 +2,7 @@
 
 ### Essential todo List:
 - [ ] Replace the accordion on banner editor with a popup and add create/delete functionalities
+- [ ] Change the url configuration in supabase
 - [x] Highlighted blog posts
 - [x] Wishlist
 - [x] Dashboard
