@@ -1,5 +1,5 @@
 // Import libraries
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { RiSearchLine, RiHeartLine, RiShoppingBagLine, RiUserLine, RiMenuLine, RiSunLine, RiMoonLine } from "@remixicon/react";
 import { useContext, useState, useRef, useEffect } from "react";
 import { ThemeContext } from "../context/ThemeContext";
@@ -18,10 +18,11 @@ import logo from "../assets/images/logo.avif";
 // Navbar component
 const Navbar = () => {
     const { totalItems } = useCart();
+    const { wishlistCount } = useWishlist();
     const { theme, toggleTheme } = useContext(ThemeContext);
     const [sidebar, setSidebar] = useState(false);
-    const { wishlistCount } = useWishlist();
     const searchRef = useRef(null);
+    const location = useLocation();
 
     useEffect(() => {
         // Check if there's a search parameter in the URL
@@ -30,7 +31,11 @@ const Navbar = () => {
         if (search) {
             searchRef.current.value = search;
         }
-    }, []);
+
+        // Close sidebar when location changes
+        setSidebar(false);
+        document.body.style.overflow = "auto";
+    }, [location]);
 
     const handleSidebar = () => {
         setSidebar(!sidebar);
