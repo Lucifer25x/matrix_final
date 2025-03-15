@@ -123,13 +123,13 @@ const Dashboard = () => {
 
             <div className="tabs">
                 <div className={`tab ${activeTab === "banner" ? "active" : ""}`} onClick={() => handleTabClick("banner")}>
-                    <h2>BANNERS</h2>
+                    <h2><StaticLang en="BANNERS" az="BANNERLƏR" /></h2>
                 </div>
                 <div className={`tab ${activeTab === "product" ? "active" : ""}`} onClick={() => handleTabClick("product")}>
-                    <h2>PRODUCTS</h2>
+                    <h2><StaticLang en="PRODUCTS" az="MƏHSULLAR" /></h2>
                 </div>
                 <div className={`tab ${activeTab === "blog" ? "active" : ""}`} onClick={() => handleTabClick("blog")}>
-                    <h2>BLOGS</h2>
+                    <h2><StaticLang en="BLOGS" az="BLOGLAR" /></h2>
                 </div>
             </div>
 

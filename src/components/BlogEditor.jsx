@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MoonLoader } from "react-spinners";
 import Swal from "sweetalert2";
+import StaticLang from "../utils/StaticLang";
 import useBlog from "../hooks/useBlog";
 
 // Import styles
@@ -55,7 +56,7 @@ const BlogEditor = () => {
     }
 
     // Handle remove blog
-    const handleRemoveBlof = (id) => {
+    const handleRemoveBlog = (id) => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -150,35 +151,35 @@ const BlogEditor = () => {
         <div className="blog-editor">
             <div className={`popup ${showPopup ? "show" : ""}`}>
                 <div className="content" id="blog-editor-popup">
-                    <h3>{mode == "Save" ? "Edit" : "Add"} Blog</h3>
+                    <h3>{mode == "Save" ? <StaticLang en="Edit Blog" az="Blogu Redaktə Et" /> : <StaticLang en="Add Blog" az="Blog Əlavə Et" />}</h3>
                     <form onSubmit={handleSubmit}>
                         <label>
-                            <span>Image URL</span>
+                            <span><StaticLang en="Image URL" az="Şəkil URL" /></span>
                             <input type="text" ref={imgRef} required />
                         </label>
                         <label>
-                            <span>Title</span>
+                            <span><StaticLang en="Title" az="Başlıq" /></span>
                             <input type="text" ref={titleRef} required />
                         </label>
                         <label>
-                            <span>Author</span>
+                            <span><StaticLang en="Author" az="Yazar" /></span>
                             <input type="text" ref={authorRef} required />
                         </label>
                         <label>
-                            <span>Tags</span>
+                            <span><StaticLang en="Tags" az="Teqlər" /></span>
                             <input type="text" ref={tagsRef} required />
                         </label>
                         <label>
-                            <span>Content</span>
+                            <span><StaticLang en="Content" az="Mətn" /></span>
                             <textarea ref={contentRef} required></textarea>
                         </label>
                         <label className="row">
                             <input type="checkbox" ref={highlightRef} />
-                            <span>Highlight</span>
+                            <span><StaticLang en="Highlight" az="Önə çıxar" /></span>
                         </label>
                         <div className="buttons">
-                            <button className="cancel" type="button" onClick={handleClosePopup}>Cancel</button>
-                            <button type="submit">{mode}</button>
+                            <button className="cancel" type="button" onClick={handleClosePopup}><StaticLang en="Cancel" az="Ləğv et" /></button>
+                            <button type="submit">{mode == "Add" ? <StaticLang en="Add" az="Əlavə et" /> : <StaticLang en="Save" az="Yadda Saxla" />}</button>
                         </div>
                     </form>
                 </div>
@@ -192,8 +193,8 @@ const BlogEditor = () => {
 
             {blogs.length > 0 && (
                 <div className="toolbar">
-                    <h3>{blogs.length} blogs</h3>
-                    <button onClick={handleAddBlog}>Create a blog</button>
+                    <h3>{blogs.length} <StaticLang en="blogs" az="blog" /></h3>
+                    <button onClick={handleAddBlog}><StaticLang en="Add Blog" az="Blog əlavə et" /></button>
                 </div>
             )}
 
@@ -207,8 +208,8 @@ const BlogEditor = () => {
                     </div>
 
                     <div className="actions">
-                        <button onClick={() => { handleRemoveBlof(blog.id) }}>Remove</button>
-                        <button onClick={() => { handleBlogEdit(blog) }}>Edit</button>
+                        <button onClick={() => { handleRemoveBlog(blog.id) }}><StaticLang en="Remove" az="Sil" /></button>
+                        <button onClick={() => { handleBlogEdit(blog) }}><StaticLang en="Edit" az="Redaktə" /></button>
                     </div>
                 </div>
             ))}

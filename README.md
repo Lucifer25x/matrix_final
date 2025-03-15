@@ -1,6 +1,7 @@
 # Final Project
 
 ### Essential todo List:
+- [ ] Replace the accordion on banner editor with a popup and add create/delete functionalities
 - [x] Highlighted blog posts
 - [x] Wishlist
 - [x] Dashboard
@@ -9,7 +10,7 @@
     - [x] Manage banners
 
 ### Can be added after the project's main parts are finished:
-- [ ] Last viewed products
+- [x] Recently viewed products
 - [ ] Sales Page
 - [ ] [Gifts](https://www.therecordhub.com/collections/gifts)
 - [ ] [T-shirts](https://www.therecordhub.com/collections/t-shirts)
