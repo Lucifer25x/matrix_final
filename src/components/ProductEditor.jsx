@@ -201,35 +201,35 @@ const ProductEditor = () => {
         <div className="product-editor">
             <div className={`popup ${showPopup ? "show" : ""}`}>
                 <div className="content" id="product-editor-popup">
-                <h3>{mode == "Save" ? <StaticLang en="Edit Product" az="Məhsulu Redaktə Et" /> : <StaticLang en="Add Product" az="Məhsul Əlavə Et" />}</h3>
+                    <h3>{mode == "Save" ? <StaticLang en="Edit Product" az="Məhsulu Redaktə Et" /> : <StaticLang en="Add Product" az="Məhsul Əlavə Et" />}</h3>
                     <form onSubmit={handleSubmit}>
                         <div className="row">
                             <label>
-                            <span><StaticLang en="Image URL" az="Şəkil URL" /></span>
+                                <span><StaticLang en="Image URL" az="Şəkil URL" /></span>
                                 <input type="text" ref={imgRef} required />
                             </label>
                             <label>
-                            <span><StaticLang en="Title" az="Başlıq" /></span>
+                                <span><StaticLang en="Title" az="Başlıq" /></span>
                                 <input type="text" ref={titleRef} required />
                             </label>
                         </div>
                         <div className="row">
                             <label>
-                            <span><StaticLang en="Artist" az="Musiqiçi" /></span>
+                                <span><StaticLang en="Artist" az="Musiqiçi" /></span>
                                 <input type="text" ref={artistRef} required />
                             </label>
                             <label>
-                            <span><StaticLang en="Price" az="Qiymət" /></span>
+                                <span><StaticLang en="Price" az="Qiymət" /></span>
                                 <input type="text" ref={priceRef} required />
                             </label>
                         </div>
                         <div className="row">
                             <label>
-                            <span><StaticLang en="Release year" az="Çıxış ili" /></span>
+                                <span><StaticLang en="Release year" az="Çıxış ili" /></span>
                                 <input type="text" ref={releaseYearRef} required />
                             </label>
                             <label>
-                            <span><StaticLang en="Genre" az="Janr" /></span>
+                                <span><StaticLang en="Genre" az="Janr" /></span>
                                 <input type="text" ref={genreRef} required />
                             </label>
                         </div>
@@ -239,20 +239,20 @@ const ProductEditor = () => {
                                 <input type="text" ref={formatRef} required />
                             </label>
                             <label>
-                            <span><StaticLang en="Color" az="Rəng" /></span>
+                                <span><StaticLang en="Color" az="Rəng" /></span>
                                 <input type="text" ref={colorRef} required />
                             </label>
                         </div>
                         <label>
-                        <span><StaticLang en="Label" az="Etiket" /></span>
+                            <span><StaticLang en="Label" az="Etiket" /></span>
                             <input type="text" ref={labelRef} required />
                         </label>
                         <label>
-                        <span><StaticLang en="Description" az="Açıqlama" /></span>
+                            <span><StaticLang en="Description" az="Açıqlama" /></span>
                             <textarea ref={descriptionRef} required></textarea>
                         </label>
                         <label>
-                        <span><StaticLang en="Track list" az="Trek listi" /></span>
+                            <span><StaticLang en="Track list" az="Trek listi" /></span>
                             <textarea ref={trackListRef}></textarea>
                         </label>
                         <div className="row">
@@ -266,8 +266,8 @@ const ProductEditor = () => {
                             </label>
                         </div>
                         <div className="buttons">
-                        <button className="cancel" type="button" onClick={handleClosePopup}><StaticLang en="Cancel" az="Ləğv et" /></button>
-                        <button type="submit">{mode == "Add" ? <StaticLang en="Add" az="Əlavə et" /> : <StaticLang en="Save" az="Yadda Saxla" />}</button>
+                            <button className="cancel" type="button" onClick={handleClosePopup}><StaticLang en="Cancel" az="Ləğv et" /></button>
+                            <button type="submit">{mode == "Add" ? <StaticLang en="Add" az="Əlavə et" /> : <StaticLang en="Save" az="Yadda Saxla" />}</button>
                         </div>
                     </form>
                 </div>

@@ -72,8 +72,11 @@
                     transition: color 0.3s;
 
                     &:hover {
-                        color: var(--primary);
+                        color: rgb(223, 69, 69);
                     }
+                }
+                .add-wishlist.active {
+                    color: rgb(223, 69, 69);
                 }
             }
 
