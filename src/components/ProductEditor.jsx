@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MoonLoader } from "react-spinners";
 import Swal from "sweetalert2";
+import StaticLang from "../utils/StaticLang";
 import useProduct from "../hooks/useProduct";
 
 // Import styles
@@ -118,9 +119,10 @@ const ProductEditor = () => {
         const color = colorRef.current.value.trim();
         const label = labelRef.current.value.trim();
         const description = descriptionRef.current.value;
-        const trackList = trackListRef.current.value.split("\n");
         const inStock = inStockRef.current.checked;
         const highlight = highlightRef.current.checked;
+        const trackList = trackListRef.current.value.split("\n").filter(track => track.trim() !== "");
+
 
         // Change the action based on the mode
         if (mode === "Add") {
@@ -199,35 +201,35 @@ const ProductEditor = () => {
         <div className="product-editor">
             <div className={`popup ${showPopup ? "show" : ""}`}>
                 <div className="content" id="product-editor-popup">
-                    <h3>{mode == "Save" ? "Edit" : "Add"} Product</h3>
+                <h3>{mode == "Save" ? <StaticLang en="Edit Product" az="Məhsulu Redaktə Et" /> : <StaticLang en="Add Product" az="Məhsul Əlavə Et" />}</h3>
                     <form onSubmit={handleSubmit}>
                         <div className="row">
                             <label>
-                                <span>Image URL</span>
+                            <span><StaticLang en="Image URL" az="Şəkil URL" /></span>
                                 <input type="text" ref={imgRef} required />
                             </label>
                             <label>
-                                <span>Title</span>
+                            <span><StaticLang en="Title" az="Başlıq" /></span>
                                 <input type="text" ref={titleRef} required />
                             </label>
                         </div>
                         <div className="row">
                             <label>
-                                <span>Artist</span>
+                            <span><StaticLang en="Artist" az="Musiqiçi" /></span>
                                 <input type="text" ref={artistRef} required />
                             </label>
                             <label>
-                                <span>Price</span>
+                            <span><StaticLang en="Price" az="Qiymət" /></span>
                                 <input type="text" ref={priceRef} required />
                             </label>
                         </div>
                         <div className="row">
                             <label>
-                                <span>Release year</span>
+                            <span><StaticLang en="Release year" az="Çıxış ili" /></span>
                                 <input type="text" ref={releaseYearRef} required />
                             </label>
                             <label>
-                                <span>Genre</span>
+                            <span><StaticLang en="Genre" az="Janr" /></span>
                                 <input type="text" ref={genreRef} required />
                             </label>
                         </div>
@@ -237,35 +239,35 @@ const ProductEditor = () => {
                                 <input type="text" ref={formatRef} required />
                             </label>
                             <label>
-                                <span>Color</span>
+                            <span><StaticLang en="Color" az="Rəng" /></span>
                                 <input type="text" ref={colorRef} required />
                             </label>
                         </div>
                         <label>
-                            <span>Label</span>
+                        <span><StaticLang en="Label" az="Etiket" /></span>
                             <input type="text" ref={labelRef} required />
                         </label>
                         <label>
-                            <span>Description</span>
+                        <span><StaticLang en="Description" az="Açıqlama" /></span>
                             <textarea ref={descriptionRef} required></textarea>
                         </label>
                         <label>
-                            <span>Track List</span>
+                        <span><StaticLang en="Track list" az="Trek listi" /></span>
                             <textarea ref={trackListRef}></textarea>
                         </label>
                         <div className="row">
                             <label className="row-imp">
                                 <input type="checkbox" ref={inStockRef} />
-                                <span>In stock</span>
+                                <span><StaticLang en="In stock" az="Stokda mövcuddur" /></span>
                             </label>
                             <label className="row-imp">
                                 <input type="checkbox" ref={highlightRef} />
-                                <span>Highlight</span>
+                                <span><StaticLang en="Highlight" az="Önə çıxar" /></span>
                             </label>
                         </div>
                         <div className="buttons">
-                            <button className="cancel" type="button" onClick={handleClosePopup}>Cancel</button>
-                            <button type="submit">{mode}</button>
+                        <button className="cancel" type="button" onClick={handleClosePopup}><StaticLang en="Cancel" az="Ləğv et" /></button>
+                        <button type="submit">{mode == "Add" ? <StaticLang en="Add" az="Əlavə et" /> : <StaticLang en="Save" az="Yadda Saxla" />}</button>
                         </div>
                     </form>
                 </div>
@@ -279,8 +281,8 @@ const ProductEditor = () => {
 
             {products.length > 0 && (
                 <div className="toolbar">
-                    <h3>{products.length} products</h3>
-                    <button onClick={handleAddProduct}>Add Product</button>
+                    <h3>{products.length} <StaticLang en="products" az="məhsul" /></h3>
+                    <button onClick={handleAddProduct}><StaticLang en="Add Product" az="Məhsul əlavə et" /></button>
                 </div>
             )}
 
@@ -295,8 +297,8 @@ const ProductEditor = () => {
                             <p>{product.artist}</p>
                         </div>
                         <div className="right">
-                            <button onClick={() => { handleRemoveProduct(product.id) }}>Remove</button>
-                            <button onClick={() => { handleProductEdit(product) }}>Edit</button>
+                            <button onClick={() => { handleRemoveProduct(product.id) }}><StaticLang en="Remove" az="Sil" /></button>
+                            <button onClick={() => { handleProductEdit(product) }}><StaticLang en="Edit" az="Redaktə" /></button>
                         </div>
                     </div>
                 </div>

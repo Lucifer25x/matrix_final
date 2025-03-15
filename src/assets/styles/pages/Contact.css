@@ -58,24 +58,24 @@
 
             & input {
                 padding: 10px;
-                border: 1px solid var(--border-color);
+                border: 1px solid #d3d3d3;
                 outline: none;
 
                 &:focus {
-                    border-color: var(--border-color-focus);
+                    border-color: #000;
                 }
             }
 
             & textarea {
                 padding: 10px;
                 min-height: 100px;
-                border: 1px solid var(--border-color);
+                border: 1px solid #d3d3d3;
                 outline: none;
                 resize: none;
                 font-family: var(--font-family);
 
                 &:focus {
-                    border-color: var(--border-color-focus);
+                    border-color: #000;
                 }
             }
 

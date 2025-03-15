@@ -26,6 +26,8 @@ const Product = () => {
     const { addItem } = useCart();
     const [productDetails, setProductDetails] = useState(null)
     const [randomVinyls, setRandomVinyls] = useState([])
+    const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([]);
+    const recentlyViewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -48,8 +50,32 @@ const Product = () => {
             }
         }
 
+        const getRecentlyViewedProducts = async () => {
+            const { data, error } = await supabase.from("vinyls").select("*").in("id", recentlyViewed);
+            if (error) {
+                console.log(error)
+            } else {
+                setRecentlyViewedProducts(data);
+            }
+        }
+
+        // Add product to recently viewed
+        if (recentlyViewed.length > 0) {
+            if (!recentlyViewed.includes(id)) {
+                if (recentlyViewed.length >= 10) {
+                    recentlyViewed.shift();
+                }
+
+                recentlyViewed.push(id);
+            }
+        } else {
+            recentlyViewed.push(id);
+        }
+        localStorage.setItem("recentlyViewed", JSON.stringify(recentlyViewed));
+
         getProduct();
         getRandomVinyls();
+        getRecentlyViewedProducts();
 
         document.title = "Product | The Record Hub";
     }, [id]);
@@ -148,6 +174,41 @@ const Product = () => {
                 </div>
                 <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
             </div>
+
+            {/* Show recently viewed products, except the current one */}
+            {recentlyViewedProducts.length > 5 && (
+                <div className="section">
+                    <h1><StaticLang en="RECENTLY VIEWED" az="SON GÖRÜNƏN" /></h1>
+                    <div className="products">
+                        <Swiper
+                            modules={[Navigation]}
+                            slidesPerView={1}
+                            navigation={true}
+                            loop={true}
+                            spaceBetween={20}
+                            breakpoints={{
+                                640: {
+                                    slidesPerView: 2,
+                                },
+                                768: {
+                                    slidesPerView: 3,
+                                },
+                                1024: {
+                                    slidesPerView: 5,
+                                }
+                            }}
+                        >
+                            {recentlyViewedProducts.map(vinyl => (
+                                <SwiperSlide key={vinyl.id}>
+                                    <SingleProduct
+                                        product={vinyl}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
