@@ -12,3 +12,18 @@
         margin-top: 20px;
     }
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .not-found-page {
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+
+        & h1 {
+            font-size: 2em;
+        }
+    }
+}

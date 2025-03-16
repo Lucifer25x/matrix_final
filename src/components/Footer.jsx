@@ -43,7 +43,7 @@ const Footer = () => {
                     <div className="section">
                         <p><StaticLang en="SUPPORT" az="DƏSTƏK" /></p>
                         <div className="links">
-                            <Link to={"/order-lookup"}><StaticLang en="Where's my order?" az="Sifarişim haradadır?" /></Link>
+                            <Link to={"/account"}><StaticLang en="Where's my order?" az="Sifarişim haradadır?" /></Link>
                             <Link to={"/faq"}>FAQ</Link>
                             <Link to={"/contact"}><StaticLang en="Contact" az="Əlaqə" /></Link>
                         </div>

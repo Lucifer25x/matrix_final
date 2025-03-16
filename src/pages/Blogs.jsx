@@ -1,6 +1,5 @@
 // Import libraries
 import { useEffect, useState } from "react";
-import { MoonLoader } from "react-spinners";
 import supabase from "../utils/supabase";
 import SingleBlog from "../components/SingleBlog";
 import StaticLang from "../utils/StaticLang";
@@ -12,6 +11,7 @@ import "../assets/styles/pages/Blogs.css";
 // Blogs page
 const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -30,10 +30,14 @@ const Blogs = () => {
             setBlogs(data);
         };
 
-        getBlogs();
+        getBlogs().then(() => setLoading(false));
 
         document.title = "Blogs | The Record Hub";
     }, []);
+
+    if (loading) {
+        return <Loading />;
+    }
 
     if (!blogs.length) {
         return <Loading />;

@@ -13,7 +13,7 @@ import "../assets/styles/pages/Wishlist.css";
 // Wishlist page
 const Wishlist = () => {
     const { user, loading } = useContext(UserContext);
-    const { wishlist } = useWishlist();
+    const { wishlist, isInWishlist } = useWishlist();
     const [products, setProducts] = useState([]);
     const [productsLoading, setProductsLoading] = useState(true);
     const navigate = useNavigate();
@@ -28,7 +28,7 @@ const Wishlist = () => {
                 const products_id_list = wishlist.map(item => item.product_id);
                 const { data, error } = await supabase
                     .from("vinyls")
-                    .select("*")
+                    .select("id, title, img, artist, price, stock")
                     .in("id", products_id_list);
 
                 if (error) {
@@ -42,8 +42,11 @@ const Wishlist = () => {
             setProductsLoading(false);
         }
 
+        if(productsLoading){
+            fetchProducts();
+        }
+
         document.title = "Wishlist | The Record Hub"
-        fetchProducts();
     }, [user, loading, wishlist])
 
     if (loading || productsLoading) {
@@ -54,8 +57,8 @@ const Wishlist = () => {
         <div className="wishlist-page">
             <h1>Wishlist</h1>
             <div className="wishlist" data-aos="fade-up">
-                {products.length > 0 ? (
-                    products.map(product => (
+                {products.length > 0 && wishlist.length > 0 ? (
+                    products.filter(product => isInWishlist(product.id)).map(product => (
                         <Product key={product.id} product={product} />
                     ))
                 ) : (

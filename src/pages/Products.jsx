@@ -88,59 +88,72 @@ const Products = () => {
             const max = Math.max(...prices);
             setMinPrice(min);
             setMaxPrice(max);
-            // setDefaultMinPrice(min);
-            // setDefaultMaxPrice(max);
 
             // Set title
             document.title = "Products | The Record Hub";
         }
 
-        getProducts();
-
-        // Set loading to false
-        setTimeout(() => {
-            setLoading(false);
-        }, 1000);
+        getProducts().then(() => setLoading(false));
     }, []);
 
     // Filter functions
     const formatFilter = (format, checked) => {
         if (checked) {
-            setSelectedFormats([...selectedFormats, format]);
+            const newFormats = [...selectedFormats, format];
+            setSelectedFormats(newFormats);
+            setProductCount(products.filter(product => newFormats.includes(product.format)).length);
         } else {
-            setSelectedFormats(selectedFormats.filter(item => item !== format));
+            const newFormats = selectedFormats.filter(item => item !== format);
+            setSelectedFormats(newFormats);
+            setProductCount(newFormats.length ? products.filter(product => newFormats.includes(product.format)).length : products.length);
         }
     }
 
     const colorFilter = (color, checked) => {
         if (checked) {
-            setSelectedColors([...selectedColors, color]);
+            const newColors = [...selectedColors, color];
+            setSelectedColors(newColors);
+            setProductCount(products.filter(product => newColors.includes(product.color)).length);
         } else {
-            setSelectedColors(selectedColors.filter(item => item !== color));
+            const newColors = selectedColors.filter(item => item !== color);
+            setSelectedColors(newColors);
+            setProductCount(newColors.length ? products.filter(product => newColors.includes(product.color)).length : products.length);
         }
     }
 
     const genreFilter = (genre, checked) => {
         if (checked) {
-            setSelectedGenres([...selectedGenres, genre]);
+            const newGenres = [...selectedGenres, genre];
+            setSelectedGenres(newGenres);
+            setProductCount(products.filter(product => newGenres.includes(product.genre)).length);
         } else {
-            setSelectedGenres(selectedGenres.filter(item => item !== genre));
+            const newGenres = selectedGenres.filter(item => item !== genre);
+            setSelectedGenres(newGenres);
+            setProductCount(newGenres.length ? products.filter(product => newGenres.includes(product.genre)).length : products.length);
         }
     }
 
     const releaseYearFilter = (release_year, checked) => {
         if (checked) {
-            setSelectedReleaseYears([...selectedReleaseYears, release_year]);
+            const newReleaseYears = [...selectedReleaseYears, release_year];
+            setSelectedReleaseYears(newReleaseYears);
+            setProductCount(products.filter(product => newReleaseYears.includes(product.release_year)).length);
         } else {
-            setSelectedReleaseYears(selectedReleaseYears.filter(item => item !== release_year));
+            const newReleaseYears = selectedReleaseYears.filter(item => item !== release_year);
+            setSelectedReleaseYears(newReleaseYears);
+            setProductCount(newReleaseYears.length ? products.filter(product => newReleaseYears.includes(product.release_year)).length : products.length);
         }
     }
 
     const labelFilter = (label, checked) => {
         if (checked) {
-            setSelectedLabels([...selectedLabels, label]);
+            const newLabels = [...selectedLabels, label];
+            setSelectedLabels(newLabels);
+            setProductCount(products.filter(product => newLabels.includes(product.label)).length);
         } else {
-            setSelectedLabels(selectedLabels.filter(item => item !== label));
+            const newLabels = selectedLabels.filter(item => item !== label);
+            setSelectedLabels(newLabels);
+            setProductCount(newLabels.length ? products.filter(product => newLabels.includes(product.label)).length : products.length);
         }
     }
 
@@ -213,7 +226,7 @@ const Products = () => {
                 sortedProducts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
                 break;
             default:
-                sortedProducts.sort((a, b) => b.stock - a.stock);
+                sortedProducts.sort((a, b) => b.id - a.id).sort((a, b) => b.stock - a.stock);
                 break;
         }
         setProducts(sortedProducts);
@@ -222,7 +235,7 @@ const Products = () => {
     if (loading) {
         return <Loading />
     }
-
+    
     if (products.length === 0) {
         return (
             <div className="products-page">
@@ -233,7 +246,6 @@ const Products = () => {
         )
     }
 
-
     // Render the products
     return (
         <div className="products-page">
@@ -241,7 +253,7 @@ const Products = () => {
                 <RiFilterLine size={25} />
             </div>
 
-            <div className={mobileFilter ? "filters open" : "filters"}>
+            <div className={`filters ${mobileFilter ? "show" : ""}`}>
                 <div className="filter">
                     <h3><StaticLang en="PRICE" az="QİYMƏT" /></h3>
                     <div className="inputs">
