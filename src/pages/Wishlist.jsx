@@ -57,8 +57,11 @@ const Wishlist = () => {
             <h1>Wishlist</h1>
             <div className="wishlist" data-aos="fade-up">
                 {products.length > 0 && wishlist.length > 0 ? (
-                    products.filter(product => isInWishlist(product.id)).map(product => (
-                        <Product key={product.id} product={product} />
+                    // products.filter(product => isInWishlist(product.id)).map(product => (
+                    //     <Product key={product.id} product={product} animate={true}/>
+                    // ))
+                    products.map(product => (
+                        <Product key={product.id} product={product} animate={true} />
                     ))
                 ) : (
                     <p>Your wishlist is empty!</p>
