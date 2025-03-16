@@ -1,4 +1,5 @@
 // Import libraries
+import { useState } from "react";
 import { RiHeartLine } from "@remixicon/react";
 import { Link } from "react-router-dom";
 import { useCart } from "react-use-cart";
@@ -10,9 +11,11 @@ import StaticLang from "../utils/StaticLang";
 import "../assets/styles/components/Product.css";
 
 // Product component
-const Product = ({ product }) => {
+const Product = ({ product, animate=false }) => {
     const { addItem } = useCart();
     const { addWishlist, removeWishlist, isInWishlist } = useWishlist();
+    const [animateRemove, setAnimateRemove] = useState(false);
+    const [hideProduct, setHideProduct] = useState(false);
 
     const handleAddToCart = () => {
         addItem(product);
@@ -28,7 +31,15 @@ const Product = ({ product }) => {
 
     const handleWishlist = async () => {
         if (isInWishlist(product.id)) {
-            await removeWishlist(product.id);
+            removeWishlist(product.id).then(() => {
+                if(animate) {
+                    setAnimateRemove(true);
+                    setTimeout(() => {
+                        setHideProduct(true);
+                    }, 350);
+                }
+            }
+        );
         } else {
             const res = await addWishlist(product.id);
 
@@ -53,7 +64,7 @@ const Product = ({ product }) => {
     }
 
     return (
-        <div className="single-product">
+        <div className={`single-product ${animateRemove ? `animate-remove` : ""} ${hideProduct ? `hidden` : ""}`}>
             <div className="img">
                 <img src={product.img} alt={product.title} />
                 <div onClick={handleWishlist} className={`heart ${isInWishlist(product.id) ? "active" : ""}`} >

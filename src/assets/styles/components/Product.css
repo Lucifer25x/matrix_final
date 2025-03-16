@@ -108,3 +108,25 @@
         }
     }
 }
+
+.single-product.animate-remove {
+    animation: fadeOutToLeft 0.3s forwards;
+}
+
+.single-product.hidden {
+    opacity: 0;
+    display: none;
+}
+
+/* Animations */
+@keyframes fadeOutToLeft {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
