@@ -1,8 +1,8 @@
 # Final Project
 
 ### Essential todo List:
-- [ ] Replace the accordion on banner editor with a popup and add create/delete functionalities
 - [ ] Change the url configuration in supabase
+- [ ] Fix the irregular behaviour of mobile filter button
 - [x] Highlighted blog posts
 - [x] Wishlist
 - [x] Dashboard
