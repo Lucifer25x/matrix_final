@@ -1,8 +1,11 @@
 # Final Project
 
+*This project was developed for learning purposes and the original inspiration is [The Record Hub](https://www.therecordhub.com/)*
+
+**[Deployed version on netlify](https://final-recordhub.netlify.app)**
+
 ### Essential todo List:
-- [ ] Change the url configuration in supabase
-- [ ] Fix the irregular behaviour of mobile filter button
+- [x] Change the url configuration in supabase
 - [x] Highlighted blog posts
 - [x] Wishlist
 - [x] Dashboard

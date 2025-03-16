@@ -235,7 +235,7 @@ const Products = () => {
     if (loading) {
         return <Loading />
     }
-    
+
     if (products.length === 0) {
         return (
             <div className="products-page">
@@ -381,7 +381,7 @@ const Products = () => {
                     </div>
                 </div>
             </div>
-            <div className="products" data-aos="fade-left">
+            <div className="products" data-aos="fade-up">
                 <div className="name">
                     <h1><StaticLang en="Products" az="Məhsullar" /></h1>
                 </div>
