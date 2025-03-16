@@ -1,5 +1,5 @@
 // Import libraries
-import { useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setWishlist, addToWishlist, removeFromWishlist } from "../features/wishlistSlice";
 import { UserContext } from "../context/UserContext";
@@ -10,6 +10,7 @@ const useWishlist = () => {
     const { user, loading } = useContext(UserContext);
     const dispatch = useDispatch();
     const wishlist = useSelector(state => state.wishlist.items);
+    const [wishlistLoading, setWishlistLoading] = useState(true);
 
     // Fetch wishlist items
     useEffect(() => {
@@ -21,7 +22,7 @@ const useWishlist = () => {
                 else dispatch(setWishlist(data))
             }
 
-            fetchWishlist();
+            fetchWishlist().then(() => setWishlistLoading(false));
         }
     }, [user, loading, dispatch])
 
@@ -64,7 +65,7 @@ const useWishlist = () => {
     // Wishlist count
     const wishlistCount = wishlist.length;
 
-    return { wishlist, isInWishlist, addWishlist, removeWishlist, wishlistCount };
+    return { wishlist, isInWishlist, addWishlist, removeWishlist, wishlistCount, wishlistLoading };
 }
 
 export default useWishlist;

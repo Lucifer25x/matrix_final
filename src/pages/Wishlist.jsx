@@ -13,7 +13,7 @@ import "../assets/styles/pages/Wishlist.css";
 // Wishlist page
 const Wishlist = () => {
     const { user, loading } = useContext(UserContext);
-    const { wishlist, isInWishlist } = useWishlist();
+    const { wishlist, isInWishlist, wishlistLoading } = useWishlist();
     const [products, setProducts] = useState([]);
     const [productsLoading, setProductsLoading] = useState(true);
     const navigate = useNavigate();
@@ -39,15 +39,14 @@ const Wishlist = () => {
             } else {
                 setProducts([]);
             }
-            setProductsLoading(false);
         }
 
-        if(productsLoading){
-            fetchProducts();
+        if (!wishlistLoading) {
+            fetchProducts().then(() => setProductsLoading(false));
         }
 
         document.title = "Wishlist | The Record Hub"
-    }, [user, loading, wishlist])
+    }, [user, loading, wishlistLoading])
 
     if (loading || productsLoading) {
         return <Loading />
