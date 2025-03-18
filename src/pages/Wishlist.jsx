@@ -13,7 +13,7 @@ import "../assets/styles/pages/Wishlist.css";
 // Wishlist page
 const Wishlist = () => {
     const { user, loading } = useContext(UserContext);
-    const { wishlist, isInWishlist, wishlistLoading } = useWishlist();
+    const { wishlist, wishlistLoading } = useWishlist();
     const [products, setProducts] = useState([]);
     const [productsLoading, setProductsLoading] = useState(true);
     const navigate = useNavigate();
@@ -57,9 +57,6 @@ const Wishlist = () => {
             <h1>Wishlist</h1>
             <div className="wishlist" data-aos="fade-up">
                 {products.length > 0 && wishlist.length > 0 ? (
-                    // products.filter(product => isInWishlist(product.id)).map(product => (
-                    //     <Product key={product.id} product={product} animate={true}/>
-                    // ))
                     products.map(product => (
                         <Product key={product.id} product={product} animate={true} />
                     ))

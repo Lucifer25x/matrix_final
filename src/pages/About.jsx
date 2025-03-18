@@ -13,7 +13,7 @@ const About = () => {
     }, []);
 
     return (
-        <div className="about-page">
+        <div className="about-page" data-aos="fade-up">
             <h1><StaticLang en="About us" az="Haqqımızda" /></h1>
 
             <p>

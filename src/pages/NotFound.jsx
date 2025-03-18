@@ -14,7 +14,7 @@ const NotFound = () => {
     }, []);
 
     return (
-        <div className="not-found-page">
+        <div className="not-found-page" data-aos="fade-up">
             <h1><StaticLang en="PAGE NOT FOUND" az="SƏHİFƏ TAPILMADI" /></h1>
             <p><StaticLang en="We're sorry, but the page you requested could not be found." az="Üzr istəyirik, lakin sorğu etdiyiniz səhifəni tapmaq mümkün olmadı." /></p>
             <p><StaticLang en="Try searching or continue shopping." az="Axtarmağa cəhd edin və ya alış-verişə davam edin." /></p>
