@@ -66,7 +66,7 @@ const Login = () => {
     }
 
     return (
-        <div className="login-page">
+        <div className="login-page" data-aos="fade-up">
             <h1><StaticLang en="CUSTOMER LOGIN" az="MÜŞTƏRİ GİRİŞİ" /></h1>
 
             <div className="sections">
