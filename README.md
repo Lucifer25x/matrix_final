@@ -15,7 +15,6 @@
 
 ### Can be added after the project's main parts are finished:
 - [x] Recently viewed products
-- [ ] Solve the unnecessary fetches in wishlist page (maybe create a seperate function for fetching)
 - [ ] Sales Page
 - [ ] [Gifts](https://www.therecordhub.com/collections/gifts)
 - [ ] [T-shirts](https://www.therecordhub.com/collections/t-shirts)

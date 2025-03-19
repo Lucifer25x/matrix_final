@@ -70,13 +70,37 @@
                 .add-wishlist {
                     cursor: pointer;
                     transition: color 0.3s;
+                    background-color: #fff;
+                    border: 1px solid var(--border-color);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 5px;
+                    border-radius: 50%;
+                    transition: .3s ease all;
+
+                    & svg {
+                        fill: #000;
+                        transition: .3s ease all;
+                    }
 
                     &:hover {
-                        color: rgb(223, 69, 69);
+                        background-color: rgb(223, 69, 69);
+                        border: 1px solid transparent;
+
+                        & svg {
+                            fill: #fff;
+                        }
                     }
                 }
+
                 .add-wishlist.active {
-                    color: rgb(223, 69, 69);
+                    background-color: rgb(223, 69, 69);
+                    border: 1px solid transparent;
+
+                    & svg {
+                        fill: #fff;
+                    }
                 }
             }
 
