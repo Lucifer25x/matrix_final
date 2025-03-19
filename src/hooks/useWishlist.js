@@ -12,17 +12,22 @@ const useWishlist = () => {
     const wishlist = useSelector(state => state.wishlist.items);
     const [wishlistLoading, setWishlistLoading] = useState(true);
 
-    // Fetch wishlist items
+    // Fetch wishlist
+    const fetchWishlist = async () => {
+        const { data, error } = await supabase.from("wishlists").select("product_id").eq("user_id", user.id);
+
+        if (error) console.error(error);
+        else dispatch(setWishlist(data))
+    }
+
+    // Run fetch when needed
     useEffect(() => {
         if (!loading && user) {
-            const fetchWishlist = async () => {
-                const { data, error } = await supabase.from("wishlists").select("product_id").eq("user_id", user.id);
-
-                if (error) console.error(error);
-                else dispatch(setWishlist(data))
+            if(wishlist.length === 0){
+                fetchWishlist().then(() => setWishlistLoading(false));
+            } else {
+                setWishlistLoading(false);
             }
-
-            fetchWishlist().then(() => setWishlistLoading(false));
         }
     }, [user, loading, dispatch])
 
