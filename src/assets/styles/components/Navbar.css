@@ -17,7 +17,7 @@ nav {
         }
 
         .search {
-            width: 70%;
+            width: 60%;
 
             & form {
                 width: 100%;
@@ -106,6 +106,24 @@ nav {
                     color: var(--primary);
                 }
             }
+
+            .account {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                color: #fff;
+                text-decoration: none;
+                background-color: var(--primary);
+                padding: 5px 10px;
+                border-radius: 15px;
+                opacity: .8;
+                transition: .3s ease all;
+
+                &:hover {
+                    /* color: #000; */
+                    opacity: 1;
+                }
+            }
         }
     }
 }
@@ -119,13 +137,22 @@ nav.shadow {
     nav {
         .container {
             .search {
-                width: 60%;
+                width: 50%;
+
+                & form {
+                    & input {
+                        width: 90%;
+                    }
+                    & button {
+                        width: 10%;
+                    }
+                }
             }
         }
     }
 }
 
-@media(max-width: 800px) {
+@media(max-width: 1000px) {
     nav {
         .container {
             .search {

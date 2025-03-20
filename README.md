@@ -5,6 +5,13 @@
 **[Deployed version on netlify](https://final-recordhub.netlify.app)**
 
 ### Essential todo List:
+- [x] Account icon + name
+- [x] Recently Viewed -> Recommend
+- [x] Checkout requires sign up
+- [x] Checkout alert
+- [ ] Add new sections to home page
+- [ ] Sign up details
+- [ ] Add animations & Enhance UI
 - [x] Change the url configuration in supabase
 - [x] Highlighted blog posts
 - [x] Wishlist

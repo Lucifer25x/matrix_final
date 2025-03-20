@@ -203,10 +203,9 @@ const Product = () => {
                 <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
             </div>
 
-            {/* Show recently viewed products, except the current one */}
             {recentlyViewedProducts.length > 5 && (
                 <div className="section">
-                    <h1><StaticLang en="RECENTLY VIEWED" az="SON GÖRÜNƏN" /></h1>
+                    <h1><StaticLang en="RECOMMENDED" az="TÖVSİYƏ EDİLƏN" /></h1>
                     <div className="products">
                         <Swiper
                             modules={[Navigation]}

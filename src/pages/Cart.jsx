@@ -1,10 +1,11 @@
 // Import libraries
+import { useEffect, useContext } from "react";
 import { RiCloseLine, RiLockLine } from "@remixicon/react";
-import { useEffect } from "react";
 import { useCart } from "react-use-cart";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import StaticLang from "../utils/StaticLang";
+import { UserContext } from "../context/UserContext";
 
 // Import styles
 import "../assets/styles/pages/Cart.css";
@@ -12,6 +13,8 @@ import "../assets/styles/pages/Cart.css";
 // Cart page
 const Cart = () => {
     const { items, cartTotal, updateItemQuantity, removeItem, emptyCart } = useCart();
+    const { user } = useContext(UserContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -83,6 +86,17 @@ const Cart = () => {
         }
     }
 
+    const handleCheckout = () => {
+        if (user) {
+            navigate("/checkout");
+        } else {
+            Swal.fire({
+                title: "You need to login first!",
+                icon: "error"
+            });
+        }
+    }
+
     return (
         <div className="cart-page" data-aos="zoom-in">
             <h1><StaticLang en="Cart" az="Səbət" /></h1>
@@ -133,7 +147,7 @@ const Cart = () => {
 
 
             <div className="checkout">
-                <Link to={"/checkout"}> <RiLockLine size={25} /> <span><StaticLang en="CHECKOUT" az="SATIN AL" /></span></Link>
+                <button onClick={handleCheckout} disabled={(items.length === 0)}> <RiLockLine size={25} /> <span><StaticLang en="CHECKOUT" az="SATIN AL" /></span></button>
             </div>
 
             <div className="clear-cart">
