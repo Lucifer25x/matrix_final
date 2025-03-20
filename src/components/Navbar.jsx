@@ -1,8 +1,9 @@
 // Import libraries
+import { useContext, useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { RiSearchLine, RiHeartLine, RiShoppingBagLine, RiUserLine, RiMenuLine, RiSunLine, RiMoonLine } from "@remixicon/react";
-import { useContext, useState, useRef, useEffect } from "react";
 import { ThemeContext } from "../context/ThemeContext";
+import { UserContext } from "../context/UserContext";
 import { useCart } from "react-use-cart";
 import useWishlist from "../hooks/useWishlist";
 
@@ -20,6 +21,7 @@ const Navbar = () => {
     const { totalItems } = useCart();
     const { wishlistCount } = useWishlist();
     const { theme, toggleTheme } = useContext(ThemeContext);
+    const { user } = useContext(UserContext);
     const [sidebar, setSidebar] = useState(false);
     const searchRef = useRef(null);
     const location = useLocation();
@@ -76,9 +78,6 @@ const Navbar = () => {
                                 <RiShoppingBagLine size={25} />
                                 <span>{totalItems}</span>
                             </Link>
-                            <Link to={"/account"}>
-                                <RiUserLine size={25} />
-                            </Link>
                         </div>
                         <div className="button">
                             {theme === "light" ? (
@@ -87,6 +86,10 @@ const Navbar = () => {
                                 <RiSunLine size={25} onClick={toggleTheme} />
                             )}
                         </div>
+                        <Link to={"/account"} className="account">
+                            <RiUserLine size={20} />
+                            {user ? <p>{user.email.split("@")[0]}</p> : <p>Login</p>}
+                        </Link>
                         <div className="menu-btn button" onClick={handleSidebar}>
                             <RiMenuLine size={25} />
                         </div>

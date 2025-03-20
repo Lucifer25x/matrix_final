@@ -18,6 +18,11 @@ body {
     line-height: 1.5;
     color: var(--text-color);
     background-color: var(--background-color);
+    overflow: hidden;
+}
+
+& button {
+    font-size: 1em;
 }
 
 /* Container */
