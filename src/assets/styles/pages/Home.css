@@ -1,5 +1,7 @@
 .home-page {
     .banner {
+        margin-top: 20px;
+
         & img {
             width: 100%;
             min-height: 200px;
@@ -97,6 +99,91 @@
         }
     }
 
+    .view-blogs {
+        width: 100%;
+        display: flex;
+        margin: 40px 0;
+        background-color: var(--background-color-4);
+        color: #fff;
+
+        .left {
+            width: 50%;
+            max-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+
+            & img {
+                width: 100%;
+                object-fit: cover;
+                transition: .3s ease all;
+            }
+
+            .layer {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                transition: .3s ease all;
+                z-index: 2;
+            }
+
+            &:hover {
+                & img {
+                    transform: scale(1.1);
+                }
+
+                .layer {
+                    background-color: rgba(0, 0, 0, 0.3);
+                }
+            }
+        }
+
+        .right {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+
+            & h1 {
+                font-size: 3em;
+                font-weight: 900;
+            }
+
+            & p {
+                font-size: 1.1em;
+            }
+
+            & a {
+                width: fit-content;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                padding: 10px 20px;
+                border: none;
+                background-color: var(--primary);
+                color: var(--background-color);
+                cursor: pointer;
+                font-size: 1.1em;
+                font-weight: 900;
+                text-decoration: none;
+                transition: ease all 0.3s;
+
+                &:hover {
+                    gap: 15px;
+                    background-color: var(--text-color);
+                }
+            }
+        }
+    }
+
     .keep-in-touch {
         margin: 40px 0;
         width: 100%;
@@ -169,6 +256,38 @@
 }
 
 /* Responsive styles */
+@media(max-width: 1000px) {
+    .home-page {
+        .view-blogs {
+            flex-direction: column;
+
+            & div {
+                width: 100% !important;
+            }
+
+            .left {
+                max-height: 300px;
+            }
+
+            .right {
+                min-height: 300px;
+
+                & h1 {
+                    font-size: 2em;
+                }
+
+                & p {
+                    font-size: 1em;
+                }
+
+                & a {
+                    font-size: 1em;
+                }
+            }
+        }
+    }
+}
+
 @media(max-width: 800px) {
     .home-page {
         .section {
