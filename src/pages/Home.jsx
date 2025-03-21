@@ -176,7 +176,7 @@ const Home = () => {
                 <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
             </div>
 
-            <div className="view-blogs">
+            <div className="view-blogs" data-aos="fade-up">
                 <div className="left">
                     <img src={vinylRecorderImage} alt="Vinyl Recorder" />
                     <div className="layer"></div>
