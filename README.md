@@ -10,6 +10,7 @@
 - [x] Checkout requires sign up
 - [x] Checkout alert
 - [ ] Add new sections to home page
+- [ ] Change the navbar style a little bit
 - [ ] Sign up details
 - [ ] Add animations & Enhance UI
 - [x] Change the url configuration in supabase

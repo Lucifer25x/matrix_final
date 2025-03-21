@@ -1,5 +1,6 @@
 // Import libraries
 import { useState, useEffect } from "react";
+import { RiArrowRightLine } from "@remixicon/react";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import supabase from "../utils/supabase";
@@ -16,6 +17,9 @@ import "swiper/css/pagination";
 
 // Import components
 import Product from "../components/SingleProduct";
+
+// Import images
+import vinylRecorderImage from "../assets/images/vinyl-record-player.jpg";
 
 // Import styles
 import "../assets/styles/pages/Home.css";
@@ -170,6 +174,18 @@ const Home = () => {
                     ) : ""}
                 </div>
                 <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
+            </div>
+
+            <div className="view-blogs">
+                <div className="left">
+                    <img src={vinylRecorderImage} alt="Vinyl Recorder" />
+                    <div className="layer"></div>
+                </div>
+                <div className="right">
+                    <h1><StaticLang en="CHECK OUT OUR BLOG" az="BLOGUMUZA BAXIN" /></h1>
+                    <p><StaticLang en="Check out our blog for the latest news, reviews, and more." az="Ən son xəbərlər, rəylər və daha çox üçün blogumuza baxın." /></p>
+                    <Link to="/blogs"><RiArrowRightLine size={25} /><StaticLang en="BLOGS" az="BLOGLAR" /></Link>
+                </div>
             </div>
 
             <div className="section" data-aos="fade-right">
