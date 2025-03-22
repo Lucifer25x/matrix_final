@@ -26,7 +26,7 @@
             padding: 10px 20px;
             border: none;
             background-color: var(--primary);
-            color: var(--background-color);
+            color: #fff;
             cursor: pointer;
             transition: background-color .3s;
 
@@ -39,10 +39,18 @@
             padding: 10px 20px;
             border: none;
             background-color: red;
-            color: var(--background-color);
+            color: #fff;
             cursor: pointer;
             transition: background-color .3s;
             font-weight: 700;
+
+            &:hover {
+                background-color: var(--background-color-2-hover);
+            }
+        }
+
+        .edit {
+            background-color: var(--background-color-2);
 
             &:hover {
                 background-color: var(--background-color-2-hover);
