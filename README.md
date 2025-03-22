@@ -9,11 +9,13 @@
 - [x] Recently Viewed -> Recommend
 - [x] Checkout requires sign up
 - [x] Checkout alert
+- [x] Sign up details
+- [ ] Edit account details (use popup)
+- [ ] Use user name/surname on navbar instead of email
 - [ ] Add new sections to home page
 - [ ] Change the navbar style a little bit
-- [ ] Sign up details
 - [ ] Add animations & Enhance UI
-- [x] Change the url configuration in supabase
+- [ ] Change the url configuration in supabase
 - [x] Highlighted blog posts
 - [x] Wishlist
 - [x] Dashboard

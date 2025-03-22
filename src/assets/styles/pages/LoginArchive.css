@@ -1,0 +1,124 @@
+.login-page {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & h1 {
+        text-align: center;
+        font-size: 3em;
+        margin: 20px 0;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    & a {
+        text-decoration: none;
+        transition: color 0.3s;
+        color: var(--text-color);
+
+        &:hover {
+            color: var(--primary);
+        }
+    }
+
+    .sections {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        gap: 40px;
+
+        .section {
+            flex: 1;
+        }
+
+        .section:nth-child(1) {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
+
+            .input {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                & input {
+                    padding: 10px;
+                    border: 1px solid var(--border-color);
+                    outline: none;
+
+                    &:focus {
+                        border-color: var(--border-color-focus);
+                    }
+                }
+            }
+
+            .input:nth-child(2) {
+                margin-top: 10px;
+            }
+
+            .buttons {
+                display: flex;
+                gap: 10px;
+
+                & button {
+                    margin-top: 20px;
+                    align-self: flex-start;
+                    padding: 10px 20px;
+                    border: none;
+                    background-color: var(--text-color);
+                    color: var(--background-color);
+                    cursor: pointer;
+                    font-size: 1.1em;
+                    font-weight: 900;
+                    transition: background-color 0.3s;
+
+                    &:hover {
+                        background-color: var(--primary);
+                    }
+
+                    &:nth-child(1) {
+                        background-color: var(--primary);
+                        color: var(--background-color);
+
+                        &:hover {
+                            background-color: var(--text-color);
+                        }
+                    }
+                }
+            }
+        }
+
+        .section:nth-child(2) {
+            & p:nth-child(1) {
+                margin: 0;
+            }
+
+            & p {
+                margin: 20px 0;
+            }
+        }
+    }
+}
+
+/* Responsive styles */
+@media(max-width: 800px) {
+    .login-page {
+        & h1 {
+            font-size: 2em;
+        }
+
+        .sections {
+            flex-direction: column;
+
+            .section {
+                margin-top: 20px;
+            }
+        }
+    }
+}
