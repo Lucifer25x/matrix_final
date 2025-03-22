@@ -11,7 +11,7 @@
 - [x] Checkout alert
 - [x] Sign up details
 - [x] Edit account details (use popup)
-- [ ] Use user name/surname on navbar instead of email
+- [x] Use user name/surname on navbar instead of email
 - [ ] Add new sections to home page
 - [ ] Change the navbar style a little bit
 - [ ] Add animations & Enhance UI

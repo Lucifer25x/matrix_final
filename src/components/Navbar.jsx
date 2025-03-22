@@ -5,6 +5,7 @@ import { RiSearchLine, RiHeartLine, RiShoppingBagLine, RiUserLine, RiMenuLine, R
 import { ThemeContext } from "../context/ThemeContext";
 import { UserContext } from "../context/UserContext";
 import { useCart } from "react-use-cart";
+import supabase from "../utils/supabase";
 import useWishlist from "../hooks/useWishlist";
 
 // Import components
@@ -21,8 +22,9 @@ const Navbar = () => {
     const { totalItems } = useCart();
     const { wishlistCount } = useWishlist();
     const { theme, toggleTheme } = useContext(ThemeContext);
-    const { user } = useContext(UserContext);
+    const { user, loading } = useContext(UserContext);
     const [sidebar, setSidebar] = useState(false);
+    const [name, setName] = useState();
     const searchRef = useRef(null);
     const location = useLocation();
 
@@ -34,10 +36,31 @@ const Navbar = () => {
             searchRef.current.value = search;
         }
 
+        // Fetch name of user
+        const fetchName = async () => {
+            const res = await supabase
+                .from("user_info")
+                .select("name, surname")
+                .eq("user_id", user.id)
+                .single();
+
+            if (res.error) {
+                console.error(res.error.message);
+            } else {
+                // setName(res.dres.data.name);
+                setName(`${res.data.surname[0]}. ${res.data.name}`);
+            }
+        }
+
+        // Get user info if logged in
+        if (user) {
+            fetchName();
+        }
+
         // Close sidebar when location changes
         setSidebar(false);
         document.body.style.overflow = "auto";
-    }, [location]);
+    }, [location, user, loading]);
 
     const handleSidebar = () => {
         setSidebar(!sidebar);
@@ -88,7 +111,7 @@ const Navbar = () => {
                         </div>
                         <Link to={"/account"} className="account">
                             <RiUserLine size={20} />
-                            {user ? <p>{user.email.split("@")[0]}</p> : <p>Login</p>}
+                            {name ? <p>{name}</p> : <p>Login</p>}
                         </Link>
                         <div className="menu-btn button" onClick={handleSidebar}>
                             <RiMenuLine size={25} />

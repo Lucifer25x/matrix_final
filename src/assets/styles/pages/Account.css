@@ -28,10 +28,11 @@
             background-color: var(--primary);
             color: #fff;
             cursor: pointer;
-            transition: background-color .3s;
+            transition: ease all .3s;
 
             &:hover {
                 background-color: var(--background-color-2-hover);
+                color: var(--background-color);
             }
         }
 
@@ -41,19 +42,22 @@
             background-color: red;
             color: #fff;
             cursor: pointer;
-            transition: background-color .3s;
+            transition: ease all .3s;
             font-weight: 700;
 
             &:hover {
                 background-color: var(--background-color-2-hover);
+                color: var(--background-color);
             }
         }
 
         .edit {
             background-color: var(--background-color-2);
+            color: #fff;
 
             &:hover {
                 background-color: var(--background-color-2-hover);
+                color: var(--background-color);
             }
         }
 
