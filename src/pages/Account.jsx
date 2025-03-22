@@ -25,6 +25,9 @@ const Account = () => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([]);
     const recentlyViewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
+    const [name, setName] = useState("");
+    const [surname, setSurname] = useState("");
+    const [pageLoading, setPageLoading] = useState(true);
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -52,6 +55,28 @@ const Account = () => {
             }
         }
 
+        const getUserInfo = async () => {
+            const { data, error } = await supabase
+                .from("user_info")
+                .select("*")
+                .eq("user_id", user.id)
+
+            if (error) {
+                Swal.fire({
+                    title: "Error!",
+                    text: error.message,
+                    icon: "error"
+                })
+            } else {
+                if (data && data.length > 0) {
+                    setName(data[0].name);
+                    setSurname(data[0].surname);
+                    setPageLoading(false);
+                }
+            }
+        }
+
+
         const getRecentlyViewedProducts = async () => {
             const { data, error } = await supabase.from("vinyls").select("*").in("id", recentlyViewed);
             if (error) {
@@ -61,9 +86,12 @@ const Account = () => {
             }
         }
 
-        checkAdmin()
-        if (recentlyViewedProducts.length === 0 && recentlyViewed.length > 0) {
-            getRecentlyViewedProducts();
+        if (user) {
+            getUserInfo();
+            checkAdmin();
+            if (recentlyViewedProducts.length === 0 && recentlyViewed.length > 0) {
+                getRecentlyViewedProducts();
+            }
         }
 
         document.title = "Account | The Record Hub"
@@ -86,7 +114,7 @@ const Account = () => {
         });
     }
 
-    if (loading) {
+    if (loading || pageLoading) {
         return <Loading />
     }
 
@@ -95,7 +123,7 @@ const Account = () => {
             <div className="top">
                 {user && (
                     <>
-                        <h1>Welcome {user.email.split('@')[0]}</h1>
+                        <h1>Welcome {name} {surname}</h1>
                         <p>Email: {user.email}</p>
 
                         {!user.user_metadata.email_verified && (
