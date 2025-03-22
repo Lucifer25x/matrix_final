@@ -3,7 +3,8 @@ nav {
     position: sticky;
     top: 0;
     z-index: 3;
-    background-color: var(--background-color);
+    background-color: var(--nav-background);
+    backdrop-filter: blur(10px);
     opacity: .95;
     transition: .3s ease all;
 

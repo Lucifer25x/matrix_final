@@ -13,6 +13,13 @@
 
             & img {
                 width: 100%;
+                transition: .3s ease all;
+                cursor: pointer;
+
+                &:hover {
+                    transform: scale(1.1);
+                    filter: brightness(0.9);
+                }
             }
         }
 

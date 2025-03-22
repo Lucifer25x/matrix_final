@@ -5,6 +5,7 @@
     --text-color-2: #b2b2b2;
     --text-color-light: #eee;
     --background-color: #fff;
+    --nav-background: rgba(255, 255, 255, .2);
     --background-color-2: #363636;
     --background-color-2-hover: #000;
     --background-color-3: #f5fdef;
@@ -28,6 +29,7 @@ body.dark {
     --text-color: #fff;
     --text-color-inverse: #000;
     --background-color: #151516;
+    --nav-background: rgba(0, 0, 0, .2);
     --background-color-2: #363636;
     --background-color-2-hover: #fff;
     --background-color-7: #222222;
