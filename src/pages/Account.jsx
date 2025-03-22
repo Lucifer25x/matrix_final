@@ -1,5 +1,5 @@
 // Import libraries
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import Loading from "../components/Loading";
@@ -29,7 +29,12 @@ const Account = () => {
     const recentlyViewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
     const [highlightedVinyls, setHighlightedVinyls] = useState([]);
     const [pageLoading, setPageLoading] = useState(true);
-    const navigate = useNavigate()
+    const [showPopup, setShowPopup] = useState(false);
+    const navigate = useNavigate();
+
+    // Refs
+    const nameInputRef = useRef();
+    const surnameInputRef = useRef();
 
     useEffect(() => {
         if (!user && !loading) {
@@ -73,6 +78,10 @@ const Account = () => {
                     setName(data[0].name);
                     setSurname(data[0].surname);
                     setPageLoading(false);
+
+                    // Set refs
+                    nameInputRef.current.value = data[0].name;
+                    surnameInputRef.current.value = data[0].surname
                 }
             }
         }
@@ -127,76 +136,73 @@ const Account = () => {
         });
     }
 
-    const handleEditAccount = async () => {
-        const { value: formValues } = await Swal.fire({
-            title: "Edit Account",
-            html: `
-              <input id="swal-input1" class="swal2-input" placeholder="Name">
-              <input id="swal-input2" class="swal2-input" placeholder="Surname">
-            `,
-            focusConfirm: false,
-            showCancelButton: true,
-            confirmButtonText: "Save",
-            confirmButtonColor: "#00b41b",
-            preConfirm: () => {
-              return [
-                document.getElementById("swal-input1").value,
-                document.getElementById("swal-input2").value
-              ];
-            }
-          });
-          if (formValues) {
-            const [name, surname] = formValues;
+    const handleEditAccount = async (e) => {
+        e.preventDefault();
 
-            // Check if name and surname are empty
-            if (!name || !surname) {
-                Swal.fire({
-                    title: "Error!",
-                    text: "Name and surname are required",
-                    icon: "error"
-                })
-                return;
-            }
+        const newName = nameInputRef.current.value;
+        const newSurname = surnameInputRef.current.value;
 
-            // Confirm if user wants to save changes
+        // Check if name and surname are empty
+        if (newName === "" || newSurname === "") {
             Swal.fire({
-                title: "Are you sure?",
-                text: "You will save changes to your account",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Yes, save",
-                cancelButtonText: "No, cancel",
-                confirmButtonColor: "#00b41b",
-            }).then(async (result) => {
-                if (result.isConfirmed) {
-                    const { data, error } = await supabase
-                        .from("user_info")
-                        .update({
-                            name,
-                            surname
-                        })
-                        .eq("user_id", user.id)
+                title: "Error!",
+                text: "Name and surname are required",
+                icon: "error"
+            })
+            return;
+        }
 
-                    if (error) {
-                        Swal.fire({
-                            title: "Error!",
-                            text: error.message,
-                            icon: "error"
-                        })
-                    } else {
-                        Swal.fire({
-                            title: "Success!",
-                            text: "Account updated successfully!",
-                            icon: "success",
-                        }).then(res => {
-                            if (res.isConfirmed) {
-                                window.location.reload();
-                            }
-                        })
-                    }
+        // Confirm if user wants to save changes
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You will save changes to your account",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, save",
+            cancelButtonText: "No, cancel",
+            confirmButtonColor: "#00b41b",
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                togglePopup();
+
+                const { data, error } = await supabase
+                    .from("user_info")
+                    .update({
+                        name: newName,
+                        surname: newSurname
+                    })
+                    .eq("user_id", user.id)
+
+                if (error) {
+                    Swal.fire({
+                        title: "Error!",
+                        text: error.message,
+                        icon: "error"
+                    })
+                } else {
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Account updated successfully!",
+                        icon: "success",
+                    }).then(res => {
+                        if (res.isConfirmed) {
+                            window.location.reload();
+                        }
+                    })
                 }
-            });
-          }
+            }
+        });
+    }
+
+    const togglePopup = () => {
+        // Change body overflow
+        if (showPopup) {
+            document.body.style.overflow = "auto";
+        } else {
+            document.body.style.overflow = "hidden";
+        }
+
+        setShowPopup(!showPopup);
     }
 
     if (loading || pageLoading) {
@@ -204,8 +210,30 @@ const Account = () => {
     }
 
     return (
-        <div className="account-page" data-aos="zoom-in">
-            <div className="top">
+        <div className="account-page">
+            <div className={`popup ${showPopup ? "show" : ""}`}>
+                <div className="content">
+                    <h1>Edit Account</h1>
+
+                    <form onSubmit={handleEditAccount}>
+                        <label>
+                            <p>Name:</p>
+                            <input type="text" ref={nameInputRef} />
+                        </label>
+                        <label>
+                            <p>Surname:</p>
+                            <input type="text" ref={surnameInputRef} />
+                        </label>
+
+                        <div className="buttons">
+                            <button type="submit">Save</button>
+                            <button type="button" className="cancel" onClick={togglePopup}>Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div className="top" data-aos="zoom-in">
                 {user && (
                     <>
                         <h1>Welcome {name} {surname}</h1>
@@ -216,7 +244,7 @@ const Account = () => {
                         )}
 
                         <div className="buttons">
-                            <button onClick={handleEditAccount} className="edit">EDIT ACCOUNT</button>
+                            <button onClick={togglePopup} className="edit">EDIT ACCOUNT</button>
                             {isAdmin && (
                                 <Link className="admin" to="/dashboard">DASHBOARD</Link>
                             )}
@@ -228,7 +256,7 @@ const Account = () => {
             </div>
 
             {recentlyViewedProducts.length > 5 && (
-                <div className="section">
+                <div className="section" data-aos="fade-up">
                     <h1><StaticLang en="RECENTLY VIEWED" az="SON GÖRÜNƏN" /></h1>
                     <div className="products">
                         <Swiper
@@ -262,7 +290,7 @@ const Account = () => {
             )}
 
             {highlightedVinyls.length > 0 && (
-                <div className="section">
+                <div className="section" data-aos="fade-up">
                     <h1><StaticLang en="HIGHLIGHTED" az="NÜMAYİŞ EDİLƏN" /></h1>
                     <div className="products">
                         <Swiper
