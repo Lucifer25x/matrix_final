@@ -3,6 +3,7 @@
     width: 100%;
     max-width: 1300px;
     min-height: 60vh;
+    padding: 10px;
 
     .top {
         width: 100%;
@@ -29,6 +30,9 @@
             color: #fff;
             cursor: pointer;
             transition: ease all .3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             &:hover {
                 background-color: var(--background-color-2-hover);
@@ -44,6 +48,9 @@
             cursor: pointer;
             transition: ease all .3s;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             &:hover {
                 background-color: var(--background-color-2-hover);
@@ -126,6 +133,18 @@
 
             &:hover {
                 background-color: var(--primary);
+            }
+        }
+    }
+}
+
+/* Responsive styles */
+@media(max-width: 600px){
+    .account-page {
+        .top {
+            text-align: center;
+            .buttons {
+                flex-direction: column;
             }
         }
     }

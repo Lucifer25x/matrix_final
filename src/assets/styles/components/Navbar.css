@@ -175,10 +175,34 @@ nav.shadow {
                 .links {
                     gap: 5px;
                 }
+
+                .account {
+                    padding: 5px 10px;
+                    border-radius: 10px;
+                    font-size: .8em;
+                }
             }
 
             & svg {
                 scale: .8;
+            }
+        }
+    }
+}
+
+@media(max-width: 400px){
+    nav {
+        .container {
+            .buttons {
+                .account {
+                    padding: 5px;
+                    border-radius: 5px;
+                    font-size: .7em;
+
+                    & svg {
+                        display: none;
+                    }
+                }
             }
         }
     }
