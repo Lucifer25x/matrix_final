@@ -23,10 +23,11 @@ import "../assets/styles/pages/Account.css";
 const Account = () => {
     const { user, loading } = useContext(UserContext);
     const [isAdmin, setIsAdmin] = useState(false);
-    const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([]);
-    const recentlyViewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
     const [name, setName] = useState("");
     const [surname, setSurname] = useState("");
+    const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([]);
+    const recentlyViewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
+    const [highlightedVinyls, setHighlightedVinyls] = useState([]);
     const [pageLoading, setPageLoading] = useState(true);
     const navigate = useNavigate()
 
@@ -86,11 +87,23 @@ const Account = () => {
             }
         }
 
+        const getHighlightedVinyls = async () => {
+            const { data, error } = await supabase.rpc('highlighted_vinyls');
+            if (error) {
+                console.log(error)
+            } else {
+                setHighlightedVinyls(data);
+            }
+        }
+
         if (user) {
             getUserInfo();
             checkAdmin();
             if (recentlyViewedProducts.length === 0 && recentlyViewed.length > 0) {
                 getRecentlyViewedProducts();
+            }
+            if (highlightedVinyls.length === 0) {
+                getHighlightedVinyls();
             }
         }
 
@@ -114,6 +127,78 @@ const Account = () => {
         });
     }
 
+    const handleEditAccount = async () => {
+        const { value: formValues } = await Swal.fire({
+            title: "Edit Account",
+            html: `
+              <input id="swal-input1" class="swal2-input" placeholder="Name">
+              <input id="swal-input2" class="swal2-input" placeholder="Surname">
+            `,
+            focusConfirm: false,
+            showCancelButton: true,
+            confirmButtonText: "Save",
+            confirmButtonColor: "#00b41b",
+            preConfirm: () => {
+              return [
+                document.getElementById("swal-input1").value,
+                document.getElementById("swal-input2").value
+              ];
+            }
+          });
+          if (formValues) {
+            const [name, surname] = formValues;
+
+            // Check if name and surname are empty
+            if (!name || !surname) {
+                Swal.fire({
+                    title: "Error!",
+                    text: "Name and surname are required",
+                    icon: "error"
+                })
+                return;
+            }
+
+            // Confirm if user wants to save changes
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You will save changes to your account",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, save",
+                cancelButtonText: "No, cancel",
+                confirmButtonColor: "#00b41b",
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const { data, error } = await supabase
+                        .from("user_info")
+                        .update({
+                            name,
+                            surname
+                        })
+                        .eq("user_id", user.id)
+
+                    if (error) {
+                        Swal.fire({
+                            title: "Error!",
+                            text: error.message,
+                            icon: "error"
+                        })
+                    } else {
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Account updated successfully!",
+                            icon: "success",
+                        }).then(res => {
+                            if (res.isConfirmed) {
+                                window.location.reload();
+                            }
+                        })
+                    }
+                }
+            });
+          }
+    }
+
     if (loading || pageLoading) {
         return <Loading />
     }
@@ -131,8 +216,9 @@ const Account = () => {
                         )}
 
                         <div className="buttons">
+                            <button onClick={handleEditAccount} className="edit">EDIT ACCOUNT</button>
                             {isAdmin && (
-                                <Link className="admin" to="/dashboard">Dashboard</Link>
+                                <Link className="admin" to="/dashboard">DASHBOARD</Link>
                             )}
 
                             <button onClick={handleSignOut}>SIGN OUT</button>
@@ -172,6 +258,41 @@ const Account = () => {
                             ))}
                         </Swiper>
                     </div>
+                </div>
+            )}
+
+            {highlightedVinyls.length > 0 && (
+                <div className="section">
+                    <h1><StaticLang en="HIGHLIGHTED" az="NÜMAYİŞ EDİLƏN" /></h1>
+                    <div className="products">
+                        <Swiper
+                            modules={[Navigation]}
+                            slidesPerView={1}
+                            navigation={true}
+                            loop={true}
+                            spaceBetween={20}
+                            breakpoints={{
+                                640: {
+                                    slidesPerView: 2,
+                                },
+                                768: {
+                                    slidesPerView: 3,
+                                },
+                                1024: {
+                                    slidesPerView: 5,
+                                }
+                            }}
+                        >
+                            {highlightedVinyls.map(vinyl => (
+                                <SwiperSlide key={vinyl.id}>
+                                    <SingleProduct
+                                        product={vinyl}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                    <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
                 </div>
             )}
         </div>

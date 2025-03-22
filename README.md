@@ -10,7 +10,7 @@
 - [x] Checkout requires sign up
 - [x] Checkout alert
 - [x] Sign up details
-- [ ] Edit account details (use popup)
+- [x] Edit account details (use popup)
 - [ ] Use user name/surname on navbar instead of email
 - [ ] Add new sections to home page
 - [ ] Change the navbar style a little bit

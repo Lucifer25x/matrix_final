@@ -23,6 +23,7 @@ body {
 
 & button {
     font-size: 1em;
+    font-family: var(--font-family);
 }
 
 /* Container */
