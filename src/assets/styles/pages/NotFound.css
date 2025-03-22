@@ -3,13 +3,76 @@
     margin: 20px auto;
     min-height: 60vh;
 
-    & h1 {
-        font-weight: 900;
-        font-size: 3em;
+    .top {
+        & h1 {
+            font-weight: 900;
+            font-size: 3em;
+        }
+
+        & p {
+            margin-top: 20px;
+        }
     }
 
-    & p {
-        margin-top: 20px;
+    .section {
+        margin-top: 40px;
+
+        & h2 {
+            font-size: 2em;
+            text-align: center;
+            font-weight: 900;
+            transition: .3s color;
+            cursor: pointer;
+
+            &:hover {
+                color: var(--primary);
+            }
+        }
+
+        .products {
+            margin: 20px 0;
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                top: 40%;
+                background-color: var(--secondary);
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                color: #000;
+                display: flex;
+                transition: .3s ease all;
+
+                &::after {
+                    font-size: 1.5em;
+                }
+
+                &:hover {
+                    background-color: #000;
+                    color: #fff;
+                }
+            }
+        }
+
+        &>a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            margin: 0 auto;
+            width: 300px;
+            padding: 15px;
+            border: none;
+            background-color: var(--text-color);
+            color: var(--background-color);
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 900;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: var(--primary);
+            }
+        }
     }
 }
 
@@ -22,8 +85,14 @@
         justify-content: center;
         text-align: center;
 
-        & h1 {
-            font-size: 2em;
+        .top {
+            & h1 {
+                font-size: 2.5em;
+            }
+
+            & p {
+                font-size: 1.2em;
+            }
         }
     }
 }
