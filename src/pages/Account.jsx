@@ -26,7 +26,8 @@ const Account = () => {
     const [name, setName] = useState("");
     const [surname, setSurname] = useState("");
     const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([]);
-    const recentlyViewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
+    const recentlyViewed =
+        JSON.parse(localStorage.getItem("recentlyViewed")) || [];
     const [highlightedVinyls, setHighlightedVinyls] = useState([]);
     const [pageLoading, setPageLoading] = useState(true);
     const [showPopup, setShowPopup] = useState(false);
@@ -38,41 +39,43 @@ const Account = () => {
 
     useEffect(() => {
         if (!user && !loading) {
-            navigate("/login")
+            navigate("/login");
         }
+
+        window.scrollTo(0, 0);
 
         const checkAdmin = async () => {
             if (user) {
                 const { data, error } = await supabase
                     .from("roles")
                     .select("role")
-                    .eq("id", user.id)
+                    .eq("id", user.id);
 
                 if (error) {
-                    console.error("Error fetching roles", error)
-                    return
+                    console.error("Error fetching roles", error);
+                    return;
                 }
 
                 if (data && data.length > 0) {
                     if (data[0].role === "admin") {
-                        setIsAdmin(true)
+                        setIsAdmin(true);
                     }
                 }
             }
-        }
+        };
 
         const getUserInfo = async () => {
             const { data, error } = await supabase
                 .from("user_info")
                 .select("*")
-                .eq("user_id", user.id)
+                .eq("user_id", user.id);
 
             if (error) {
                 Swal.fire({
                     title: "Error!",
                     text: error.message,
-                    icon: "error"
-                })
+                    icon: "error",
+                });
             } else {
                 if (data && data.length > 0) {
                     setName(data[0].name);
@@ -81,34 +84,39 @@ const Account = () => {
 
                     // Set refs
                     nameInputRef.current.value = data[0].name;
-                    surnameInputRef.current.value = data[0].surname
+                    surnameInputRef.current.value = data[0].surname;
                 }
             }
-        }
-
+        };
 
         const getRecentlyViewedProducts = async () => {
-            const { data, error } = await supabase.from("vinyls").select("*").in("id", recentlyViewed);
+            const { data, error } = await supabase
+                .from("vinyls")
+                .select("*")
+                .in("id", recentlyViewed);
             if (error) {
-                console.log(error)
+                console.log(error);
             } else {
                 setRecentlyViewedProducts(data);
             }
-        }
+        };
 
         const getHighlightedVinyls = async () => {
-            const { data, error } = await supabase.rpc('highlighted_vinyls');
+            const { data, error } = await supabase.rpc("highlighted_vinyls");
             if (error) {
-                console.log(error)
+                console.log(error);
             } else {
                 setHighlightedVinyls(data);
             }
-        }
+        };
 
         if (user) {
             getUserInfo();
             checkAdmin();
-            if (recentlyViewedProducts.length === 0 && recentlyViewed.length > 0) {
+            if (
+                recentlyViewedProducts.length === 0 &&
+                recentlyViewed.length > 0
+            ) {
                 getRecentlyViewedProducts();
             }
             if (highlightedVinyls.length === 0) {
@@ -116,7 +124,7 @@ const Account = () => {
             }
         }
 
-        document.title = "Account | The Record Hub"
+        document.title = "Account | The Record Hub";
     }, [user, loading]);
 
     const handleSignOut = async () => {
@@ -130,11 +138,11 @@ const Account = () => {
             confirmButtonColor: "#00b41b",
         }).then(async (result) => {
             if (result.isConfirmed) {
-                await supabase.auth.signOut()
-                window.location.href = "/login"
+                await supabase.auth.signOut();
+                window.location.href = "/login";
             }
         });
-    }
+    };
 
     const handleEditAccount = async (e) => {
         e.preventDefault();
@@ -147,8 +155,8 @@ const Account = () => {
             Swal.fire({
                 title: "Error!",
                 text: "Name and surname are required",
-                icon: "error"
-            })
+                icon: "error",
+            });
             return;
         }
 
@@ -169,30 +177,30 @@ const Account = () => {
                     .from("user_info")
                     .update({
                         name: newName,
-                        surname: newSurname
+                        surname: newSurname,
                     })
-                    .eq("user_id", user.id)
+                    .eq("user_id", user.id);
 
                 if (error) {
                     Swal.fire({
                         title: "Error!",
                         text: error.message,
-                        icon: "error"
-                    })
+                        icon: "error",
+                    });
                 } else {
                     Swal.fire({
                         title: "Success!",
                         text: "Account updated successfully!",
                         icon: "success",
-                    }).then(res => {
+                    }).then((res) => {
                         if (res.isConfirmed) {
                             window.location.reload();
                         }
-                    })
+                    });
                 }
             }
         });
-    }
+    };
 
     const togglePopup = () => {
         // Change body overflow
@@ -203,10 +211,10 @@ const Account = () => {
         }
 
         setShowPopup(!showPopup);
-    }
+    };
 
     if (loading || pageLoading) {
-        return <Loading />
+        return <Loading />;
     }
 
     return (
@@ -227,7 +235,13 @@ const Account = () => {
 
                         <div className="buttons">
                             <button type="submit">Save</button>
-                            <button type="button" className="cancel" onClick={togglePopup}>Cancel</button>
+                            <button
+                                type="button"
+                                className="cancel"
+                                onClick={togglePopup}
+                            >
+                                Cancel
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -236,17 +250,25 @@ const Account = () => {
             <div className="top" data-aos="zoom-in">
                 {user && (
                     <>
-                        <h1>Welcome {name} {surname}</h1>
+                        <h1>
+                            Welcome {name} {surname}
+                        </h1>
                         <p>Email: {user.email}</p>
 
                         {!user.user_metadata.email_verified && (
-                            <p className="not_verified">Please verify your email address</p>
+                            <p className="not_verified">
+                                Please verify your email address
+                            </p>
                         )}
 
                         <div className="buttons">
-                            <button onClick={togglePopup} className="edit">EDIT ACCOUNT</button>
+                            <button onClick={togglePopup} className="edit">
+                                EDIT ACCOUNT
+                            </button>
                             {isAdmin && (
-                                <Link className="admin" to="/dashboard">DASHBOARD</Link>
+                                <Link className="admin" to="/dashboard">
+                                    DASHBOARD
+                                </Link>
                             )}
 
                             <button onClick={handleSignOut}>SIGN OUT</button>
@@ -257,7 +279,9 @@ const Account = () => {
 
             {recentlyViewedProducts.length > 5 && (
                 <div className="section" data-aos="fade-up">
-                    <h1><StaticLang en="RECENTLY VIEWED" az="SON GÖRÜNƏN" /></h1>
+                    <h1>
+                        <StaticLang en="RECENTLY VIEWED" az="SON GÖRÜNƏN" />
+                    </h1>
                     <div className="products">
                         <Swiper
                             modules={[Navigation]}
@@ -274,14 +298,12 @@ const Account = () => {
                                 },
                                 1024: {
                                     slidesPerView: 5,
-                                }
+                                },
                             }}
                         >
-                            {recentlyViewedProducts.map(vinyl => (
+                            {recentlyViewedProducts.map((vinyl) => (
                                 <SwiperSlide key={vinyl.id}>
-                                    <SingleProduct
-                                        product={vinyl}
-                                    />
+                                    <SingleProduct product={vinyl} />
                                 </SwiperSlide>
                             ))}
                         </Swiper>
@@ -291,7 +313,9 @@ const Account = () => {
 
             {highlightedVinyls.length > 0 && (
                 <div className="section" data-aos="fade-up">
-                    <h1><StaticLang en="HIGHLIGHTED" az="NÜMAYİŞ EDİLƏN" /></h1>
+                    <h1>
+                        <StaticLang en="HIGHLIGHTED" az="NÜMAYİŞ EDİLƏN" />
+                    </h1>
                     <div className="products">
                         <Swiper
                             modules={[Navigation]}
@@ -308,23 +332,23 @@ const Account = () => {
                                 },
                                 1024: {
                                     slidesPerView: 5,
-                                }
+                                },
                             }}
                         >
-                            {highlightedVinyls.map(vinyl => (
+                            {highlightedVinyls.map((vinyl) => (
                                 <SwiperSlide key={vinyl.id}>
-                                    <SingleProduct
-                                        product={vinyl}
-                                    />
+                                    <SingleProduct product={vinyl} />
                                 </SwiperSlide>
                             ))}
                         </Swiper>
                     </div>
-                    <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
+                    <Link to={"/products"}>
+                        <StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" />
+                    </Link>
                 </div>
             )}
         </div>
-    )
-}
+    );
+};
 
-export default Account
+export default Account;
