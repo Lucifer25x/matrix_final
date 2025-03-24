@@ -119,13 +119,24 @@
                 text-align: center;
 
                 & button {
-                    background-color: transparent;
+                    background-color: #d33f41;
                     border: none;
                     cursor: pointer;
                     transition: color 0.3s;
+                    margin: 0 auto;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 10px;
+                    padding: 5px;
+                    transition: 0.3s ease all;
+
+                    & svg {
+                        fill: #fff;
+                    }
 
                     &:hover {
-                        color: var(--primary);
+                        background-color: #fc3f42;
                     }
                 }
             }
@@ -208,7 +219,7 @@
 }
 
 /* Responsive styles */
-@media(max-width: 800px) {
+@media (max-width: 800px) {
     .cart-page {
         & h1 {
             font-size: 2em;
@@ -266,16 +277,16 @@
         }
 
         .subtotal {
-            justify-content: space-between
+            justify-content: space-between;
         }
     }
 }
 
-@media(max-width: 600px){
+@media (max-width: 600px) {
     .cart-page {
         & table {
             & th {
-                font-size: .8em;
+                font-size: 0.8em;
                 min-width: 50px;
             }
 

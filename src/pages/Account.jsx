@@ -221,26 +221,35 @@ const Account = () => {
         <div className="account-page">
             <div className={`popup ${showPopup ? "show" : ""}`}>
                 <div className="content">
-                    <h1>Edit Account</h1>
+                    {/* <h1>Edit Account</h1> */}
+                    <h1>
+                        <StaticLang en="Edit Account" az="Hesabı Düzənlə" />
+                    </h1>
 
                     <form onSubmit={handleEditAccount}>
                         <label>
-                            <p>Name:</p>
+                            <p>
+                                <StaticLang en="Name:" az="Ad:" />
+                            </p>
                             <input type="text" ref={nameInputRef} />
                         </label>
                         <label>
-                            <p>Surname:</p>
+                            <p>
+                                <StaticLang en="Surname:" az="Soyad:" />
+                            </p>
                             <input type="text" ref={surnameInputRef} />
                         </label>
 
                         <div className="buttons">
-                            <button type="submit">Save</button>
+                            <button type="submit">
+                                <StaticLang en="Save" az="Yadda Saxla" />
+                            </button>
                             <button
                                 type="button"
                                 className="cancel"
                                 onClick={togglePopup}
                             >
-                                Cancel
+                                <StaticLang en="Cancel" az="Ləğv Et" />
                             </button>
                         </div>
                     </form>
@@ -250,28 +259,43 @@ const Account = () => {
             <div className="top" data-aos="zoom-in">
                 {user && (
                     <>
-                        <h1>
+                        {/* <h1>
                             Welcome {name} {surname}
+                        </h1> */}
+                        <h1>
+                            <StaticLang en="Welcome" az="Xoş Gəldiniz" /> {name}{" "}
+                            {surname}
                         </h1>
                         <p>Email: {user.email}</p>
 
                         {!user.user_metadata.email_verified && (
                             <p className="not_verified">
-                                Please verify your email address
+                                <StaticLang
+                                    en="Please verify your email address"
+                                    az="Email ünvanınızı təsdiqləyin"
+                                />
                             </p>
                         )}
 
                         <div className="buttons">
                             <button onClick={togglePopup} className="edit">
-                                EDIT ACCOUNT
+                                <StaticLang
+                                    en="EDIT ACCOUNT"
+                                    az="HESABI DÜZƏNLƏ"
+                                />
                             </button>
                             {isAdmin && (
                                 <Link className="admin" to="/dashboard">
-                                    DASHBOARD
+                                    <StaticLang
+                                        en="DASHBOARD"
+                                        az="İDARƏ PANELİ"
+                                    />
                                 </Link>
                             )}
 
-                            <button onClick={handleSignOut}>SIGN OUT</button>
+                            <button onClick={handleSignOut}>
+                                <StaticLang en="SIGN OUT" az="ÇIXIŞ" />
+                            </button>
                         </div>
                     </>
                 )}

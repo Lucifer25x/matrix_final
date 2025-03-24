@@ -97,7 +97,7 @@
 }
 
 /* Responsive styles */
-@media(max-width: 800px) {
+@media (max-width: 800px) {
     .contact-page {
         & h1 {
             font-size: 2em;
@@ -109,6 +109,9 @@
 
             .section {
                 flex: none;
+            }
+            .section:nth-child(1) {
+                order: 2;
             }
         }
     }

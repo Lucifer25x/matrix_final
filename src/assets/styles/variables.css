@@ -1,11 +1,11 @@
 :root {
-    --font-family: 'Open Sans', sans-serif;
+    --font-family: "Open Sans", sans-serif;
     --text-color: #000;
     --text-color-inverse: #fff;
     --text-color-2: #b2b2b2;
     --text-color-light: #eee;
     --background-color: #fff;
-    --nav-background: rgba(255, 255, 255, .2);
+    --nav-background: rgba(255, 255, 255, 0.4);
     --background-color-2: #363636;
     --background-color-2-hover: #000;
     --background-color-3: #f5fdef;
@@ -21,7 +21,7 @@
     --filter: invert(0);
     --primary: #00b41b;
     --secondary: #deffca;
-    --shadow-color: rgba(0, 0, 0, .1);
+    --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 /* TODO: Fix the dark theme for all the components and pages */
@@ -29,7 +29,7 @@ body.dark {
     --text-color: #fff;
     --text-color-inverse: #000;
     --background-color: #151516;
-    --nav-background: rgba(0, 0, 0, .2);
+    --nav-background: rgba(0, 0, 0, 0.4);
     --background-color-2: #363636;
     --background-color-2-hover: #fff;
     --background-color-7: #222222;
@@ -37,5 +37,5 @@ body.dark {
     --border-color-focus: #fff;
     --footer-background: #2e2b2b;
     --filter: invert(1);
-    --shadow-color: rgba(255, 255, 255, .1);
+    --shadow-color: rgba(255, 255, 255, 0.1);
 }

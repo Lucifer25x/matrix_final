@@ -6,6 +6,7 @@ import Loading from "../components/Loading";
 import useWishlist from "../hooks/useWishlist";
 import Product from "../components/SingleProduct";
 import supabase from "../utils/supabase";
+import StaticLang from "../utils/StaticLang";
 
 // Import styles
 import "../assets/styles/pages/Wishlist.css";
@@ -20,12 +21,14 @@ const Wishlist = () => {
 
     useEffect(() => {
         if (!user && !loading) {
-            navigate("/login")
+            navigate("/login");
         }
 
         const fetchProducts = async () => {
             if (wishlist.length > 0) {
-                const products_id_list = wishlist.map(item => item.product_id);
+                const products_id_list = wishlist.map(
+                    (item) => item.product_id,
+                );
                 const { data, error } = await supabase
                     .from("vinyls")
                     .select("id, title, img, artist, price, stock")
@@ -39,33 +42,42 @@ const Wishlist = () => {
             } else {
                 setProducts([]);
             }
-        }
+        };
 
         if (!wishlistLoading) {
             fetchProducts().then(() => setProductsLoading(false));
         }
 
-        document.title = "Wishlist | The Record Hub"
-    }, [user, loading, wishlistLoading])
+        document.title = "Wishlist | The Record Hub";
+    }, [user, loading, wishlistLoading]);
 
     if (loading || productsLoading) {
-        return <Loading />
+        return <Loading />;
     }
 
     return (
         <div className="wishlist-page">
-            <h1>Wishlist</h1>
+            <h1>
+                <StaticLang en="Wishlist" az="İstək siyahısı" />
+            </h1>
             <div className="wishlist" data-aos="fade-up">
                 {products.length > 0 && wishlist.length > 0 ? (
-                    products.map(product => (
-                        <Product key={product.id} product={product} animate={true} />
+                    products.map((product) => (
+                        <Product
+                            key={product.id}
+                            product={product}
+                            animate={true}
+                        />
                     ))
                 ) : (
-                    <p>Your wishlist is empty!</p>
+                    <StaticLang
+                        en="Your wishlist is empty!"
+                        az="İstək siyahınız boşdur!"
+                    />
                 )}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Wishlist
+export default Wishlist;
