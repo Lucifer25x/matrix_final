@@ -59,12 +59,17 @@ const Navbar = () => {
 
         // Close sidebar when location changes
         setSidebar(false);
-        document.body.style.overflow = "auto";
+        document.body.style.overflowY = "auto";
     }, [location, user, loading]);
 
     const handleSidebar = () => {
         setSidebar(!sidebar);
-        document.body.style.overflow = sidebar ? "auto" : "hidden";
+
+        // Disable scrolling when sidebar is open on mobile
+        const windowWidth = window.innerWidth;
+        if (windowWidth <= 800) {
+            document.body.style.overflowY = sidebar ? "auto" : "hidden";
+        }
     }
 
     const handleSearch = (e) => {

@@ -83,8 +83,10 @@ const Account = () => {
                     setPageLoading(false);
 
                     // Set refs
-                    nameInputRef.current.value = data[0].name;
-                    surnameInputRef.current.value = data[0].surname;
+                    if (nameInputRef.current && surnameInputRef.current) {
+                        nameInputRef.current.value = data[0].name;
+                        surnameInputRef.current.value = data[0].surname;
+                    }
                 }
             }
         };

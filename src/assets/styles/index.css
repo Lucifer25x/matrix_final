@@ -18,7 +18,8 @@ body {
     line-height: 1.5;
     color: var(--text-color);
     background-color: var(--background-color);
-    overflow: hidden;
+    overflow-x: hidden;
+    width: 100vw;
 }
 
 & button {
