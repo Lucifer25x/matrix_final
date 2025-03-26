@@ -127,21 +127,15 @@ const Product = () => {
     return (
         <div className="product-details-page">
             <div className="general">
-                <div className="img">
+                <div className="img" data-aos="fade-right">
                     <img src={productDetails.img} alt={productDetails.title} />
                 </div>
 
-                <div className="about">
-                    <h2 className="artist">{productDetails.artist}</h2>
-                    <p className="title">{productDetails.title}</p>
-                    <p className="label">{productDetails.label}</p>
-                    <p className="price">${productDetails.price}</p>
-
-                    <div className="buttons">
-                        <button onClick={handleAddToCart} disabled={!productDetails.stock}><StaticLang en="ADD TO CART" az="SƏBƏTƏ ƏLAVƏ EDİN" /></button>
-                        <div onClick={handleWishlist} className={`add-wishlist ${isInWishlist(productDetails.id) ? "active" : ""}`} title="Add to wishlist">
-                            <RiHeartLine size={30} />
-                        </div>
+                <div className="about" data-aos="fade-left">
+                    <div className="top">
+                        <h2 className="artist">{productDetails.artist}</h2>
+                        <p className="title">{productDetails.title}</p>
+                        <p className="label">{productDetails.label}</p>
                     </div>
 
                     <div className="details">
@@ -150,15 +144,25 @@ const Product = () => {
                         <p><b><StaticLang en="Genre" az="Janr" />:</b> {productDetails.genre}</p>
                         <p><b><StaticLang en="Release Year" az="Buraxılış İli" />:</b> {productDetails.release_year}</p>
                     </div>
+
+                    <div className="bottom">
+                        <p className="price"><StaticLang en="Price" az="Qiymət" />: ${productDetails.price}</p>
+                        <div className="buttons">
+                            <button onClick={handleAddToCart} disabled={!productDetails.stock}><StaticLang en="ADD TO CART" az="SƏBƏTƏ ƏLAVƏ EDİN" /></button>
+                            <div onClick={handleWishlist} className={`add-wishlist ${isInWishlist(productDetails.id) ? "active" : ""}`} title="Add to wishlist">
+                                <RiHeartLine size={30} />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div className="description">
+            <div className="description" data-aos="fade-up">
                 {productDetails.description}
             </div>
 
             {productDetails.tracks.length > 0 && (
-                <div className="tracklist">
+                <div className="tracklist" data-aos="fade-up">
                     <h2><StaticLang en="Tracklist" az="Trek siyahısı" /></h2>
                     <ul>
                         {productDetails.tracks.map((track, index) => (
@@ -170,7 +174,7 @@ const Product = () => {
 
             <div className="section">
                 <h1><StaticLang en="YOU MAY ALSO LIKE" az="SİZ HƏMÇİNİN BƏYƏNƏ BİLƏRSİNİZ" /></h1>
-                <div className="products">
+                <div className="products" data-aos="fade-up">
                     {randomVinyls.length > 0 ? (
                         <Swiper
                             modules={[Navigation]}
@@ -204,7 +208,7 @@ const Product = () => {
             </div>
 
             {recentlyViewedProducts.length > 5 && (
-                <div className="section">
+                <div className="section" data-aos="fade-up">
                     <h1><StaticLang en="RECOMMENDED" az="TÖVSİYƏ EDİLƏN" /></h1>
                     <div className="products">
                         <Swiper
