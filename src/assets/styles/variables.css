@@ -18,6 +18,7 @@
     --border-color: #d3d3d3;
     --border-color-focus: #000;
     --border-color-2: #eee;
+    --border-color-3: #d3d3d3;
     --filter: invert(0);
     --primary: #00b41b;
     --secondary: #deffca;
@@ -35,6 +36,7 @@ body.dark {
     --background-color-7: #222222;
     --border-color: #222222;
     --border-color-focus: #fff;
+    --border-color-3: #fff;
     --footer-background: #2e2b2b;
     --filter: invert(1);
     --shadow-color: rgba(255, 255, 255, 0.1);

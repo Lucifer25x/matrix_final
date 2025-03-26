@@ -123,12 +123,39 @@
     }
 
     .tracklist {
-        margin-top: 40px;
+        width: 100%;
+        max-width: 800px;
+        margin: 40px auto;
+        border: 1px solid var(--border-color-3);
+
+        & h2 {
+            font-size: 2em;
+            font-weight: 900;
+            text-align: center;
+            margin: 10px 0;
+        }
 
         & ul {
             list-style: none;
             padding: 0;
-            margin-top: 10px;
+            
+            & li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+                border-top: 1px solid var(--border-color-3);
+                cursor: pointer;
+                transition: .3s ease all;
+
+                & span {
+                    font-weight: 900;
+                }
+
+                &:hover {
+                    background-color: var(--background-color-7);
+                }
+            }
         }
     }
 
