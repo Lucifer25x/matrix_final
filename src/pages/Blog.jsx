@@ -15,9 +15,11 @@ const Blog = () => {
     const { id } = useParams()
     const [blogDetails, setBlogDetails] = useState(null)
     const [latestBlogs, setLatestBlogs] = useState(null)
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        setLoading(true);
 
         const getBlog = async () => {
             const { data, error } = await supabase.from("blogs").select("*").eq("id", id);
@@ -26,6 +28,7 @@ const Blog = () => {
             } else {
                 setBlogDetails(data[0])
             }
+            setLoading(false);
         }
 
         const getLatestThreeBlogs = async () => {
@@ -43,39 +46,44 @@ const Blog = () => {
         document.title = "Blog | The Record Hub";
     }, [id]);
 
-    if (!blogDetails) {
+    if (loading) {
         return <Loading />;
     }
 
     return (
         <div className="blog-page">
-            <div className="blog-banner" data-aos="zoom-in">
-                <img src={blogDetails.img} alt={blogDetails.title} />
-                <h1>{blogDetails.title}</h1>
-            </div>
-            <div className="blog-bottom" data-aos="zoom-in">
-                <div className="route">
-                    <p><Link to={"/"}>Home</Link> / <Link to={"/blogs"}>Blogs</Link></p>
-                </div>
-
-                <h1>{blogDetails.title}</h1>
-                <div className="details">
-                    <span className="author">by {blogDetails.author}</span>
-                    -
-                    <span className="date">{blogDetails.created_at.slice(0, 10)}</span>
-                </div>
-
-                <div className="content">
-                    <ReactMarkdown>{blogDetails.content}</ReactMarkdown>
-                </div>
-
-                <div className="other-blogs" data-aos="fade-up">
-                    <h2><StaticLang en="Other Blogs" az="Digər bloglar" /></h2>
-                    <div className="blogs">
-                        {latestBlogs && latestBlogs.map((blog, index) => (
-                            <SingleBlog key={index} blog={blog} />
-                        ))}
+            {!blogDetails && <div className="not-found"><p><StaticLang en="Blog not found" az="Blog postu tapılmadı" /></p></div>}
+            {blogDetails && (
+                <>
+                    <div className="blog-banner" data-aos="zoom-in">
+                        <img src={blogDetails.img} alt={blogDetails.title} />
+                        <h1>{blogDetails.title}</h1>
                     </div>
+                    <div className="blog-bottom" data-aos="zoom-in">
+                        <div className="route">
+                            <p><Link to={"/"}>Home</Link> / <Link to={"/blogs"}>Blogs</Link></p>
+                        </div>
+
+                        <h1>{blogDetails.title}</h1>
+                        <div className="details">
+                            <span className="author">by {blogDetails.author}</span>
+                            -
+                            <span className="date">{blogDetails.created_at.slice(0, 10)}</span>
+                        </div>
+
+                        <div className="content">
+                            <ReactMarkdown>{blogDetails.content}</ReactMarkdown>
+                        </div>
+                    </div>
+                </>
+            )}
+
+            <div className="other-blogs" data-aos="fade-up">
+                <h2><StaticLang en="Other Blogs" az="Digər bloglar" /></h2>
+                <div className="blogs">
+                    {latestBlogs && latestBlogs.map((blog, index) => (
+                        <SingleBlog key={index} blog={blog} />
+                    ))}
                 </div>
             </div>
 

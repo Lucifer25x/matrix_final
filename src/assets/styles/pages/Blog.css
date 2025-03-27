@@ -71,11 +71,21 @@
         }
 
         .content {
-            & p, & ul, & ol, & h1, & h2, & h3, & h4, & h5, & h6 {
+
+            & p,
+            & ul,
+            & ol,
+            & h1,
+            & h2,
+            & h3,
+            & h4,
+            & h5,
+            & h6 {
                 margin: 20px 0;
             }
 
-            & ul, & ol {
+            & ul,
+            & ol {
                 margin-left: 20px;
             }
 
@@ -83,20 +93,43 @@
                 color: var(--primary);
             }
         }
+    }
 
-        .other-blogs {
+    .other-blogs {
+        width: 100%;
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 10px;
+
+        & h2 {
+            font-weight: 900;
+            text-align: center;
             margin: 20px 0;
+            font-size: 2em;
+        }
 
-            .blogs {
-                margin-top: 20px;
-                display: flex;
-                justify-content: space-between;
-                gap: 20px;
+        .blogs {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
 
-                .single-blog {
-                    width: 30%;
-                }
+            .single-blog {
+                width: 30%;
             }
+        }
+    }
+
+    .not-found {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+
+        & p {
+            font-size: 2em;
+            font-weight: 900;
         }
     }
 }
@@ -108,16 +141,14 @@
             font-size: 2em;
         }
 
-        .blog-bottom {
-            .other-blogs {
-                .blogs {
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
+        .other-blogs {
+            .blogs {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
 
-                    .single-blog {
-                        width: 100% !important;
-                    }
+                .single-blog {
+                    width: 100% !important;
                 }
             }
         }

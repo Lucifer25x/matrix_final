@@ -30,9 +30,11 @@ const Product = () => {
     const [randomVinyls, setRandomVinyls] = useState([])
     const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([]);
     const recentlyViewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        setLoading(true);
 
         const getProduct = async () => {
             const { data, error } = await supabase.from("vinyls").select("*").eq("id", id);
@@ -41,6 +43,7 @@ const Product = () => {
             } else {
                 setProductDetails(data[0])
             }
+            setLoading(false);
         }
 
         const getRandomVinyls = async () => {
@@ -120,56 +123,62 @@ const Product = () => {
         }
     }
 
-    if (!productDetails || !randomVinyls.length) {
+    if (loading) {
         return <Loading />;
     }
 
     return (
         <div className="product-details-page">
-            <div className="general">
-                <div className="img" data-aos="fade-right">
-                    <img src={productDetails.img} alt={productDetails.title} />
-                </div>
+            {!productDetails && <div className="not-found"><p><StaticLang en="Product not found" az="Məhsul tapılmadı" /></p></div>}
 
-                <div className="about" data-aos="fade-left">
-                    <div className="top">
-                        <h2 className="artist">{productDetails.artist}</h2>
-                        <p className="title">{productDetails.title}</p>
-                        <p className="label">{productDetails.label}</p>
-                    </div>
+            {productDetails && (
+                <>
+                    <div className="general">
+                        <div className="img" data-aos="fade-right">
+                            <img src={productDetails.img} alt={productDetails.title} />
+                        </div>
 
-                    <div className="details">
-                        <p><b>Format:</b> {productDetails.format}</p>
-                        <p><b><StaticLang en="Color" az="Rəng" />:</b> {productDetails.color}</p>
-                        <p><b><StaticLang en="Genre" az="Janr" />:</b> {productDetails.genre}</p>
-                        <p><b><StaticLang en="Release Year" az="Buraxılış İli" />:</b> {productDetails.release_year}</p>
-                    </div>
+                        <div className="about" data-aos="fade-left">
+                            <div className="top">
+                                <h2 className="artist">{productDetails.artist}</h2>
+                                <p className="title">{productDetails.title}</p>
+                                <p className="label">{productDetails.label}</p>
+                            </div>
 
-                    <div className="bottom">
-                        <p className="price"><StaticLang en="Price" az="Qiymət" />: ${productDetails.price}</p>
-                        <div className="buttons">
-                            <button onClick={handleAddToCart} disabled={!productDetails.stock}><StaticLang en="ADD TO CART" az="SƏBƏTƏ ƏLAVƏ EDİN" /></button>
-                            <div onClick={handleWishlist} className={`add-wishlist ${isInWishlist(productDetails.id) ? "active" : ""}`} title="Add to wishlist">
-                                <RiHeartLine size={30} />
+                            <div className="details">
+                                <p><b>Format:</b> {productDetails.format}</p>
+                                <p><b><StaticLang en="Color" az="Rəng" />:</b> {productDetails.color}</p>
+                                <p><b><StaticLang en="Genre" az="Janr" />:</b> {productDetails.genre}</p>
+                                <p><b><StaticLang en="Release Year" az="Buraxılış İli" />:</b> {productDetails.release_year}</p>
+                            </div>
+
+                            <div className="bottom">
+                                <p className="price"><StaticLang en="Price" az="Qiymət" />: ${productDetails.price}</p>
+                                <div className="buttons">
+                                    <button onClick={handleAddToCart} disabled={!productDetails.stock}><StaticLang en="ADD TO CART" az="SƏBƏTƏ ƏLAVƏ EDİN" /></button>
+                                    <div onClick={handleWishlist} className={`add-wishlist ${isInWishlist(productDetails.id) ? "active" : ""}`} title="Add to wishlist">
+                                        <RiHeartLine size={30} />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div className="description" data-aos="fade-up">
-                {productDetails.description}
-            </div>
+                    <div className="description" data-aos="fade-up">
+                        {productDetails.description}
+                    </div>
 
-            {productDetails.tracks.length > 0 && (
-                <div className="tracklist" data-aos="fade-up">
-                    <h2><StaticLang en="Tracklist" az="Trek siyahısı" /></h2>
-                    <ul>
-                        {productDetails.tracks.map((track, index) => (
-                            <li key={index}>{index + 1}. {track}</li>
-                        ))}
-                    </ul>
-                </div>
+                    {productDetails.tracks.length > 0 && (
+                        <div className="tracklist" data-aos="fade-up">
+                            <h2><StaticLang en="Tracklist" az="Trek siyahısı" /></h2>
+                            <ul>
+                                {productDetails.tracks.map((track, index) => (
+                                    <li key={index}>{index + 1}. {track}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                </>
             )}
 
             <div className="section">
