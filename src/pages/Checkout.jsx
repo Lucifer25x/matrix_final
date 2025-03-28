@@ -1,5 +1,5 @@
 // Import libraries
-import { useEffect, useContext, useRef } from "react";
+import { useEffect, useContext, useRef, useState } from "react";
 import { useCart } from "react-use-cart";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
@@ -23,11 +23,11 @@ const Checkout = () => {
     const postalCodeRef = useRef();
     const cityRef = useRef();
     const phoneRef = useRef();
-    const cardNumberRef = useRef();
-    const expirationDateRef = useRef();
-    const securityCodeRef = useRef();
     const nameOnCardRef = useRef();
     const savePaymentRef = useRef();
+    const [expiryDate, setExpiryDate] = useState("");
+    const [cardNumber, setCardNumber] = useState("");
+    const [securityCode, setSecurityCode] = useState("");
 
     useEffect(() => {
         if (!user && !loading) {
@@ -35,15 +35,16 @@ const Checkout = () => {
         }
 
         // Fill in saved payment information
-        cardNumberRef.current.value = savedInfo.cardNumber || "";
-        expirationDateRef.current.value = savedInfo.expirationDate || "";
-        securityCodeRef.current.value = savedInfo.securityCode || "";
         nameOnCardRef.current.value = savedInfo.nameOnCard || "";
+        setExpiryDate(savedInfo.expiryDate || "");
+        setCardNumber(savedInfo.cardNumber || "");
+        setSecurityCode(savedInfo.securityCode || "");
 
         window.scrollTo(0, 0);
         document.title = "Checkout | The Record Hub";
     }, [user, loading]);
 
+    // Handle payment
     const handlePay = () => {
         const country = countryRef.current.value;
         const firstName = firstNameRef.current.value;
@@ -52,13 +53,10 @@ const Checkout = () => {
         const postalCode = postalCodeRef.current.value;
         const city = cityRef.current.value;
         const phone = phoneRef.current.value;
-        const cardNumber = cardNumberRef.current.value;
-        const expirationDate = expirationDateRef.current.value;
-        const securityCode = securityCodeRef.current.value;
         const nameOnCard = nameOnCardRef.current.value;
         const savePayment = savePaymentRef.current.checked;
 
-        if (!country || !firstName || !lastName || !address || !postalCode || !city || !phone || !cardNumber || !expirationDate || !securityCode || !nameOnCard) {
+        if (!country || !firstName || !lastName || !address || !postalCode || !expiryDate.length || !city || !phone || !cardNumber.length || !securityCode.length || !nameOnCard) {
             Swal.fire({
                 text: "Please fill in all fields",
                 icon: "warning"
@@ -69,7 +67,7 @@ const Checkout = () => {
         if (savePayment) {
             localStorage.setItem("paymentInfo", JSON.stringify({
                 cardNumber,
-                expirationDate,
+                expiryDate,
                 securityCode,
                 nameOnCard
             }));
@@ -83,6 +81,61 @@ const Checkout = () => {
             navigate("/cart");
         });
     }
+
+
+    // Format the expiry date
+    const formatExpiryDate = (value) => {
+        const cleaned = value.replace(/\D/g, '');
+        if (cleaned.length >= 2) {
+            return `${cleaned.slice(0, 2)}/${cleaned.slice(2, 4)}`;
+        }
+        return cleaned;
+    };
+
+    const handleExpiryDateChange = (e) => {
+        const { value } = e.target;
+        const formattedValue = formatExpiryDate(value);
+
+        const month = formattedValue.split('/')[0];
+        if (month.length === 2 && (parseInt(month, 10) < 1 || parseInt(month, 10) > 12)) {
+            return;
+        }
+
+        setExpiryDate(formattedValue);
+    };
+
+    const handleExpiryDateKeyDown = (e) => {
+        if (e.key === 'Backspace' || e.key === 'Delete') {
+            const cursorPosition = e.target.selectionStart;
+            if (cursorPosition === 3) {
+                e.preventDefault();
+                setExpiryDate((prev) => prev.slice(0, -1));
+            }
+        }
+    };
+
+    // Handle card number
+    const formatCardNumber = (value) => {
+        const cleaned = value.replace(/\D/g, '');
+        const groups = cleaned.match(/.{1,4}/g);
+        return groups ? groups.join(' ') : '';
+    };
+
+    const handleCardNumberChange = (e) => {
+        const rawValue = e.target.value.replace(/\D/g, '');
+        if (rawValue.length <= 16) {
+            const formattedValue = formatCardNumber(e.target.value);
+            setCardNumber(formattedValue);
+        }
+    };
+
+    // Handle security code
+    const handleSecurityCodeChange = (e) => {
+        const cleaned = e.target.value.replace(/\D/g, '');
+        if (cleaned.length <= 4) {
+            setSecurityCode(cleaned);
+        }
+    };
 
     return (
         <div className="checkout-page" data-aos="zoom-in">
@@ -106,16 +159,28 @@ const Checkout = () => {
             <div className="section">
                 <h2>Payment</h2>
 
-                <input type="text" placeholder="Card number" ref={cardNumberRef}/>
+                <input type="text"
+                    placeholder="1234 5678 9012 3456"
+                    value={cardNumber}
+                    onChange={handleCardNumberChange}
+                />
                 <div className="flex">
-                    <input type="text" placeholder="Expiration date (MM/YY)" ref={expirationDateRef} />
-                    <input type="text" placeholder="Security Code" ref={securityCodeRef} />
+                    <input type="text"
+                        placeholder="12/24"
+                        value={expiryDate}
+                        onChange={handleExpiryDateChange}
+                        onKeyDown={handleExpiryDateKeyDown} />
+                    <input type="text"
+                        placeholder="123"
+                        value={securityCode}
+                        onChange={handleSecurityCodeChange}
+                    />
                 </div>
-                <input type="text" placeholder="Name on card" ref={nameOnCardRef}/>
+                <input type="text" placeholder="Name on card" ref={nameOnCardRef} />
             </div>
 
             <label>
-                <input type="checkbox" ref={savePaymentRef}/>
+                <input type="checkbox" ref={savePaymentRef} />
                 <span>Save my payment information</span>
             </label>
 

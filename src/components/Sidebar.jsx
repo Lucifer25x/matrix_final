@@ -1,7 +1,7 @@
 // Import libraries
 import { useState, useContext, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { RiCloseLine, RiArrowDropUpLine } from "@remixicon/react";
+import { NavLink, useLocation } from "react-router-dom";
+import { RiCloseLine, RiArrowDropDownLine } from "@remixicon/react";
 import { LangContext } from "../context/LangContext";
 import StaticLang from "../utils/StaticLang";
 
@@ -13,6 +13,7 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
     const { lang, toggleLang } = useContext(LangContext);
     const [help, setHelp] = useState(false);
     const searchRef = useRef(null);
+    const location = useLocation();
 
     useEffect(() => {
         // Check if there's a search parameter in the URL
@@ -21,8 +22,12 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
         if (search) {
             searchRef.current.value = search;
         }
-    }, []);
 
+        // Close the accordion if needed
+        setHelp(location.pathname === "/contact" || location.pathname === "/faq");
+    }, [location]);
+
+    // Handle search form submission
     const handleSearch = (e) => {
         e.preventDefault();
         if (!searchRef.current.value.trim().length) {
@@ -41,13 +46,13 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
                 <input type="text" placeholder="Search..." ref={searchRef} />
             </form>
             <div className="links">
-                <Link to={"/about"}><StaticLang en="ABOUT US" az="HAQQIMIZDA" /></Link>
-                <Link to={"/products"}><StaticLang en="PRODUCTS" az="MƏHSULLAR" /></Link>
-                <Link to={"/blogs"}><StaticLang en="BLOGS" az="BLOGLAR" /></Link>
-                <p onClick={() => setHelp(!help)} className={help ? '' : 'open'}><StaticLang en="HELP" az="YARDIM" /> <RiArrowDropUpLine size={30} /></p>
+                <NavLink to={"/about"}><StaticLang en="ABOUT US" az="HAQQIMIZDA" /></NavLink>
+                <NavLink to={"/products"}><StaticLang en="PRODUCTS" az="MƏHSULLAR" /></NavLink>
+                <NavLink to={"/blogs"}><StaticLang en="BLOGS" az="BLOGLAR" /></NavLink>
+                <p onClick={() => setHelp(!help)} className={help ? 'open' : ''}><StaticLang en="HELP" az="YARDIM" /> <RiArrowDropDownLine size={30} /></p>
                 <div className={`help ${help ? "active" : ""}`}>
-                    <Link to={"/faq"}>FAQ</Link>
-                    <Link to={"/contact"}><StaticLang en="CONTACT" az="ƏLAQƏ" /></Link>
+                    <NavLink to={"/faq"}>FAQ</NavLink>
+                    <NavLink to={"/contact"}><StaticLang en="CONTACT" az="ƏLAQƏ" /></NavLink>
                 </div>
             </div>
 

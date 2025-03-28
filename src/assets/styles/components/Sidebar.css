@@ -79,6 +79,11 @@
             }
         }
 
+        & a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
         & p {
             cursor: pointer;
         }
@@ -89,7 +94,7 @@
 
         .open {
             & svg {
-                transform: rotate(180deg);
+                transform: rotate(-180deg);
             }
         }
 
