@@ -83,10 +83,8 @@ const Account = () => {
                     setPageLoading(false);
 
                     // Set refs
-                    if (nameInputRef.current && surnameInputRef.current) {
-                        nameInputRef.current.value = data[0].name;
-                        surnameInputRef.current.value = data[0].surname;
-                    }
+                    nameInputRef.current.value = data[0].name;
+                    surnameInputRef.current.value = data[0].surname;
                 }
             }
         };
@@ -223,7 +221,6 @@ const Account = () => {
         <div className="account-page">
             <div className={`popup ${showPopup ? "show" : ""}`}>
                 <div className="content">
-                    {/* <h1>Edit Account</h1> */}
                     <h1>
                         <StaticLang en="Edit Account" az="Hesabı Düzənlə" />
                     </h1>
