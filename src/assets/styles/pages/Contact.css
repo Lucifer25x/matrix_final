@@ -110,6 +110,7 @@
             .section {
                 flex: none;
             }
+
             .section:nth-child(1) {
                 order: 2;
             }

@@ -81,10 +81,6 @@ const Account = () => {
                     setName(data[0].name);
                     setSurname(data[0].surname);
                     setPageLoading(false);
-
-                    // Set refs
-                    nameInputRef.current.value = data[0].name;
-                    surnameInputRef.current.value = data[0].surname;
                 }
             }
         };
@@ -208,6 +204,10 @@ const Account = () => {
             document.body.style.overflow = "auto";
         } else {
             document.body.style.overflow = "hidden";
+
+            // Set refs
+            nameInputRef.current.value = name;
+            surnameInputRef.current.value = surname;
         }
 
         setShowPopup(!showPopup);
@@ -258,9 +258,6 @@ const Account = () => {
             <div className="top" data-aos="zoom-in">
                 {user && (
                     <>
-                        {/* <h1>
-                            Welcome {name} {surname}
-                        </h1> */}
                         <h1>
                             <StaticLang en="Welcome" az="Xoş Gəldiniz" /> {name}{" "}
                             {surname}

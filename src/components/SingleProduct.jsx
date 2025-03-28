@@ -11,7 +11,7 @@ import StaticLang from "../utils/StaticLang";
 import "../assets/styles/components/Product.css";
 
 // Product component
-const Product = ({ product, animate=false }) => {
+const Product = ({ product, animate = false }) => {
     const { addItem } = useCart();
     const { addWishlist, removeWishlist, isInWishlist } = useWishlist();
     const [animateRemove, setAnimateRemove] = useState(false);
@@ -32,14 +32,14 @@ const Product = ({ product, animate=false }) => {
     const handleWishlist = async () => {
         if (isInWishlist(product.id)) {
             removeWishlist(product.id).then(() => {
-                if(animate) {
+                if (animate) {
                     setAnimateRemove(true);
                     setTimeout(() => {
                         setHideProduct(true);
                     }, 350);
                 }
             }
-        );
+            );
         } else {
             const res = await addWishlist(product.id);
 

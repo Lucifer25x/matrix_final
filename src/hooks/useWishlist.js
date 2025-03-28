@@ -23,7 +23,7 @@ const useWishlist = () => {
     // Run fetch when needed
     useEffect(() => {
         if (!loading && user) {
-            if(wishlist.length === 0){
+            if (wishlist.length === 0) {
                 fetchWishlist().then(() => setWishlistLoading(false));
             } else {
                 setWishlistLoading(false);

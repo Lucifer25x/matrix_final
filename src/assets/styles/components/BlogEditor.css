@@ -191,7 +191,7 @@
 }
 
 /* Responsive styles */
-@media(max-width: 800px){
+@media(max-width: 800px) {
     .blog-editor {
         .blog {
             flex-direction: column;

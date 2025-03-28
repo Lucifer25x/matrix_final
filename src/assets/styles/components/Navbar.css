@@ -138,6 +138,7 @@ nav.shadow {
 @media (max-width: 1250px) {
     nav {
         padding: 10px 0;
+
         .container {
             .search {
                 width: 50%;
@@ -146,6 +147,7 @@ nav.shadow {
                     & input {
                         width: 90%;
                     }
+
                     & button {
                         width: 10%;
                     }
