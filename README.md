@@ -12,10 +12,9 @@
 - [x] Sign up details
 - [x] Edit account details (use popup)
 - [x] Use user name/surname on navbar instead of email
-- [ ] Change the navbar style a little bit
+- [ ] Show/Hide password
 - [ ] Add new sections to home page
 - [ ] Change the url configuration in supabase
-- [ ] Add animations & Enhance UI
 - [x] Highlighted blog posts
 - [x] Wishlist
 - [x] Dashboard
