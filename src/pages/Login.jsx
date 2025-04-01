@@ -1,5 +1,6 @@
 // Import libraries
 import { useRef, useEffect, useState } from "react";
+import { RiEyeLine, RiEyeCloseLine } from "@remixicon/react";
 import supabase from "../utils/supabase";
 import Swal from "sweetalert2";
 import StaticLang from "../utils/StaticLang";
@@ -16,6 +17,10 @@ const Login = () => {
     const registerEmailRef = useRef();
     const registerPasswordRef = useRef();
     const [activeTab, setActiveTab] = useState(0);
+
+    // Show/hide password
+    const [showRegisterPassword, setShowRegisterPassword] = useState(false);
+    const [showLoginPassword, setShowLoginPassword] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -114,11 +119,16 @@ const Login = () => {
                                 <span>Email:</span>
                                 <input type="email" ref={loginEmailRef} required />
                             </label>
-                            <label>
+                            <label htmlFor="loginPass" style={{ marginTop: "20px" }}>
                                 <span><StaticLang en="Password:" az="Şifrə:" /></span>
-                                <input type="password" ref={loginPasswordRef} required />
                             </label>
-                            <button type="submit">Login</button>
+                            <div className="row-inp">
+                                <input id="loginPass" type={showLoginPassword ? "text" : "password"} ref={loginPasswordRef} required />
+                                <button type="button" onClick={() => { setShowLoginPassword(!showLoginPassword) }}>
+                                    {showLoginPassword ? <RiEyeCloseLine size={25} /> : <RiEyeLine size={25} />}
+                                </button>
+                            </div>
+                            <button className="submit" type="submit">Login</button>
                         </form>
                     </div>
 
@@ -134,15 +144,20 @@ const Login = () => {
                                     <input type="text" ref={surnameRef} required />
                                 </label>
                             </div>
-                            <label>
+                            <label style={{ marginTop: "20px" }}>
                                 <span>Email:</span>
                                 <input type="email" ref={registerEmailRef} required />
                             </label>
-                            <label>
+                            <label htmlFor="registerPass" style={{ marginTop: "20px" }}>
                                 <span><StaticLang en="Password:" az="Şifrə:" /></span>
-                                <input type="password" ref={registerPasswordRef} required />
                             </label>
-                            <button type="submit">Register</button>
+                            <div className="row-inp">
+                                <input id="registerPass" type={showRegisterPassword ? "text" : "password"} ref={registerPasswordRef} required />
+                                <button type="button" onClick={() => { setShowRegisterPassword(!showRegisterPassword) }}>
+                                    {showRegisterPassword ? <RiEyeCloseLine size={25} /> : <RiEyeLine size={25} />}
+                                </button>
+                            </div>
+                            <button className="submit" type="submit">Register</button>
                         </form>
                     </div>
                 </div>

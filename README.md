@@ -12,7 +12,7 @@
 - [x] Sign up details
 - [x] Edit account details (use popup)
 - [x] Use user name/surname on navbar instead of email
-- [ ] Show/Hide password
+- [x] Show/Hide password
 - [ ] Add new sections to home page
 - [ ] Change the url configuration in supabase
 - [x] Highlighted blog posts
