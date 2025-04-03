@@ -286,23 +286,25 @@ const ProductEditor = () => {
                 </div>
             )}
 
-            {[...products].sort((a, b) => b.id - a.id).sort((a, b) => b.highlight - a.highlight).map(product => (
-                <div className={`product ${product.highlight ? "highlight" : ""}`} key={product.id}>
-                    <img width={150} src={product.img} alt={product.title} />
-                    <div className="details">
-                        <div className="left">
-                            <Link to={`/product/${product.id}`}>
-                                {product.title}
-                            </Link>
-                            <p>{product.artist}</p>
-                        </div>
-                        <div className="right">
-                            <button onClick={() => { handleRemoveProduct(product.id) }}><StaticLang en="Remove" az="Sil" /></button>
-                            <button onClick={() => { handleProductEdit(product) }}><StaticLang en="Edit" az="Redaktə" /></button>
+            <div className="editor">
+                {[...products].sort((a, b) => b.id - a.id).sort((a, b) => b.highlight - a.highlight).map(product => (
+                    <div className={`product ${product.highlight ? "highlight" : ""}`} key={product.id}>
+                        <img width={150} src={product.img} alt={product.title} />
+                        <div className="details">
+                            <div className="left">
+                                <Link to={`/product/${product.id}`}>
+                                    {product.title}
+                                </Link>
+                                <p>{product.artist}</p>
+                            </div>
+                            <div className="right">
+                                <button onClick={() => { handleRemoveProduct(product.id) }}><StaticLang en="Remove" az="Sil" /></button>
+                                <button onClick={() => { handleProductEdit(product) }}><StaticLang en="Edit" az="Redaktə" /></button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     )
 }

@@ -198,21 +198,23 @@ const BlogEditor = () => {
                 </div>
             )}
 
-            {[...blogs].sort((a, b) => b.id - a.id).sort((a, b) => b.highlight - a.highlight).map(blog => (
-                <div className={`blog ${blog.highlight ? "highlight" : ""}`} key={blog.id}>
-                    <div className="details">
-                        <Link to={`/blog/${blog.id}`}>
-                            {blog.title}
-                        </Link>
-                        <p>{blog.author}</p>
-                    </div>
+            <div className="editor">
+                {[...blogs].sort((a, b) => b.id - a.id).sort((a, b) => b.highlight - a.highlight).map(blog => (
+                    <div className={`blog ${blog.highlight ? "highlight" : ""}`} key={blog.id}>
+                        <div className="details">
+                            <Link to={`/blog/${blog.id}`}>
+                                {blog.title}
+                            </Link>
+                            <p>{blog.author}</p>
+                        </div>
 
-                    <div className="actions">
-                        <button onClick={() => { handleRemoveBlog(blog.id) }}><StaticLang en="Remove" az="Sil" /></button>
-                        <button onClick={() => { handleBlogEdit(blog) }}><StaticLang en="Edit" az="Redaktə" /></button>
+                        <div className="actions">
+                            <button onClick={() => { handleRemoveBlog(blog.id) }}><StaticLang en="Remove" az="Sil" /></button>
+                            <button onClick={() => { handleBlogEdit(blog) }}><StaticLang en="Edit" az="Redaktə" /></button>
+                        </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     )
 }

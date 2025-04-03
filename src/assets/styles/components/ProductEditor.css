@@ -33,6 +33,11 @@
         transform: translate(-50%, -50%);
     }
 
+    .editor {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
     .product {
         display: flex;
         border-bottom: 1px solid #ccc;
