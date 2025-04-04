@@ -1,5 +1,6 @@
 // Import libraries
 import { useState, useEffect } from "react";
+import Loading from "../components/Loading";
 import { Link } from "react-router-dom";
 import supabase from "../utils/supabase";
 import SingleProduct from "../components/SingleProduct";
@@ -19,6 +20,7 @@ import "../assets/styles/pages/NotFound.css";
 // Not Found page
 const NotFound = () => {
     const [highlightedVinyls, setHighlightedVinyls] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -29,12 +31,19 @@ const NotFound = () => {
                 console.log(error)
             } else {
                 setHighlightedVinyls(data);
+                setLoading(false);
             }
         }
 
         getHighlightedVinyls();
         document.title = "404 | The Record Hub";
     }, []);
+
+    if (loading) {
+        return (
+            <Loading />
+        )
+    }
 
     return (
         <div className="not-found-page" data-aos="fade-up">

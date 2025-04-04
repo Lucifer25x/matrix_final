@@ -14,7 +14,7 @@
 - [x] Use user name/surname on navbar instead of email
 - [x] Show/Hide password
 - [ ] Add new sections to home page
-- [ ] Change the url configuration in supabase
+- [x] Change the url configuration in supabase
 - [x] Highlighted blog posts
 - [x] Wishlist
 - [x] Dashboard
