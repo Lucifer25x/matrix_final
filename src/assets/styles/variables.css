@@ -25,7 +25,6 @@
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-/* TODO: Fix the dark theme for all the components and pages */
 body.dark {
     --text-color: #fff;
     --text-color-inverse: #000;

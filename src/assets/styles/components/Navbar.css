@@ -205,10 +205,6 @@ nav.shadow {
                     padding: 5px;
                     border-radius: 5px;
                     font-size: 0.7em;
-
-                    & svg {
-                        display: none;
-                    }
                 }
             }
         }

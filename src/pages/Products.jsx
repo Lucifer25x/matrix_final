@@ -11,6 +11,9 @@ import Loading from "../components/Loading";
 import "../assets/styles/pages/Products.css";
 import 'react-range-slider-input/dist/style.css';
 
+// Import images
+import vinyl from "../assets/images/vinyl.png";
+
 // Extract unique values from an array
 const getUniqueValues = (array, key) => {
     let uniqueValues = [];
@@ -238,10 +241,26 @@ const Products = () => {
 
     if (products.length === 0) {
         return (
-            <div className="products-page">
-                <h1>
-                    <StaticLang en="No products found" az="Heç bir məhsul tapılmadı" />
-                </h1>
+            <div className="products-page product-not-found" data-aos="zoom-in">
+                <div className="mobile">
+                    <h1>
+                        <StaticLang en="No products found" az="Heç bir məhsul tapılmadı" />
+                    </h1>
+                </div>
+
+                <div className="vinyl">
+                    <div className="box">
+                        <h1>
+                            <StaticLang en="No products found" az="Heç bir məhsul tapılmadı" />
+                        </h1>
+                        <p>
+                            <StaticLang en="Try to search for something else" az="Başqa bir şey axtarmağı cəhd edin" />
+                        </p>
+                    </div>
+                    <div className="img">
+                        <img src={vinyl} alt="Vinyl" />
+                    </div>
+                </div>
             </div>
         )
     }

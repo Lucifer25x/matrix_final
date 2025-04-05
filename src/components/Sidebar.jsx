@@ -16,11 +16,15 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
     const location = useLocation();
 
     useEffect(() => {
-        // Check if there's a search parameter in the URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const search = urlParams.get('s');
-        if (search) {
-            searchRef.current.value = search;
+        // Get search parameter from URL if needed
+        if (location.pathname !== "/products") {
+            searchRef.current.value = "";
+        } else {
+            const urlParams = new URLSearchParams(window.location.search);
+            const search = urlParams.get('s');
+            if (search) {
+                searchRef.current.value = search;
+            }
         }
 
         // Close the accordion if needed
@@ -34,7 +38,7 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
             window.location.href = "/products";
             return;
         }
-        window.location.href = `/products/?s=${searchRef.current.value}`;
+        window.location.href = `/products?s=${searchRef.current.value}`;
     }
 
     return (

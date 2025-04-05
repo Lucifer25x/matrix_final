@@ -128,7 +128,7 @@ const Login = () => {
                                     {showLoginPassword ? <RiEyeCloseLine size={25} /> : <RiEyeLine size={25} />}
                                 </button>
                             </div>
-                            <button className="submit" type="submit">Login</button>
+                            <button className="submit" type="submit"><StaticLang en="Login" az="Giriş" /></button>
                         </form>
                     </div>
 
@@ -157,7 +157,7 @@ const Login = () => {
                                     {showRegisterPassword ? <RiEyeCloseLine size={25} /> : <RiEyeLine size={25} />}
                                 </button>
                             </div>
-                            <button className="submit" type="submit">Register</button>
+                            <button className="submit" type="submit"><StaticLang en="Register" az="Qeydiyyat" /></button>
                         </form>
                     </div>
                 </div>

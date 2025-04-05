@@ -43,7 +43,6 @@ const Footer = () => {
                     <div className="section">
                         <p><StaticLang en="SUPPORT" az="DƏSTƏK" /></p>
                         <div className="links">
-                            <Link to={"/account"}><StaticLang en="Where's my order?" az="Sifarişim haradadır?" /></Link>
                             <Link to={"/faq"}>FAQ</Link>
                             <Link to={"/contact"}><StaticLang en="Contact" az="Əlaqə" /></Link>
                         </div>
@@ -53,7 +52,6 @@ const Footer = () => {
                         <p><StaticLang en="YOUR RECORD HUB" az="SİZİN RECORD HUB" /></p>
                         <div className="links">
                             <Link to={"/account"}><StaticLang en="My Account" az="Hesabım" /></Link>
-                            <Link to={"/login"}><StaticLang en="Register" az="Qeydiyyatdan keçin" /></Link>
                             <Link to={"/login"}><StaticLang en="Login" az="Daxil olun" /></Link>
                             <Link to={"/wishlist"}><StaticLang en="My Wishlist" az="İstək siyahısı" /></Link>
                             <Link to={"/blogs"}><StaticLang en="Blogs" az="Bloglar" /></Link>

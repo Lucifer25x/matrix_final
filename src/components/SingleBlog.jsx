@@ -1,5 +1,6 @@
 // Import libraries
 import { Link } from "react-router-dom";
+import StaticLang from "../utils/StaticLang";
 
 // Import styles
 import "../assets/styles/components/SingleBlog.css";
@@ -23,7 +24,7 @@ const SingleBlog = ({ blog }) => {
                 </div>
             </div>
 
-            <Link className="read-more" to={`/blog/${blog.id}`}>READ MORE</Link>
+            <Link className="read-more" to={`/blog/${blog.id}`}><StaticLang en="READ MORE" az="DAHA ÇOX OXUYUN" /></Link>
         </div>
     );
 }
