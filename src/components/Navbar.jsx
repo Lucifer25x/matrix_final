@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { RiSearchLine, RiHeartLine, RiShoppingBagLine, RiUserLine, RiMenuLine, RiSunLine, RiMoonLine } from "@remixicon/react";
 import { ThemeContext } from "../context/ThemeContext";
 import { UserContext } from "../context/UserContext";
+import { LangContext } from "../context/LangContext";
 import { useCart } from "react-use-cart";
 import supabase from "../utils/supabase";
 import useWishlist from "../hooks/useWishlist";
@@ -27,6 +28,7 @@ const Navbar = () => {
     const [name, setName] = useState();
     const searchRef = useRef(null);
     const location = useLocation();
+    const { lang } = useContext(LangContext);
 
     useEffect(() => {
         // Get search parameter from URL if needed
@@ -96,7 +98,7 @@ const Navbar = () => {
                     </div>
                     <div className="search">
                         <form onSubmit={handleSearch}>
-                            <input type="text" placeholder="Search" ref={searchRef} />
+                            <input type="text" placeholder={lang == "AZ" ? "Axtar" : "Search"} ref={searchRef} />
                             <button><RiSearchLine size={25} /></button>
                         </form>
                     </div>

@@ -1,10 +1,11 @@
 // Import libraries
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { RiArrowRightLine } from "@remixicon/react";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import supabase from "../utils/supabase";
 import StaticLang from "../utils/StaticLang";
+import { LangContext } from "../context/LangContext";
 
 // Import Swiper React components
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -30,6 +31,7 @@ const Home = () => {
     const [latestVinyls, setLatestVinyls] = useState([]);
     const [newAddedVinyls, setNewAddedVinyls] = useState([]);
     const [highlightedVinyls, setHighlightedVinyls] = useState([]);
+    const { lang } = useContext(LangContext);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -226,7 +228,7 @@ const Home = () => {
             <div className="keep-in-touch" data-aos="fade-up">
                 <h1><StaticLang en="KEEP IN TOUCH" az="ƏLAQƏDƏ QALIN" /></h1>
                 <div className="inputs">
-                    <input type="text" placeholder="Name" />
+                    <input type="text" placeholder={lang == "AZ" ? "Ad" : "Name"} />
                     <input type="email" placeholder="Email" />
                     <button><StaticLang en="SIGN UP" az="QEYDİYYATDAN KEÇİN" /></button>
                 </div>

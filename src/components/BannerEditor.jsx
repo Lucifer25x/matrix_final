@@ -1,8 +1,10 @@
 // Import libraries
+import { useContext } from "react";
 import { RiArrowDownLine, RiArrowUpLine } from "@remixicon/react";
 import { MoonLoader } from "react-spinners";
 import StaticLang from "../utils/StaticLang";
 import useBanner from "../hooks/useBanner";
+import { LangContext } from "../context/LangContext";
 
 // Import styles
 import "../assets/styles/components/BannerEditor.css";
@@ -10,6 +12,7 @@ import "../assets/styles/components/BannerEditor.css";
 // Banner Editor component
 const BannerEditor = () => {
     const { banners, updateBannerData } = useBanner();
+    const { lang } = useContext(LangContext);
 
     // Add accordion functionality to the banners
     const handleAccordion = (e) => {
@@ -100,11 +103,11 @@ const BannerEditor = () => {
                         <form onSubmit={handleSubmit} id={banner.id}>
                             <label>
                                 <p><StaticLang en="Image URL" az="Şəkil URL'i" />:</p>
-                                <input type="text" defaultValue={banner.image} placeholder="Image url" required />
+                                <input type="text" defaultValue={banner.image} placeholder={lang == "AZ" ? "Şəkil URLi" : "Image url"} required />
                             </label>
                             <label>
                                 <p><StaticLang en="Title" az="Başlıq" />:</p>
-                                <input type="text" defaultValue={banner.title} placeholder="Title" required />
+                                <input type="text" defaultValue={banner.title} placeholder={lang == "AZ" ? "Başlıq" : "Title"} required />
                             </label>
                             <label>
                                 <p>URL:</p>

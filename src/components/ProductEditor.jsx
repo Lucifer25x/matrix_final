@@ -1,10 +1,11 @@
 // Import libraries
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 import { MoonLoader } from "react-spinners";
 import Swal from "sweetalert2";
 import StaticLang from "../utils/StaticLang";
 import useProduct from "../hooks/useProduct";
+import { LangContext } from "../context/LangContext";
 
 // Import styles
 import "../assets/styles/components/ProductEditor.css";
@@ -15,6 +16,7 @@ const ProductEditor = () => {
     const [showPopup, setShowPopup] = useState(false);
     const [mode, setMode] = useState("Add");
     const [id, setId] = useState(null);
+    const { lang } = useContext(LangContext);
 
     // Refs
     const imgRef = useRef();
@@ -72,13 +74,14 @@ const ProductEditor = () => {
     // Handle removing product
     const handleRemoveProduct = (id) => {
         Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            title: lang == "AZ" ? "Əminsinizmi?" : "Are you sure?",
+            text: lang == "AZ" ? "Bunu geri ala bilməyəcəksiniz!" : "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#00b41b",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: lang == "AZ" ? "Bəli, silin!" : "Yes, delete it!",
+            cancelButtonText: lang == "AZ" ? "Ləğv et" : "Cancel",
         }).then((result) => {
             if (result.isConfirmed) {
                 removeProductData(id)
@@ -87,7 +90,7 @@ const ProductEditor = () => {
                             // Show success message
                             Swal.fire({
                                 icon: "success",
-                                title: "Product removed successfully",
+                                title: lang == "AZ" ? "Məhsul uğurla silindi": "Product was removed successfully",
                                 showConfirmButton: false,
                                 timer: 1500
                             });
@@ -95,7 +98,7 @@ const ProductEditor = () => {
                             // Show error message
                             Swal.fire({
                                 icon: "error",
-                                title: "An error occurred",
+                                title: lang == "AZ" ? "Xəta baş verdi" : "An error occurred",
                                 text: res.message
                             });
                         }
@@ -147,14 +150,14 @@ const ProductEditor = () => {
             if (res.success) {
                 Swal.fire({
                     icon: "success",
-                    title: "Product was added successfully",
+                    title: lang == "AZ" ? "Məhsul uğurla əlavə edildi" : "Product was added successfully",
                     showConfirmButton: false,
                     timer: 1500
                 });
             } else {
                 Swal.fire({
                     icon: "error",
-                    title: "An error occurred",
+                    title: lang == "AZ" ? "Xəta baş verdi" : "An error occurred",
                     text: res.message
                 });
             }
@@ -180,14 +183,14 @@ const ProductEditor = () => {
             if (res.success) {
                 Swal.fire({
                     icon: "success",
-                    title: "Product was updated successfully",
+                    title: lang == "AZ" ? "Məhsul uğurla dəyişdirildi" : "Product was updated successfully",
                     showConfirmButton: false,
                     timer: 1500
                 });
             } else {
                 Swal.fire({
                     icon: "error",
-                    title: "An error occurred",
+                    title: lang == "AZ" ? "Xəta baş  verdi" : "An error occurred",
                     text: res.message
                 });
             }

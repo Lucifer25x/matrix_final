@@ -47,7 +47,7 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
                 <button onClick={handleSidebar}><RiCloseLine size={30} /></button>
             </div>
             <form className="search" onSubmit={handleSearch}>
-                <input type="text" placeholder="Search..." ref={searchRef} />
+                <input type="text" placeholder={lang == "AZ" ? "Axtar" : "Search"} ref={searchRef} />
             </form>
             <div className="links">
                 <NavLink to={"/about"}><StaticLang en="ABOUT US" az="HAQQIMIZDA" /></NavLink>

@@ -7,6 +7,7 @@ import supabase from "../utils/supabase";
 import SingleProduct from "../components/SingleProduct";
 import StaticLang from "../utils/StaticLang";
 import Swal from "sweetalert2";
+import { LangContext } from "../context/LangContext";
 
 // Import Swiper React components
 import { Navigation } from "swiper/modules";
@@ -32,6 +33,7 @@ const Account = () => {
     const [pageLoading, setPageLoading] = useState(true);
     const [showPopup, setShowPopup] = useState(false);
     const navigate = useNavigate();
+    const { lang } = useContext(LangContext);
 
     // Refs
     const nameInputRef = useRef();
@@ -72,7 +74,7 @@ const Account = () => {
 
             if (error) {
                 Swal.fire({
-                    title: "Error!",
+                    title: lang == "AZ" ? "Xəta!" : "Error!",
                     text: error.message,
                     icon: "error",
                 });
@@ -125,12 +127,12 @@ const Account = () => {
 
     const handleSignOut = async () => {
         Swal.fire({
-            title: "Are you sure?",
-            text: "You will be signed out from your account",
+            title: lang == "AZ" ? "Əminsinizmi?" : "Are you sure?",
+            text: lang == "AZ" ? "Hesabınızdan çıxış edəcəksiniz" : "You will be signed out from your account",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonText: "Yes, sign out",
-            cancelButtonText: "No, cancel",
+            confirmButtonText: lang == "AZ" ? "Bəli, çıxış et" : "Yes, sign out",
+            cancelButtonText: lang == "AZ" ? "Xeyr, ləğv et" : "No, cancel",
             confirmButtonColor: "#00b41b",
         }).then(async (result) => {
             if (result.isConfirmed) {
@@ -149,8 +151,8 @@ const Account = () => {
         // Check if name and surname are empty
         if (newName === "" || newSurname === "") {
             Swal.fire({
-                title: "Error!",
-                text: "Name and surname are required",
+                title: lang == "AZ" ? "Xəta!" : "Error!",
+                text: lang == "AZ" ? "Ad və soyad məcburidir" : "Name and surname are required",
                 icon: "error",
             });
             return;
@@ -158,12 +160,12 @@ const Account = () => {
 
         // Confirm if user wants to save changes
         Swal.fire({
-            title: "Are you sure?",
-            text: "You will save changes to your account",
+            title: lang == "AZ" ? "Əminsinizmi" : "Are you sure?",
+            text: lang == "AZ" ? "Dəyişikliklər hesabınızda saxlanacaq" : "You will save changes to your account",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonText: "Yes, save",
-            cancelButtonText: "No, cancel",
+            confirmButtonText: lang == "AZ" ? "Bəli, saxlay" : "Yes, save",
+            cancelButtonText: lang == "AZ" ? "Xeyr, ləğv et" : "No, cancel",
             confirmButtonColor: "#00b41b",
         }).then(async (result) => {
             if (result.isConfirmed) {
@@ -179,14 +181,14 @@ const Account = () => {
 
                 if (error) {
                     Swal.fire({
-                        title: "Error!",
+                        title: lang == "AZ" ? "Xəta!" : "Error!",
                         text: error.message,
                         icon: "error",
                     });
                 } else {
                     Swal.fire({
-                        title: "Success!",
-                        text: "Account updated successfully!",
+                        title: lang == "AZ" ? "Uğurlu Əməliyyat!" : "Success!",
+                        text: lang == "AZ" ? "Hesabınız uğurla dəyişdirildi!" : "Account updated successfully!",
                         icon: "success",
                     }).then((res) => {
                         if (res.isConfirmed) {

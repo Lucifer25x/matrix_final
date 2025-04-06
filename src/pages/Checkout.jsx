@@ -4,6 +4,7 @@ import { useCart } from "react-use-cart";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { LangContext } from "../context/LangContext";
 
 // Import styles
 import "../assets/styles/pages/Checkout.css";
@@ -14,6 +15,7 @@ const Checkout = () => {
     const { emptyCart } = useCart();
     const { user, loading } = useContext(UserContext);
     const navigate = useNavigate();
+    const { lang } = useContext(LangContext);
 
     // Refs
     const countryRef = useRef();
@@ -58,7 +60,7 @@ const Checkout = () => {
 
         if (!country || !firstName || !lastName || !address || !postalCode || !expiryDate.length || !city || !phone || !cardNumber.length || !securityCode.length || !nameOnCard) {
             Swal.fire({
-                text: "Please fill in all fields",
+                text: lang == "AZ" ? "Zəhmət olmasa bütün məlumatları doldurun" : "Please fill in all fields",
                 icon: "warning"
             });
             return;
@@ -74,7 +76,7 @@ const Checkout = () => {
         }
 
         Swal.fire({
-            text: "Payment successful!",
+            text: lang == "AZ" ? "Uğurlu ödəniş!" : "Payment successful!",
             icon: "success"
         }).then(() => {
             emptyCart();

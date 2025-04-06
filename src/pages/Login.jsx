@@ -4,6 +4,7 @@ import { RiEyeLine, RiEyeCloseLine } from "@remixicon/react";
 import supabase from "../utils/supabase";
 import Swal from "sweetalert2";
 import StaticLang from "../utils/StaticLang";
+import { LangContext } from "../context/LangContext";
 
 // Import styles
 import "../assets/styles/pages/Login.css";
@@ -17,6 +18,7 @@ const Login = () => {
     const registerEmailRef = useRef();
     const registerPasswordRef = useRef();
     const [activeTab, setActiveTab] = useState(0);
+    const { lang } = useContext(LangContext);
 
     // Show/hide password
     const [showRegisterPassword, setShowRegisterPassword] = useState(false);
@@ -37,14 +39,14 @@ const Login = () => {
 
         if (error) {
             Swal.fire({
-                title: "Error!",
+                title: lang == "AZ" ? "Xəta!" : "Error!",
                 text: error.message,
                 icon: "error"
             })
         } else {
             Swal.fire({
-                title: "Success!",
-                text: "Logged in successfully!",
+                title: lang == "AZ" ? "Uğurlu Əməliyyat!" : "Success!",
+                text: lang == "AZ" ? "Uğurla giriş edildi!" : "Logged in successfully!",
                 icon: "success",
             }).then(res => {
                 if (res.isConfirmed) {
@@ -64,7 +66,7 @@ const Login = () => {
 
         if (error) {
             Swal.fire({
-                title: "Error!",
+                title: lang == "AZ" ? "Xəta!" : "Error!",
                 text: error.message,
                 icon: "error"
             })
@@ -81,14 +83,14 @@ const Login = () => {
 
                 if (error) {
                     Swal.fire({
-                        title: "Error!",
+                        title: lang == "AZ" ? "Xəta!" : "Error!",
                         text: error.message,
                         icon: "error"
                     })
                 } else {
                     Swal.fire({
-                        title: "Success!",
-                        text: "Account created successfully! Now verify your email address.",
+                        title: lang == "AZ" ? "Uğurlu Əməliyyat" : "Success!",
+                        text: lang == "AZ" ? "Hesab uğurla yaradıldı! İndi isə email hesabınızı doğrulayın." : "Account created successfully! Now verify your email address.",
                         icon: "success"
                     })
                 }

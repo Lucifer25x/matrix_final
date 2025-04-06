@@ -13,10 +13,11 @@
 - [x] Edit account details (use popup)
 - [x] Use user name/surname on navbar instead of email
 - [x] Show/Hide password
-- [ ] Add new sections to home page
+- [x] Add new sections to home page
 - [x] Change the url configuration in supabase
 - [x] Highlighted blog posts
 - [x] Wishlist
+- [ ] Add recommended/random products to cart page's bottom
 - [x] Dashboard
     - [x] Manage products
     - [x] Manage blogs

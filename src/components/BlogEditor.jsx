@@ -1,10 +1,11 @@
 // Import libraries
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 import { MoonLoader } from "react-spinners";
 import Swal from "sweetalert2";
 import StaticLang from "../utils/StaticLang";
 import useBlog from "../hooks/useBlog";
+import { LangContext } from "../context/LangContext";
 
 // Import styles
 import "../assets/styles/components/BlogEditor.css";
@@ -15,6 +16,7 @@ const BlogEditor = () => {
     const [showPopup, setShowPopup] = useState(false);
     const [mode, setMode] = useState("Add");
     const [id, setId] = useState(null);
+    const { lang } = useContext(LangContext);
 
     // Refs
     const imgRef = useRef();
@@ -58,13 +60,14 @@ const BlogEditor = () => {
     // Handle remove blog
     const handleRemoveBlog = (id) => {
         Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            title: lang == "AZ" ? "Əminsinizmi?" : "Are you sure?",
+            text: lang == "AZ" ? "Bunu geri ala bilməyəcəksiniz!" : "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#00b41b",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: lang == "AZ" ? "Bəli, silin!" : "Yes, delete it!",
+            cancelButtonText: lang == "AZ" ? "Ləğv et" : "Cancel",
         }).then((result) => {
             if (result.isConfirmed) {
                 removeBlogData(id)
@@ -73,7 +76,7 @@ const BlogEditor = () => {
                             // Show success message
                             Swal.fire({
                                 icon: "success",
-                                title: "Blog was removed successfully",
+                                title: lang == "AZ" ? "Bloq uğurla silindi": "Blog was removed successfully",
                                 showConfirmButton: false,
                                 timer: 1500
                             });
@@ -81,7 +84,7 @@ const BlogEditor = () => {
                             // Show error message
                             Swal.fire({
                                 icon: "error",
-                                title: "An error occurred",
+                                title: lang == "AZ" ? "Xəta baş verdi" : "An error occurred",
                                 text: res.message
                             });
                         }
@@ -111,14 +114,14 @@ const BlogEditor = () => {
             if (res) {
                 Swal.fire({
                     icon: "success",
-                    title: "Blog was added successfully",
+                    title: lang == "AZ" ? "Bloq uğurla əlavə edildi" : "Blog was added successfully",
                     showConfirmButton: false,
                     timer: 1500
                 });
             } else {
                 Swal.fire({
                     icon: "error",
-                    title: "An error occurred",
+                    title: lang == "AZ" ? "Xəta baş verdi" : "An error occurred",
                     text: res.message
                 });
             }
@@ -130,14 +133,14 @@ const BlogEditor = () => {
             if (res) {
                 Swal.fire({
                     icon: "success",
-                    title: "Blog was updated successfully",
+                    title: lang == "AZ" ? "Bloq uğurla dəyişdirildi" : "Blog was updated successfully",
                     showConfirmButton: false,
                     timer: 1500
                 });
             } else {
                 Swal.fire({
                     icon: "error",
-                    title: "An error occurred",
+                    title: lang == "AZ" ? "Xəta baş  verdi" : "An error occurred",
                     text: res.message
                 });
             }

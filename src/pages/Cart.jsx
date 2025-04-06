@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import StaticLang from "../utils/StaticLang";
 import { UserContext } from "../context/UserContext";
+import { LangContext } from "../context/LangContext";
 
 // Import styles
 import "../assets/styles/pages/Cart.css";
@@ -15,6 +16,7 @@ const Cart = () => {
     const { items, cartTotal, updateItemQuantity, removeItem, emptyCart } = useCart();
     const { user } = useContext(UserContext);
     const navigate = useNavigate();
+    const { lang } = useContext(LangContext);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -23,18 +25,19 @@ const Cart = () => {
 
     const handleClearCart = () => {
         Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            title: lang == "AZ" ? "Əminsinizmi?" : "Are you sure?",
+            text: lang == "AZ" ? "Bunu geri ala bilməyəcəksiniz!" : "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#00b41b",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, clear it!",
+            confirmButtonText: lang == "AZ" ? "Bəli, silin!" : "Yes, delete it!",
+            cancelButtonText: lang == "AZ" ? "Ləğv et" : "Cancel",
         }).then((result) => {
             if (result.isConfirmed) {
                 emptyCart();
                 Swal.fire({
-                    text: "Cart has been cleared!",
+                    text: lang == "AZ" ? "Səbət təmizləndi!" : "Cart has been cleared!",
                     icon: "success",
                 });
             }
@@ -43,18 +46,19 @@ const Cart = () => {
 
     const handleRemoveItem = (id) => {
         Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            title: lang == "AZ" ? "Əminsinizmi?" : "Are you sure?",
+            text: lang == "AZ" ? "Bunu geri ala bilməyəcəksiniz!" : "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#00b41b",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, remove it!",
+            confirmButtonText: lang == "AZ" ? "Bəli, silin!" : "Yes, delete it!",
+            cancelButtonText: lang == "AZ" ? "Ləğv et" : "Cancel",
         }).then((result) => {
             if (result.isConfirmed) {
                 removeItem(id);
                 Swal.fire({
-                    text: "Item has been removed!",
+                    text: lang == "AZ" ? "Məhsul səbətdən silindi!" : "Product has been removed from cart!",
                     icon: "success",
                 });
             }
@@ -65,18 +69,19 @@ const Cart = () => {
         const item = items.find((item) => item.id === id);
         if (item.quantity === 1) {
             Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
+                title: lang == "AZ" ? "Əminsinizmi?" : "Are you sure?",
+                text: lang == "AZ" ? "Bunu geri ala bilməyəcəksiniz!" : "You won't be able to revert this!",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#00b41b",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, remove it!",
+                confirmButtonText: lang == "AZ" ? "Bəli, silin!" : "Yes, delete it!",
+                cancelButtonText: lang == "AZ" ? "Ləğv et" : "Cancel",
             }).then((result) => {
                 if (result.isConfirmed) {
                     removeItem(id);
                     Swal.fire({
-                        text: "Item has been removed!",
+                        text: lang == "AZ" ? "Məhsul səbətdən silindi!" : "Product has been removed from cart!",
                         icon: "success",
                     });
                 }
@@ -91,7 +96,7 @@ const Cart = () => {
             navigate("/checkout");
         } else {
             Swal.fire({
-                title: "You need to login first!",
+                title: lang == "AZ" ? "Giriş etməlisiniz!" : "You need to login first!",
                 icon: "error",
             });
         }

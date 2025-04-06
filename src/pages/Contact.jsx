@@ -1,13 +1,16 @@
 // Import libraries
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { RiTwitterFill, RiFacebookFill, RiYoutubeFill, RiInstagramFill } from "@remixicon/react";
 import StaticLang from "../utils/StaticLang";
+import { LangContext } from "../context/LangContext";
 
 // Import styles
 import "../assets/styles/pages/Contact.css";
 
 // Contact page
 const Contact = () => {
+    const { lang } = useContext(LangContext);
+
     useEffect(() => {
         window.scrollTo(0, 0);
         document.title = "Contact Us | The Record Hub";
@@ -55,9 +58,9 @@ const Contact = () => {
                 </div>
 
                 <div className="section">
-                    <input type="text" placeholder="Name*" />
+                    <input type="text" placeholder={lang == "AZ" ? "Ad*" : "Name*"} />
                     <input type="email" placeholder="Email*" />
-                    <textarea id="message" placeholder="Message*"></textarea>
+                    <textarea id="message" placeholder={lang == "AZ" ? "Mesaj*" : "Message*"}></textarea>
                     <button><StaticLang en="SUBMIT" az="TƏSDİQ EDİN" /></button>
                 </div>
             </div>
