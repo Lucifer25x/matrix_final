@@ -1,12 +1,24 @@
 // Import libraries
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { RiCloseLine, RiLockLine } from "@remixicon/react";
-import { useCart } from "react-use-cart";
-import { Link, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import StaticLang from "../utils/StaticLang";
 import { UserContext } from "../context/UserContext";
 import { LangContext } from "../context/LangContext";
+import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "react-use-cart";
+import supabase from "../utils/supabase";
+import StaticLang from "../utils/StaticLang";
+import Loading from "../components/Loading";
+import Swal from "sweetalert2";
+import Product from "../components/SingleProduct";
+
+// Import Swiper React components
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 // Import styles
 import "../assets/styles/pages/Cart.css";
@@ -15,11 +27,25 @@ import "../assets/styles/pages/Cart.css";
 const Cart = () => {
     const { items, cartTotal, updateItemQuantity, removeItem, emptyCart } = useCart();
     const { user } = useContext(UserContext);
+    const [randomVinyls, setRandomVinyls] = useState([]);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const { lang } = useContext(LangContext);
 
     useEffect(() => {
         window.scrollTo(0, 0);
+
+        const getRandomVinyls = async () => {
+            const { data, error } = await supabase.rpc('random_vinyls', { limit_count: 10 });
+            if (error) {
+                console.log(error)
+            } else {
+                setRandomVinyls(data);
+            }
+            setLoading(false);
+        }
+
+        getRandomVinyls();
         document.title = "Cart | The Record Hub";
     }, []);
 
@@ -101,6 +127,10 @@ const Cart = () => {
             });
         }
     };
+
+    if (loading) {
+        return <Loading />;
+    }
 
     return (
         <div className="cart-page" data-aos="zoom-in">
@@ -201,6 +231,41 @@ const Cart = () => {
                         az="SƏBƏTİ TƏMİZLƏYİN"
                     />
                 </button>
+            </div>
+
+            <div className="section" data-aos="fade-right">
+                <h1><StaticLang en="RECOMMENDED VINYLS" az="TƏKLİF EDİLƏN VİNİLLƏR" /></h1>
+                <div className="products">
+                    {randomVinyls.length > 0 ? (
+                        <Swiper
+                            modules={[Navigation]}
+                            slidesPerView={1}
+                            navigation={true}
+                            loop={true}
+                            spaceBetween={20}
+                            breakpoints={{
+                                640: {
+                                    slidesPerView: 2,
+                                },
+                                768: {
+                                    slidesPerView: 3,
+                                },
+                                1024: {
+                                    slidesPerView: 5,
+                                }
+                            }}
+                        >
+                            {randomVinyls.map(vinyl => (
+                                <SwiperSlide key={vinyl.id}>
+                                    <Product
+                                        product={vinyl}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    ) : ""}
+                </div>
+                <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
             </div>
         </div>
     );

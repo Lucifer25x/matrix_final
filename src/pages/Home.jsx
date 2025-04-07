@@ -31,6 +31,7 @@ const Home = () => {
     const [latestVinyls, setLatestVinyls] = useState([]);
     const [newAddedVinyls, setNewAddedVinyls] = useState([]);
     const [highlightedVinyls, setHighlightedVinyls] = useState([]);
+    const [randomVinyls, setRandomVinyls] = useState([]);
     const { lang } = useContext(LangContext);
 
     useEffect(() => {
@@ -69,10 +70,20 @@ const Home = () => {
             }
         }
 
+        const getRandomVinyls = async () => {
+            const { data, error } = await supabase.rpc('random_vinyls', { limit_count: 10 });
+            if (error) {
+                console.log(error)
+            } else {
+                setRandomVinyls(data);
+            }
+        }
+
         getBanners();
         getLatestVinyls();
         getNewAddedVinyls();
         getHighlightedVinyls();
+        getRandomVinyls();
 
         document.title = "Home | The Record Hub";
     }, []);
@@ -144,6 +155,53 @@ const Home = () => {
             </div>
 
             <div className="section" data-aos="fade-right">
+                <h1><StaticLang en="RECOMMENDED VINYLS" az="TƏKLİF EDİLƏN VİNİLLƏR" /></h1>
+                <div className="products">
+                    {randomVinyls.length > 0 ? (
+                        <Swiper
+                            modules={[Navigation]}
+                            slidesPerView={1}
+                            navigation={true}
+                            loop={true}
+                            spaceBetween={20}
+                            breakpoints={{
+                                640: {
+                                    slidesPerView: 2,
+                                },
+                                768: {
+                                    slidesPerView: 3,
+                                },
+                                1024: {
+                                    slidesPerView: 5,
+                                }
+                            }}
+                        >
+                            {randomVinyls.map(vinyl => (
+                                <SwiperSlide key={vinyl.id}>
+                                    <Product
+                                        product={vinyl}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    ) : ""}
+                </div>
+                <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
+            </div>
+
+            <div className="view-blogs" data-aos="fade-up">
+                <div className="left">
+                    <img src={vinylRecorderImage} alt="Vinyl Recorder" />
+                    <div className="layer"></div>
+                </div>
+                <div className="right">
+                    <h1><StaticLang en="CHECK OUT OUR BLOG" az="BLOGUMUZA BAXIN" /></h1>
+                    <p><StaticLang en="Check out our blog for the latest news, reviews, and more." az="Ən son xəbərlər, rəylər və daha çox üçün blogumuza baxın." /></p>
+                    <Link to="/blogs"><RiArrowRightLine size={25} /><StaticLang en="BLOGS" az="BLOGLAR" /></Link>
+                </div>
+            </div>
+
+            <div className="section" data-aos="fade-right">
                 <h1><StaticLang en="NEW RELEASES" az="YENİ ÇIXANLAR" /></h1>
                 <div className="products">
                     {latestVinyls.length > 0 ? (
@@ -176,18 +234,6 @@ const Home = () => {
                     ) : ""}
                 </div>
                 <Link to={"/products"}><StaticLang en="SEE ALL" az="HAMISINI GÖRÜN" /></Link>
-            </div>
-
-            <div className="view-blogs" data-aos="fade-up">
-                <div className="left">
-                    <img src={vinylRecorderImage} alt="Vinyl Recorder" />
-                    <div className="layer"></div>
-                </div>
-                <div className="right">
-                    <h1><StaticLang en="CHECK OUT OUR BLOG" az="BLOGUMUZA BAXIN" /></h1>
-                    <p><StaticLang en="Check out our blog for the latest news, reviews, and more." az="Ən son xəbərlər, rəylər və daha çox üçün blogumuza baxın." /></p>
-                    <Link to="/blogs"><RiArrowRightLine size={25} /><StaticLang en="BLOGS" az="BLOGLAR" /></Link>
-                </div>
             </div>
 
             <div className="section" data-aos="fade-right">

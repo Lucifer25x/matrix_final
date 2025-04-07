@@ -17,7 +17,7 @@
 - [x] Change the url configuration in supabase
 - [x] Highlighted blog posts
 - [x] Wishlist
-- [ ] Add recommended/random products to cart page's bottom
+- [x] Add recommended/random products to cart page's bottom
 - [x] Dashboard
     - [x] Manage products
     - [x] Manage blogs
@@ -25,6 +25,7 @@
 
 ### Can be added after the project's main parts are finished:
 - [x] Recently viewed products
+- [ ] Maybe add pagination to products page
 - [ ] Sales Page
 - [ ] [Gifts](https://www.therecordhub.com/collections/gifts)
 - [ ] [T-shirts](https://www.therecordhub.com/collections/t-shirts)

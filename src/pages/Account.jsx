@@ -336,7 +336,7 @@ const Account = () => {
             {highlightedVinyls.length > 0 && (
                 <div className="section" data-aos="fade-up">
                     <h1>
-                        <StaticLang en="HIGHLIGHTED" az="NÜMAYİŞ EDİLƏN" />
+                        <StaticLang en="HIGHLIGHTED VINYLS" az="SEÇİLMİŞ VİNİLLƏR" />
                     </h1>
                     <div className="products">
                         <Swiper
