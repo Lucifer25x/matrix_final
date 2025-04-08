@@ -10,9 +10,7 @@ import "./assets/styles/index.css"
 import ContextProvider from "./context/ContextProvider.jsx"
 
 createRoot(document.getElementById("root")).render(
-    <StrictMode>
-        <ContextProvider>
-            <App />
-        </ContextProvider>
-    </StrictMode>,
+    <ContextProvider>
+        <App />
+    </ContextProvider>
 )

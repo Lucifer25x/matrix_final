@@ -25,9 +25,6 @@ const getUniqueValues = (array, key) => {
     return uniqueValues;
 }
 
-// Page size
-const pageSize = 10;
-
 // Products component
 const Products = () => {
     // State variables
@@ -52,92 +49,54 @@ const Products = () => {
     const [selectedLabels, setSelectedLabels] = useState([]);
     const [selectedStock, setSelectedStock] = useState(0);
 
-    // Load more functionality
-    const [page, setPage] = useState(0);
-    const [hasMore, setHasMore] = useState(true);
-    const [loadingMore, setLoadingMore] = useState(false);
-    const [allProductsCount, setAllProductsCount] = useState(null);
-
     // State variables for sorting
     const [sort, setSort] = useState("manual");
-
-    // Load more function
-    const loadMore = async () => {
-        setLoadingMore(true);
-
-        const search = new URLSearchParams(window.location.search);
-        const searchQuery = search.get("s") || "";
-
-        const { data, error } = await supabase
-            .from("vinyls")
-            .select("*")
-            .range(page * pageSize, (page + 1) * pageSize - 1)
-            .ilike("title", `%${searchQuery}%`)
-            .order("created_at", { ascending: false });
-
-        if (allProductsCount === null) {
-            const { count } = await supabase
-                .from("vinyls")
-                .select("*", { count: "exact", head: true })
-                .ilike("title", `%${searchQuery}%`);
-            setAllProductsCount(count);
-        }
-
-        if (error) {
-            console.error(error);
-            setLoadingMore(false);
-            return;
-        }
-
-        // Set products
-        setProducts(prev => [...prev, ...data].sort((a, b) => b.stock - a.stock));
-
-        // Set product count
-        setProductCount(prev => prev + data.length);
-
-        // Get unique keys from the products
-        setFormats(prev => {
-            const uniqueFormats = getUniqueValues(data, "format");
-            return [...new Set([...prev, ...uniqueFormats])];
-        });
-        setColors(prev => {
-            const uniqueColors = getUniqueValues(data, "color");
-            return [...new Set([...prev, ...uniqueColors])];
-        });
-        setGenres(prev => {
-            const uniqueGenres = getUniqueValues(data, "genre");
-            return [...new Set([...prev, ...uniqueGenres])];
-        });
-        setReleaseYears(prev => {
-            const uniqueReleaseYears = getUniqueValues(data, "release_year");
-            return [...new Set([...prev, ...uniqueReleaseYears])];
-        });
-        setLabels(prev => {
-            const uniqueLabels = getUniqueValues(data, "label");
-            return [...new Set([...prev, ...uniqueLabels])];
-        });
-
-        // Get min and max prices from the products
-        const prices = [...products, ...data].map(product => product.price);
-        const min = Math.min(...prices);
-        const max = Math.max(...prices);
-        setMinPrice(min);
-        setMaxPrice(max);
-
-        // Set other state variables
-        setPage(prev => prev + 1);
-        setHasMore(data.length === pageSize);
-        setLoadingMore(false);
-    }
 
     // Run at the beginning
     useEffect(() => {
         window.scrollTo(0, 0);
 
-        // Set title
-        document.title = "Products | The Record Hub";
+        // Get products from the database
+        const getProducts = async () => {
+            // get ?s query from the URL
+            const search = new URLSearchParams(window.location.search);
+            const searchQuery = search.get("s") || "";
 
-        loadMore().then(() => setLoading(false));
+            // Get products from the database
+            const { data } = await supabase
+                .from("vinyls")
+                .select("*")
+                .ilike("title", `%${searchQuery}%`)
+                .order("created_at", { ascending: false });
+
+            // Sort products by stock (in stock first)
+            data.sort((a, b) => b.stock - a.stock);
+
+            // Set products
+            setProducts(data);
+
+            // Set product count
+            setProductCount(data.length);
+
+            // Get unique keys from the products
+            setFormats(getUniqueValues(data, "format"));
+            setColors(getUniqueValues(data, "color"));
+            setGenres(getUniqueValues(data, "genre"));
+            setReleaseYears(getUniqueValues(data, "release_year"));
+            setLabels(getUniqueValues(data, "label"));
+
+            // Get min and max prices from the products
+            const prices = data.map(product => product.price);
+            const min = Math.min(...prices);
+            const max = Math.max(...prices);
+            setMinPrice(min);
+            setMaxPrice(max);
+
+            // Set title
+            document.title = "Products | The Record Hub";
+        }
+
+        getProducts().then(() => setLoading(false));
     }, []);
 
     // Filter functions
@@ -453,12 +412,7 @@ const Products = () => {
                     </div>
 
                     <div className="count">
-                        <p>
-                            {productCount} <StaticLang en="Products" az="Məhsul" />
-                            {productCount !== allProductsCount && (
-                                <> ({allProductsCount} <StaticLang en="Total" az="Ümumi" />)</>
-                            )}
-                        </p>
+                        <p>{productCount} <StaticLang en="Products" az="Məhsul" /></p>
                     </div>
 
                     <div className="sort">
@@ -492,12 +446,6 @@ const Products = () => {
                     })
                     }
                 </div>
-
-                {hasMore && (
-                    <div className="load-more">
-                        <button onClick={loadMore} disabled={loadingMore}>{loadingMore ? "Loading..." : "Load more"}</button>
-                    </div>
-                )}
             </div>
         </div>
     )

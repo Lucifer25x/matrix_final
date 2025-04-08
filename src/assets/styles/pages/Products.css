@@ -154,6 +154,26 @@
             flex-direction: column;
         }
     }
+
+    .load-more {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+
+        & button {
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: .3s ease all;
+
+            &:hover {
+                background-color: #0d8a20;
+            }
+        }
+    }
 }
 
 .product-not-found {
