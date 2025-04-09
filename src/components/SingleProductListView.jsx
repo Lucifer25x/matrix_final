@@ -1,8 +1,10 @@
 // Import libraries
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { RiHeartLine } from "@remixicon/react";
 import { useCart } from "react-use-cart";
 import { toast, Bounce } from "react-toastify";
+import { LangContext } from "../context/LangContext";
 import useWishlist from "../hooks/useWishlist";
 import StaticLang from "../utils/StaticLang";
 
@@ -16,11 +18,12 @@ const max_description_length = 200;
 const SingleProductListView = ({ product }) => {
     const { addItem } = useCart();
     const { addWishlist, removeWishlist, isInWishlist } = useWishlist();
+    const { lang } = useContext(LangContext);
 
     const handleAddToCart = () => {
         addItem(product);
 
-        toast.success("Product was added to your cart!", {
+        toast.success(lang === "az" ? "Məhsul səbətə əlavə edildi!" : "Product was added to your cart!", {
             position: "bottom-right",
             autoClose: 3000,
             closeOnClick: false,
@@ -36,7 +39,7 @@ const SingleProductListView = ({ product }) => {
             const res = await addWishlist(product.id);
 
             if (res) {
-                toast.success("Product was added to your wishlist!", {
+                toast.success(lang === "az" ? "Məhsul sevimlilərə əlavə edildi!" : "Product was added to your wishlist!", {
                     position: "bottom-right",
                     autoClose: 3000,
                     closeOnClick: false,
@@ -44,7 +47,7 @@ const SingleProductListView = ({ product }) => {
                     transition: Bounce,
                 });
             } else {
-                toast.error("You need to login to add products to your wishlist!", {
+                toast.error(lang === "az" ? "Məhsulu sevimlilərə əlavə etmək üçün daxil olun!" : "You need to login to add products to your wishlist!", {
                     position: "bottom-right",
                     autoClose: 3000,
                     closeOnClick: false,

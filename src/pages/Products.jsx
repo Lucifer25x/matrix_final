@@ -65,6 +65,7 @@ const Products = () => {
     const loadMore = async () => {
         setLoadingMore(true);
 
+        // Optimize it if possible
         const search = new URLSearchParams(window.location.search);
         const searchQuery = search.get("s") || "";
 
@@ -72,14 +73,15 @@ const Products = () => {
             .from("vinyls")
             .select("*")
             .range(page * pageSize, (page + 1) * pageSize - 1)
-            .ilike("title", `%${searchQuery}%`)
+            // .ilike("title", `%${searchQuery}%`)
+            .or(`title.ilike.%${searchQuery}%,artist.ilike.%${searchQuery}%,genre.ilike.%${searchQuery}%,label.ilike.%${searchQuery}%`)
             .order("created_at", { ascending: false });
 
         if (allProductsCount === null) {
             const { count } = await supabase
                 .from("vinyls")
                 .select("*", { count: "exact", head: true })
-                .ilike("title", `%${searchQuery}%`);
+                .or(`title.ilike.%${searchQuery}%,artist.ilike.%${searchQuery}%,genre.ilike.%${searchQuery}%,label.ilike.%${searchQuery}%`);
             setAllProductsCount(count);
         }
 

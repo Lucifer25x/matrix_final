@@ -1,9 +1,10 @@
 // Import libraries
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { RiHeartLine } from "@remixicon/react";
 import { useCart } from "react-use-cart";
 import { toast, Bounce } from "react-toastify";
+import { LangContext } from "../context/LangContext";
 import supabase from "../utils/supabase";
 import SingleProduct from "../components/SingleProduct";
 import StaticLang from "../utils/StaticLang";
@@ -31,6 +32,7 @@ const Product = () => {
     const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([]);
     const recentlyViewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
     const [loading, setLoading] = useState(true);
+    const { lang } = useContext(LangContext);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -88,7 +90,7 @@ const Product = () => {
     const handleAddToCart = () => {
         addItem(productDetails);
 
-        toast.success("Product was added to your cart!", {
+        toast.success(lang === "az" ? "Məhsul səbətə əlavə edildi!" : "Product was added to your cart!", {
             position: "bottom-right",
             autoClose: 3000,
             closeOnClick: false,
@@ -104,7 +106,7 @@ const Product = () => {
             const res = await addWishlist(productDetails.id);
 
             if (res) {
-                toast.success("Product was added to your wishlist!", {
+                toast.success(lang === "az" ? "Məhsul sevimlilərə əlavə edildi!" : "Product was added to your wishlist!", {
                     position: "bottom-right",
                     autoClose: 3000,
                     closeOnClick: false,
@@ -112,7 +114,7 @@ const Product = () => {
                     transition: Bounce,
                 });
             } else {
-                toast.error("You need to login to add products to your wishlist!", {
+                toast.error(lang === "az" ? "Məhsulu sevimlilərə əlavə etmək üçün daxil olun!" : "You need to login to add products to your wishlist!", {
                     position: "bottom-right",
                     autoClose: 3000,
                     closeOnClick: false,

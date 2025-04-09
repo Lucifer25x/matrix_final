@@ -26,6 +26,7 @@
 ### Can be added after the project's main parts are finished:
 - [x] Recently viewed products
 - [x] Add pagination/load more to products page
+- [ ] Add different types of search (title, artist etc.)
 - [ ] Sales Page
 - [ ] [Gifts](https://www.therecordhub.com/collections/gifts)
 - [ ] [T-shirts](https://www.therecordhub.com/collections/t-shirts)
