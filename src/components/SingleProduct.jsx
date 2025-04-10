@@ -22,7 +22,9 @@ const Product = ({ product, animate = false }) => {
     const handleAddToCart = () => {
         addItem(product);
 
-        toast.success(lang === "az" ? "Məhsul səbətə əlavə edildi!" : "Product was added to your cart!", {
+        console.log(lang)
+
+        toast.success(lang === "AZ" ? "Məhsul səbətə əlavə edildi!" : "Product was added to your cart!", {
             position: "bottom-right",
             autoClose: 3000,
             closeOnClick: false,
@@ -46,7 +48,7 @@ const Product = ({ product, animate = false }) => {
             const res = await addWishlist(product.id);
 
             if (res) {
-                toast.success(lang === "az" ? "Məhsul sevimlilərə əlavə edildi!" : "Product was added to your wishlist!", {
+                toast.success(lang === "AZ" ? "Məhsul sevimlilərə əlavə edildi!" : "Product was added to your wishlist!", {
                     position: "bottom-right",
                     autoClose: 3000,
                     closeOnClick: false,
@@ -54,7 +56,7 @@ const Product = ({ product, animate = false }) => {
                     transition: Bounce,
                 });
             } else {
-                toast.error(lang === "az" ? "Məhsulu sevimlilərə əlavə etmək üçün daxil olun!" : "You need to login to add products to your wishlist!", {
+                toast.error(lang === "AZ" ? "Məhsulu sevimlilərə əlavə etmək üçün daxil olun!" : "You need to login to add products to your wishlist!", {
                     position: "bottom-right",
                     autoClose: 3000,
                     closeOnClick: false,
