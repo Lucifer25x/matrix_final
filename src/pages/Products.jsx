@@ -67,7 +67,7 @@ const Products = () => {
 
         // Optimize it if possible
         const search = new URLSearchParams(window.location.search);
-        const searchQuery = search.get("s") || "";
+        const searchQuery = search.get("q") || "";
 
         const { data, error } = await supabase
             .from("vinyls")

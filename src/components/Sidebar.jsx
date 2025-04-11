@@ -1,6 +1,6 @@
 // Import libraries
 import { useState, useContext, useRef, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useSearchParams } from "react-router-dom";
 import { RiCloseLine, RiArrowDropDownLine } from "@remixicon/react";
 import { LangContext } from "../context/LangContext";
 import StaticLang from "../utils/StaticLang";
@@ -14,22 +14,20 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
     const [help, setHelp] = useState(false);
     const searchRef = useRef(null);
     const location = useLocation();
+    const [searchParams] = useSearchParams();
+    const query = searchParams.get('q');
 
     useEffect(() => {
         // Get search parameter from URL if needed
-        if (location.pathname !== "/products") {
+        if (location.pathname !== "/products" || !query) {
             searchRef.current.value = "";
         } else {
-            const urlParams = new URLSearchParams(window.location.search);
-            const search = urlParams.get('s');
-            if (search) {
-                searchRef.current.value = search;
-            }
+            searchRef.current.value = query;
         }
 
         // Close the accordion if needed
         setHelp(location.pathname === "/contact" || location.pathname === "/faq");
-    }, [location]);
+    }, [location, query]);
 
     // Handle search form submission
     const handleSearch = (e) => {
@@ -38,7 +36,7 @@ const Sidebar = ({ sidebar, handleSidebar }) => {
             window.location.href = "/products";
             return;
         }
-        window.location.href = `/products?s=${searchRef.current.value}`;
+        window.location.href = `/products?q=${searchRef.current.value}`;
     }
 
     return (

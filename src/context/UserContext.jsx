@@ -4,6 +4,7 @@ import supabase from "../utils/supabase";
 
 export const UserContext = createContext();
 
+// TODO: Fetch name/surname in context instead of in the component
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);

@@ -1,6 +1,6 @@
 // Import libraries
 import { useContext, useState, useRef, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { RiSearchLine, RiHeartLine, RiShoppingBagLine, RiUserLine, RiMenuLine, RiSunLine, RiMoonLine } from "@remixicon/react";
 import { ThemeContext } from "../context/ThemeContext";
 import { UserContext } from "../context/UserContext";
@@ -29,17 +29,15 @@ const Navbar = () => {
     const searchRef = useRef(null);
     const location = useLocation();
     const { lang } = useContext(LangContext);
+    const [searchParams] = useSearchParams();
+    const query = searchParams.get('q');
 
     useEffect(() => {
         // Get search parameter from URL if needed
-        if (location.pathname !== "/products") {
+        if (location.pathname !== "/products" || !query) {
             searchRef.current.value = "";
         } else {
-            const urlParams = new URLSearchParams(window.location.search);
-            const search = urlParams.get('s');
-            if (search) {
-                searchRef.current.value = search;
-            }
+            searchRef.current.value = query;
         }
 
         // Fetch name of user
@@ -66,7 +64,7 @@ const Navbar = () => {
         // Close sidebar when location changes
         setSidebar(false);
         document.body.style.overflowY = "auto";
-    }, [location, user, loading]);
+    }, [location, user, loading, query]);
 
     const handleSidebar = () => {
         setSidebar(!sidebar);
@@ -84,7 +82,7 @@ const Navbar = () => {
             window.location.href = "/products";
             return;
         }
-        window.location.href = `/products?s=${searchRef.current.value}`;
+        window.location.href = `/products?q=${searchRef.current.value}`;
     }
 
     return (
