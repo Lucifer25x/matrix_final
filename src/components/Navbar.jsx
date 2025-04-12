@@ -23,9 +23,8 @@ const Navbar = () => {
     const { totalItems } = useCart();
     const { wishlistCount } = useWishlist();
     const { theme, toggleTheme } = useContext(ThemeContext);
-    const { user, loading } = useContext(UserContext);
+    const { user, userDetails, loading } = useContext(UserContext);
     const [sidebar, setSidebar] = useState(false);
-    const [name, setName] = useState();
     const searchRef = useRef(null);
     const location = useLocation();
     const { lang } = useContext(LangContext);
@@ -38,27 +37,6 @@ const Navbar = () => {
             searchRef.current.value = "";
         } else {
             searchRef.current.value = query;
-        }
-
-        // Fetch name of user
-        const fetchName = async () => {
-            const res = await supabase
-                .from("user_info")
-                .select("name, surname")
-                .eq("user_id", user.id)
-                .single();
-
-            if (res.error) {
-                console.error(res.error.message);
-            } else {
-                // setName(res.dres.data.name);
-                setName(`${res.data.surname[0]}. ${res.data.name}`);
-            }
-        }
-
-        // Get user info if logged in
-        if (user) {
-            fetchName();
         }
 
         // Close sidebar when location changes
@@ -120,7 +98,7 @@ const Navbar = () => {
                         </div>
                         <Link to={"/account"} className="account">
                             <RiUserLine size={20} />
-                            {name ? <p>{name}</p> : <p>Login</p>}
+                            {userDetails ? <p>{`${userDetails.surname[0]}. ${userDetails.name}`}</p> : <p>Login</p>}
                         </Link>
                         <div className="menu-btn button" onClick={handleSidebar}>
                             <RiMenuLine size={25} />

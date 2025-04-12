@@ -4,20 +4,36 @@ import supabase from "../utils/supabase";
 
 export const UserContext = createContext();
 
-// TODO: Fetch name/surname in context instead of in the component
+// User Provider component
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [userDetails, setUserDetails] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const checkUser = async () => {
+        const getUser = async () => {
             const { data: { user } } = await supabase.auth.getUser();
             setUser(user);
-            setLoading(false);
+
+            if (user) {
+                const { data, error } = await supabase
+                    .from("user_info")
+                    .select("name, surname")
+                    .eq("user_id", user.id)
+                    .single();
+
+                if (error) {
+                    console.error(error.message);
+                } else {
+                    setUserDetails(data);
+                }
+            }
         }
 
-        checkUser();
+        getUser().then(() => {
+            setLoading(false);
+        });
     }, []);
 
-    return <UserContext.Provider value={{ user, loading }}>{children}</UserContext.Provider>
+    return <UserContext.Provider value={{ user, userDetails, loading }}>{children}</UserContext.Provider>
 }

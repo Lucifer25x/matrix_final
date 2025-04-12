@@ -22,10 +22,8 @@ import "../assets/styles/pages/Account.css";
 
 // Account page
 const Account = () => {
-    const { user, loading } = useContext(UserContext);
+    const { user, userDetails, loading } = useContext(UserContext);
     const [isAdmin, setIsAdmin] = useState(false);
-    const [name, setName] = useState("");
-    const [surname, setSurname] = useState("");
     const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([]);
     const recentlyViewed =
         JSON.parse(localStorage.getItem("recentlyViewed")) || [];
@@ -66,27 +64,6 @@ const Account = () => {
             }
         };
 
-        const getUserInfo = async () => {
-            const { data, error } = await supabase
-                .from("user_info")
-                .select("*")
-                .eq("user_id", user.id);
-
-            if (error) {
-                Swal.fire({
-                    title: lang == "AZ" ? "Xəta!" : "Error!",
-                    text: error.message,
-                    icon: "error",
-                });
-            } else {
-                if (data && data.length > 0) {
-                    setName(data[0].name);
-                    setSurname(data[0].surname);
-                    setPageLoading(false);
-                }
-            }
-        };
-
         const getRecentlyViewedProducts = async () => {
             const { data, error } = await supabase
                 .from("vinyls")
@@ -109,7 +86,6 @@ const Account = () => {
         };
 
         if (user) {
-            getUserInfo();
             checkAdmin();
             if (
                 recentlyViewedProducts.length === 0 &&
@@ -208,14 +184,14 @@ const Account = () => {
             document.body.style.overflow = "hidden";
 
             // Set refs
-            nameInputRef.current.value = name;
-            surnameInputRef.current.value = surname;
+            nameInputRef.current.value = userDetails.name;
+            surnameInputRef.current.value = userDetails.surname;
         }
 
         setShowPopup(!showPopup);
     };
 
-    if (loading || pageLoading) {
+    if (loading) {
         return <Loading />;
     }
 
@@ -261,8 +237,8 @@ const Account = () => {
                 {user && (
                     <>
                         <h1>
-                            <StaticLang en="Welcome" az="Xoş Gəldiniz" /> {name}{" "}
-                            {surname}
+                            <StaticLang en="Welcome" az="Xoş Gəldiniz" /> {userDetails.name}{" "}
+                            {userDetails.surname}
                         </h1>
                         <p>Email: {user.email}</p>
 
