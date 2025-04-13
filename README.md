@@ -27,9 +27,6 @@
 - [x] Recently viewed products
 - [x] Add pagination/load more to products page
 - [ ] Add different types of search (title, artist etc.)
-- [ ] Sales Page
-- [ ] [Gifts](https://www.therecordhub.com/collections/gifts)
-- [ ] [T-shirts](https://www.therecordhub.com/collections/t-shirts)
 
 *If you add gifts, t-shirts: Change the vinyls page to /products/vinyls and name other things (gifts, t-shirts) according to that*
 
