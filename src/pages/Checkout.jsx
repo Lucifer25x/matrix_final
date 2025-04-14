@@ -3,8 +3,9 @@ import { useEffect, useContext, useRef, useState } from "react";
 import { useCart } from "react-use-cart";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import { LangContext } from "../context/LangContext";
+import Swal from "sweetalert2";
+import StaticLang from "../utils/StaticLang";
 
 // Import styles
 import "../assets/styles/pages/Checkout.css";
@@ -141,25 +142,25 @@ const Checkout = () => {
 
     return (
         <div className="checkout-page" data-aos="zoom-in">
-            <h1>Checkout</h1>
+            <h1><StaticLang en="checkout" az="Ödəniş" /></h1>
 
             <div className="section">
-                <h2>Delivery</h2>
-                <input type="text" placeholder="Country/Region" ref={countryRef} />
+                <h2><StaticLang en="Delivery" az="Çatdırılma" /></h2>
+                <input type="text" placeholder={lang == "AZ" ? "Ölkə/Region" : "Country/Region"} ref={countryRef} />
                 <div className="flex">
-                    <input type="text" placeholder="First name" ref={firstNameRef} />
-                    <input type="text" placeholder="Last name" ref={lastNameRef} />
+                    <input type="text" placeholder={lang == "AZ" ? "Ad" : "First name"} ref={firstNameRef} />
+                    <input type="text" placeholder={lang == "AZ" ? "Soyad" : "Last name"} ref={lastNameRef} />
                 </div>
-                <input type="text" placeholder="Address" ref={addressRef} />
+                <input type="text" placeholder={lang == "AZ" ? "Ünvan" : "Address"} ref={addressRef} />
                 <div className="flex">
-                    <input type="text" placeholder="Postal code" ref={postalCodeRef} />
-                    <input type="text" placeholder="City" ref={cityRef} />
+                    <input type="text" placeholder={lang == "AZ" ? "Postal kodu" : "Postal code"} ref={postalCodeRef} />
+                    <input type="text" placeholder={lang == "AZ" ? "Şəhər" : "City"} ref={cityRef} />
                 </div>
-                <input type="text" placeholder="Phone" ref={phoneRef} />
+                <input type="text" placeholder={lang == "AZ" ? "Telefon" : "Phone"} ref={phoneRef} />
             </div>
 
             <div className="section">
-                <h2>Payment</h2>
+                <h2><StaticLang en="Payment" az="Ödəniş" /></h2>
 
                 <input type="text"
                     placeholder="1234 5678 9012 3456"
@@ -178,15 +179,15 @@ const Checkout = () => {
                         onChange={handleSecurityCodeChange}
                     />
                 </div>
-                <input type="text" placeholder="Name on card" ref={nameOnCardRef} />
+                <input type="text" placeholder={lang == "AZ" ? "Kartın üzərindəki ad" : "Name on card"} ref={nameOnCardRef} />
             </div>
 
             <label>
                 <input type="checkbox" ref={savePaymentRef} />
-                <span>Save my payment information</span>
+                <span><StaticLang en="Save my payment information" az="Ödəniş məlumatımı saxla" /></span>
             </label>
 
-            <button onClick={handlePay}>Pay now</button>
+            <button onClick={handlePay}><StaticLang en="Pay now" az="Ödə" /></button>
         </div>
     )
 }
