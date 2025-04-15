@@ -76,7 +76,7 @@ const BlogEditor = () => {
                             // Show success message
                             Swal.fire({
                                 icon: "success",
-                                title: lang == "AZ" ? "Bloq uğurla silindi": "Blog was removed successfully",
+                                title: lang == "AZ" ? "Bloq uğurla silindi" : "Blog was removed successfully",
                                 showConfirmButton: false,
                                 timer: 1500
                             });

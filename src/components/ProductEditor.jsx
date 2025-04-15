@@ -90,7 +90,7 @@ const ProductEditor = () => {
                             // Show success message
                             Swal.fire({
                                 icon: "success",
-                                title: lang == "AZ" ? "Məhsul uğurla silindi": "Product was removed successfully",
+                                title: lang == "AZ" ? "Məhsul uğurla silindi" : "Product was removed successfully",
                                 showConfirmButton: false,
                                 timer: 1500
                             });
