@@ -26,7 +26,7 @@ const getUniqueValues = (array, key) => {
 }
 
 // Page size
-const pageSize = 10;
+const pageSize = 12;
 
 // Products component
 const Products = () => {
