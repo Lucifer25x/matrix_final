@@ -23,6 +23,7 @@ import "../assets/styles/pages/Account.css";
 // Account page
 const Account = () => {
     const { user, userDetails, loading } = useContext(UserContext);
+    const [loadingState, setLoadingState] = useState(true);
     const [isAdmin, setIsAdmin] = useState(false);
     const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([]);
     const recentlyViewed =
@@ -61,6 +62,8 @@ const Account = () => {
                         setIsAdmin(true);
                     }
                 }
+
+                setPageLoading(false);
             }
         };
 
@@ -191,7 +194,7 @@ const Account = () => {
         setShowPopup(!showPopup);
     };
 
-    if (loading) {
+    if (loading || pageLoading) {
         return <Loading />;
     }
 

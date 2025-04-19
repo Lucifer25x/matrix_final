@@ -2,7 +2,7 @@
 import { useEffect, useContext, useRef, useState } from "react";
 import { useCart } from "react-use-cart";
 import { UserContext } from "../context/UserContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LangContext } from "../context/LangContext";
 import Swal from "sweetalert2";
 import StaticLang from "../utils/StaticLang";
@@ -188,6 +188,9 @@ const Checkout = () => {
             </label>
 
             <button onClick={handlePay}><StaticLang en="Pay now" az="Ödə" /></button>
+            <Link to="/cart" className="back-to-cart">
+                <StaticLang en="Back to cart" az="Səbətə qayıt" />
+            </Link>
         </div>
     )
 }

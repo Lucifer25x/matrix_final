@@ -4,31 +4,15 @@
 
 **[Deployed version on netlify](https://final-recordhub.netlify.app)**
 
-### Essential todo List:
-- [x] Account icon + name
-- [x] Recently Viewed -> Recommend
-- [x] Checkout requires sign up
-- [x] Checkout alert
-- [x] Sign up details
-- [x] Edit account details (use popup)
-- [x] Use user name/surname on navbar instead of email
-- [x] Show/Hide password
-- [x] Add new sections to home page
-- [x] Change the url configuration in supabase
-- [x] Highlighted blog posts
-- [x] Wishlist
-- [x] Add recommended/random products to cart page's bottom
-- [x] Dashboard
-    - [x] Manage products
-    - [x] Manage blogs
-    - [x] Manage banners
-
-### Can be added after the project's main parts are finished:
-- [x] Recently viewed products
-- [x] Add pagination/load more to products page
-- [ ] Add different types of search (title, artist etc.)
-
 *If you add gifts, t-shirts: Change the vinyls page to /products/vinyls and name other things (gifts, t-shirts) according to that*
+
+### Essential Technologies:
+- [x] React
+- [x] React Hooks
+- [x] React Router
+- [x] Redux JS
+- [x] API (or local data)
+- [x] SASS or CSS
 
 ### Other Libraries:
 - [x] Remix icons
@@ -38,14 +22,6 @@
 - [x] React Spinners
 - [x] SweetAlert2
 - [x] Toastify
-
-### Technologies:
-- [x] React
-- [x] React Hooks
-- [x] React Router
-- [x] Redux JS
-- [x] API (or local data)
-- [x] SASS or CSS
 
 ### Conditions:
 - [x] Beautiful Design
