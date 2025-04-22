@@ -4,8 +4,6 @@
 
 **[Deployed version on netlify](https://final-recordhub.netlify.app)**
 
-*If you add gifts, t-shirts: Change the vinyls page to /products/vinyls and name other things (gifts, t-shirts) according to that*
-
 ### Essential Technologies:
 - [x] React
 - [x] React Hooks
