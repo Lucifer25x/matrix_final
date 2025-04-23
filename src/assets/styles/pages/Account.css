@@ -246,3 +246,13 @@
         }
     }
 }
+
+@media(max-width: 900px) {
+    .account-page {
+        .section {
+            & h1 {
+                font-size: 2.5em;
+            }
+        }
+    }
+}
