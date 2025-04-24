@@ -9,7 +9,7 @@
 - [x] React Hooks
 - [x] React Router
 - [x] Redux JS
-- [x] API (or local data)
+- [x] API
 - [x] SASS or CSS
 
 ### Other Libraries:

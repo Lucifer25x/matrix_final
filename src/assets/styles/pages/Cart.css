@@ -341,6 +341,12 @@
         .subtotal {
             justify-content: space-between;
         }
+
+        .section {
+            & h1 {
+                font-size: 2em;
+            }
+        }
     }
 }
 
